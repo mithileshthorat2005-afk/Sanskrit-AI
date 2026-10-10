@@ -21,5 +21,5 @@ FastAPI backend for Sanskrit language learning.
 ## API Documentation
 
 Once the server is running, visit:
-- Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
-- Redoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+- Swagger UI: [http://localhost:8005/docs](http://localhost:8005/docs)
+- Redoc: [http://localhost:8005/redoc](http://localhost:8005/redoc)

@@ -76,14 +76,14 @@ class SanskritNLP:
             "जलम्":    {"pos": "noun", "gender": "neuter",    "case": "nominative", "number": "singular", "meaning": "water"},
 
             # Pronouns
-            "अहं":     {"pos": "pronoun", "case": "nominative", "number": "singular", "meaning": "I"},
-            "अहम्":    {"pos": "pronoun", "case": "nominative", "number": "singular", "meaning": "I"},
-            "सः":      {"pos": "pronoun", "case": "nominative", "number": "singular", "gender": "masculine", "meaning": "he"},
-            "सा":      {"pos": "pronoun", "case": "nominative", "number": "singular", "gender": "feminine",  "meaning": "she"},
-            "तत्":     {"pos": "pronoun", "case": "nominative", "number": "singular", "gender": "neuter",    "meaning": "it"},
-            "त्वम्":   {"pos": "pronoun", "case": "nominative", "number": "singular", "meaning": "you"},
-            "ते":      {"pos": "pronoun", "case": "nominative", "number": "plural",   "meaning": "they"},
-            "वयम्":    {"pos": "pronoun", "case": "nominative", "number": "plural",   "meaning": "we"},
+            "अहं":     {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "first",  "meaning": "I"},
+            "अहम्":    {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "first",  "meaning": "I"},
+            "सः":      {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "third",  "gender": "masculine", "meaning": "he"},
+            "सा":      {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "third",  "gender": "feminine",  "meaning": "she"},
+            "तत्":     {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "third",  "gender": "neuter",    "meaning": "it"},
+            "त्वम्":   {"pos": "pronoun", "case": "nominative", "number": "singular", "person": "second", "meaning": "you"},
+            "ते":      {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "third",  "meaning": "they"},
+            "वयम्":    {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "first",  "meaning": "we"},
 
             # Verbs
             "गच्छति":  {"pos": "verb", "tense": "present", "person": "third", "number": "singular", "meaning": "goes"},
@@ -271,6 +271,16 @@ class SanskritNLP:
     # ==============================================================
     # Sentence-level checks
     # ==============================================================
+    @staticmethod
+    def _normalize_agreement_value(value: Any, aliases: Dict[str, str]) -> str:
+        if isinstance(value, (list, tuple)):
+            if len(value) != 1:
+                return ""
+            value = value[0]
+        if value is None:
+            return ""
+        return aliases.get(str(value).strip().lower(), "")
+
     def _run_checks(self, text: str, breakdown: List[Dict]) -> List[str]:
         issues = []
 
@@ -284,30 +294,52 @@ class SanskritNLP:
             issues.append("Sentence has no verb.")
 
         # 3. Subject-verb agreement
-        NUM_NORM = {
+        number_aliases = {
             'eka': 'singular', 'dvi': 'dual', 'bahu': 'plural',
             'singular': 'singular', 'dual': 'dual', 'plural': 'plural',
             'एकवचन': 'singular', 'द्विवचन': 'dual', 'बहुवचन': 'plural',
         }
+        person_aliases = {
+            'uttama': 'first', 'first': 'first',
+            'madhyama': 'second', 'madyama': 'second', 'second': 'second',
+            'pratama': 'third', 'prathama': 'third', 'third': 'third',
+        }
 
         verb_entries = [b for b in breakdown if b['pos'] == 'verb']
-        if verb_entries:
-            a = verb_entries[0]['analysis']
-            raw_v = a.get('vacana') or a.get('number') or ''
-            v_num = NUM_NORM.get(str(raw_v).lower(), '')
+        subjects = [
+            b for b in breakdown
+            if b['pos'] in ('noun', 'pronoun')
+            and str(b['analysis'].get('case', '')).lower() == 'nominative'
+        ]
+        if verb_entries and subjects:
+            verb = verb_entries[0]['analysis']
+            subject = subjects[0]
+            subject_analysis = subject['analysis']
 
-            subjects = [
-                b for b in breakdown
-                if b['pos'] in ('noun', 'pronoun')
-                and str(b['analysis'].get('case', '')).lower() == 'nominative'
-            ]
-            if subjects:
-                raw_s = subjects[0]['analysis'].get('number', '')
-                s_num = NUM_NORM.get(str(raw_s).lower(), '')
-                if s_num and v_num and s_num != v_num:
-                    issues.append(
-                        f"Subject is {s_num} but verb is {v_num} — check subject-verb agreement."
-                    )
+            verb_number = self._normalize_agreement_value(
+                verb.get('vacana') or verb.get('number'), number_aliases
+            )
+            subject_number = self._normalize_agreement_value(
+                subject_analysis.get('number'), number_aliases
+            )
+            if subject_number and verb_number and subject_number != verb_number:
+                issues.append(
+                    f"Subject is {subject_number} but verb is {verb_number} — check subject-verb agreement."
+                )
+
+            verb_person = self._normalize_agreement_value(
+                verb.get('purusha') or verb.get('person'), person_aliases
+            )
+            subject_person_value = subject_analysis.get('person')
+            if not subject_person_value and subject['pos'] == 'noun':
+                subject_person_value = 'third'
+            subject_person = self._normalize_agreement_value(
+                subject_person_value, person_aliases
+            )
+            if subject_person and verb_person and subject_person != verb_person:
+                issues.append(
+                    f"Subject is {subject_person} person but verb is {verb_person} person — check subject-verb agreement."
+                )
 
         # 4. Destination → accusative
         has_motion = False
@@ -466,6 +498,35 @@ class SanskritNLP:
             m = re.search(r'\{.*\}', analysis_text, re.DOTALL)
             analysis_json = json.loads(m.group(0)) if m else json.loads(analysis_text)
 
+            if not isinstance(analysis_json, dict):
+                raise ValueError("AI analysis response must be a JSON object")
+
+            normalized = text.replace('|', '।').replace('.', '।')
+            sanskrit_words = [
+                word for word in self.tokenize(normalized)
+                if re.match(r'[\u0900-\u097F]+', word)
+            ]
+            issues = analysis_json.setdefault("issues", [])
+            breakdown = analysis_json.setdefault("breakdown", [])
+            if not isinstance(issues, list) or not isinstance(breakdown, list):
+                raise ValueError("AI analysis issues and breakdown must be lists")
+
+            analysis_json.setdefault("score", max(0, 100 - len(issues) * 15))
+            analysis_json.setdefault("corrected_sentence", self._build_correction(
+                text, breakdown, issues
+            ))
+            analysis_json.setdefault(
+                "correction_summary",
+                "Corrected sentence structure." if issues else "No errors found.",
+            )
+            analysis_json.setdefault("word_count", len(sanskrit_words))
+            analysis_json.setdefault("translation", self.mock_translate(normalized))
+            source_counts: Dict[str, int] = {}
+            for item in breakdown:
+                if isinstance(item, dict) and item.get("source"):
+                    source = str(item["source"])
+                    source_counts[source] = source_counts.get(source, 0) + 1
+            analysis_json.setdefault("source_counts", source_counts)
             analysis_json["analysis_mode"] = f"{self.ai_provider} AI"
             analysis_json["ai_verified"] = True
             return analysis_json

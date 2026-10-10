@@ -21,4 +21,4 @@ Migrated from Streamlit to a full-stack Next.js + FastAPI architecture.
 3. `npm run dev`
 
 Navigate to `http://localhost:3000` to use the application.
-Backend API documentation is available at `http://localhost:8000/docs`.
+Backend API documentation is available at `http://localhost:8005/docs`.

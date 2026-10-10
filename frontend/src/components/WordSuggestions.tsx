@@ -2,6 +2,7 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { API_BASE_URL } from '@/lib/api';
 
 interface Suggestion {
   word: string;
@@ -14,8 +15,6 @@ interface WordSuggestionsProps {
   onSelect: (word: string) => void;
   enabled: boolean;
 }
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 export default function WordSuggestions({ prefix, onSelect, enabled }: WordSuggestionsProps) {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);

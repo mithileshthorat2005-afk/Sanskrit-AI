@@ -16,7 +16,7 @@ Browser page/component
   -> rendered page
 ```
 
-Frontend default API URL: `http://localhost:8000`, from `frontend/src/lib/api.ts:API_BASE_URL`.
+Frontend default API URL: `http://localhost:8005`, from `frontend/src/lib/api.ts:API_BASE_URL`.
 
 Backend default origin: `http://localhost:3000`, from `backend/main.py:frontend_origin`.
 
@@ -36,7 +36,7 @@ The main persistent database is `backend/data/sanskrit_ai.sqlite3`. SQLite schem
 - `learning_db.initialize()`: creates SQLite tables and indexes.
 - `learning_db.migrate_users(auth.users)`: copies users from `backend/data/users.json` into SQLite without overwriting existing SQLite rows.
 - `SanskritTranslator(...)` from `backend/modules/translator.py`: loads `backend/data/sanskrit_words.csv` and `backend/data/sanskrit_sentences.json`.
-- `if __name__ == '__main__'`: starts Uvicorn on port 8000.
+- `if __name__ == '__main__'`: starts Uvicorn on port 8005 by default (overridable with `PORT`).
 
 Startup therefore reads JSON/CSV content, initializes SQLite, migrates authentication users, and builds in-memory service objects before the first request.
 

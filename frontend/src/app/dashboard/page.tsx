@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { api, DashboardResponse } from "@/lib/api";
+import { api, API_BASE_URL, DashboardResponse } from "@/lib/api";
 import Sidebar from "@/components/Sidebar";
 import DailyStreak from "@/components/DailyStreak";
 import { motion } from "framer-motion";
@@ -110,10 +110,9 @@ export default function Dashboard() {
     setLoadingRecommendation(true);
 
     const fetchRecommendation = async () => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
       try {
         // Direct fetch to bypass any api.ts wrapper bugs
-        const response = await fetch(`${baseUrl}/recommendation/${user.username}`);
+        const response = await fetch(`${API_BASE_URL}/recommendation/${user.username}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
