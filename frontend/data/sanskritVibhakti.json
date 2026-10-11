@@ -1,0 +1,135 @@
+[
+  {
+    "id": "case1",
+    "sanskrit_name": "प्रथमा",
+    "english_name": "Nominative",
+    "meaning": "Subject (कर्ता)",
+    "endings": {
+      "masculine": "ः",
+      "feminine": "आ",
+      "neuter": "म्"
+    },
+    "examples": [
+      {
+        "sanskrit": "रामः वनं गच्छति।",
+        "translation": "Rama goes to the forest.",
+        "highlighted_word": "रामः",
+        "case_used": "Nominative"
+      }
+    ]
+  },
+  {
+    "id": "case2",
+    "sanskrit_name": "द्वितीया",
+    "english_name": "Accusative",
+    "meaning": "Object (कर्म)",
+    "endings": {
+      "masculine": "म्",
+      "feminine": "आम्",
+      "neuter": "म्"
+    },
+    "examples": [
+      {
+        "sanskrit": "सीता फलं खादति।",
+        "translation": "Sita eats a fruit.",
+        "highlighted_word": "फलं",
+        "case_used": "Accusative"
+      }
+    ]
+  },
+  {
+    "id": "case3",
+    "sanskrit_name": "तृतीया",
+    "english_name": "Instrumental",
+    "meaning": "Instrument / Means (करण)",
+    "endings": {
+      "masculine": "ना",
+      "feminine": "या",
+      "neuter": "ना"
+    },
+    "examples": [
+      {
+        "sanskrit": "बालकः हस्तेन लिखति।",
+        "translation": "The boy writes with his hand.",
+        "highlighted_word": "हस्तेन",
+        "case_used": "Instrumental"
+      }
+    ]
+  },
+  {
+    "id": "case4",
+    "sanskrit_name": "चतुर्थी",
+    "english_name": "Dative",
+    "meaning": "Recipient / Purpose (सम्प्रदान)",
+    "endings": {
+      "masculine": "य",
+      "feminine": "यै",
+      "neuter": "य"
+    },
+    "examples": [
+      {
+        "sanskrit": "पिता पुत्राय धनं ददाति।",
+        "translation": "The father gives money to the son.",
+        "highlighted_word": "पुत्राय",
+        "case_used": "Dative"
+      }
+    ]
+  },
+  {
+    "id": "case5",
+    "sanskrit_name": "पञ्चमी",
+    "english_name": "Ablative",
+    "meaning": "Source / Separation (अपादान)",
+    "endings": {
+      "masculine": "त्",
+      "feminine": "याः",
+      "neuter": "त्"
+    },
+    "examples": [
+      {
+        "sanskrit": "सः ग्रामात् आगच्छति।",
+        "translation": "He comes from the village.",
+        "highlighted_word": "ग्रामात्",
+        "case_used": "Ablative"
+      }
+    ]
+  },
+  {
+    "id": "case6",
+    "sanskrit_name": "षष्ठी",
+    "english_name": "Genitive",
+    "meaning": "Possession (सम्बन्ध)",
+    "endings": {
+      "masculine": "स्य",
+      "feminine": "याः",
+      "neuter": "स्य"
+    },
+    "examples": [
+      {
+        "sanskrit": "रामस्य पुत्रः वीरः अस्ति।",
+        "translation": "Rama's son is brave.",
+        "highlighted_word": "रामस्य",
+        "case_used": "Genitive"
+      }
+    ]
+  },
+  {
+    "id": "case7",
+    "sanskrit_name": "सप्तमी",
+    "english_name": "Locative",
+    "meaning": "Location / Context (अधिकरण)",
+    "endings": {
+      "masculine": "इ",
+      "feminine": "याम्",
+      "neuter": "इ"
+    },
+    "examples": [
+      {
+        "sanskrit": "ग्रामे वृक्षाः सन्ति।",
+        "translation": "There are trees in the village.",
+        "highlighted_word": "ग्रामे",
+        "case_used": "Locative"
+      }
+    ]
+  }
+]

@@ -1,0 +1,191 @@
+[
+  {
+    "id": "tense_present",
+    "name": "Present (वर्तमान)",
+    "description": "Used for actions happening now or generally true.",
+    "conjugations": [
+      {
+        "person": "1st Singular",
+        "sanskrit": "पठामि",
+        "transliteration": "paṭhāmi",
+        "english": "I read"
+      },
+      {
+        "person": "2nd Singular",
+        "sanskrit": "पठसि",
+        "transliteration": "paṭhasi",
+        "english": "You read"
+      },
+      {
+        "person": "3rd Singular",
+        "sanskrit": "पठति",
+        "transliteration": "paṭhati",
+        "english": "He/She/It reads"
+      },
+      {
+        "person": "1st Dual",
+        "sanskrit": "पठावः",
+        "transliteration": "paṭhāvaḥ",
+        "english": "We two read"
+      },
+      {
+        "person": "2nd Dual",
+        "sanskrit": "पठथः",
+        "transliteration": "paṭhathaḥ",
+        "english": "You two read"
+      },
+      {
+        "person": "3rd Dual",
+        "sanskrit": "पठतः",
+        "transliteration": "paṭhataḥ",
+        "english": "They two read"
+      },
+      {
+        "person": "1st Plural",
+        "sanskrit": "पठामः",
+        "transliteration": "paṭhāmaḥ",
+        "english": "We read"
+      },
+      {
+        "person": "2nd Plural",
+        "sanskrit": "पठथ",
+        "transliteration": "paṭhatha",
+        "english": "You all read"
+      },
+      {
+        "person": "3rd Plural",
+        "sanskrit": "पठन्ति",
+        "transliteration": "paṭhanti",
+        "english": "They read"
+      }
+    ],
+    "example_sentence": "बालकः पठति।",
+    "translation": "The boy reads."
+  },
+  {
+    "id": "tense_past",
+    "name": "Past (Imperfect – लङ्)",
+    "description": "Used for simple past actions (narrative past).",
+    "conjugations": [
+      {
+        "person": "1st Singular",
+        "sanskrit": "अपठम्",
+        "transliteration": "apaṭham",
+        "english": "I read"
+      },
+      {
+        "person": "2nd Singular",
+        "sanskrit": "अपठः",
+        "transliteration": "apaṭhaḥ",
+        "english": "You read"
+      },
+      {
+        "person": "3rd Singular",
+        "sanskrit": "अपठत्",
+        "transliteration": "apaṭhat",
+        "english": "He/She/It read"
+      },
+      {
+        "person": "1st Dual",
+        "sanskrit": "अपठाव",
+        "transliteration": "apaṭhāva",
+        "english": "We two read"
+      },
+      {
+        "person": "2nd Dual",
+        "sanskrit": "अपठतम्",
+        "transliteration": "apaṭhatam",
+        "english": "You two read"
+      },
+      {
+        "person": "3rd Dual",
+        "sanskrit": "अपठताम्",
+        "transliteration": "apaṭhatām",
+        "english": "They two read"
+      },
+      {
+        "person": "1st Plural",
+        "sanskrit": "अपठाम",
+        "transliteration": "apaṭhāma",
+        "english": "We read"
+      },
+      {
+        "person": "2nd Plural",
+        "sanskrit": "अपठत",
+        "transliteration": "apaṭhata",
+        "english": "You all read"
+      },
+      {
+        "person": "3rd Plural",
+        "sanskrit": "अपठन्",
+        "transliteration": "apaṭhan",
+        "english": "They read"
+      }
+    ],
+    "example_sentence": "बालकः अपठत्।",
+    "translation": "The boy read."
+  },
+  {
+    "id": "tense_future",
+    "name": "Future (लृट्)",
+    "description": "Used for actions that will happen.",
+    "conjugations": [
+      {
+        "person": "1st Singular",
+        "sanskrit": "पठिष्यामि",
+        "transliteration": "paṭhiṣyāmi",
+        "english": "I will read"
+      },
+      {
+        "person": "2nd Singular",
+        "sanskrit": "पठिष्यसि",
+        "transliteration": "paṭhiṣyasi",
+        "english": "You will read"
+      },
+      {
+        "person": "3rd Singular",
+        "sanskrit": "पठिष्यति",
+        "transliteration": "paṭhiṣyati",
+        "english": "He/She/It will read"
+      },
+      {
+        "person": "1st Dual",
+        "sanskrit": "पठिष्यावः",
+        "transliteration": "paṭhiṣyāvaḥ",
+        "english": "We two will read"
+      },
+      {
+        "person": "2nd Dual",
+        "sanskrit": "पठिष्यथः",
+        "transliteration": "paṭhiṣyathaḥ",
+        "english": "You two will read"
+      },
+      {
+        "person": "3rd Dual",
+        "sanskrit": "पठिष्यतः",
+        "transliteration": "paṭhiṣyataḥ",
+        "english": "They two will read"
+      },
+      {
+        "person": "1st Plural",
+        "sanskrit": "पठिष्यामः",
+        "transliteration": "paṭhiṣyāmaḥ",
+        "english": "We will read"
+      },
+      {
+        "person": "2nd Plural",
+        "sanskrit": "पठिष्यथ",
+        "transliteration": "paṭhiṣyatha",
+        "english": "You all will read"
+      },
+      {
+        "person": "3rd Plural",
+        "sanskrit": "पठिष्यन्ति",
+        "transliteration": "paṭhiṣyanti",
+        "english": "They will read"
+      }
+    ],
+    "example_sentence": "बालकः पठिष्यति।",
+    "translation": "The boy will read."
+  }
+]

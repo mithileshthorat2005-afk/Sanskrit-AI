@@ -1,0 +1,138 @@
+[
+  {
+    "id": "time_1",
+    "category": "Hours",
+    "sanskrit": "एकवादनम्",
+    "transliteration": "Eka-vādanam",
+    "englishMeaning": "1:00 O'clock"
+  },
+  {
+    "id": "time_2",
+    "category": "Hours",
+    "sanskrit": "द्विवादनम्",
+    "transliteration": "Dvi-vādanam",
+    "englishMeaning": "2:00 O'clock"
+  },
+  {
+    "id": "time_3",
+    "category": "Hours",
+    "sanskrit": "त्रिवादनम्",
+    "transliteration": "Tri-vādanam",
+    "englishMeaning": "3:00 O'clock"
+  },
+  {
+    "id": "time_4",
+    "category": "Hours",
+    "sanskrit": "चतुर्वादनम्",
+    "transliteration": "Catur-vādanam",
+    "englishMeaning": "4:00 O'clock"
+  },
+  {
+    "id": "time_5",
+    "category": "Hours",
+    "sanskrit": "पञ्चवादनम्",
+    "transliteration": "Pañca-vādanam",
+    "englishMeaning": "5:00 O'clock"
+  },
+  {
+    "id": "time_6",
+    "category": "Hours",
+    "sanskrit": "षड्वादनम्",
+    "transliteration": "Ṣaḍ-vādanam",
+    "englishMeaning": "6:00 O'clock"
+  },
+  {
+    "id": "time_frac_1",
+    "category": "Fractions",
+    "sanskrit": "सपाद-एकवादनम्",
+    "transliteration": "Sapāda-ekavādanam",
+    "englishMeaning": "1:15 (Quarter past one)",
+    "rule": "Add 'Sapāda' (With a quarter) before the hour."
+  },
+  {
+    "id": "time_frac_2",
+    "category": "Fractions",
+    "sanskrit": "सार्ध-द्विवादनम्",
+    "transliteration": "Sārdha-dvivādanam",
+    "englishMeaning": "2:30 (Half past two)",
+    "rule": "Add 'Sārdha' (With a half) before the hour."
+  },
+  {
+    "id": "time_frac_3",
+    "category": "Fractions",
+    "sanskrit": "पादोन-त्रिवादनम्",
+    "transliteration": "Pādona-trivādanam",
+    "englishMeaning": "2:45 (Quarter to three)",
+    "rule": "Add 'Pādona' (Minus a quarter) before the NEXT hour."
+  },
+  {
+    "id": "day_1",
+    "category": "Days",
+    "sanskrit": "सोमवासरः",
+    "transliteration": "Soma-vāsaraḥ",
+    "englishMeaning": "Monday"
+  },
+  {
+    "id": "day_2",
+    "category": "Days",
+    "sanskrit": "मङ्गलवासरः",
+    "transliteration": "Maṅgala-vāsaraḥ",
+    "englishMeaning": "Tuesday"
+  },
+  {
+    "id": "day_3",
+    "category": "Days",
+    "sanskrit": "बुधवासरः",
+    "transliteration": "Budha-vāsaraḥ",
+    "englishMeaning": "Wednesday"
+  },
+  {
+    "id": "day_4",
+    "category": "Days",
+    "sanskrit": "गुरुवासरः",
+    "transliteration": "Guru-vāsaraḥ",
+    "englishMeaning": "Thursday"
+  },
+  {
+    "id": "day_5",
+    "category": "Days",
+    "sanskrit": "शुक्रवासरः",
+    "transliteration": "Śukra-vāsaraḥ",
+    "englishMeaning": "Friday"
+  },
+  {
+    "id": "day_6",
+    "category": "Days",
+    "sanskrit": "शनिवासरः",
+    "transliteration": "Śani-vāsaraḥ",
+    "englishMeaning": "Saturday"
+  },
+  {
+    "id": "day_7",
+    "category": "Days",
+    "sanskrit": "भानुवासरः",
+    "transliteration": "Bhānu-vāsaraḥ",
+    "englishMeaning": "Sunday"
+  },
+  {
+    "id": "rel_day_1",
+    "category": "Relative Time",
+    "sanskrit": "अद्य",
+    "transliteration": "Adya",
+    "englishMeaning": "Today"
+  },
+  {
+    "id": "rel_day_2",
+    "category": "Relative Time",
+    "sanskrit": "श्वः",
+    "transliteration": "Śvaḥ",
+    "englishMeaning": "Tomorrow"
+  },
+  {
+    "id": "rel_day_3",
+    "category": "Relative Time",
+    "sanskrit": "ह्यः",
+    "transliteration": "Hyaḥ",
+    "englishMeaning": "Yesterday"
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "pro_1",
+    "sanskrit": "अहम्",
+    "transliteration": "Aham",
+    "englishMeaning": "I",
+    "category": "First Person",
+    "example": "अहम् छात्रः अस्मि। (I am a student.)"
+  },
+  {
+    "id": "pro_2",
+    "sanskrit": "त्वम्",
+    "transliteration": "Tvam",
+    "englishMeaning": "You",
+    "category": "Second Person",
+    "example": "त्वम् मित्रम् असि। (You are a friend.)"
+  },
+  {
+    "id": "pro_3",
+    "sanskrit": "सः",
+    "transliteration": "Saḥ",
+    "englishMeaning": "He / That (Masculine)",
+    "category": "Third Person (Masculine)",
+    "example": "सः बालकः अस्ति। (He is a boy.)"
+  },
+  {
+    "id": "pro_4",
+    "sanskrit": "सा",
+    "transliteration": "Sā",
+    "englishMeaning": "She / That (Feminine)",
+    "category": "Third Person (Feminine)",
+    "example": "सा बालिका अस्ति। (She is a girl.)"
+  },
+  {
+    "id": "pro_5",
+    "sanskrit": "तत्",
+    "transliteration": "Tat",
+    "englishMeaning": "It / That (Neuter)",
+    "category": "Third Person (Neuter)",
+    "example": "तत् पुस्तकम् अस्ति। (That is a book.)"
+  },
+  {
+    "id": "pro_6",
+    "sanskrit": "एषः",
+    "transliteration": "Eṣaḥ",
+    "englishMeaning": "This (Masculine - close by)",
+    "category": "Demonstrative (Masculine)",
+    "example": "एषः वृक्षः अस्ति। (This is a tree.)"
+  },
+  {
+    "id": "pro_7",
+    "sanskrit": "एषा",
+    "transliteration": "Eṣā",
+    "englishMeaning": "This (Feminine - close by)",
+    "category": "Demonstrative (Feminine)",
+    "example": "एषा माला अस्ति। (This is a garland.)"
+  },
+  {
+    "id": "pro_8",
+    "sanskrit": "एतत्",
+    "transliteration": "Etat",
+    "englishMeaning": "This (Neuter - close by)",
+    "category": "Demonstrative (Neuter)",
+    "example": "एतत् जलम् अस्ति। (This is water.)"
+  }
+]

@@ -7,18 +7,8 @@ import Sidebar from "@/components/Sidebar";
 import { useSanskritTransliteration } from "@/hooks/useSanskritTransliteration";
 import WordSuggestions from "@/components/WordSuggestions";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Languages,
-  ArrowRightLeft,
-  Database,
-  Globe,
-  Loader2,
-  BookMarked,
-  Sparkles,
-  Info,
-  Zap,
-  Volume2
-} from "lucide-react";
+import { Languages, ArrowRightLeft, Database, Globe, Loader2, BookMarked, Sparkles, Info, Zap } from "lucide-react";
+import AudioPronounceButton from "@/components/AudioPronounceButton";
 
 export default function Translation() {
   const [user, setUser] = useState<any>(null);
@@ -238,9 +228,7 @@ export default function Translation() {
                                 <>
                                   <div className="flex items-center gap-6 mb-6">
                                     <h2 className="devanagari" style={{ fontSize: '4.5rem', lineHeight: 1, color: 'var(--primary)' }}>{res.devanagari}</h2>
-                                    <motion.button whileHover={{ scale: 1.2 }} style={{ background: 'none', border: 'none', color: 'var(--text-light)', cursor: 'pointer' }}>
-                                      <Volume2 size={24} />
-                                    </motion.button>
+                                    <AudioPronounceButton text={res.devanagari} size={24} />
                                   </div>
                                   <p style={{ fontStyle: 'italic', color: 'var(--text-dim)', fontSize: '1.4rem', marginBottom: '32px', opacity: 0.7 }}>{res.sanskrit}</p>
 
@@ -266,6 +254,7 @@ export default function Translation() {
                                   </h2>
                                   <div className="flex items-center gap-4 mb-32">
                                      <span className="devanagari" style={{ fontSize: '2rem', color: 'var(--primary)' }}>{res.devanagari}</span>
+                                     <AudioPronounceButton text={res.devanagari} size={20} />
                                      <span style={{ color: 'var(--text-light)', fontSize: '1.2rem' }}>— {res.sanskrit}</span>
                                   </div>
 

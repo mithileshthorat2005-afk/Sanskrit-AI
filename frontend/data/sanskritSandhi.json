@@ -1,0 +1,127 @@
+[
+  {
+    "id": "sandhi1",
+    "category": "Vowel Sandhi (अच्-सन्धिः)",
+    "description": "When two vowels meet, they combine into a single vowel or diphthong.",
+    "rules": [
+      {
+        "rule_name": "Similar Vowels",
+        "rule": "अ/आ + अ/आ = आ",
+        "example_before": "राम + अस्ति",
+        "example_after": "रामोऽस्ति",
+        "example_sentence": "रामोऽस्ति वीरः।",
+        "translation": "Rama is a hero."
+      },
+      {
+        "rule_name": "अ + इ/ई = ए",
+        "rule": "अ + इ/ई = ए",
+        "example_before": "नर + इन्द्रः",
+        "example_after": "नरेन्द्रः",
+        "example_sentence": "नरेन्द्रः राजा अस्ति।",
+        "translation": "Narendra is the king."
+      },
+      {
+        "rule_name": "अ + उ/ऊ = ओ",
+        "rule": "अ + उ/ऊ = ओ",
+        "example_before": "गङ्गा + उदकम्",
+        "example_after": "गङ्गोदकम्",
+        "example_sentence": "गङ्गोदकं पवित्रम्।",
+        "translation": "Ganga water is holy."
+      },
+      {
+        "rule_name": "अ + ऋ = अर्",
+        "rule": "अ + ऋ = अर्",
+        "example_before": "नर + ऋषिः",
+        "example_after": "नरर्षिः",
+        "example_sentence": "नरर्षिः तपस्यति।",
+        "translation": "The sage Nararshi performs penance."
+      },
+      {
+        "rule_name": "अ + ए = ऐ",
+        "rule": "अ + ए = ऐ",
+        "example_before": "राम + एकः",
+        "example_after": "रामैकः",
+        "example_sentence": "रामैकः शूरः अस्ति।",
+        "translation": "Rama alone is brave."
+      },
+      {
+        "rule_name": "अ + ऐ = ऐ",
+        "rule": "अ + ऐ = ऐ",
+        "example_before": "महा + ऐश्वर्यम्",
+        "example_after": "महैश्वर्यम्",
+        "example_sentence": "महैश्वर्यं दुर्लभम्।",
+        "translation": "Great wealth is rare."
+      },
+      {
+        "rule_name": "अ + ओ = औ",
+        "rule": "अ + ओ = औ",
+        "example_before": "महा + ओजः",
+        "example_after": "महौजः",
+        "example_sentence": "महौजः सिंहः अस्ति।",
+        "translation": "The lion is great in power."
+      },
+      {
+        "rule_name": "अ + औ = औ",
+        "rule": "अ + औ = औ",
+        "example_before": "स्व + औषधम्",
+        "example_after": "स्वौषधम्",
+        "example_sentence": "स्वौषधं शरीरं रक्षति।",
+        "translation": "Own medicine protects the body."
+      }
+    ]
+  },
+  {
+    "id": "sandhi2",
+    "category": "Visarga Sandhi (विसर्गसन्धिः)",
+    "description": "Rules for combining words ending in visarga (ः) with following sounds.",
+    "rules": [
+      {
+        "rule_name": "Visarga + Vowel → र्",
+        "rule": "Visarga (ः) before a vowel becomes र्",
+        "example_before": "रामः + अस्ति",
+        "example_after": "रामोऽस्ति",
+        "example_sentence": "रामोऽस्ति श्रेष्ठः।",
+        "translation": "Rama is excellent."
+      },
+      {
+        "rule_name": "Visarga + Soft Consonant → ओ",
+        "rule": "Visarga (ः) before soft consonants (ग, ज, ड, द, ब) becomes ओ",
+        "example_before": "नमः + गुरवे",
+        "example_after": "नमो गुरवे",
+        "example_sentence": "नमो गुरवे।",
+        "translation": "Salutations to the teacher."
+      },
+      {
+        "rule_name": "Visarga + Hard Consonant → ष्",
+        "rule": "Visarga (ः) before hard consonants (क, च, ट, त, प) becomes ष्",
+        "example_before": "रामः + करोति",
+        "example_after": "रामष्करोति",
+        "example_sentence": "रामष्करोति कर्म।",
+        "translation": "Rama does the work."
+      }
+    ]
+  },
+  {
+    "id": "sandhi3",
+    "category": "Consonant Sandhi (हल्-सन्धिः)",
+    "description": "Rules for combining consonants at word boundaries.",
+    "rules": [
+      {
+        "rule_name": "Consonant + Nasal → Nasal",
+        "rule": "A consonant followed by a nasal becomes the nasal of that class",
+        "example_before": "तत् + नाम",
+        "example_after": "तन्नाम",
+        "example_sentence": "तन्नाम सुन्दरम्।",
+        "translation": "That name is beautiful."
+      },
+      {
+        "rule_name": "क्/ग् + च → च्च",
+        "rule": "क् or ग् followed by च becomes च्च",
+        "example_before": "तत् + च",
+        "example_after": "तच्च",
+        "example_sentence": "तच्च सत्यम्।",
+        "translation": "And that is truth."
+      }
+    ]
+  }
+]

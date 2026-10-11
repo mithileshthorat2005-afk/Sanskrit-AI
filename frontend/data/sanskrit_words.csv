@@ -1,0 +1,91 @@
+sanskrit,devanagari,english,pronunciation,word_type,meaning,example,category,tags,source
+agniḥ,अग्निः,fire,agniḥ,noun,fire; heat,अग्निः उष्णः अस्ति।,elements,"basic,fire",database
+jalaṃ,जलं,water,jalam,noun,water; fluid,जलं शीतलं अस्ति।,elements,"basic,water",database
+vāyuḥ,वायुः,air,vāyuḥ,noun,air; wind,वायुः वहति।,elements,"basic,air",database
+bhūmiḥ,भूमिः,earth,bhūmiḥ,noun,earth; ground,भूमिः स्थिरा अस्ति।,elements,"basic,earth",database
+sūryaḥ,सूर्यः,sun,sūryaḥ,noun,sun,सूर्यः उदेति।,celestial,"sun,celestial",database
+candraḥ,चन्द्रः,moon,candraḥ,noun,moon,चन्द्रः शोभते।,celestial,"moon,celestial",database
+putraḥ,पुत्रः,son,putraḥ,noun,son; child,पुत्रः पठति।,family,"family,people",database
+phalam,फलम्,fruit,phalam,noun,fruit,फलं मधुरम् अस्ति।,food,"food,fruit",database
+granthaḥ,ग्रन्थः,book,granthaḥ,noun,book; text,ग्रन्थः विशालः अस्ति।,objects,"education,objects",database
+gacchati,गच्छति,goes,gacchati,verb,to go; to move,रामः गच्छति।,actions,"verb,movement",database
+asti,अस्ति,is,asti,verb,to be; exists,सीता अस्ति।,actions,"verb,existence",database
+khādati,खादति,eats,khādati,verb,to eat,बालः खादति।,actions,"verb,eating",database
+मित्रम्,मित्रम्,friend,मित्रम्,noun,Translation of friend,,api-added,"api,google_api",google_api
+नामः,नामः,name,नामः,noun,Translation of name,,api-added,"api,google_api",google_api
+क्रिकेट् इति,क्रिकेट् इति,cricket,क्रिकेट् इति,noun,Translation of cricket,,api-added,"api,google_api",google_api
+अग्नयः,अग्नयः,agnih,अग्नयः,noun,Translation of agnih,,api-added,"api,mymemory_api",mymemory_api
+अग्नयः ।,अग्नयः ।,agnih:,अग्नयः ।,noun,Translation of agnih:,,api-added,"api,mymemory_api",mymemory_api
+क्षणिक,क्षणिक,instant,क्षणिक,noun,Translation of instant,,api-added,"api,google_api",google_api
+भविष्यति,भविष्यति,will,भविष्यति,noun,Translation of will,,api-added,"api,google_api",google_api
+इच्छाशक्तिः,इच्छाशक्तिः,willpower,इच्छाशक्तिः,noun,Translation of willpower,,api-added,"api,google_api",google_api
+अन्विष्यति,अन्विष्यति,seek,अन्विष्यति,noun,Translation of seek,,api-added,"api,google_api",google_api
+भवान् किं करोति,भवान् किं करोति,hello how are you doing,भवान् किं करोति,noun,Translation of hello how are you doing,,api-added,"api,google_api",google_api
+प्रयासः,प्रयासः,effort,प्रयासः,noun,Translation of effort,,api-added,"api,google_api",google_api
+अहं भद्रं करोमि,अहं भद्रं करोमि,i am doing good,अहं भद्रं करोमि,noun,Translation of i am doing good,,api-added,"api,google_api",google_api
+अहं फुटबॉलक्रीडां कुर्वन् आसीत्,अहं फुटबॉलक्रीडां कुर्वन् आसीत्,i was playing football,अहं फुटबॉलक्रीडां कुर्वन् आसीत्,noun,Translation of i was playing football,,api-added,"api,google_api",google_api
+अहं जारीं अङ्गीकृतवान्,अहं जारीं अङ्गीकृतवान्,अहं फुटबॉलक्रीडां कुर्वन् आसीत्,अहं जारीं अङ्गीकृतवान्,noun,Translation of अहं फुटबॉलक्रीडां कुर्वन् आसीत्,,api-added,"api,google_api",google_api
+नियोग,नियोग,function,नियोग,noun,Translation of function,,api-added,"api,google_api",google_api
+मध्ये,मध्ये,between,मध्ये,noun,Translation of between,,api-added,"api,google_api",google_api
+अंतर,अंतर,gap,अंतर,noun,Translation of gap,,api-added,"api,google_api",google_api
+स्वस्थः,स्वस्थः,healthy,स्वस्थः,noun,Translation of healthy,,api-added,"api,google_api",google_api
+शाश्वत,शाश्वत,Eternal,शाश्वत,noun,Eternal,,api-discovery,"api,google_api",google_api
+अर्हति,अर्हति,deserve,अर्हति,noun,Translation of deserve,,api-added,"api,google_api",google_api
+अहं क्रीडां क्रीडामि,अहं क्रीडां क्रीडामि,i am playing game,अहं क्रीडां क्रीडामि,noun,Translation of i am playing game,,api-added,"api,google_api",google_api
+अहं भोजनं खादामि,अहं भोजनं खादामि,i eat food,अहं भोजनं खादामि,noun,Translation of i eat food,,api-added,"api,google_api",google_api
+आहारः,आहारः,food,आहारः,noun,Translation of food,,api-added,"api,google_api",google_api
+अहम्‌,अहम्‌,i,अहम्‌,noun,Translation of i,,api-added,"api,google_api",google_api
+अहं भोजनं खादामि।,अहं भोजनं खादामि।,i eat food.,अहं भोजनं खादामि।,noun,Translation of i eat food.,,api-added,"api,google_api",google_api
+सेवफल,सेवफल,apple,सेवफल,noun,Translation of apple,,api-added,"api,google_api",google_api
+पवित्र,पवित्र,divine,पवित्र,noun,Translation of divine,,api-added,"api,google_api",google_api
+पुनः संयोजयन्तु,पुनः संयोजयन्तु,reassemble,पुनः संयोजयन्तु,noun,Translation of reassemble,,api-added,"api,google_api",google_api
+नमस्कार जगत्,नमस्कार जगत्,hello world,नमस्कार जगत्,noun,Translation of hello world,,api-added,"api,google_api",google_api
+मम क्रीडनं रोचते,मम क्रीडनं रोचते,i like playing,मम क्रीडनं रोचते,noun,Translation of i like playing,,api-added,"api,google_api",google_api
+aham bhakshami,अहं भक्षामि,I eat,ah-hum bhak-shah-mee,sentence,to consume food,अहं भक्षामि फलम् (aham bhakshami phalam) - I eat a fruit,api-added,"api,Groq_ai",Groq_ai
+ahamapi bhavatA saha AgacchAmi vA,अहंअपि भवता सह आगच्छामि वा,I will come with you too,ah-hum-ah-pee bhah-vah-tah sah ah-gahch-chah-mee vah,sentence,expression of accompaniment; statement of togetherness,"मया सह आगच्छ, अहं तव सहाय्यं करिष्यामि - mayA saha Agaccha, ahaM tava sahAyyaM kariShyAmi",api-added,"api,Groq_ai",Groq_ai
+aham gantum na shaknomi,अहं गन्तुं न शक्नोमि,I am not able to go,ah-hum gun-toom nah shak-noh-mee,sentence,inability to go; incapacity to move,यदि अहं गन्तुं न शक्नोमि तदा किम् करोमि |,api-added,"api,Groq_ai",Groq_ai
+aham nagapure vasami,अहं नागपुरे वसामि,I live in Nagpur,ah-hum naa-gah-poo-reh vah-sah-mee,sentence,I reside in Nagpur; My home is in Nagpur,अहं नागपुरे वसामि सुखम् - aham nagapure vasami sukham (I live in Nagpur happily),api-added,"api,Groq_ai",Groq_ai
+Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi,अहं गोलाकाण्डस्य प्रतिया बैटिंगप्रेक्षया अधिकम् प्रीति करोषि,I like bowling more than batting,Ah-hum goh-lah-kaan-dah-syah prah-tee-yah bah-tee-ting-prayk-shah-yah ah-deekum pree-tee kah-roh-see,sentence,preference for bowling over batting; enjoying bowling more,मया गोलाकाण्डस्य प्रतिया बैटिंगप्रेक्षया अधिकम् प्रीति क्रियते - Mayā golākāṇḍasya pratīyā baiṭiṅgprēkṣayā adhikam prīti kriyate (I enjoy bowling more than batting),api-added,"api,Groq_ai",Groq_ai
+ahaM tvaM pashyaami tvaM khadati vaartaam,अहं त्वं पश्यामि त्वं खादति वार्ताम्,I like to watch television while eating food,aham tvam pashyaami tvam khaadati vaartaam,sentence,I watch; while eating,"अहं त्वं पश्यामि त्वं खादति वार्ताम्, मम भोजनस्य समये",api-added,"api,Groq_ai",Groq_ai
+bhojanaM khadan dUradarshanaM draShTuM rocate,भोजनं खादन् दूरदर्शनं द्रष्टुं रोचते,He likes to watch TV while eating,bho-jah-nam kha-dan doo-rah-dar-shah-nam drash-toom roh-chah-teh,sentence,enjoying; liking to do something,सः भोजनं खादन् दूरदर्शनं द्रष्टुं रोचते | (He likes to watch TV while eating),api-added,"api,Groq_ai",Groq_ai
+Mithilesha,मिथिलेश,Lord of Mithila,Mith-ee-lesh,Proper Noun,King of Mithila; Lord of Mithila,मिथिलेशः जनकस्य पुत्री सीता,api-added,"api,Groq_ai",Groq_ai
+mama naama,मम नाम,my name is,muh-muh nuh-muh,phrase,introduction of oneself;  declaration of one's name,मम नाम रामः (Mama naama Raamah) - My name is Rama,api-added,"api,Groq_ai",Groq_ai
+narakam vraja,नरकं व्रज,go to hell,na-rah-kam vrah-jah,imperative sentence,to go to a place of suffering; to be damned,दुर्जनः नरकं व्रज - durjanaH narakam vraja - The wicked person goes to hell,api-added,"api,Groq_ai",Groq_ai
+myname,myname,my name,Not Applicable,Not Applicable,The input 'myname' does not appear to be a valid Sanskrit word.,The input does not provide a valid Sanskrit phrase for example usage.,api-added,"api,Groq_ai",Groq_ai
+himanshuh muurkhaH,हिमांशु मूर्ख,Himanshu is fool,hee-mahn-shoo moo-rkhah,sentence,Himanshu is foolish; Himanshu lacks wisdom,"sa hi himanshuh muurkhaH, yah na jaanaati vidyaam",api-added,"api,Groq_ai",Groq_ai
+,,The input text 'ghjksdhk' does not appear to be a valid English word or phrase.,No pronunciation available,Invalid input,No meaning available,No example available,api-added,"api,Groq_ai",Groq_ai
+namaste,नमस्ते,"Greetings, I bow to you",nah-mah-steh,interjection,hello; goodbye; respectful greeting,"नमस्ते भोः, कुशलम् अस्ति? (namaste bhoH, kushalam asti?) - Hello, how are you?",api-added,"api,Groq_ai",Groq_ai
+nāmāvalī,नामावली,registry,naama-va-lee,noun,register; record book; list of names,nāmāvalīṃ likhyatām,api-added,"api,Groq_ai",Groq_ai
+,,Namaste or greetings with hands together,Namah-teh,gesture or symbol,respectful greeting; reverence,Used as a greeting in Hindu and Buddhist cultures,api-added,"api,Groq_ai",Groq_ai
+raajaa raajyam shasati,राजा राज्यम् शासति,the king rules the kingdom,rah-jah rah-jyam shah-sah-tee,sentence,to govern; to rule over,स राजा राज्यम् शासति सुखेन,api-added,"api,Groq_ai",Groq_ai
+Chhandra,च्ह्अन्द्र्अ,Having a beauty spot or a moon-like appearance,Chhan-dra,adjective,moon-like; having a beauty spot,"च्ह्अन्द्र्अ मुखम् - Chhandra mukham, meaning 'a face with a moon-like appearance'",api-added,"api,Groq_ai",Groq_ai
+purvānubhūti,पूर्वानुभूति,dejavu,poor-vaa-nu-bhoo-tee,noun,a feeling of familiarity; a feeling of having already experienced something,मम पूर्वानुभूतिरस्ति यत् अहं एतत् पूर्वमेव दृष्टवान् अस्मि (Mama purvānubhūtirsti yat aham etat pūrvameva dṛṣṭavān asmi) - I have a feeling of familiarity that I have seen this before,api-added,"api,Groq_ai",Groq_ai
+Rameśa,रमेश,Ramesh,Rah-mesh,Proper Noun,Pleasing; Charming,रमेशः मम मित्रम् अस्ति (Rameśaḥ mama mitram asti) - Ramesh is my friend,api-added,"api,Groq_ai",Groq_ai
+Ramesh mahashayaH svakarmani shreshThaH,रमेश महाशयः स्वकर्मणि श्रेष्ठः,Ramesh sir is good at his work,Rah-mesh mah-ah-shay-ah svah-kar-mah-nee shreh-shthah,sentence,Ramesh is skilled in his job; Ramesh sir excels in his work,Ramesh mahashayaH svakarmani shreshTha iti sarve vadanti,api-added,"api,Groq_ai",Groq_ai
+chhara,छर,"a splinter, a fragment",ch-hah-rah,noun,a small piece broken off; a shard,छरेण व्यथितः (chharena vyathitah) - pained by a splinter,api-added,"api,Groq_ai",Groq_ai
+Mitihilesah,म्इत्ह्इल्एस्ह्,"No direct translation, appears to be a distorted or incorrect text",Not applicable due to incorrect text,Invalid,No meaningful translation possible,Not available due to incorrect input,api-added,"api,Groq_ai",Groq_ai
+mAm,म्अम्,to me,mum,pronoun,me; to me; for me; myself,म्अम् ददातु - mAm dadAtu (Give to me),api-added,"api,Groq_ai",Groq_ai
+prasthAna kriyA kara,प्रस्थान क्रिया कर,get set go,prasthAna kreeyaa kara,imperative sentence,to start; to begin; to initiate action,yuddha arambha prasthAna kriyA kara - Start the war preparations,api-added,"api,Groq_ai",Groq_ai
+asti,अस्ति,"is, exists, there is",ah-stee,verb,to exist; to be present,Brahma asti - God exists,api-added,"api,Groq_ai",Groq_ai
+namaste svagatam applicationaya,नमस्ते स्वागतम् एप्लिकेशनाय,hello welcome to application,namaste swagatam applicationaya,sentence,greeting and introduction; welcoming someone to a platform,"नमस्ते स्वागतम् एप्लिकेशनाय, कृपया प्रयास करें (namaste svagatam applicationaya, krpaya prayas karen)",api-added,"api,Groq_ai",Groq_ai
+Namaste Svagatam Aplicationaya,नमस्ते स्वागतम् एप्लिकेशनाय,"Greetings, welcome to the application",Namah-stey Svaa-ga-tam Ae-plee-kay-shun-ay,sentence,Greetings and welcome; Respectful greeting and invitation,"नमस्ते स्वागतम् एप्लिकेशनाय, कृपया प्रयोग करें|",api-added,"api,Groq_ai",Groq_ai
+raamaH vanam gacchati,रामः वनं गच्छति,Rama goes to the forest,raa-mah vah-nam gah-chhati,sentence,Rama proceeds to the forest; Rama is going to the woods,"सीता रामः वनं गच्छति - siitaa raamaH vanam gacchati, meaning Sita and Rama go to the forest",api-added,"api,Groq_ai",Groq_ai
+dauvarika,दौवरिक,runner,dau-va-ree-kah,noun,one who runs; a messenger,सः दौवरिकः वेगेन धावति (saḥ dauvarikaḥ vegena dhāvati) - The runner runs with speed,api-added,"api,Groq_ai",Groq_ai
+avikriya,अविक्रिय,unchange,a-vee-kree-yah,adjective,unchanging; immutable; invariable,अविक्रियः परिवर्तनं न करोति (Avikriyaḥ parivartanaṁ na karoti) - The unchangeable does not change.,api-added,"api,Groq_ai",Groq_ai
+Gau maata,ग्अउ म्अत्अ,The cow is my mother,Gow ma-ta,sentence,reverence for cow; comparison of cow with mother,गौः माता अस्ति (Gauh maata asti) - The cow is my mother,api-added,"api,Groq_ai",Groq_ai
+raameSh sir mama nirNayamaNDaliyE asti,रामेश सर मम निर्णयमण्डलिये अस्ति,Ramesh sir is in our judging panel,raa-mesh sur ma-ma nir-naya-mandali-ye as-ti,sentence,judging; evaluation; assessment,"raameSh sir mama nirNayamaNDaliyE asti, saH nyAyakaruH",api-added,"api,Groq_ai",Groq_ai
+मिथिलेश,मिथिलेश,mithilesh,मिथिलेश,noun,Translation of mithilesh,,api-added,"api,google_api",google_api
+पृच्छतु,पृच्छतु,ask,पृच्छतु,noun,Translation of ask,,api-added,"api,google_api",google_api
+अहं तं एतस्य विषये पृच्छितुम् इच्छामि,अहं तं एतस्य विषये पृच्छितुम् इच्छामि,i want to ask him about this,अहं तं एतस्य विषये पृच्छितुम् इच्छामि,sentence,अहं तं एतस्य विषये पृच्छितुम् इच्छामि,,api-added,"api,google_api",google_api
+न्अम्अस्त्ए,न्अम्अस्त्ए,NAMASTE,NAMASTE,noun,Translation of न्अम्अस्त्ए,,api-added,"api,google_api",google_api
+मम नाम मिथिलेशः,मम नाम मिथिलेशः,my name is mithilesh,मम नाम मिथिलेशः,sentence,मम नाम मिथिलेशः,,api-added,"api,google_api",google_api
+हिमांशुः उन्मत्तः,हिमांशुः उन्मत्तः,himanshu is mad,हिमांशुः उन्मत्तः,sentence,हिमांशुः उन्मत्तः,,api-added,"api,google_api",google_api
+दत्तांश,दत्तांश,data,दत्तांश,noun,Translation of data,,api-added,"api,google_api",google_api
+व्यजनम्‌,व्यजनम्‌,fan,व्यजनम्‌,noun,Translation of fan,,api-added,"api,google_api",google_api
+मूर्त,मूर्त,abstract,मूर्त,noun,Translation of abstract,,api-added,"api,google_api",google_api
+अनुशीलय,अनुशीलय,check,अनुशीलय,noun,Translation of check,,api-added,"api,google_api",google_api
+निर्दिष्टः,निर्दिष्टः,refered,निर्दिष्टः,noun,Translation of refered,,api-added,"api,google_api",google_api
+आत्त,आत्त,ready,आत्त,noun,Translation of ready,,api-added,"api,google_api",google_api
+उत्तीर्णः,उत्तीर्णः,pass,उत्तीर्णः,noun,Translation of pass,,api-added,"api,google_api",google_api
+मम नाम मिथिलेश,मम नाम मिथिलेश,my name is mithilesjh,मम नाम मिथिलेश,sentence,मम नाम मिथिलेश,,api-added,"api,mymemory_api",mymemory_api
+वर्त्तमानः,वर्त्तमानः,current,वर्त्तमानः,noun,Translation of current,,api-added,"api,google_api",google_api

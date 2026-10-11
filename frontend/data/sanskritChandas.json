@@ -1,0 +1,36 @@
+[
+  {
+    "id": "chandas_1",
+    "topic": "Basics",
+    "description": "Prosody is the study of metre. Sanskrit verses are measured in mātrās (syllable weight).",
+    "terms": [
+      { "term": "लघु", "meaning": "short syllable (1 mātrā)" },
+      { "term": "गुरु", "meaning": "long syllable (2 mātrās)" },
+      { "term": "गण", "meaning": "a group of 3 syllables" }
+    ]
+  },
+  {
+    "id": "chandas_2",
+    "topic": "Common Metres",
+    "examples": [
+      {
+        "name": "अनुष्टुभ् (śloka)",
+        "description": "The most common metre, with 4 pādas of 8 syllables each.",
+        "example": "रामो राजमणिः सदा।",
+        "analysis": "Pattern: ---- ---- (not fully detailed here)"
+      },
+      {
+        "name": "इन्द्रवज्रा",
+        "description": "11 syllables per pāda, with a specific pattern.",
+        "example": "इन्द्रवज्रा समाख्याता",
+        "analysis": "Pattern: -- - -- - --"
+      },
+      {
+        "name": "वसन्ततिलका",
+        "description": "14 syllables per pāda.",
+        "example": "वसन्ततिलका तथा",
+        "analysis": "Pattern: -- - -- - -- -"
+      }
+    ]
+  }
+]

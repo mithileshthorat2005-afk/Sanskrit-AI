@@ -1,0 +1,114 @@
+[
+    {
+        "id": "greet_1",
+        "sanskrit": "नमस्ते",
+        "transliteration": "Namaste",
+        "english": "Hello / Greetings",
+        "context": "Used at any time of day to greet someone respectfully."
+    },
+    {
+        "id": "greet_2",
+        "sanskrit": "सुप्रभातम्",
+        "transliteration": "Suprabhātam",
+        "english": "Good Morning",
+        "context": "Used in the morning."
+    },
+    {
+        "id": "greet_3",
+        "sanskrit": "शुभरात्रिः",
+        "transliteration": "Śubharātriḥ",
+        "english": "Good Night",
+        "context": "Used when parting ways at night."
+    },
+    {
+        "id": "greet_4",
+        "sanskrit": "धन्यवादः",
+        "transliteration": "Dhanyavādaḥ",
+        "english": "Thank you",
+        "context": "Used to express gratitude."
+    },
+    {
+        "id": "greet_5",
+        "sanskrit": "कृपया",
+        "transliteration": "Kṛpayā",
+        "english": "Please",
+        "context": "Used when making a request."
+    },
+    {
+        "id": "greet_6",
+        "sanskrit": "स्वागतम्",
+        "transliteration": "Svāgatam",
+        "english": "Welcome",
+        "context": "Used when receiving a guest or replying to 'Thank you'."
+    },
+    {
+        "id": "greet_7",
+        "sanskrit": "पुनर्मिलामः",
+        "transliteration": "Punarmilāmaḥ",
+        "english": "See you again",
+        "context": "The standard way to say 'Goodbye' in Sanskrit."
+    },
+    {
+        "id": "greet_8",
+        "sanskrit": "क्षम्यताम्",
+        "transliteration": "Kṣamyatām",
+        "english": "Excuse me / Sorry",
+        "context": "Used to apologize or politely get someone's attention."
+    },
+    {
+        "id": "greet_9",
+        "sanskrit": "आम्",
+        "transliteration": "Ām",
+        "english": "Yes",
+        "context": "Used for agreement or affirmation."
+    },
+    {
+        "id": "greet_10",
+        "sanskrit": "न",
+        "transliteration": "Na",
+        "english": "No",
+        "context": "Used for disagreement or negation."
+    },
+    {
+        "id": "greet_11",
+        "sanskrit": "उत्तमम्",
+        "transliteration": "Uttamam",
+        "english": "Excellent / Very Good",
+        "context": "Used to praise something, express approval, or say 'Great!'."
+    },
+    {
+        "id": "greet_12",
+        "sanskrit": "चिन्ता मास्तु",
+        "transliteration": "Cintā māstu",
+        "english": "Don't worry",
+        "context": "Used to reassure someone."
+    },
+    {
+        "id": "greet_13",
+        "sanskrit": "भवतः नाम किम्?",
+        "transliteration": "Bhavataḥ nāma kim?",
+        "english": "What is your name? (To a male)",
+        "context": "The formal and polite way to ask a male his name."
+    },
+    {
+        "id": "greet_14",
+        "sanskrit": "भवत्याः नाम किम्?",
+        "transliteration": "Bhavatyāḥ nāma kim?",
+        "english": "What is your name? (To a female)",
+        "context": "The formal and polite way to ask a female her name."
+    },
+    {
+        "id": "greet_15",
+        "sanskrit": "मम नाम ...",
+        "transliteration": "Mama nāma ...",
+        "english": "My name is ...",
+        "context": "Used to introduce yourself (e.g., 'Mama nāma Amit')."
+    },
+    {
+        "id": "greet_16",
+        "sanskrit": "अस्तु",
+        "transliteration": "Astu",
+        "english": "Okay / Let it be",
+        "context": "Used to signify agreement to a plan or to wrap up a thought."
+    }
+]

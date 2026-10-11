@@ -1,0 +1,252 @@
+[
+  {
+    "id": "avy_1",
+    "sanskrit": "च",
+    "transliteration": "ca",
+    "meaning": "and",
+    "category": "Conjunction",
+    "usage": "Used to connect words or phrases (placed after the word it connects)",
+    "example_sentence": "रामः च सीता च",
+    "sentence_translation": "Rama and Sita"
+  },
+  {
+    "id": "avy_2",
+    "sanskrit": "वा",
+    "transliteration": "vā",
+    "meaning": "or",
+    "category": "Conjunction",
+    "usage": "Used to show alternatives",
+    "example_sentence": "सः आगच्छति वा न वा",
+    "sentence_translation": "He comes or not"
+  },
+  {
+    "id": "avy_3",
+    "sanskrit": "अपि",
+    "transliteration": "api",
+    "meaning": "also, even, although",
+    "category": "Particle",
+    "usage": "Adds emphasis; can mean 'also', 'even', or 'although' depending on context",
+    "example_sentence": "अहम् अपि गच्छामि।",
+    "sentence_translation": "I also go."
+  },
+  {
+    "id": "avy_4",
+    "sanskrit": "एव",
+    "transliteration": "eva",
+    "meaning": "indeed, just, only",
+    "category": "Particle",
+    "usage": "Emphasizes the preceding word; means 'just', 'only', 'indeed'",
+    "example_sentence": "सः एव आगतः।",
+    "sentence_translation": "He alone came."
+  },
+  {
+    "id": "avy_5",
+    "sanskrit": "अतः",
+    "transliteration": "ataḥ",
+    "meaning": "therefore, hence",
+    "category": "Adverb",
+    "usage": "Indicates consequence or reason",
+    "example_sentence": "अतः अहं गच्छामि।",
+    "sentence_translation": "Therefore I go."
+  },
+  {
+    "id": "avy_6",
+    "sanskrit": "अत्र",
+    "transliteration": "atra",
+    "meaning": "here",
+    "category": "Adverb",
+    "usage": "Indicates location",
+    "example_sentence": "अत्र पुस्तकम् अस्ति।",
+    "sentence_translation": "The book is here."
+  },
+  {
+    "id": "avy_7",
+    "sanskrit": "तत्र",
+    "transliteration": "tatra",
+    "meaning": "there",
+    "category": "Adverb",
+    "usage": "Indicates location",
+    "example_sentence": "तत्र वृक्षः अस्ति।",
+    "sentence_translation": "The tree is there."
+  },
+  {
+    "id": "avy_8",
+    "sanskrit": "अद्य",
+    "transliteration": "adya",
+    "meaning": "today",
+    "category": "Adverb",
+    "usage": "Indicates time",
+    "example_sentence": "अद्य वर्षा भवति।",
+    "sentence_translation": "It rains today."
+  },
+  {
+    "id": "avy_9",
+    "sanskrit": "श्वः",
+    "transliteration": "śvaḥ",
+    "meaning": "tomorrow",
+    "category": "Adverb",
+    "usage": "Indicates time",
+    "example_sentence": "श्वः अहं गमिष्यामि।",
+    "sentence_translation": "I will go tomorrow."
+  },
+  {
+    "id": "avy_10",
+    "sanskrit": "ह्यः",
+    "transliteration": "hyaḥ",
+    "meaning": "yesterday",
+    "category": "Adverb",
+    "usage": "Indicates time",
+    "example_sentence": "ह्यः सः आगतः।",
+    "sentence_translation": "He came yesterday."
+  },
+  {
+    "id": "avy_11",
+    "sanskrit": "इह",
+    "transliteration": "iha",
+    "meaning": "here, in this world",
+    "category": "Adverb",
+    "usage": "Indicates presence or location",
+    "example_sentence": "इह सुखम् अस्ति।",
+    "sentence_translation": "There is happiness here."
+  },
+  {
+    "id": "avy_12",
+    "sanskrit": "अधुना",
+    "transliteration": "adhunā",
+    "meaning": "now",
+    "category": "Adverb",
+    "usage": "Indicates present time",
+    "example_sentence": "अधुना अहं पठामि।",
+    "sentence_translation": "Now I read."
+  },
+  {
+    "id": "avy_13",
+    "sanskrit": "सदा",
+    "transliteration": "sadā",
+    "meaning": "always",
+    "category": "Adverb",
+    "usage": "Indicates time/frequency",
+    "example_sentence": "सदा सत्यम् वद।",
+    "sentence_translation": "Always speak truth."
+  },
+  {
+    "id": "avy_14",
+    "sanskrit": "कुत्र",
+    "transliteration": "kutra",
+    "meaning": "where?",
+    "category": "Adverb",
+    "usage": "Interrogative adverb for location",
+    "example_sentence": "भवान् कुत्र गच्छति?",
+    "sentence_translation": "Where are you going?"
+  },
+  {
+    "id": "avy_15",
+    "sanskrit": "कदा",
+    "transliteration": "kadā",
+    "meaning": "when?",
+    "category": "Adverb",
+    "usage": "Interrogative adverb for time",
+    "example_sentence": "कदा आगमिष्यसि?",
+    "sentence_translation": "When will you come?"
+  },
+  {
+    "id": "avy_16",
+    "sanskrit": "सह",
+    "transliteration": "saha",
+    "meaning": "with",
+    "category": "Preposition",
+    "usage": "Indicates accompaniment (used with instrumental case)",
+    "example_sentence": "रामः सीतया सह गच्छति।",
+    "sentence_translation": "Rama goes with Sita."
+  },
+  {
+    "id": "avy_17",
+    "sanskrit": "विना",
+    "transliteration": "vinā",
+    "meaning": "without",
+    "category": "Preposition",
+    "usage": "Indicates absence (used with instrumental case)",
+    "example_sentence": "जलं विना जीवनम् न।",
+    "sentence_translation": "No life without water."
+  },
+  {
+    "id": "avy_18",
+    "sanskrit": "नमः",
+    "transliteration": "namaḥ",
+    "meaning": "salutation, obeisance",
+    "category": "Interjection",
+    "usage": "Used in prayers and greetings (often with dative case)",
+    "example_sentence": "गुरवे नमः।",
+    "sentence_translation": "Salutation to the teacher."
+  },
+  {
+    "id": "avy_19",
+    "sanskrit": "स्वस्ति",
+    "transliteration": "svasti",
+    "meaning": "well-being, blessing",
+    "category": "Interjection",
+    "usage": "Used as a blessing or greeting",
+    "example_sentence": "स्वस्ति भवते।",
+    "sentence_translation": "Blessings to you."
+  },
+  {
+    "id": "avy_20",
+    "sanskrit": "अस्तु",
+    "transliteration": "astu",
+    "meaning": "let it be, okay",
+    "category": "Particle",
+    "usage": "Expresses agreement or acceptance",
+    "example_sentence": "अस्तु, अहं गच्छामि।",
+    "sentence_translation": "Okay, I go."
+  },
+  {
+    "id": "avy_21",
+    "sanskrit": "उत",
+    "transliteration": "uta",
+    "meaning": "or, whether",
+    "category": "Conjunction",
+    "usage": "Used in questions to indicate alternatives",
+    "example_sentence": "आगच्छति उत न?",
+    "sentence_translation": "Does he come or not?"
+  },
+  {
+    "id": "avy_22",
+    "sanskrit": "यथा",
+    "transliteration": "yathā",
+    "meaning": "as, just as",
+    "category": "Adverb",
+    "usage": "Indicates similarity or manner",
+    "example_sentence": "यथा राजा तथा प्रजा।",
+    "sentence_translation": "As the king, so the subjects."
+  },
+  {
+    "id": "avy_23",
+    "sanskrit": "तथा",
+    "transliteration": "tathā",
+    "meaning": "so, thus",
+    "category": "Adverb",
+    "usage": "Indicates manner or consequence",
+    "example_sentence": "तथा करोमि।",
+    "sentence_translation": "Thus I do."
+  },
+  {
+    "id": "avy_24",
+    "sanskrit": "किम्",
+    "transliteration": "kim",
+    "meaning": "what? (interrogative particle)",
+    "category": "Particle",
+    "usage": "Used as an interrogative particle, often at the beginning of a question",
+    "example_sentence": "किम् त्वं रोदिषि?",
+    "sentence_translation": "Why are you crying?"
+  },
+  {
+    "id": "avy_25",
+    "sanskrit": "ननु",
+    "transliteration": "nanu",
+    "meaning": "surely, isn't it?",
+    "category": "Particle",
+    "usage": "Used to ask for confirmation or agreement",
+    "example_sentence": "ननु सः आगच्छति?",
+    "sentence_translation": "He is coming, isn't he?"
+  }
+]

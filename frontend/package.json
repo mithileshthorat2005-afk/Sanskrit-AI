@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node --max-old-space-size=2048 node_modules/next/dist/bin/next dev --webpack --port 3000",
+    "dev": "next dev -p 3000 -H 0.0.0.0",
     "build": "next build",
-    "start": "next start --port 3000",
+    "start": "next start -p 3000 -H 0.0.0.0",
     "lint": "eslint"
   },
   "dependencies": {

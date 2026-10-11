@@ -1,0 +1,8 @@
+{
+  "name": "SanskritaAI",
+  "description": "Adaptive Sanskrit learning platform with interactive grammar analysis, lessons, and games.",
+  "prompt": "Sanskrit learning platform with lessons, grammar verification, translation, and games",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

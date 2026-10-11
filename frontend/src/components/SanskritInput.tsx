@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import VirtualKeyboard from './VirtualKeyboard'; // Make sure the path is correct
 
 interface SanskritInputProps {

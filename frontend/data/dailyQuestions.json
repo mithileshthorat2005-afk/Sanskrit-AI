@@ -1,0 +1,61 @@
+[
+  { "day": 1, "topic": "Greetings", "question": "How do you say 'Hello / Greetings' in Sanskrit?", "options": ["नमस्ते (Namaste)", "कृपया (Kripaya)", "न (Na)"], "answer": "नमस्ते (Namaste)", "hint": "It is the most famous Indian greeting worldwide." },
+  { "day": 2, "topic": "Greetings", "question": "What does 'धन्यवादः (Dhanyavadah)' mean?", "options": ["Good Morning", "Thank you", "Sorry"], "answer": "Thank you", "hint": "You say this to express gratitude." },
+  { "day": 3, "topic": "Greetings", "question": "If you want to say 'Yes' in Sanskrit, you say...", "options": ["न (Na)", "आम् (Aam)", "अस्तु (Astu)"], "answer": "आम् (Aam)", "hint": "It sounds a bit like 'Um'." },
+  { "day": 4, "topic": "Greetings", "question": "Which phrase means 'Good Morning'?", "options": ["सुप्रभातम् (Suprabhatam)", "शुभरात्रिः (Shubharatrih)", "स्वागतम् (Swagatam)"], "answer": "सुप्रभातम् (Suprabhatam)", "hint": "Prabhat means morning/dawn." },
+  { "day": 5, "topic": "Greetings", "question": "How do you politely say 'Please'?", "options": ["क्षम्यताम् (Kshamyatam)", "कृपया (Kripaya)", "उत्तमम् (Uttamam)"], "answer": "कृपया (Kripaya)", "hint": "It sounds similar to the Hindi word for please." },
+  
+  { "day": 6, "topic": "Alphabet", "question": "The vowel 'अ' (a) is the first letter of which word?", "options": ["आम्रम् (Mango)", "अश्वः (Horse)", "उष्ट्रः (Camel)"], "answer": "अश्वः (Horse)", "hint": "Remember the first flashcard in the alphabet lesson!" },
+  { "day": 7, "topic": "Alphabet", "question": "Which vowel represents the long 'aa' sound, as in आम्रम् (Mango)?", "options": ["अ", "आ", "इ"], "answer": "आ", "hint": "It has an extra vertical line next to it." },
+  { "day": 8, "topic": "Numbers", "question": "What is the Sanskrit word for the number 1?", "options": ["एकम् (Ekam)", "द्वे (Dve)", "त्रीणि (Trini)"], "answer": "एकम् (Ekam)", "hint": "It sounds like 'Ek' in Hindi." },
+  { "day": 9, "topic": "Numbers", "question": "Which number is 'पञ्च (Panca)'?", "options": ["Three", "Four", "Five"], "answer": "Five", "hint": "Think of a 'Pentagon' (5 sides)." },
+  { "day": 10, "topic": "Numbers", "question": "What is the number 10 in Sanskrit?", "options": ["सप्त (Sapta)", "नव (Nava)", "दश (Dasha)"], "answer": "दश (Dasha)", "hint": "Think of a 'Decade' (10 years)." },
+
+  { "day": 11, "topic": "Introduction", "question": "How do you say 'My name is...'?", "options": ["मम नाम... (Mama nama...)", "अहम्... (Aham...)", "तत् नाम... (Tat nama...)"], "answer": "मम नाम... (Mama nama...)", "hint": "Mama means 'My'." },
+  { "day": 12, "topic": "Introduction", "question": "If you are a male student, you say: अहम् _______ अस्मि।", "options": ["छात्रः (Chatrah)", "छात्रा (Chatra)", "शिक्षकः (Shikshakah)"], "answer": "छात्रः (Chatrah)", "hint": "Masculine words usually end with a Visarga (ḥ)." },
+  { "day": 13, "topic": "Pronouns", "question": "Which pronoun means 'I' (First Person)?", "options": ["त्वम् (Tvam)", "अहम् (Aham)", "सः (Sah)"], "answer": "अहम् (Aham)", "hint": "Starts with 'A'." },
+  { "day": 14, "topic": "Pronouns", "question": "How do you say 'You' in Sanskrit?", "options": ["त्वम् (Tvam)", "सा (Saa)", "तत् (Tat)"], "answer": "त्वम् (Tvam)", "hint": "It starts with a 'T'." },
+  { "day": 15, "topic": "Pronouns", "question": "To refer to a male ('He'), which word is used?", "options": ["सः (Sah)", "सा (Saa)", "एतत् (Etat)"], "answer": "सः (Sah)", "hint": "Masculine pronouns end with a Visarga (ḥ)." },
+
+  { "day": 16, "topic": "Pronouns", "question": "To refer to a female ('She'), which word is used?", "options": ["सः (Sah)", "सा (Saa)", "अहम् (Aham)"], "answer": "सा (Saa)", "hint": "Feminine words often end with a long 'aa'." },
+  { "day": 17, "topic": "Verbs", "question": "What does the verb 'पठति (Pathati)' mean?", "options": ["Eats", "Writes", "Reads"], "answer": "Reads", "hint": "Think of a 'Pathshaala' (School where you read)." },
+  { "day": 18, "topic": "Verbs", "question": "Translate: 'सः खादति' (Sah khadati)", "options": ["He eats", "She drinks", "He goes"], "answer": "He eats", "hint": "Sah = He. Khadati = Eats." },
+  { "day": 19, "topic": "Verbs", "question": "Which verb means 'Goes'?", "options": ["हसति (Hasati)", "गच्छति (Gacchati)", "क्रीडति (Kridati)"], "answer": "गच्छति (Gacchati)", "hint": "Starts with 'G'." },
+  { "day": 20, "topic": "Verbs", "question": "Translate: 'बालिका लिखति' (Balika likhati)", "options": ["The boy reads", "The girl writes", "The girl plays"], "answer": "The girl writes", "hint": "Balika = Girl. Likhati = Writes." },
+
+  { "day": 21, "topic": "Genders", "question": "Most Masculine nouns in Sanskrit end with which sound?", "options": ["A long 'aa' (ा)", "An 'm' (म्)", "A Visarga (ः / h)"], "answer": "A Visarga (ः / h)", "hint": "Think of words like Ramah, Balakah." },
+  { "day": 22, "topic": "Genders", "question": "Based on the ending, what gender is 'नदी (Nadi)'?", "options": ["Masculine", "Feminine", "Neuter"], "answer": "Feminine", "hint": "It ends with a long 'ii'." },
+  { "day": 23, "topic": "Genders", "question": "What gender is 'पुस्तकम् (Pustakam - Book)'?", "options": ["Masculine", "Feminine", "Neuter"], "answer": "Neuter", "hint": "It ends with a Halant 'm'." },
+  { "day": 24, "topic": "Family", "question": "How do you say 'Mother' in Sanskrit?", "options": ["माता (Mata)", "पिता (Pita)", "भ्राता (Bhrata)"], "answer": "माता (Mata)", "hint": "Starts with 'M'." },
+  { "day": 25, "topic": "Family", "question": "What does 'भ्राता (Bhrata)' mean?", "options": ["Sister", "Brother", "Friend"], "answer": "Brother", "hint": "Think of the word 'Bhai' or 'Brother'." },
+
+  { "day": 26, "topic": "Family", "question": "Translate: 'मित्रम्' (Mitram)", "options": ["Enemy", "Teacher", "Friend"], "answer": "Friend", "hint": "It is a Neuter gender word." },
+  { "day": 27, "topic": "Family", "question": "What is the word for 'Daughter'?", "options": ["पुत्रः (Putrah)", "पुत्री (Putri)", "भगिनी (Bhagini)"], "answer": "पुत्री (Putri)", "hint": "It is the feminine version of 'Putrah'." },
+  { "day": 28, "topic": "Questions", "question": "How do you ask 'What?' in Sanskrit?", "options": ["किम् (Kim)", "कुत्र (Kutra)", "कदा (Kada)"], "answer": "किम् (Kim)", "hint": "It is a short, three-letter word." },
+  { "day": 29, "topic": "Questions", "question": "Which word means 'Where?'", "options": ["कति (Kati)", "कुत्र (Kutra)", "कथम् (Katham)"], "answer": "कुत्र (Kutra)", "hint": "Used to ask about a location." },
+  { "day": 30, "topic": "Questions", "question": "If you want to ask 'Who is he?' you say: सः ______ अस्ति?", "options": ["कः (Kah)", "का (Kaa)", "किम् (Kim)"], "answer": "कः (Kah)", "hint": "For masculine, 'Who' matches the Visarga ending." },
+
+  { "day": 31, "topic": "Questions", "question": "If you want to ask 'When are you coming?', which word means 'When?'", "options": ["कदा (Kada)", "किमर्थम् (Kimartham)", "कुत्र (Kutra)"], "answer": "कदा (Kada)", "hint": "Starts with 'K' and ends with 'da'." },
+  { "day": 32, "topic": "Questions", "question": "Which question word is used to ask for a reason ('Why?')", "options": ["कथम् (Katham)", "किमर्थम् (Kimartham)", "कति (Kati)"], "answer": "किमर्थम् (Kimartham)", "hint": "It translates literally to 'For what purpose?'" },
+  { "day": 33, "topic": "Time", "question": "What does 'अद्य (Adya)' mean?", "options": ["Yesterday", "Today", "Tomorrow"], "answer": "Today", "hint": "It represents the current day." },
+  { "day": 34, "topic": "Time", "question": "How do you say 'Tomorrow'?", "options": ["श्वः (Shvah)", "ह्यः (Hyah)", "अद्य (Adya)"], "answer": "श्वः (Shvah)", "hint": "It starts with an 'Sh' sound." },
+  { "day": 35, "topic": "Time", "question": "What does 'ह्यः (Hyah)' mean?", "options": ["Yesterday", "Today", "Tomorrow"], "answer": "Yesterday", "hint": "It represents the day that has passed." },
+
+  { "day": 36, "topic": "Days", "question": "Which day is 'सोमवासरः (Somavasarah)'?", "options": ["Sunday", "Monday", "Tuesday"], "answer": "Monday", "hint": "Soma refers to the Moon." },
+  { "day": 37, "topic": "Days", "question": "Which day is 'भानुवासरः (Bhanuvasarah)'?", "options": ["Saturday", "Sunday", "Monday"], "answer": "Sunday", "hint": "Bhanu is another name for the Sun." },
+  { "day": 38, "topic": "Time", "question": "How do you say '1:00 O'clock'?", "options": ["एकवादनम् (Ekavadanam)", "द्विवादनम् (Dvivadanam)", "त्रिवादनम् (Trivadanam)"], "answer": "एकवादनम् (Ekavadanam)", "hint": "Eka = 1." },
+  { "day": 39, "topic": "Numbers", "question": "What is the number 20 in Sanskrit?", "options": ["दश (Dasha)", "विंशतिः (Vimshatih)", "त्रिंशत् (Trimshat)"], "answer": "विंशतिः (Vimshatih)", "hint": "Starts with 'V'." },
+  { "day": 40, "topic": "Numbers", "question": "What is the number 100 in Sanskrit?", "options": ["शतम् (Shatam)", "सहस्रम् (Sahasram)", "लक्षम् (Laksham)"], "answer": "शतम् (Shatam)", "hint": "Think of a cricket 'Century' (Shatak)." },
+
+  { "day": 41, "topic": "Verbs", "question": "Translate: 'शिक्षकः वदति' (Shikshakah vadati)", "options": ["The teacher speaks", "The student writes", "The teacher goes"], "answer": "The teacher speaks", "hint": "Vadati = Speaks." },
+  { "day": 42, "topic": "Verbs", "question": "Translate: 'सः पश्यति' (Sah pashyati)", "options": ["He drinks", "He looks/sees", "He laughs"], "answer": "He looks/sees", "hint": "Pashyati is related to vision." },
+  { "day": 43, "topic": "Introduction", "question": "How do you say 'I live in London'?", "options": ["अहम् लन्डन् नगरे वसामि", "मम नाम लन्डन्", "लन्डन् उत्तमम्"], "answer": "अहम् लन्डन् नगरे वसामि", "hint": "Vasami means 'I live'." },
+  { "day": 44, "topic": "Greetings", "question": "How do you say 'See you again / Goodbye'?", "options": ["पुनर्मिलामः (Punarmilamah)", "स्वागतम् (Swagatam)", "क्षम्यताम् (Kshamyatam)"], "answer": "पुनर्मिलामः (Punarmilamah)", "hint": "Punar = Again, Milamah = We meet." },
+  { "day": 45, "topic": "Family", "question": "What does 'पितामहः (Pitamahah)' mean?", "options": ["Uncle", "Grandfather (Paternal)", "Husband"], "answer": "Grandfather (Paternal)", "hint": "Pita = Father, Mahah = Great." },
+
+  { "day": 46, "topic": "Genders", "question": "What gender is 'फलम् (Phalam - Fruit)'?", "options": ["Masculine", "Feminine", "Neuter"], "answer": "Neuter", "hint": "Ends with a Halant 'm'." },
+  { "day": 47, "topic": "Pronouns", "question": "Which word means 'This' (for a masculine object close to you)?", "options": ["एषः (Eshah)", "सः (Sah)", "तत् (Tat)"], "answer": "एषः (Eshah)", "hint": "Ends with a Visarga." },
+  { "day": 48, "topic": "Questions", "question": "How do you ask 'How are you?'", "options": ["भवान् कथम् अस्ति?", "भवान् कुत्र अस्ति?", "किम् अस्ति?"], "answer": "भवान् कथम् अस्ति?", "hint": "Katham = How." },
+  { "day": 49, "topic": "Time", "question": "What does 'सार्ध-द्विवादनम् (Sardha-dvivadanam)' mean?", "options": ["2:00", "2:30", "2:15"], "answer": "2:30", "hint": "Sardha means 'with a half'." },
+  { "day": 50, "topic": "Review", "question": "Translate this complete sentence: 'अहम् जलं पिबामि' (Aham jalam pibami)", "options": ["He eats fruit", "I drink water", "You read a book"], "answer": "I drink water", "hint": "Aham = I, Jalam = Water, Pibami = Drink." }
+]

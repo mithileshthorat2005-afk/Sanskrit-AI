@@ -322,11 +322,6 @@ class SanskritNLP:
             subject_number = self._normalize_agreement_value(
                 subject_analysis.get('number'), number_aliases
             )
-            if subject_number and verb_number and subject_number != verb_number:
-                issues.append(
-                    f"Subject is {subject_number} but verb is {verb_number} — check subject-verb agreement."
-                )
-
             verb_person = self._normalize_agreement_value(
                 verb.get('purusha') or verb.get('person'), person_aliases
             )
@@ -336,7 +331,19 @@ class SanskritNLP:
             subject_person = self._normalize_agreement_value(
                 subject_person_value, person_aliases
             )
-            if subject_person and verb_person and subject_person != verb_person:
+
+            number_mismatch = subject_number and verb_number and subject_number != verb_number
+            person_mismatch = subject_person and verb_person and subject_person != verb_person
+
+            if number_mismatch and person_mismatch:
+                issues.append(
+                    f"Subject '{subject['word']}' ({subject_person} person, {subject_number}) does not agree with verb '{verb_entries[0]['word']}' ({verb_person} person, {verb_number}) — check subject-verb agreement."
+                )
+            elif number_mismatch:
+                issues.append(
+                    f"Subject is {subject_number} but verb is {verb_number} — check subject-verb agreement."
+                )
+            elif person_mismatch:
                 issues.append(
                     f"Subject is {subject_person} person but verb is {verb_person} person — check subject-verb agreement."
                 )
@@ -363,7 +370,10 @@ class SanskritNLP:
         if has_first_person and has_motion:
             for b in breakdown:
                 stem = b.get('analysis', {}).get('stem', '')
-                if stem == 'विद्यालय' or b['word'].startswith('विद्यालय'):
+                w_text = b.get('word', '')
+                if stem == 'विद्यालय' or w_text.startswith('विद्यालय'):
+                    if w_text in ('विद्यालयम्', 'विद्यालयं'):
+                        continue
                     case = str(b['analysis'].get('case', '')).lower()
                     if case and case != 'accusative':
                         issues.append(
@@ -445,7 +455,7 @@ class SanskritNLP:
             "breakdown": breakdown,
             "word_count": len(sanskrit_words),
             "translation": translation,
-            "analysis_mode": "Hybrid (Paninian + Noun + Dictionary)",
+            "analysis_mode": "Grammar Check",
             "ai_verified": False,
             "source_counts": source_counts,
         }
@@ -527,7 +537,7 @@ class SanskritNLP:
                     source = str(item["source"])
                     source_counts[source] = source_counts.get(source, 0) + 1
             analysis_json.setdefault("source_counts", source_counts)
-            analysis_json["analysis_mode"] = f"{self.ai_provider} AI"
+            analysis_json["analysis_mode"] = "AI Scan"
             analysis_json["ai_verified"] = True
             return analysis_json
 

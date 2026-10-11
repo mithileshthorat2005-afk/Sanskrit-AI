@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface VirtualKeyboardProps {
@@ -142,7 +142,7 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
                 </AnimatePresence>
             </div>
 
-            {/* Action Keys (Space and Backspace) */}
+            {/* Action Keys */}
             <div style={{ display: 'flex', gap: '12px' }}>
                 <motion.button
                     whileHover={{ scale: 1.02 }}
@@ -165,6 +165,26 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
                 >
                     <span style={{ fontSize: '0.7rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '1px' }}>Space</span>
                     <span style={{ fontSize: '1.1rem' }}>अंतरम्</span>
+                </motion.button>
+                <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={(e) => { e.preventDefault(); onKeyPress('।'); }}
+                    style={{
+                        flex: 1,
+                        padding: '16px',
+                        borderRadius: '16px',
+                        border: '1px solid var(--border-soft)',
+                        background: 'var(--bg-main)',
+                        color: 'var(--text-main)',
+                        fontWeight: '700',
+                        cursor: 'pointer',
+                        fontSize: '1.25rem'
+                    }}
+                    aria-label="Insert Purna Virama"
+                    title="Purna Virama"
+                >
+                    ।
                 </motion.button>
                 <motion.button
                     whileHover={{ scale: 1.02, backgroundColor: '#e74c3c', color: '#fff' }}

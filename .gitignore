@@ -1,66 +1,55 @@
-﻿# Python
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+.venv/
 __pycache__/
 *.py[cod]
-*.class
-*.so
-.Python
-myenv/
-.venv/
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+.pytest_cache/
 
-# Next.js / Frontend
-.next/
-out/
-build/
+# Node.js dependencies
 node_modules/
-frontend/next-env.d.ts
-*.tsbuildinfo
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+frontend/node_modules/
 
-# Streamlit
-.streamlit/
+# Next.js build output
+.next/
+frontend/.next/
+out/
+frontend/out/
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Build and coverage output
+dist/
+build/
+coverage/
 
-# Data files (optional - comment if you want to include data)
-# data/*.csv
-# data/*.json
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# Local secrets and generated credentials
-passwords.txt
-
-# Python test and tool output
+# Local databases
+*.sqlite
 *.sqlite3
 *.db
-*.coverage
-.pytest_cache/
-htmlcov/
-coverage.xml
 
-# Logs
-logs/
+# Logs and temporary files
 *.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
 
-# OS
+# OS and editor files
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
 
-# Repomix
-repomix-output.xml
-repomix.*
+# Python environment files
+.python-version
+
+# Local secrets and credentials
+credentials.json
+service-account*.json
+# Local user data and progress
+/frontend/data/bkt_progress.json
+/frontend/data/user_analyses.json
+/frontend/data/user_progress.json
+/frontend/data/users.json

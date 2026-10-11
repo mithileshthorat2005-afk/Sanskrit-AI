@@ -1,0 +1,74 @@
+[
+  {
+    "id": "qw_1",
+    "sanskrit": "कः",
+    "transliteration": "Kaḥ",
+    "englishMeaning": "Who? (Masculine)",
+    "exampleSanskrit": "सः कः अस्ति?",
+    "exampleEnglish": "Who is he?",
+    "context": "Used when asking about a male person."
+  },
+  {
+    "id": "qw_2",
+    "sanskrit": "का",
+    "transliteration": "Kā",
+    "englishMeaning": "Who? (Feminine)",
+    "exampleSanskrit": "सा का अस्ति?",
+    "exampleEnglish": "Who is she?",
+    "context": "Used when asking about a female person."
+  },
+  {
+    "id": "qw_3",
+    "sanskrit": "किम्",
+    "transliteration": "Kim",
+    "englishMeaning": "What?",
+    "exampleSanskrit": "तत् किम् अस्ति?",
+    "exampleEnglish": "What is that?",
+    "context": "Used when asking about an object or an action."
+  },
+  {
+    "id": "qw_4",
+    "sanskrit": "कुत्र",
+    "transliteration": "Kutra",
+    "englishMeaning": "Where?",
+    "exampleSanskrit": "बालकः कुत्र गच्छति?",
+    "exampleEnglish": "Where is the boy going?",
+    "context": "Used to ask about location or destination."
+  },
+  {
+    "id": "qw_5",
+    "sanskrit": "कदा",
+    "transliteration": "Kadā",
+    "englishMeaning": "When?",
+    "exampleSanskrit": "भवान् कदा आगच्छति?",
+    "exampleEnglish": "When are you coming?",
+    "context": "Used to ask about time."
+  },
+  {
+    "id": "qw_6",
+    "sanskrit": "कथम्",
+    "transliteration": "Katham",
+    "englishMeaning": "How?",
+    "exampleSanskrit": "भवान् कथम् अस्ति?",
+    "exampleEnglish": "How are you?",
+    "context": "Used to ask about the state or manner of something."
+  },
+  {
+    "id": "qw_7",
+    "sanskrit": "किमर्थम्",
+    "transliteration": "Kimartham",
+    "englishMeaning": "Why?",
+    "exampleSanskrit": "त्वं किमर्थं हससि?",
+    "exampleEnglish": "Why are you laughing?",
+    "context": "Used to ask for a reason."
+  },
+  {
+    "id": "qw_8",
+    "sanskrit": "कति",
+    "transliteration": "Kati",
+    "englishMeaning": "How many?",
+    "exampleSanskrit": "अत्र कति पुस्तकानि सन्ति?",
+    "exampleEnglish": "How many books are here?",
+    "context": "Used to ask about quantity (always plural)."
+  }
+]

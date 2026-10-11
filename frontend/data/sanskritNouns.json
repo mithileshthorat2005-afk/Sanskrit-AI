@@ -1,0 +1,98 @@
+[
+  {
+    "id": "noun_m1",
+    "sanskrit": "वृक्षः",
+    "transliteration": "vṛkṣaḥ",
+    "englishMeaning": "Tree",
+    "gender": "masculine",
+    "hint": "Ends in 'ḥ'"
+  },
+  {
+    "id": "noun_m2",
+    "sanskrit": "बालकः",
+    "transliteration": "bālakaḥ",
+    "englishMeaning": "Boy",
+    "gender": "masculine",
+    "hint": "Ends in 'ḥ'"
+  },
+  {
+    "id": "noun_m3",
+    "sanskrit": "चषकः",
+    "transliteration": "caṣakaḥ",
+    "englishMeaning": "Cup / Glass",
+    "gender": "masculine",
+    "hint": "Ends in 'ḥ'"
+  },
+  {
+    "id": "noun_m4",
+    "sanskrit": "सूर्यः",
+    "transliteration": "sūryaḥ",
+    "englishMeaning": "Sun",
+    "gender": "masculine",
+    "hint": "Ends in 'ḥ'"
+  },
+  {
+    "id": "noun_f1",
+    "sanskrit": "बालिका",
+    "transliteration": "bālikā",
+    "englishMeaning": "Girl",
+    "gender": "feminine",
+    "hint": "Ends in 'ā'"
+  },
+  {
+    "id": "noun_f2",
+    "sanskrit": "माला",
+    "transliteration": "mālā",
+    "englishMeaning": "Garland / Necklace",
+    "gender": "feminine",
+    "hint": "Ends in 'ā'"
+  },
+  {
+    "id": "noun_f3",
+    "sanskrit": "लेखनी",
+    "transliteration": "lekhanī",
+    "englishMeaning": "Pen",
+    "gender": "feminine",
+    "hint": "Ends in 'ī'"
+  },
+  {
+    "id": "noun_f4",
+    "sanskrit": "नदी",
+    "transliteration": "nadī",
+    "englishMeaning": "River",
+    "gender": "feminine",
+    "hint": "Ends in 'ī'"
+  },
+  {
+    "id": "noun_n1",
+    "sanskrit": "पुस्तकम्",
+    "transliteration": "pustakam",
+    "englishMeaning": "Book",
+    "gender": "neuter",
+    "hint": "Ends in 'm'"
+  },
+  {
+    "id": "noun_n2",
+    "sanskrit": "फलम्",
+    "transliteration": "phalam",
+    "englishMeaning": "Fruit",
+    "gender": "neuter",
+    "hint": "Ends in 'm'"
+  },
+  {
+    "id": "noun_n3",
+    "sanskrit": "जलम्",
+    "transliteration": "jalam",
+    "englishMeaning": "Water",
+    "gender": "neuter",
+    "hint": "Ends in 'm'"
+  },
+  {
+    "id": "noun_n4",
+    "sanskrit": "गृहम्",
+    "transliteration": "gṛham",
+    "englishMeaning": "House",
+    "gender": "neuter",
+    "hint": "Ends in 'm'"
+  }
+]

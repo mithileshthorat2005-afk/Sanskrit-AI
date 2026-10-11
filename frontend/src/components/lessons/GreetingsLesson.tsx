@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Greeting {
     id: string;
@@ -176,18 +177,20 @@ export default function GreetingsLesson({ onBack }: { onBack: () => void }) {
 
                                 {/* Body Content */}
                                 <div style={{ padding: '40px 30px', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                    <motion.div 
-                                        style={{ 
-                                            fontSize: '4rem', 
-                                            marginBottom: '20px',
-                                            fontWeight: 800,
-                                            color: 'var(--text-main)',
-                                            textShadow: '0 4px 10px rgba(0,0,0,0.1)'
-                                        }}
-                                        className="devanagari"
-                                    >
-                                        {phrase.sanskrit}
-                                    </motion.div>
+                                    <div className="flex items-center justify-center gap-2" style={{ marginBottom: '20px' }}>
+                                        <motion.div 
+                                            style={{ 
+                                                fontSize: '4rem', 
+                                                fontWeight: 800,
+                                                color: 'var(--text-main)',
+                                                textShadow: '0 4px 10px rgba(0,0,0,0.1)'
+                                            }}
+                                            className="devanagari"
+                                        >
+                                            {phrase.sanskrit}
+                                        </motion.div>
+                                        <AudioPronounceButton text={phrase.sanskrit} size={20} />
+                                    </div>
                                     
                                     <div style={{ marginBottom: '4px', fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)' }}>
                                         {phrase.english}

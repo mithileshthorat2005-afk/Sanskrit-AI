@@ -1,0 +1,37 @@
+[
+  {
+    "id": "stri_1",
+    "suffix": "आ",
+    "rule": "Masculine nouns ending in -अ often form feminine with -आ",
+    "examples": [
+      { "masculine": "बालकः", "feminine": "बालिका", "meaning": "boy/girl" },
+      { "masculine": "पुत्रः", "feminine": "पुत्री", "meaning": "son/daughter" }
+    ]
+  },
+  {
+    "id": "stri_2",
+    "suffix": "ई",
+    "rule": "Many masculine nouns add -ई to form feminine",
+    "examples": [
+      { "masculine": "पिता", "feminine": "माता", "meaning": "father/mother" },
+      { "masculine": "गुरुः", "feminine": "गुर्वी", "meaning": "teacher (m/f)" }
+    ]
+  },
+  {
+    "id": "stri_3",
+    "suffix": "इनी",
+    "rule": "Some masculine nouns take -इनी",
+    "examples": [
+      { "masculine": "धनवान्", "feminine": "धनवती", "meaning": "rich person" },
+      { "masculine": "विद्यावान्", "feminine": "विद्यावती", "meaning": "learned person" }
+    ]
+  },
+  {
+    "id": "stri_4",
+    "suffix": "नी",
+    "rule": "Nouns ending in -इन् often become -नी",
+    "examples": [
+      { "masculine": "योगिन्", "feminine": "योगिनी", "meaning": "yogi (m/f)" }
+    ]
+  }
+]
