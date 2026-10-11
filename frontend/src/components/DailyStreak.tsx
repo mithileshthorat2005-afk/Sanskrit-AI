@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Flame, Star, CheckCircle, AlertCircle, XCircle, Trophy, Sparkles, ArrowRight, RotateCcw } from 'lucide-react';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 export default function DailyStreak() {
     const [questions, setQuestions] = useState<any[]>([]);
@@ -307,11 +308,17 @@ export default function DailyStreak() {
                         </div>
 
                         <div className="quest-body">
-                            <h2 className="quest-question">{questions[currentQuestionIndex]?.question}</h2>
+                            <div className="flex items-center justify-between gap-3 mb-4">
+                                <h2 className="quest-question mb-0">{questions[currentQuestionIndex]?.question}</h2>
+                                {questions[currentQuestionIndex]?.question && /[\u0900-\u097F]/.test(questions[currentQuestionIndex].question) && (
+                                    <AudioPronounceButton text={questions[currentQuestionIndex].question} size={20} title="Pronounce Sanskrit in question" />
+                                )}
+                            </div>
 
                             <div className="options-grid">
                                 {questions[currentQuestionIndex]?.options.map((opt: string, i: number) => {
                                     const isSelected = selectedOption === opt;
+                                    const hasDevanagari = /[\u0900-\u097F]/.test(opt);
                                     return (
                                         <motion.button
                                             key={i}
@@ -322,7 +329,12 @@ export default function DailyStreak() {
                                             disabled={selectedOption !== null}
                                         >
                                             <div className="option-index">{String.fromCharCode(65 + i)}</div>
-                                            <div className="option-text">{opt}</div>
+                                            <div className="option-text flex-1 text-left">{opt}</div>
+                                            {hasDevanagari && (
+                                                <div onClick={(e) => e.stopPropagation()} className="ml-auto">
+                                                    <AudioPronounceButton text={opt} size={14} title={`Pronounce: ${opt}`} />
+                                                </div>
+                                            )}
                                             {isSelected && (
                                                 <motion.div layoutId="highlight" className="option-glow" />
                                             )}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Play, RefreshCw, Volume2, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface VerbItem {
     id: string;
@@ -254,9 +255,10 @@ export default function VerbsLesson({ onBack }: { onBack: () => void }) {
                             {isCorrect === true && (
                                 <motion.div 
                                     initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                                    style={{ position: 'absolute', bottom: '20px', color: '#4CAF50', fontWeight: 700 }}
+                                    style={{ position: 'absolute', bottom: '20px', color: '#4CAF50', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '8px' }}
                                 >
-                                    Excellent! You built the sentence.
+                                    <span>Excellent! You built the sentence.</span>
+                                    <AudioPronounceButton text={currentVerb.exampleSanskrit} size={18} title="Pronounce complete sentence" />
                                 </motion.div>
                             )}
                         </AnimatePresence>

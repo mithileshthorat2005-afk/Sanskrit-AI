@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Volume2, VolumeX } from 'lucide-react';
+import { speak } from '@/lib/audioPronunciation';
 
 interface VirtualKeyboardProps {
     onKeyPress: (char: string) => void;
@@ -24,6 +26,7 @@ const DEVANAGARI_LAYOUT = {
 
 export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: VirtualKeyboardProps) {
     const [activeTab, setActiveTab] = useState<'consonants' | 'vowels' | 'matras' | 'numbers'>('consonants');
+    const [soundEnabled, setSoundEnabled] = useState(true);
 
     const renderKeys = (characters: string[]) => {
         return characters.map((char, index) => (
@@ -34,6 +37,9 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
                 onClick={(e) => {
                     e.preventDefault();
                     onKeyPress(char);
+                    if (soundEnabled) {
+                        speak(char);
+                    }
                 }}
                 style={{
                     padding: '12px 8px',
@@ -50,6 +56,7 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
                     transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                     boxShadow: 'var(--shadow)',
                 }}
+                title={soundEnabled ? `Insert and pronounce: ${char}` : `Insert: ${char}`}
             >
                 {char}
             </motion.button>
@@ -74,11 +81,12 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
             }}
         >
             {/* Header and Controls */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '8px' }}>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                     {(['consonants', 'vowels', 'matras', 'numbers'] as const).map((tab) => (
                         <button
                             key={tab}
+                            type="button"
                             onClick={(e) => { e.preventDefault(); setActiveTab(tab); }}
                             style={{
                                 padding: '8px 16px',
@@ -99,26 +107,52 @@ export default function VirtualKeyboard({ onKeyPress, onBackspace, onClose }: Vi
                     ))}
                 </div>
 
-                {onClose && (
-                    <button 
-                        onClick={onClose} 
-                        style={{ 
-                            border: 'none', 
-                            background: 'var(--bg-main)', 
-                            color: 'var(--text-light)',
-                            cursor: 'pointer', 
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <button
+                        type="button"
+                        onClick={(e) => { e.preventDefault(); setSoundEnabled(!soundEnabled); }}
+                        style={{
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center',
-                            fontSize: '0.8rem'
+                            gap: '6px',
+                            padding: '6px 12px',
+                            borderRadius: '10px',
+                            background: soundEnabled ? 'rgba(var(--primary-rgb), 0.1)' : 'var(--bg-main)',
+                            border: `1px solid ${soundEnabled ? 'var(--primary)' : 'var(--border-soft)'}`,
+                            color: soundEnabled ? 'var(--primary)' : 'var(--text-dim)',
+                            cursor: 'pointer',
+                            fontSize: '0.75rem',
+                            fontWeight: 700,
+                            transition: 'all 0.2s',
                         }}
+                        title={soundEnabled ? "Pronounce letters/numerals on tap (Enabled)" : "Audio muted"}
                     >
-                        ✕
+                        {soundEnabled ? <Volume2 size={15} /> : <VolumeX size={15} />}
+                        <span>{soundEnabled ? "Audio On" : "Muted"}</span>
                     </button>
-                )}
+
+                    {onClose && (
+                        <button 
+                            type="button"
+                            onClick={onClose} 
+                            style={{ 
+                                border: 'none', 
+                                background: 'var(--bg-main)', 
+                                color: 'var(--text-light)',
+                                cursor: 'pointer', 
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.8rem'
+                            }}
+                        >
+                            ✕
+                        </button>
+                    )}
+                </div>
             </div>
 
             {/* Keyboard Grid */}

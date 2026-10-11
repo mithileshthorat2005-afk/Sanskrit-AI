@@ -10,6 +10,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
 import SanskritInput from '@/components/SanskritInput';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface IntroOption {
     english: string;
@@ -139,8 +140,11 @@ export default function SelfIntroLesson({ onBack }: { onBack: () => void }) {
                                     key={item.id} 
                                     style={{ marginBottom: '24px', textAlign: 'left' }}
                                 >
-                                    <div className="devanagari" style={{ fontSize: '2.5rem', color: 'var(--text-main)', lineHeight: '1.4' }}>
-                                        {finalSanskrit}
+                                    <div className="flex items-center justify-between gap-3">
+                                        <div className="devanagari" style={{ fontSize: '2.5rem', color: 'var(--text-main)', lineHeight: '1.4' }}>
+                                            {finalSanskrit}
+                                        </div>
+                                        <AudioPronounceButton text={finalSanskrit} size={22} title={`Pronounce: ${finalSanskrit}`} />
                                     </div>
                                     <div style={{ fontSize: '1.2rem', color: 'var(--text-light)', fontStyle: 'italic', marginTop: '4px' }}>
                                         {finalTranslit}
@@ -239,7 +243,12 @@ export default function SelfIntroLesson({ onBack }: { onBack: () => void }) {
                                                     transition: 'all 0.2s'
                                                 }}
                                             >
-                                                <div className="devanagari" style={{ fontSize: '2rem', marginBottom: '8px' }}>{opt.sanskrit}</div>
+                                                <div className="flex items-center justify-center gap-2 mb-2">
+                                                    <div className="devanagari" style={{ fontSize: '2rem' }}>{opt.sanskrit}</div>
+                                                    <div onClick={(e) => e.stopPropagation()}>
+                                                        <AudioPronounceButton text={opt.sanskrit} size={16} title={`Pronounce: ${opt.sanskrit}`} />
+                                                    </div>
+                                                </div>
                                                 <div style={{ fontSize: '1rem', fontWeight: 600 }}>{opt.english}</div>
                                             </motion.button>
                                         )

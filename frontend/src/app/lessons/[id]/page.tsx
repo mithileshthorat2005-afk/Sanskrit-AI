@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { api } from '@/lib/api';
 import Sidebar from '@/components/Sidebar';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -387,7 +388,12 @@ export default function LessonDetailPage() {
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
                     {section.words.map((word, wordIndex) => (
                       <div key={`${word.sanskrit || 'word'}-${wordIndex}`} className="rounded-xl border border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-gray-800">
-                        <div className="text-lg font-semibold text-terracotta">{word.sanskrit || '—'}</div>
+                        <div className="flex items-center justify-between gap-2">
+                          <div className="text-lg font-semibold text-terracotta">{word.sanskrit || '—'}</div>
+                          {word.sanskrit && (
+                            <AudioPronounceButton text={word.sanskrit} size={16} title={`Pronounce: ${word.sanskrit}`} />
+                          )}
+                        </div>
                         <div className="text-xs text-gray-500 dark:text-gray-400">{word.transliteration || '—'}</div>
                         <div className="mt-1 text-sm text-gray-700 dark:text-gray-200">{word.english || '—'}</div>
                         {word.fun_fact && (

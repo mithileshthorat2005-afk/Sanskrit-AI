@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { api, API_BASE_URL, DashboardResponse } from "@/lib/api";
 import Sidebar from "@/components/Sidebar";
 import DailyStreak from "@/components/DailyStreak";
+import AudioPronounceButton from "@/components/AudioPronounceButton";
 import { motion } from "framer-motion";
 import {
   Trophy,
@@ -212,14 +213,17 @@ export default function Dashboard() {
             flexWrap: 'wrap'
           }}
         >
-          <motion.div
-            animate={{ y: [0, -4, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="devanagari"
-            style={{ fontSize: '1.5rem', fontWeight: 700 }}
-          >
-            {dailyQuote.sanskrit}
-          </motion.div>
+          <div className="flex items-center gap-3">
+            <motion.div
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="devanagari"
+              style={{ fontSize: '1.5rem', fontWeight: 700 }}
+            >
+              {dailyQuote.sanskrit}
+            </motion.div>
+            <AudioPronounceButton text={dailyQuote.sanskrit} size={18} title={`Pronounce quote: ${dailyQuote.sanskrit}`} />
+          </div>
           <div style={{ height: '24px', width: '1px', background: 'var(--border-soft)' }} />
           <div>
             <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-dim)', fontStyle: 'italic' }}>

@@ -265,25 +265,30 @@ export default function Grammar() {
                   { text: "बालकः फलानि खादन्ति।", label: "Example 10" },
                   { text: "यदि त्वं परिश्रमं करोषि तर्हि सफलः भविष्यसि।", label: "Example 11" },
                 ].map((item) => (
-                  <button
+                  <div
                     key={item.text}
                     className="btn-secondary"
                     style={{
                       fontSize: "0.85rem",
-                      padding: "10px 14px",
+                      padding: "8px 12px",
                       border: "1px solid var(--border-soft)",
                       color: "var(--text-main)",
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
                       textAlign: "left",
-                      background: inputText === item.text ? "rgba(var(--primary-rgb), 0.08)" : "var(--bg-main)"
+                      background: inputText === item.text ? "rgba(var(--primary-rgb), 0.08)" : "var(--bg-main)",
+                      cursor: "pointer",
+                      borderRadius: "10px",
                     }}
                     onClick={() => handleSelectExample(item.text)}
                   >
-                    <span className="devanagari" style={{ fontSize: "1.05rem", fontWeight: 600 }}>{item.text}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="devanagari" style={{ fontSize: "1.05rem", fontWeight: 600 }}>{item.text}</span>
+                      <AudioPronounceButton text={item.text} size={15} title={`Pronounce: ${item.text}`} />
+                    </div>
                     <span style={{ fontSize: "0.72rem", color: "var(--text-dim)" }}>{item.label}</span>
-                  </button>
+                  </div>
                 ))}
               </div>
             </div>
@@ -547,8 +552,9 @@ export default function Grammar() {
                                   </div>
 
                                   {issue.text && (
-                                    <span className="devanagari" style={{ fontSize: "0.9rem", padding: "2px 8px", background: "rgba(0,0,0,0.04)", borderRadius: "6px", fontWeight: 600 }}>
-                                      {issue.text}
+                                    <span className="devanagari flex items-center gap-1.5" style={{ fontSize: "0.9rem", padding: "2px 8px", background: "rgba(0,0,0,0.04)", borderRadius: "6px", fontWeight: 600 }}>
+                                      <span>{issue.text}</span>
+                                      <AudioPronounceButton text={issue.text} size={14} title={`Pronounce: ${issue.text}`} />
                                     </span>
                                   )}
                                 </div>
@@ -569,6 +575,7 @@ export default function Grammar() {
                                     <span className="devanagari" style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--primary)" }}>
                                       {issue.suggestion}
                                     </span>
+                                    <AudioPronounceButton text={issue.suggestion} size={14} title={`Pronounce suggestion: ${issue.suggestion}`} />
                                   </div>
                                 )}
                               </div>
@@ -634,8 +641,9 @@ export default function Grammar() {
                                         {w.part_of_speech}
                                       </span>
                                       {w.lemma && w.lemma !== w.text && (
-                                        <span style={{ fontSize: "0.72rem", color: "var(--text-light)" }}>
-                                          Base: {w.lemma}
+                                        <span className="inline-flex items-center gap-1" style={{ fontSize: "0.72rem", color: "var(--text-light)" }}>
+                                          <span>Base: {w.lemma}</span>
+                                          <AudioPronounceButton text={w.lemma} size={12} title={`Pronounce base: ${w.lemma}`} />
                                         </span>
                                       )}
                                     </div>

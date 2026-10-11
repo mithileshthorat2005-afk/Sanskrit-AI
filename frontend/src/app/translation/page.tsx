@@ -172,8 +172,18 @@ export default function Translation() {
                 />
 
                 <div className="translator-bottom-bar">
-                  <div className="translator-hint">
-                    {direction === 'sa_to_en' && '✨ Real-time Roman → Devanagari conversion active'}
+                  <div className="translator-hint flex items-center gap-2">
+                    {direction === 'sa_to_en' ? (
+                      <>
+                        <span>✨ Real-time Roman → Devanagari conversion active</span>
+                        {(shouldTransliterate ? transliteration.value : inputText).trim() && (
+                          <span className="inline-flex items-center gap-1 ml-2">
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>Listen to input:</span>
+                            <AudioPronounceButton text={shouldTransliterate ? transliteration.value : inputText} size={16} />
+                          </span>
+                        )}
+                      </>
+                    ) : null}
                   </div>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -211,81 +221,144 @@ export default function Translation() {
 
                   <div className="flex flex-col gap-6">
                     {results.results.length > 0 ? (
-                      results.results.map((res: any, i: number) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, x: -30 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1, duration: 0.5 }}
-                          className="zen-card overflow-hidden group"
-                          style={{ border: 'none', boxShadow: '0 15px 40px rgba(0,0,0,0.04)' }}
-                        >
-                          <div className="flex items-stretch">
-                            <div style={{ flex: 1, padding: '48px' }}>
+                      results.results.map((res: any, i: number) => {
+                        const devanagariWords = (res.devanagari || "")
+                          .split(/\s+/)
+                          .map((w: string) => w.trim())
+                          .filter((w: string) => w.length > 0);
 
-                              {direction === 'en_to_sa' ? (
-                                // English -> Sanskrit Mode
-                                <>
-                                  <div className="flex items-center gap-6 mb-6">
-                                    <h2 className="devanagari" style={{ fontSize: '4.5rem', lineHeight: 1, color: 'var(--primary)' }}>{res.devanagari}</h2>
-                                    <AudioPronounceButton text={res.devanagari} size={24} />
-                                  </div>
-                                  <p style={{ fontStyle: 'italic', color: 'var(--text-dim)', fontSize: '1.4rem', marginBottom: '32px', opacity: 0.7 }}>{res.sanskrit}</p>
+                        return (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: i * 0.1, duration: 0.5 }}
+                            className="zen-card overflow-hidden group"
+                            style={{ border: 'none', boxShadow: '0 15px 40px rgba(0,0,0,0.04)' }}
+                          >
+                            <div className="flex items-stretch">
+                              <div style={{ flex: 1, padding: '48px' }}>
 
-                                  <div className="flex flex-wrap gap-4 items-center">
-                                    <span style={{ background: 'var(--primary)', padding: '8px 16px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                      {res.word_type}
-                                    </span>
-                                    <span style={{ fontWeight: '800', fontSize: '1.6rem', color: 'var(--text-main)', letterSpacing: '-0.5px' }}>
-                                      {res.meanings.join(' • ')}
-                                    </span>
-                                  </div>
-                                </>
-                              ) : (
-                                // Sanskrit -> English Mode
-                                <>
-                                  <div className="flex items-center gap-6 mb-2">
-                                    <span style={{ background: 'rgba(var(--primary-rgb), 0.1)', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary)', textTransform: 'uppercase' }}>
-                                      Translation Result
-                                    </span>
-                                  </div>
-                                  <h2 style={{ fontSize: '4rem', fontWeight: '900', color: 'var(--text-main)', marginBottom: '16px', letterSpacing: '-2px' }}>
-                                    {res.english || res.meanings[0]}
-                                  </h2>
-                                  <div className="flex items-center gap-4 mb-32">
-                                     <span className="devanagari" style={{ fontSize: '2rem', color: 'var(--primary)' }}>{res.devanagari}</span>
-                                     <AudioPronounceButton text={res.devanagari} size={20} />
-                                     <span style={{ color: 'var(--text-light)', fontSize: '1.2rem' }}>— {res.sanskrit}</span>
-                                  </div>
+                                {direction === 'en_to_sa' ? (
+                                  // English -> Sanskrit Mode
+                                  <>
+                                    <div className="flex items-center gap-6 mb-3">
+                                      <h2 className="devanagari" style={{ fontSize: '4.5rem', lineHeight: 1, color: 'var(--primary)' }}>{res.devanagari}</h2>
+                                      <AudioPronounceButton text={res.devanagari} size={28} title={`Play complete sentence: ${res.devanagari}`} />
+                                    </div>
 
-                                  <div className="flex items-center gap-4">
-                                     <span style={{ fontSize: '0.9rem', color: 'var(--text-dim)', border: '1px solid var(--border-soft)', padding: '6px 12px', borderRadius: '8px' }}>{res.word_type}</span>
-                                     <div className="flex gap-2">
-                                        {res.meanings.slice(1).map((m: string, mi: number) => (
-                                          <span key={mi} style={{ color: 'var(--text-light)', fontSize: '1rem' }}>• {m}</span>
+                                    {/* Individual Word Pronunciation when multiple words exist */}
+                                    {devanagariWords.length > 1 && (
+                                      <div className="flex flex-wrap items-center gap-2 mb-4">
+                                        <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontWeight: 700, textTransform: 'uppercase' }}>Words:</span>
+                                        {devanagariWords.map((word: string, widx: number) => (
+                                          <span
+                                            key={widx}
+                                            style={{
+                                              display: 'inline-flex',
+                                              alignItems: 'center',
+                                              gap: '4px',
+                                              padding: '4px 10px',
+                                              borderRadius: '8px',
+                                              background: 'var(--bg-main)',
+                                              border: '1px solid var(--border-soft)',
+                                              fontSize: '1rem',
+                                            }}
+                                            className="devanagari"
+                                          >
+                                            <span>{word}</span>
+                                            <AudioPronounceButton text={word} size={14} title={`Pronounce word: ${word}`} />
+                                          </span>
                                         ))}
-                                     </div>
+                                      </div>
+                                    )}
+
+                                    <p style={{ fontStyle: 'italic', color: 'var(--text-dim)', fontSize: '1.4rem', marginBottom: '32px', opacity: 0.7 }}>{res.sanskrit}</p>
+
+                                    <div className="flex flex-wrap gap-4 items-center">
+                                      <span style={{ background: 'var(--primary)', padding: '8px 16px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: '900', color: 'white', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                        {res.word_type}
+                                      </span>
+                                      <span style={{ fontWeight: '800', fontSize: '1.6rem', color: 'var(--text-main)', letterSpacing: '-0.5px' }}>
+                                        {res.meanings.join(' • ')}
+                                      </span>
+                                    </div>
+                                  </>
+                                ) : (
+                                  // Sanskrit -> English Mode
+                                  <>
+                                    <div className="flex items-center gap-6 mb-2">
+                                      <span style={{ background: 'rgba(var(--primary-rgb), 0.1)', padding: '6px 14px', borderRadius: '10px', fontSize: '0.75rem', fontWeight: '900', color: 'var(--primary)', textTransform: 'uppercase' }}>
+                                        Translation Result
+                                      </span>
+                                    </div>
+                                    <h2 style={{ fontSize: '4rem', fontWeight: '900', color: 'var(--text-main)', marginBottom: '16px', letterSpacing: '-2px' }}>
+                                      {res.english || res.meanings[0]}
+                                    </h2>
+                                    <div className="flex items-center gap-4 mb-4">
+                                       <span className="devanagari" style={{ fontSize: '2rem', color: 'var(--primary)' }}>{res.devanagari}</span>
+                                       <AudioPronounceButton text={res.devanagari} size={22} title={`Play complete translation: ${res.devanagari}`} />
+                                       <span style={{ color: 'var(--text-light)', fontSize: '1.2rem' }}>— {res.sanskrit}</span>
+                                    </div>
+
+                                    {/* Individual Word Pronunciation when multiple words exist */}
+                                    {devanagariWords.length > 1 && (
+                                      <div className="flex flex-wrap items-center gap-2 mb-6">
+                                        <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontWeight: 700, textTransform: 'uppercase' }}>Words:</span>
+                                        {devanagariWords.map((word: string, widx: number) => (
+                                          <span
+                                            key={widx}
+                                            style={{
+                                              display: 'inline-flex',
+                                              alignItems: 'center',
+                                              gap: '4px',
+                                              padding: '4px 10px',
+                                              borderRadius: '8px',
+                                              background: 'var(--bg-main)',
+                                              border: '1px solid var(--border-soft)',
+                                              fontSize: '1rem',
+                                            }}
+                                            className="devanagari"
+                                          >
+                                            <span>{word}</span>
+                                            <AudioPronounceButton text={word} size={14} title={`Pronounce word: ${word}`} />
+                                          </span>
+                                        ))}
+                                      </div>
+                                    )}
+
+                                    <div className="flex items-center gap-4">
+                                       <span style={{ fontSize: '0.9rem', color: 'var(--text-dim)', border: '1px solid var(--border-soft)', padding: '6px 12px', borderRadius: '8px' }}>{res.word_type}</span>
+                                       <div className="flex gap-2">
+                                          {res.meanings.slice(1).map((m: string, mi: number) => (
+                                            <span key={mi} style={{ color: 'var(--text-light)', fontSize: '1rem' }}>• {m}</span>
+                                          ))}
+                                       </div>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+
+                              {res.example && (
+                                <div className="p-10" style={{ width: '360px', background: 'rgba(var(--primary-rgb), 0.02)', borderLeft: '1px solid var(--border-soft)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                  <div className="flex items-center justify-between gap-3 mb-6 text-dim" style={{ fontSize: '0.75rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>
+                                    <div className="flex items-center gap-2">
+                                      <Sparkles size={16} />
+                                      <span>Context Matrix</span>
+                                    </div>
+                                    <AudioPronounceButton text={res.example} size={18} title="Pronounce example sentence" />
                                   </div>
-                                </>
+                                  <p style={{ fontSize: '1.2rem', lineHeight: '1.7', color: 'var(--text-main)', fontStyle: 'italic', position: 'relative', paddingLeft: '20px' }}>
+                                    <span style={{ position: 'absolute', left: 0, top: 0, fontSize: '2rem', color: 'var(--border-soft)', lineHeight: 1 }}>"</span>
+                                    {res.example}
+                                    <span style={{ fontSize: '2rem', color: 'var(--border-soft)', lineHeight: 1 }}>"</span>
+                                  </p>
+                                </div>
                               )}
                             </div>
-
-                            {res.example && (
-                              <div className="p-10" style={{ width: '360px', background: 'rgba(var(--primary-rgb), 0.02)', borderLeft: '1px solid var(--border-soft)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                <div className="flex items-center gap-3 mb-6 text-dim" style={{ fontSize: '0.75rem', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', color: 'var(--primary)' }}>
-                                  <Sparkles size={16} />
-                                  <span>Context Matrix</span>
-                                </div>
-                                <p style={{ fontSize: '1.2rem', lineHeight: '1.7', color: 'var(--text-main)', fontStyle: 'italic', position: 'relative', paddingLeft: '20px' }}>
-                                  <span style={{ position: 'absolute', left: 0, top: 0, fontSize: '2rem', color: 'var(--border-soft)', lineHeight: 1 }}>"</span>
-                                  {res.example}
-                                  <span style={{ fontSize: '2rem', color: 'var(--border-soft)', lineHeight: 1 }}>"</span>
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        </motion.div>
-                      ))
+                          </motion.div>
+                        );
+                      })
                     ) : (
                       <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
@@ -322,8 +395,10 @@ export default function Translation() {
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="flex items-center justify-center gap-3"
                 >
                   <h2 className="devanagari" style={{ fontSize: '3.5rem', marginBottom: '15px', color: 'var(--primary)' }}>शाश्वत</h2>
+                  <AudioPronounceButton text="शाश्वत" size={24} title="Pronounce: शाश्वत" />
                 </motion.div>
                 <p style={{ fontWeight: '900', color: 'var(--text-main)', fontSize: '1.4rem', letterSpacing: '1px' }}>SHASHWAT</p>
                 <div style={{ height: '2px', width: '50px', background: 'var(--primary)', margin: '24px auto', borderRadius: '2px' }}></div>

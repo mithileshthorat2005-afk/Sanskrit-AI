@@ -22,6 +22,7 @@ import {
   CircleDot,
   Grid3X3
 } from "lucide-react";
+import AudioPronounceButton from "@/components/AudioPronounceButton";
 
 // Floating Particle Component
 const FloatingEmoji = ({ emoji, color }: { emoji: string; color: string }) => (
@@ -912,16 +913,21 @@ export default function GamePage() {
                       transition={{ type: "spring", damping: 15 }}
                       style={{ textAlign: "center", marginBottom: "20px" }}
                     >
-                      <h2
-                        className="devanagari"
-                        style={{
-                          fontSize: "5rem",
-                          lineHeight: 1.1,
-                          marginBottom: "5px",
-                        }}
-                      >
-                        {currentWord?.sanskrit}
-                      </h2>
+                      <div className="flex items-center justify-center gap-3">
+                        <h2
+                          className="devanagari"
+                          style={{
+                            fontSize: "5rem",
+                            lineHeight: 1.1,
+                            marginBottom: "5px",
+                          }}
+                        >
+                          {currentWord?.sanskrit}
+                        </h2>
+                        {currentWord?.sanskrit && (
+                          <AudioPronounceButton text={currentWord.sanskrit} size={28} title={`Pronounce: ${currentWord.sanskrit}`} />
+                        )}
+                      </div>
                     </motion.div>
 
                     <AnimatePresence>
@@ -1461,14 +1467,19 @@ export default function GamePage() {
                                 boxShadow: isSelected && !oddFeedback ? "0 10px 30px rgba(0,0,0,0.08)" : "none",
                               }}
                             >
-                              <div
-                                className="devanagari"
-                                style={{
-                                  fontSize: "2rem",
-                                  color: textColor,
-                                }}
-                              >
-                                {opt.sanskrit}
+                              <div className="flex items-center justify-center gap-2">
+                                <div
+                                  className="devanagari"
+                                  style={{
+                                    fontSize: "2rem",
+                                    color: textColor,
+                                  }}
+                                >
+                                  {opt.sanskrit}
+                                </div>
+                                <div onClick={(e) => e.stopPropagation()}>
+                                  <AudioPronounceButton text={opt.sanskrit} size={16} title={`Pronounce: ${opt.sanskrit}`} />
+                                </div>
                               </div>
                               {oddFeedback && isCorrectAnswer && (
                                 <motion.div

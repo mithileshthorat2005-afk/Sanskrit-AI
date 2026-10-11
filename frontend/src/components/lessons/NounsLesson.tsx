@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface NounItem {
     id: string;
@@ -248,8 +249,13 @@ export default function NounsLesson({ onBack }: { onBack: () => void }) {
                             animate={feedback === 'wrong' ? { x: [-10, 10, -10, 10, 0] } : {}}
                             transition={{ duration: 0.4 }}
                         >
-                            <div className="devanagari" style={{ fontSize: '4.5rem', fontWeight: 900, marginBottom: '8px' }}>
-                                {currentNoun.sanskrit}
+                            <div className="flex items-center justify-center gap-3">
+                                <div className="devanagari" style={{ fontSize: '4.5rem', fontWeight: 900, marginBottom: '8px' }}>
+                                    {currentNoun.sanskrit}
+                                </div>
+                                <div onClick={(e) => e.stopPropagation()}>
+                                    <AudioPronounceButton text={currentNoun.sanskrit} size={28} title={`Pronounce: ${currentNoun.sanskrit}`} />
+                                </div>
                             </div>
                             <div style={{ fontSize: '1.4rem', opacity: 0.7, fontStyle: 'italic', marginBottom: '32px' }}>
                                 "{currentNoun.transliteration}"

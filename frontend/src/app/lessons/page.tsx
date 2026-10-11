@@ -18,8 +18,11 @@ import {
   Award,
   Target,
   Menu,
-  X
+  X,
+  Volume2
 } from "lucide-react";
+import AudioPronounceButton from "@/components/AudioPronounceButton";
+import { speak } from "@/lib/audioPronunciation";
 import GreetingsLesson from "@/components/lessons/GreetingsLesson";
 import NumbersLesson from "@/components/lessons/NumbersLesson";
 import SelfIntroLesson from "@/components/lessons/SelfIntroLesson";
@@ -103,6 +106,63 @@ const getLevelBadge = (level: string) => {
   return config || LEVEL_CONFIG.beginner;
 };
 
+const SANSKRIT_VOWELS = [
+  { char: 'अ', iast: 'a' },
+  { char: 'आ', iast: 'ā' },
+  { char: 'इ', iast: 'i' },
+  { char: 'ई', iast: 'ī' },
+  { char: 'उ', iast: 'u' },
+  { char: 'ऊ', iast: 'ū' },
+  { char: 'ऋ', iast: 'ṛ' },
+  { char: 'ॠ', iast: 'ṝ' },
+  { char: 'ऌ', iast: 'ḷ' },
+  { char: 'ए', iast: 'e' },
+  { char: 'ऐ', iast: 'ai' },
+  { char: 'ओ', iast: 'o' },
+  { char: 'औ', iast: 'au' },
+  { char: 'अं', iast: 'aṃ' },
+  { char: 'अः', iast: 'aḥ' },
+];
+
+const SANSKRIT_CONSONANTS = [
+  { char: 'क', iast: 'ka' },
+  { char: 'ख', iast: 'kha' },
+  { char: 'ग', iast: 'ga' },
+  { char: 'घ', iast: 'gha' },
+  { char: 'ङ', iast: 'ṅa' },
+  { char: 'च', iast: 'ca' },
+  { char: 'छ', iast: 'cha' },
+  { char: 'ज', iast: 'ja' },
+  { char: 'झ', iast: 'jha' },
+  { char: 'ञ', iast: 'ña' },
+  { char: 'ट', iast: 'ṭa' },
+  { char: 'ठ', iast: 'ṭha' },
+  { char: 'ड', iast: 'ḍa' },
+  { char: 'ढ', iast: 'ḍha' },
+  { char: 'ण', iast: 'ṇa' },
+  { char: 'त', iast: 'ta' },
+  { char: 'थ', iast: 'tha' },
+  { char: 'द', iast: 'da' },
+  { char: 'ध', iast: 'dha' },
+  { char: 'न', iast: 'na' },
+  { char: 'प', iast: 'pa' },
+  { char: 'फ', iast: 'pha' },
+  { char: 'ब', iast: 'ba' },
+  { char: 'भ', iast: 'bha' },
+  { char: 'म', iast: 'ma' },
+  { char: 'य', iast: 'ya' },
+  { char: 'र', iast: 'ra' },
+  { char: 'ल', iast: 'la' },
+  { char: 'व', iast: 'va' },
+  { char: 'श', iast: 'śa' },
+  { char: 'ष', iast: 'ṣa' },
+  { char: 'स', iast: 'sa' },
+  { char: 'ह', iast: 'ha' },
+  { char: 'क्ष', iast: 'kṣa' },
+  { char: 'त्र', iast: 'tra' },
+  { char: 'ज्ञ', iast: 'jña' },
+];
+
 // ─── Alphabet Flashcards (Lesson 1) ───────────────────────
 const AlphabetFlashcards = () => {
   const [vowelImages, setVowelImages] = useState<string[]>([]);
@@ -152,8 +212,33 @@ const AlphabetFlashcards = () => {
                 <p className="text-white/70 text-sm font-semibold tracking-[4px] uppercase mt-1">Swaras (Foundations)</p>
               </div>
             </div>
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl text-white text-xs font-semibold">
+              <Volume2 size={16} /> Tap any letter to pronounce
+            </div>
           </div>
           <div className="p-10 bg-[var(--bg-card)]">
+            {/* Interactive Vowel Audio Grid */}
+            <div className="mb-10 p-6 rounded-3xl bg-[var(--bg-main)] border border-[var(--border-soft)]">
+              <div className="text-xs font-bold text-[var(--text-dim)] uppercase tracking-wider mb-4">
+                Devanagari Vowels Audio Matrix
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-3">
+                {SANSKRIT_VOWELS.map(v => (
+                  <button
+                    key={v.char}
+                    type="button"
+                    onClick={() => speak(v.char)}
+                    className="flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-soft)] hover:border-[var(--primary)] hover:shadow-md transition-all group"
+                    title={`Pronounce ${v.char} (${v.iast})`}
+                  >
+                    <span className="devanagari text-3xl font-bold text-[var(--primary)] group-hover:scale-110 transition-transform">{v.char}</span>
+                    <span className="text-xs text-[var(--text-light)] mt-1 font-semibold">{v.iast}</span>
+                    <AudioPronounceButton text={v.char} size={14} className="mt-1" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {vowelImages.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {vowelImages.map((src, idx) => (
@@ -173,11 +258,7 @@ const AlphabetFlashcards = () => {
                   </motion.div>
                 ))}
               </div>
-            ) : (
-              <div className="p-32 text-center bg-[var(--bg-main)] rounded-[40px] border-4 border-dashed border-[var(--border-soft)]">
-                <p className="text-[var(--text-light)] text-xl font-bold italic tracking-wide">Manuscripts for vowels arriving soon...</p>
-              </div>
-            )}
+            ) : null}
           </div>
         </motion.div>
 
@@ -196,8 +277,33 @@ const AlphabetFlashcards = () => {
                 <p className="text-white/70 text-sm font-semibold tracking-[4px] uppercase mt-1">Vyanjanas (Structures)</p>
               </div>
             </div>
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl text-white text-xs font-semibold">
+              <Volume2 size={16} /> Tap any letter to pronounce
+            </div>
           </div>
           <div className="p-10 bg-[var(--bg-card)]">
+            {/* Interactive Consonant Audio Grid */}
+            <div className="mb-10 p-6 rounded-3xl bg-[var(--bg-main)] border border-[var(--border-soft)]">
+              <div className="text-xs font-bold text-[var(--text-dim)] uppercase tracking-wider mb-4">
+                Devanagari Consonants Audio Matrix
+              </div>
+              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-3">
+                {SANSKRIT_CONSONANTS.map(c => (
+                  <button
+                    key={c.char}
+                    type="button"
+                    onClick={() => speak(c.char)}
+                    className="flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-soft)] hover:border-[var(--primary)] hover:shadow-md transition-all group"
+                    title={`Pronounce ${c.char} (${c.iast})`}
+                  >
+                    <span className="devanagari text-3xl font-bold text-[var(--primary)] group-hover:scale-110 transition-transform">{c.char}</span>
+                    <span className="text-xs text-[var(--text-light)] mt-1 font-semibold">{c.iast}</span>
+                    <AudioPronounceButton text={c.char} size={14} className="mt-1" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {consonantImages.length > 0 ? (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {consonantImages.map((src, idx) => (
@@ -217,11 +323,7 @@ const AlphabetFlashcards = () => {
                   </motion.div>
                 ))}
               </div>
-            ) : (
-              <div className="p-32 text-center bg-[var(--bg-main)] rounded-[40px] border-4 border-dashed border-[var(--border-soft)]">
-                <p className="text-[var(--text-light)] text-xl font-bold italic tracking-wide">Consonant charts currently being prepared...</p>
-              </div>
-            )}
+            ) : null}
           </div>
         </motion.div>
       </AnimatePresence>

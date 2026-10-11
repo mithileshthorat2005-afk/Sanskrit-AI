@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface NumberItem {
     id: string;
@@ -151,8 +152,13 @@ export default function NumbersLesson({ onBack }: { onBack: () => void }) {
                                         <div style={{ fontSize: '1rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '4px', color: 'rgba(255,255,255,0.9)', marginBottom: '16px' }}>
                                             Number {item.number}
                                         </div>
-                                        <div className="devanagari" style={{ fontSize: item.sanskrit.length > 8 ? '2.8rem' : '3.8rem', fontWeight: 900, marginBottom: '8px', textShadow: '0 8px 16px rgba(0,0,0,0.25)', color: '#fff' }}>
-                                            {item.sanskrit}
+                                        <div className="flex items-center justify-center gap-3 mb-2">
+                                            <div className="devanagari" style={{ fontSize: item.sanskrit.length > 8 ? '2.8rem' : '3.8rem', fontWeight: 900, textShadow: '0 8px 16px rgba(0,0,0,0.25)', color: '#fff' }}>
+                                                {item.sanskrit}
+                                            </div>
+                                            <div onClick={(e) => e.stopPropagation()}>
+                                                <AudioPronounceButton text={item.sanskrit} size={24} className="bg-white/20 text-white hover:bg-white/30" title={`Pronounce: ${item.sanskrit}`} />
+                                            </div>
                                         </div>
                                         <div style={{ fontSize: '1.2rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase', color: '#fff', textShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
                                             {item.transliteration}
@@ -212,6 +218,10 @@ export default function NumbersLesson({ onBack }: { onBack: () => void }) {
                                             transition: 'all 0.3s ease'
                                         }}>
                                             {item.number.toLocaleString()}
+                                        </div>
+                                        <div className="mt-2 flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                                            <span className="text-xs font-semibold text-gray-500 dark:text-gray-400">{item.sanskrit}</span>
+                                            <AudioPronounceButton text={item.sanskrit} size={14} title={`Pronounce: ${item.sanskrit}`} />
                                         </div>
                                     </motion.div>
                                 )}

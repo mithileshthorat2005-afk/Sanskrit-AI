@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface FamilyMember {
     id: string;
@@ -199,8 +200,11 @@ export default function FamilyLesson({ onBack }: { onBack: () => void }) {
                                 fontSize: '1.1rem'
                             }}
                         >
-                            <span className="devanagari" style={{ fontSize: '1.3rem' }}>{quizTarget.sanskrit}</span>
-                            <span style={{ marginLeft: '8px', opacity: 0.8, fontSize: '0.85rem' }}>({quizTarget.transliteration})</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <span className="devanagari" style={{ fontSize: '1.3rem' }}>{quizTarget.sanskrit}</span>
+                                <span style={{ opacity: 0.8, fontSize: '0.85rem' }}>({quizTarget.transliteration})</span>
+                                <AudioPronounceButton text={quizTarget.sanskrit} size={16} title={`Pronounce: ${quizTarget.sanskrit}`} />
+                            </div>
                         </motion.div>
                     )}
                     {quizMode && (
@@ -390,8 +394,13 @@ export default function FamilyLesson({ onBack }: { onBack: () => void }) {
                                             exit={{ rotateY: -90 }}
                                             transition={{ duration: 0.3 }}
                                         >
-                                            <div className="devanagari" style={{ fontSize: '1.3rem', fontWeight: 900, color: colors.text, lineHeight: 1.2 }}>
-                                                {member.sanskrit}
+                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+                                                <div className="devanagari" style={{ fontSize: '1.3rem', fontWeight: 900, color: colors.text, lineHeight: 1.2 }}>
+                                                    {member.sanskrit}
+                                                </div>
+                                                <div onClick={(e) => e.stopPropagation()}>
+                                                    <AudioPronounceButton text={member.sanskrit} size={14} title={`Pronounce: ${member.sanskrit}`} />
+                                                </div>
                                             </div>
                                             <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)', fontWeight: 600, marginTop: '2px' }}>
                                                 {member.transliteration}
