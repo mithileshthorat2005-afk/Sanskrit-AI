@@ -101,9 +101,13 @@ export default function Grammar() {
   if (!user) return null;
 
   // Resolve score values
-  const scoreVal = analysis?.score_details?.value ?? analysis?.score ?? 0;
-  const scoreLabel = analysis?.score_details?.label ?? (scoreVal >= 90 ? "High correctness" : scoreVal >= 75 ? "Moderate correctness" : "Needs improvement");
-  const isReliable = analysis?.score_details?.reliable ?? true;
+  const scoreVal = analysis?.score_details?.value
+    ?? (typeof analysis?.score === "number" ? analysis.score : analysis?.score?.value)
+    ?? 0;
+  const scoreLabel = analysis?.score_details?.label
+    ?? analysis?.score?.label
+    ?? (scoreVal >= 90 ? "High correctness" : scoreVal >= 75 ? "Moderate correctness" : "Needs improvement");
+  const isReliable = analysis?.score_details?.reliable ?? analysis?.score?.reliable ?? true;
   const confirmedErrors = analysis?.summary?.confirmed_errors ?? (Array.isArray(analysis?.issues) ? analysis.issues.filter((i: any) => i.severity === 'error').length : 0);
   const warningCount = analysis?.summary?.warnings ?? (Array.isArray(analysis?.issues) ? analysis.issues.filter((i: any) => i.severity === 'warning').length : 0);
   const infoCount = analysis?.summary?.information_items ?? (Array.isArray(analysis?.issues) ? analysis.issues.filter((i: any) => i.severity === 'info').length : 0);
