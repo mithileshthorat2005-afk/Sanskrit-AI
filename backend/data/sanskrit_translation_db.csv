@@ -1266,3 +1266,423 @@ pariśramaḥ,परिश्रमः,hard work,noun,work,परिश्रम
 kāryavidhiḥ,कार्यविधिः,work procedure,noun,work,कार्यविधिं ज्ञात्वा कार्यं कुर्यात्।,Knowing work procedure
 sahakāryaṃ,सहकार्यं,teamwork,noun,work,सहकार्येण महत् कार्यं सिद्ध्यति।,Great work is accomplished by teamwork.
 kāryasampattiḥ,कार्यसम्पत्तिः,work achievement,noun,work,कार्यसम्पत्तिः आनन्दं ददाति।,Work achievement gives happiness.
+transliteration,devanagari,meaning,part_of_speech,category,sanskrit_sentence,english_translation
+yuddham,युद्धम्,war,noun,abstract,युद्धं विनाशकम्।,War is destructive.
+satyam,सत्यम्,truth,noun,abstract,सत्यं जयति।,Truth wins.
+asatyam,असत्यम्,lie,noun,abstract,असत्यं पापम्।,Lying is a sin.
+jñānam,ज्ञानम्,knowledge,noun,abstract,ज्ञानं शक्तिः।,Knowledge is power.
+ajñānam,अज्ञानम्,ignorance,noun,abstract,अज्ञानं तमः।,Ignorance is darkness.
+svatantratā,स्वतन्त्रता,freedom,noun,abstract,स्वतन्त्रता मूल्यवान्।,Freedom is valuable.
+dāsatvam,दासत्वम्,slavery,noun,abstract,दासत्वं दुःखदम्।,Slavery is sorrowful.
+dveṣaḥ,द्वेषः,hate,noun,abstract,द्वेषः विनाशकः।,Hate is destructive.
+harṣaḥ,हर्षः,joy,noun,abstract,हर्षः उत्सवः।,Joy is a celebration.
+śāntiḥ,शान्तिः,peace,noun,abstract,शान्तिः श्रेष्ठा।,Peace is the best.
+prema,प्रेम,love,noun,abstract,प्रेम जीवनम्।,Love is life.
+dayā,दया,compassion,noun,abstract,दया धर्मः।,Compassion is dharma.
+dharmaḥ,धर्मः,"righteousness, duty",noun,abstract,धर्मो रक्षति रक्षितः।,Dharma protects those who protect it.
+adharmaḥ,अधर्मः,unrighteousness,noun,abstract,अधर्मः नाशकः।,Unrighteousness is ruinous.
+karma,कर्म,"action, deed",noun,abstract,कर्म फलति।,Action bears fruit.
+phalam,फलम्,"fruit, result",noun,concrete,फलं मधुरम्।,The fruit is sweet.
+sukham,सुखम्,happiness,noun,abstract,सुखं सर्वे इच्छन्ति।,Everyone wants happiness.
+duḥkham,दुःखम्,sorrow,noun,abstract,दुःखं न स्थिरम्।,Sorrow is not permanent.
+bhayam,भयम्,fear,noun,abstract,भयं दुर्बलता।,Fear is weakness.
+krodhaḥ,क्रोधः,anger,noun,abstract,क्रोधः शत्रुः।,Anger is an enemy.
+lobhaḥ,लोभः,greed,noun,abstract,लोभः पापस्य कारणम्।,Greed is the cause of sin.
+mohaḥ,मोहः,delusion,noun,abstract,मोहः बन्धनम्।,Delusion is bondage.
+ahaṅkāraḥ,अहङ्कारः,ego,noun,abstract,अहङ्कारः पतनम्।,Ego leads to downfall.
+vinayaḥ,विनयः,humility,noun,abstract,विनयः भूषणम्।,Humility is an ornament.
+śraddhā,श्रद्धा,faith,noun,abstract,श्रद्धा बलम्।,Faith is strength.
+vidyā,विद्या,learning,noun,abstract,विद्या धनम्।,Learning is wealth.
+buddhiḥ,बुद्धिः,intellect,noun,abstract,बुद्धिः तीक्ष्णा अस्ति।,The intellect is sharp.
+manaḥ,मनः,mind,noun,abstract,मनः चञ्चलम्।,The mind is restless.
+ātmā,आत्मा,"soul, self",noun,abstract,आत्मा अमरः।,The soul is immortal.
+jīvanam,जीवनम्,life,noun,abstract,जीवनं सुन्दरम्।,Life is beautiful.
+mṛtyuḥ,मृत्युः,death,noun,abstract,मृत्युः अनिवार्यः।,Death is inevitable.
+janma,जन्म,birth,noun,abstract,जन्म पुण्यम्।,Birth is blessed.
+kālaḥ,कालः,time,noun,abstract,कालः बलवान्।,Time is powerful.
+śaktiḥ,शक्तिः,"strength, power",noun,abstract,शक्तिः सर्वत्र अस्ति।,Power is everywhere.
+dhanam,धनम्,wealth,noun,abstract,धनं न सर्वम्।,Wealth is not everything.
+mitratā,मित्रता,friendship,noun,abstract,मित्रता अमूल्या।,Friendship is priceless.
+śatruḥ,शत्रुः,enemy,noun,person,शत्रुः दूरे अस्ति।,The enemy is far away.
+mitram,मित्रम्,friend,noun,person,मित्रं मम सहायकम्।,A friend is my helper.
+rāmaḥ,रामः,Rama (name),noun,person,रामः वनं गच्छति।,Rama goes to the forest.
+sītā,सीता,Sita (name),noun,person,सीता गृहे अस्ति।,Sita is at home.
+kṛṣṇaḥ,कृष्णः,Krishna (name),noun,person,कृष्णः वंशीं वादयति।,Krishna plays the flute.
+rājā,राजा,king,noun,person,राजा प्रजां पालयति।,The king protects the subjects.
+rājñī,राज्ञी,queen,noun,person,राज्ञी दयालुः अस्ति।,The queen is kind.
+prajā,प्रजा,"subjects, people",noun,person,प्रजा सुखिनी अस्ति।,The people are happy.
+putraḥ,पुत्रः,son,noun,person,पुत्रः पठति।,The son studies.
+putrī,पुत्री,daughter,noun,person,पुत्री गायति।,The daughter sings.
+mātā,माता,mother,noun,person,माता भोजनं पचति।,Mother cooks food.
+pitā,पिता,father,noun,person,पिता कार्यालयं गच्छति।,Father goes to the office.
+bhrātā,भ्राता,brother,noun,person,भ्राता क्रीडति।,The brother plays.
+bhaginī,भगिनी,sister,noun,person,भगिनी लिखति।,The sister writes.
+patiḥ,पतिः,husband,noun,person,पतिः गृहम् आगच्छति।,The husband comes home.
+patnī,पत्नी,wife,noun,person,पत्नी पूजां करोति।,The wife performs worship.
+guruḥ,गुरुः,teacher,noun,person,गुरुः पाठयति।,The teacher teaches.
+śiṣyaḥ,शिष्यः,"student, disciple",noun,person,शिष्यः शृणोति।,The student listens.
+bālakaḥ,बालकः,boy,noun,person,बालकः धावति।,The boy runs.
+bālikā,बालिका,girl,noun,person,बालिका नृत्यति।,The girl dances.
+puruṣaḥ,पुरुषः,man,noun,person,पुरुषः कार्यं करोति।,The man does work.
+strī,स्त्री,woman,noun,person,स्त्री विदुषी अस्ति।,The woman is learned.
+manuṣyaḥ,मनुष्यः,human being,noun,person,मनुष्यः चिन्तयति।,The human thinks.
+devaḥ,देवः,god,noun,person,देवः सर्वत्र अस्ति।,God is everywhere.
+devī,देवी,goddess,noun,person,देवी शक्तिः अस्ति।,The goddess is power.
+ṛṣiḥ,ऋषिः,sage,noun,person,ऋषिः तपः करोति।,The sage performs austerity.
+vaidyaḥ,वैद्यः,doctor,noun,person,वैद्यः रोगं चिकित्सति।,The doctor treats the disease.
+kṛṣakaḥ,कृषकः,farmer,noun,person,कृषकः क्षेत्रं कर्षति।,The farmer ploughs the field.
+vīraḥ,वीरः,"hero, warrior",noun,person,वीरः युद्धं करोति।,The hero fights the war.
+cauraḥ,चौरः,thief,noun,person,चौरः पलायते।,The thief runs away.
+gṛham,गृहम्,house,noun,place,गृहं विशालम् अस्ति।,The house is big.
+nagaram,नगरम्,city,noun,place,नगरं स्वच्छम् अस्ति।,The city is clean.
+grāmaḥ,ग्रामः,village,noun,place,ग्रामः शान्तः अस्ति।,The village is peaceful.
+deśaḥ,देशः,country,noun,place,मम देशः महान्।,My country is great.
+vanam,वनम्,forest,noun,place,वनं घनम् अस्ति।,The forest is dense.
+parvataḥ,पर्वतः,mountain,noun,nature,पर्वतः उन्नतः अस्ति।,The mountain is tall.
+nadī,नदी,river,noun,nature,नदी वहति।,The river flows.
+samudraḥ,समुद्रः,ocean,noun,nature,समुद्रः गभीरः अस्ति।,The ocean is deep.
+sarovaram,सरोवरम्,lake,noun,nature,सरोवरे कमलं विकसति।,A lotus blooms in the lake.
+jalam,जलम्,water,noun,nature,जलं जीवनम्।,Water is life.
+agniḥ,अग्निः,fire,noun,nature,अग्निः दहति।,Fire burns.
+vāyuḥ,वायुः,"wind, air",noun,nature,वायुः वहति।,The wind blows.
+ākāśaḥ,आकाशः,"sky, space",noun,nature,आकाशः नीलः अस्ति।,The sky is blue.
+pṛthvī,पृथ्वी,earth,noun,nature,पृथ्वी माता अस्ति।,The earth is a mother.
+sūryaḥ,सूर्यः,sun,noun,nature,सूर्यः उदेति।,The sun rises.
+candraḥ,चन्द्रः,moon,noun,nature,चन्द्रः शीतलः अस्ति।,The moon is cool.
+nakṣatram,नक्षत्रम्,star,noun,nature,नक्षत्रं दीप्यते।,The star shines.
+meghaḥ,मेघः,cloud,noun,nature,मेघः गर्जति।,The cloud thunders.
+vṛṣṭiḥ,वृष्टिः,rain,noun,nature,वृष्टिः पतति।,Rain falls.
+vṛkṣaḥ,वृक्षः,tree,noun,nature,वृक्षः फलति।,The tree bears fruit.
+puṣpam,पुष्पम्,flower,noun,nature,पुष्पं सुगन्धि अस्ति।,The flower is fragrant.
+patram,पत्रम्,"leaf, letter",noun,nature,पत्रं पतति।,The leaf falls.
+latā,लता,creeper,noun,nature,लता वृक्षम् आरोहति।,The creeper climbs the tree.
+kamalam,कमलम्,lotus,noun,nature,कमलं सुन्दरम् अस्ति।,The lotus is beautiful.
+śilā,शिला,rock,noun,nature,शिला कठिना अस्ति।,The rock is hard.
+bhūmiḥ,भूमिः,"ground, land",noun,nature,भूमिः उर्वरा अस्ति।,The land is fertile.
+prātaḥ,प्रातः,morning,noun,time,प्रातः सूर्यः उदेति।,The sun rises in the morning.
+sāyam,सायम्,evening,noun,time,सायं दीपः ज्वलति।,The lamp burns in the evening.
+rātriḥ,रात्रिः,night,noun,time,रात्रिः शान्ता अस्ति।,The night is quiet.
+divasaḥ,दिवसः,day,noun,time,अद्य शुभः दिवसः।,Today is an auspicious day.
+māsaḥ,मासः,month,noun,time,मासः त्रिंशत् दिनानि भवन्ति।,A month has thirty days.
+varṣam,वर्षम्,year,noun,time,वर्षं शीघ्रं गच्छति।,The year passes quickly.
+adya,अद्य,today,adverb,time,अद्य अहं पठामि।,Today I study.
+śvaḥ,श्वः,tomorrow,adverb,time,श्वः अहं गमिष्यामि।,Tomorrow I will go.
+hyaḥ,ह्यः,yesterday,adverb,time,ह्यः सः आगतः।,Yesterday he came.
+aśvaḥ,अश्वः,horse,noun,animal,अश्वः धावति।,The horse runs.
+gauḥ,गौः,cow,noun,animal,गौः दुग्धं ददाति।,The cow gives milk.
+siṁhaḥ,सिंहः,lion,noun,animal,सिंहः वने वसति।,The lion lives in the forest.
+vyāghraḥ,व्याघ्रः,tiger,noun,animal,व्याघ्रः गर्जति।,The tiger roars.
+gajaḥ,गजः,elephant,noun,animal,गजः विशालः अस्ति।,The elephant is huge.
+śvānaḥ,श्वानः,dog,noun,animal,श्वानः भषति।,The dog barks.
+mārjāraḥ,मार्जारः,cat,noun,animal,मार्जारः दुग्धं पिबति।,The cat drinks milk.
+mūṣakaḥ,मूषकः,mouse,noun,animal,मूषकः बिले वसति।,The mouse lives in a hole.
+sarpaḥ,सर्पः,snake,noun,animal,सर्पः सरति।,The snake slithers.
+vānaraḥ,वानरः,monkey,noun,animal,वानरः वृक्षे कूर्दति।,The monkey jumps on the tree.
+pakṣī,पक्षी,bird,noun,animal,पक्षी आकाशे उड्डयते।,The bird flies in the sky.
+mayūraḥ,मयूरः,peacock,noun,animal,मयूरः नृत्यति।,The peacock dances.
+haṁsaḥ,हंसः,swan,noun,animal,हंसः सरोवरे तरति।,The swan swims in the lake.
+matsyaḥ,मत्स्यः,fish,noun,animal,मत्स्यः जले तरति।,The fish swims in water.
+kākaḥ,काकः,crow,noun,animal,काकः कर्कशं रौति।,The crow caws harshly.
+ajaḥ,अजः,goat,noun,animal,अजः तृणं खादति।,The goat eats grass.
+śiraḥ,शिरः,head,noun,body,शिरः उन्नतम् अस्ति।,The head is held high.
+mukham,मुखम्,"face, mouth",noun,body,मुखं हसति।,The face smiles.
+netram,नेत्रम्,eye,noun,body,नेत्रेण पश्यामि।,I see with the eye.
+karṇaḥ,कर्णः,ear,noun,body,कर्णेन शृणोमि।,I hear with the ear.
+nāsikā,नासिका,nose,noun,body,नासिकया जिघ्रामि।,I smell with the nose.
+dantaḥ,दन्तः,tooth,noun,body,दन्तः श्वेतः अस्ति।,The tooth is white.
+hastaḥ,हस्तः,hand,noun,body,हस्तेन लिखामि।,I write with the hand.
+pādaḥ,पादः,foot,noun,body,पादेन चलामि।,I walk with the foot.
+hṛdayam,हृदयम्,heart,noun,body,हृदयं धडकति।,The heart beats.
+udaram,उदरम्,stomach,noun,body,उदरं रिक्तम् अस्ति।,The stomach is empty.
+keśaḥ,केशः,hair,noun,body,केशः कृष्णः अस्ति।,The hair is black.
+jihvā,जिह्वा,tongue,noun,body,जिह्वा मधुरं रसयति।,The tongue tastes sweetness.
+śarīram,शरीरम्,body,noun,body,शरीरं स्वस्थम् अस्ति।,The body is healthy.
+rudhiram,रुधिरम्,blood,noun,body,रुधिरं रक्तम् अस्ति।,Blood is red.
+annam,अन्नम्,"food, grain",noun,food,अन्नं ब्रह्म।,Food is Brahman.
+odanaḥ,ओदनः,cooked rice,noun,food,ओदनं खादामि।,I eat rice.
+dugdham,दुग्धम्,milk,noun,food,दुग्धं पौष्टिकम् अस्ति।,Milk is nutritious.
+dadhi,दधि,curd,noun,food,दधि शीतलम् अस्ति।,Curd is cool.
+ghṛtam,घृतम्,ghee,noun,food,घृतं पवित्रम् अस्ति।,Ghee is pure.
+madhu,मधु,honey,noun,food,मधु मधुरम् अस्ति।,Honey is sweet.
+śarkarā,शर्करा,sugar,noun,food,शर्करा मधुरा अस्ति।,Sugar is sweet.
+lavaṇam,लवणम्,salt,noun,food,लवणं भोजने आवश्यकम्।,Salt is necessary in food.
+rotikā,रोटिका,bread,noun,food,रोटिका उष्णा अस्ति।,The bread is warm.
+āmraphalam,आम्रफलम्,mango,noun,food,आम्रफलं मधुरम् अस्ति।,The mango is sweet.
+kadalīphalam,कदलीफलम्,banana,noun,food,कदलीफलं पीतम् अस्ति।,The banana is yellow.
+sevaphalam,सेवफलम्,apple,noun,food,सेवफलं रक्तम् अस्ति।,The apple is red.
+pustakam,पुस्तकम्,book,noun,object,पुस्तकं पठामि।,I read a book.
+lekhanī,लेखनी,pen,noun,object,लेखन्या लिखामि।,I write with a pen.
+patrikā,पत्रिका,magazine,noun,object,पत्रिका नवीना अस्ति।,The magazine is new.
+dīpaḥ,दीपः,lamp,noun,object,दीपः ज्वलति।,The lamp burns.
+dvāram,द्वारम्,door,noun,object,द्वारं पिधेहि।,Close the door.
+gavākṣaḥ,गवाक्षः,window,noun,object,गवाक्षं उद्घाटय।,Open the window.
+āsanam,आसनम्,seat,noun,object,आसने उपविशतु।,Please sit on the seat.
+mañcaḥ,मञ्चः,"cot, stage",noun,object,मञ्चः दृढः अस्ति।,The cot is sturdy.
+vastram,वस्त्रम्,"cloth, garment",noun,object,वस्त्रं श्वेतम् अस्ति।,The cloth is white.
+dhanuḥ,धनुः,bow,noun,object,धनुः दृढम् अस्ति।,The bow is strong.
+bāṇaḥ,बाणः,arrow,noun,object,बाणः लक्ष्यं भिनत्ति।,The arrow pierces the target.
+khaḍgaḥ,खड्गः,sword,noun,object,खड्गः तीक्ष्णः अस्ति।,The sword is sharp.
+rathaḥ,रथः,chariot,noun,object,रथः शीघ्रं गच्छति।,The chariot goes fast.
+naukā,नौका,boat,noun,object,नौका जले चलति।,The boat moves on water.
+mārgaḥ,मार्गः,"path, road",noun,object,मार्गः दीर्घः अस्ति।,The road is long.
+setuḥ,सेतुः,bridge,noun,object,सेतुः नद्याः उपरि अस्ति।,The bridge is over the river.
+ghaṭaḥ,घटः,pot,noun,object,घटे जलम् अस्ति।,There is water in the pot.
+chatram,छत्रम्,umbrella,noun,object,छत्रं वृष्टेः रक्षति।,The umbrella protects from rain.
+mudrā,मुद्रा,"coin, seal",noun,object,मुद्रा लघ्वी अस्ति।,The coin is small.
+vidyālayaḥ,विद्यालयः,school,noun,place,विद्यालयः समीपे अस्ति।,The school is nearby.
+mandiram,मन्दिरम्,temple,noun,place,मन्दिरं पवित्रम् अस्ति।,The temple is sacred.
+āpaṇaḥ,आपणः,"market, shop",noun,place,आपणः जनैः पूर्णः अस्ति।,The market is full of people.
+kṣetram,क्षेत्रम्,field,noun,place,क्षेत्रं हरितम् अस्ति।,The field is green.
+udyānam,उद्यानम्,garden,noun,place,उद्याने पुष्पाणि सन्ति।,There are flowers in the garden.
+rājamārgaḥ,राजमार्गः,highway,noun,place,राजमार्गः विस्तीर्णः अस्ति।,The highway is wide.
+nāmaḥ,नाम,name,noun,abstract,तव नाम किम्?,What is your name?
+bhāṣā,भाषा,language,noun,abstract,संस्कृतं देवभाषा।,Sanskrit is the language of the gods.
+śabdaḥ,शब्दः,"word, sound",noun,abstract,शब्दः अर्थवान् अस्ति।,The word is meaningful.
+arthaḥ,अर्थः,"meaning, wealth",noun,abstract,अस्य अर्थः किम्?,What is the meaning of this?
+praśnaḥ,प्रश्नः,question,noun,abstract,प्रश्नं पृच्छामि।,I ask a question.
+uttaram,उत्तरम्,answer,noun,abstract,उत्तरं ददातु।,Please give the answer.
+kathā,कथा,story,noun,abstract,कथा रोचका अस्ति।,The story is interesting.
+gītam,गीतम्,song,noun,abstract,गीतं मधुरम् अस्ति।,The song is sweet.
+nṛtyam,नृत्यम्,dance,noun,abstract,नृत्यं सुन्दरम् अस्ति।,The dance is beautiful.
+kavitā,कविता,poem,noun,abstract,कविता भावपूर्णा अस्ति।,The poem is full of feeling.
+svapnaḥ,स्वप्नः,dream,noun,abstract,स्वप्नः सत्यः भवतु।,May the dream come true.
+āśā,आशा,hope,noun,abstract,आशा जीवनम्।,Hope is life.
+cintā,चिन्ता,worry,noun,abstract,चिन्ता चितासमा।,Worry is like a funeral pyre.
+śaktiḥ,शक्तिः,energy,noun,abstract,शक्तिः कार्ये उपयुज्यते।,Energy is used in work.
+udyamaḥ,उद्यमः,effort,noun,abstract,उद्यमेन सिध्यन्ति कार्याणि।,Tasks succeed through effort.
+ālasyam,आलस्यम्,laziness,noun,abstract,आलस्यं शत्रुः।,Laziness is an enemy.
+tapaḥ,तपः,austerity,noun,abstract,तपः फलति।,Austerity bears fruit.
+yogaḥ,योगः,"union, yoga",noun,abstract,योगः स्वास्थ्यं ददाति।,Yoga gives health.
+dhyānam,ध्यानम्,meditation,noun,abstract,ध्यानं मनः शमयति।,Meditation calms the mind.
+mokṣaḥ,मोक्षः,liberation,noun,abstract,मोक्षः परमं लक्ष्यम्।,Liberation is the highest goal.
+puṇyam,पुण्यम्,"merit, virtue",noun,abstract,पुण्यं सुखं ददाति।,Virtue gives happiness.
+pāpam,पापम्,sin,noun,abstract,पापं दुःखं ददाति।,Sin gives sorrow.
+ahiṁsā,अहिंसा,non-violence,noun,abstract,अहिंसा परमो धर्मः।,Non-violence is the highest dharma.
+hiṁsā,हिंसा,violence,noun,abstract,हिंसा निन्द्या।,Violence is condemnable.
+dānam,दानम्,charity,noun,abstract,दानं पुण्यम्।,Charity is virtue.
+tyāgaḥ,त्यागः,renunciation,noun,abstract,त्यागः श्रेष्ठः।,Renunciation is best.
+sevā,सेवा,service,noun,abstract,सेवा परमो धर्मः।,Service is the supreme duty.
+sāhasam,साहसम्,courage,noun,abstract,साहसं विजयं ददाति।,Courage gives victory.
+vijayaḥ,विजयः,victory,noun,abstract,विजयः तव भवतु।,May victory be yours.
+parājayaḥ,पराजयः,defeat,noun,abstract,पराजयः शिक्षयति।,Defeat teaches.
+samayaḥ,समयः,"time, occasion",noun,abstract,समयः मूल्यवान् अस्ति।,Time is valuable.
+svāsthyam,स्वास्थ्यम्,health,noun,abstract,स्वास्थ्यं महद् धनम्।,Health is great wealth.
+rogaḥ,रोगः,disease,noun,abstract,रोगः कष्टदायकः अस्ति।,Disease is painful.
+auṣadham,औषधम्,medicine,noun,object,औषधं सेवयतु।,Please take the medicine.
+prakāśaḥ,प्रकाशः,light,noun,nature,प्रकाशः अन्धकारं हरति।,Light removes darkness.
+andhakāraḥ,अन्धकारः,darkness,noun,nature,अन्धकारः दूरं गच्छति।,Darkness goes away.
+dhvaniḥ,ध्वनिः,sound,noun,nature,ध्वनिः श्रूयते।,A sound is heard.
+gandhaḥ,गन्धः,smell,noun,nature,गन्धः सुखदः अस्ति।,The smell is pleasant.
+rasaḥ,रसः,"taste, juice",noun,nature,रसः मधुरः अस्ति।,The juice is sweet.
+rūpam,रूपम्,"form, appearance",noun,abstract,रूपं मनोहरम् अस्ति।,The form is charming.
+varṇaḥ,वर्णः,"colour, letter",noun,abstract,वर्णः उज्ज्वलः अस्ति।,The colour is bright.
+saṅkhyā,सङ्ख्या,number,noun,abstract,सङ्ख्या वर्धते।,The number increases.
+rājyam,राज्यम्,"kingdom, state",noun,place,राज्यं समृद्धम् अस्ति।,The kingdom is prosperous.
+nyāyaḥ,न्यायः,justice,noun,abstract,न्यायः सर्वेभ्यः भवतु।,May there be justice for all.
+anyāyaḥ,अन्यायः,injustice,noun,abstract,अन्यायः न सहनीयः।,Injustice is not tolerable.
+upakāraḥ,उपकारः,"favour, help",noun,abstract,उपकारः श्रेष्ठः धर्मः।,Helping is the best duty.
+sundaram,सुन्दरम्,beautiful,adjective,quality,पुष्पं सुन्दरम् अस्ति।,The flower is beautiful.
+asundaram,असुन्दरम्,ugly,adjective,quality,चित्रम् असुन्दरम् अस्ति।,The picture is ugly.
+bṛhat,बृहत्,big,adjective,quality,वृक्षः बृहत् अस्ति।,The tree is big.
+laghu,लघु,"small, light",adjective,quality,पुस्तकं लघु अस्ति।,The book is light.
+dīrgham,दीर्घम्,long,adjective,quality,मार्गः दीर्घः अस्ति।,The road is long.
+hrasvam,ह्रस्वम्,short,adjective,quality,दण्डः ह्रस्वः अस्ति।,The stick is short.
+uccaḥ,उच्चः,"high, tall",adjective,quality,पर्वतः उच्चः अस्ति।,The mountain is high.
+nīcaḥ,नीचः,low,adjective,quality,भित्तिः नीचा अस्ति।,The wall is low.
+navaḥ,नवः,new,adjective,quality,गृहं नवम् अस्ति।,The house is new.
+purāṇaḥ,पुराणः,old,adjective,quality,वृक्षः पुराणः अस्ति।,The tree is old.
+uṣṇaḥ,उष्णः,hot,adjective,quality,जलम् उष्णम् अस्ति।,The water is hot.
+śītalaḥ,शीतलः,"cold, cool",adjective,quality,वायुः शीतलः अस्ति।,The wind is cool.
+madhuraḥ,मधुरः,sweet,adjective,quality,फलं मधुरम् अस्ति।,The fruit is sweet.
+kaṭuḥ,कटुः,"bitter, pungent",adjective,quality,औषधं कटु अस्ति।,The medicine is bitter.
+amlaḥ,अम्लः,sour,adjective,quality,नीम्बूफलम् अम्लम् अस्ति।,The lemon is sour.
+kaṭhinaḥ,कठिनः,"hard, difficult",adjective,quality,प्रश्नः कठिनः अस्ति।,The question is difficult.
+saralaḥ,सरलः,"easy, simple",adjective,quality,पाठः सरलः अस्ति।,The lesson is easy.
+śuddhaḥ,शुद्धः,pure,adjective,quality,जलं शुद्धम् अस्ति।,The water is pure.
+malinaḥ,मलिनः,dirty,adjective,quality,वस्त्रं मलिनम् अस्ति।,The cloth is dirty.
+svacchaḥ,स्वच्छः,clean,adjective,quality,गृहं स्वच्छम् अस्ति।,The house is clean.
+satyaḥ,सत्यः,true,adjective,quality,वचनं सत्यम् अस्ति।,The statement is true.
+mithyā,मिथ्या,false,adjective,quality,जगत् मिथ्या इति केचित् वदन्ति।,Some say the world is illusory.
+uttamaḥ,उत्तमः,"best, excellent",adjective,quality,सः उत्तमः छात्रः अस्ति।,He is an excellent student.
+adhamaḥ,अधमः,"lowest, worst",adjective,quality,अधमः जनः अपकारं करोति।,A base person does harm.
+śreṣṭhaḥ,श्रेष्ठः,"best, superior",adjective,quality,विद्या श्रेष्ठा अस्ति।,Knowledge is supreme.
+priyaḥ,प्रियः,"dear, beloved",adjective,quality,मम मित्रं प्रियम् अस्ति।,My friend is dear.
+mahān,महान्,great,adjective,quality,भारतं महान् देशः।,India is a great country.
+vīryavān,वीर्यवान्,valiant,adjective,quality,सः वीर्यवान् योद्धा अस्ति।,He is a valiant warrior.
+buddhimān,बुद्धिमान्,intelligent,adjective,quality,बालकः बुद्धिमान् अस्ति।,The boy is intelligent.
+dhanavān,धनवान्,wealthy,adjective,quality,वणिक् धनवान् अस्ति।,The merchant is wealthy.
+nirdhanaḥ,निर्धनः,poor,adjective,quality,निर्धनः साहाय्यम् इच्छति।,The poor man wants help.
+sukhī,सुखी,happy,adjective,quality,सः सुखी अस्ति।,He is happy.
+duḥkhī,दुःखी,sad,adjective,quality,सा दुःखिनी अस्ति।,She is sad.
+svasthaḥ,स्वस्थः,healthy,adjective,quality,अहं स्वस्थः अस्मि।,I am healthy.
+rugṇaḥ,रुग्णः,sick,adjective,quality,बालकः रुग्णः अस्ति।,The boy is sick.
+balavān,बलवान्,strong,adjective,quality,सिंहः बलवान् अस्ति।,The lion is strong.
+durbalaḥ,दुर्बलः,weak,adjective,quality,मूषकः दुर्बलः अस्ति।,The mouse is weak.
+tīvraḥ,तीव्रः,"fast, sharp",adjective,quality,अश्वः तीव्रः अस्ति।,The horse is fast.
+mandaḥ,मन्दः,slow,adjective,quality,कूर्मः मन्दः अस्ति।,The tortoise is slow.
+raktaḥ,रक्तः,red,adjective,colour,पुष्पं रक्तम् अस्ति।,The flower is red.
+śvetaḥ,श्वेतः,white,adjective,colour,हंसः श्वेतः अस्ति।,The swan is white.
+kṛṣṇaḥ,कृष्णः,black,adjective,colour,काकः कृष्णः अस्ति।,The crow is black.
+nīlaḥ,नीलः,blue,adjective,colour,आकाशः नीलः अस्ति।,The sky is blue.
+pītaḥ,पीतः,yellow,adjective,colour,कदलीफलं पीतम् अस्ति।,The banana is yellow.
+haritaḥ,हरितः,green,adjective,colour,पत्रं हरितम् अस्ति।,The leaf is green.
+dhūsaraḥ,धूसरः,grey,adjective,colour,मेघः धूसरः अस्ति।,The cloud is grey.
+kramaḥ,क्रमः,"order, sequence",noun,abstract,क्रमेण कार्यं कुरु।,Do the work in order.
+gacchati,गच्छति,goes,verb,motion,रामः विद्यालयं गच्छति।,Rama goes to school.
+āgacchati,आगच्छति,comes,verb,motion,सः गृहम् आगच्छति।,He comes home.
+dhāvati,धावति,runs,verb,motion,बालकः धावति।,The boy runs.
+calati,चलति,"walks, moves",verb,motion,सः मार्गे चलति।,He walks on the road.
+tiṣṭhati,तिष्ठति,stands,verb,motion,शिक्षकः तिष्ठति।,The teacher stands.
+upaviśati,उपविशति,sits,verb,motion,छात्रः उपविशति।,The student sits.
+śete,शेते,"sleeps, lies down",verb,motion,शिशुः शेते।,The baby sleeps.
+uttiṣṭhati,उत्तिष्ठति,gets up,verb,motion,सः प्रातः उत्तिष्ठति।,He gets up in the morning.
+patati,पतति,falls,verb,motion,पत्रं पतति।,The leaf falls.
+uḍḍayate,उड्डयते,flies,verb,motion,पक्षी उड्डयते।,The bird flies.
+plavate,प्लवते,"floats, swims",verb,motion,नौका प्लवते।,The boat floats.
+praviśati,प्रविशति,enters,verb,motion,सः गृहं प्रविशति।,He enters the house.
+nirgacchati,निर्गच्छति,goes out,verb,motion,सः बहिः निर्गच्छति।,He goes outside.
+āroha,आरोहति,climbs,verb,motion,वानरः वृक्षम् आरोहति।,The monkey climbs the tree.
+paṭhati,पठति,"reads, studies",verb,action,छात्रः पुस्तकं पठति।,The student reads a book.
+likhati,लिखति,writes,verb,action,सा पत्रं लिखति।,She writes a letter.
+vadati,वदति,speaks,verb,action,सः सत्यं वदति।,He speaks the truth.
+śṛṇoti,शृणोति,"hears, listens",verb,action,शिष्यः गुरुं शृणोति।,The disciple listens to the teacher.
+paśyati,पश्यति,sees,verb,action,सः चित्रं पश्यति।,He sees a picture.
+spṛśati,स्पृशति,touches,verb,action,बालः जलं स्पृशति।,The child touches water.
+jighrati,जिघ्रति,smells,verb,action,सः पुष्पं जिघ्रति।,He smells the flower.
+khādati,खादति,eats,verb,action,बालकः फलं खादति।,The boy eats fruit.
+pibati,पिबति,drinks,verb,action,सा जलं पिबति।,She drinks water.
+pacati,पचति,cooks,verb,action,माता भोजनं पचति।,Mother cooks food.
+karoti,करोति,"does, makes",verb,action,सः कार्यं करोति।,He does the work.
+dadāti,ददाति,gives,verb,action,दाता धनं ददाति।,The donor gives wealth.
+gṛhṇāti,गृह्णाति,takes,verb,action,सः पुस्तकं गृह्णाति।,He takes the book.
+krīṇāti,क्रीणाति,buys,verb,action,सः फलानि क्रीणाति।,He buys fruits.
+vikrīṇāti,विक्रीणाति,sells,verb,action,वणिक् वस्त्रं विक्रीणाति।,The merchant sells cloth.
+bhavati,भवति,"becomes, is",verb,state,सः शिक्षकः भवति।,He becomes a teacher.
+asti,अस्ति,"is, exists",verb,state,गृहे दीपः अस्ति।,There is a lamp in the house.
+nāsti,नास्ति,is not,verb,state,अत्र जलं नास्ति।,There is no water here.
+jānāti,जानाति,knows,verb,mental,सः उत्तरं जानाति।,He knows the answer.
+icchati,इच्छति,"wishes, wants",verb,mental,सः फलम् इच्छति।,He wants fruit.
+cintayati,चिन्तयति,thinks,verb,mental,सः उपायं चिन्तयति।,He thinks of a solution.
+smarati,स्मरति,remembers,verb,mental,अहं तव नाम स्मरामि।,I remember your name.
+vismarati,विस्मरति,forgets,verb,mental,सः मार्गं विस्मरति।,He forgets the way.
+manyate,मन्यते,"thinks, considers",verb,mental,अहं तं मित्रं मन्ये।,I consider him a friend.
+bibheti,बिभेति,fears,verb,mental,बालः अन्धकारात् बिभेति।,The child fears the dark.
+hasati,हसति,laughs,verb,emotion,शिशुः हसति।,The baby laughs.
+rodati,रोदति,cries,verb,emotion,बालिका रोदति।,The girl cries.
+krīḍati,क्रीडति,plays,verb,action,बालकाः क्रीडन्ति।,The children play.
+gāyati,गायति,sings,verb,action,सा मधुरं गायति।,She sings sweetly.
+nṛtyati,नृत्यति,dances,verb,action,मयूरः नृत्यति।,The peacock dances.
+vādayati,वादयति,plays (instrument),verb,action,सः वीणां वादयति।,He plays the veena.
+pṛcchati,पृच्छति,asks,verb,action,छात्रः प्रश्नं पृच्छति।,The student asks a question.
+uttarati,उत्तरति,"crosses, answers",verb,action,सः नदीम् उत्तरति।,He crosses the river.
+āhvayati,आह्वयति,calls,verb,action,माता पुत्रम् आह्वयति।,Mother calls her son.
+dadāti,ददाति,offers,verb,action,सः पुष्पं ददाति।,He offers a flower.
+labhate,लभते,obtains,verb,action,सः फलं लभते।,He obtains the fruit.
+nayati,नयति,"leads, carries",verb,action,नाविकः नौकां नयति।,The boatman steers the boat.
+hanti,हन्ति,"kills, strikes",verb,action,व्याघ्रः मृगं हन्ति।,The tiger kills the deer.
+rakṣati,रक्षति,protects,verb,action,राजा प्रजां रक्षति।,The king protects the people.
+pālayati,पालयति,"nourishes, rules",verb,action,माता पुत्रं पालयति।,Mother nurtures her son.
+pūjayati,पूजयति,worships,verb,action,सः देवं पूजयति।,He worships the god.
+namati,नमति,bows,verb,action,शिष्यः गुरुं नमति।,The student bows to the teacher.
+snāti,स्नाति,bathes,verb,action,सः नद्यां स्नाति।,He bathes in the river.
+vasati,वसति,"lives, dwells",verb,state,सः ग्रामे वसति।,He lives in the village.
+jīvati,जीवति,lives,verb,state,सः सुखेन जीवति।,He lives happily.
+mriyate,म्रियते,dies,verb,state,"जातस्य मृत्युः ध्रुवः, सः म्रियते।",One who is born dies.
+vardhate,वर्धते,grows,verb,state,वृक्षः वर्धते।,The tree grows.
+bhramati,भ्रमति,wanders,verb,motion,सः वने भ्रमति।,He wanders in the forest.
+ahaṁ,अहम्,I,pronoun,personal,अहं छात्रः अस्मि।,I am a student.
+tvam,त्वम्,you,pronoun,personal,त्वं कः असि?,Who are you?
+saḥ,सः,"he, that",pronoun,personal,सः गृहं गच्छति।,He goes home.
+sā,सा,"she, that",pronoun,personal,सा पठति।,She reads.
+tat,तत्,"it, that",pronoun,personal,तत् पुस्तकम् अस्ति।,That is a book.
+vayam,वयम्,we,pronoun,personal,वयं भारतीयाः स्मः।,We are Indians.
+yūyam,यूयम्,you (plural),pronoun,personal,यूयं कुत्र गच्छथ?,Where are you all going?
+te,ते,they,pronoun,personal,ते क्रीडन्ति।,They play.
+ayam,अयम्,this (masc.),pronoun,demonstrative,अयं बालकः अस्ति।,This is a boy.
+iyam,इयम्,this (fem.),pronoun,demonstrative,इयं बालिका अस्ति।,This is a girl.
+idam,इदम्,this (neut.),pronoun,demonstrative,इदं पुस्तकम् अस्ति।,This is a book.
+kaḥ,कः,"who, what (masc.)",pronoun,interrogative,कः आगच्छति?,Who is coming?
+kā,का,"who, what (fem.)",pronoun,interrogative,का गायति?,Who is singing?
+kim,किम्,what,pronoun,interrogative,किं करोषि?,What are you doing?
+yaḥ,यः,"who, which",pronoun,relative,यः पठति सः विद्वान् भवति।,He who studies becomes learned.
+sarvaḥ,सर्वः,"all, everyone",pronoun,quantifier,सर्वे सुखिनः सन्तु।,May all be happy.
+anyaḥ,अन्यः,other,pronoun,quantifier,अन्यः जनः आगतः।,Another person came.
+kutra,कुत्र,where,adverb,interrogative,त्वं कुत्र गच्छसि?,Where are you going?
+atra,अत्र,here,adverb,place,अत्र आगच्छ।,Come here.
+tatra,तत्र,there,adverb,place,तत्र पश्य।,Look there.
+sarvatra,सर्वत्र,everywhere,adverb,place,ईश्वरः सर्वत्र अस्ति।,God is everywhere.
+kadā,कदा,when,adverb,interrogative,त्वं कदा आगमिष्यसि?,When will you come?
+tadā,तदा,then,adverb,time,तदा सः आगतः।,Then he came.
+yadā,यदा,when (relative),adverb,time,यदा वृष्टिः भवति तदा सस्यं वर्धते।,"When it rains, crops grow."
+sadā,सदा,always,adverb,time,सत्यं सदा वद।,Always speak the truth.
+kadācit,कदाचित्,sometimes,adverb,time,कदाचित् सः आगच्छति।,Sometimes he comes.
+śīghram,शीघ्रम्,quickly,adverb,manner,शीघ्रं गच्छ।,Go quickly.
+śanaiḥ,शनैः,slowly,adverb,manner,शनैः चल।,Walk slowly.
+kathaṁ,कथम्,how,adverb,interrogative,त्वं कथम् असि?,How are you?
+kutaḥ,कुतः,"from where, why",adverb,interrogative,त्वं कुतः आगतः?,Where have you come from?
+kimartham,किमर्थम्,why,adverb,interrogative,किमर्थं रोदिषि?,Why are you crying?
+bahiḥ,बहिः,outside,adverb,place,सः बहिः गच्छति।,He goes outside.
+antaḥ,अन्तः,inside,adverb,place,अन्तः आगच्छ।,Come inside.
+upari,उपरि,above,adverb,place,वृक्षस्य उपरि पक्षी अस्ति।,A bird is above the tree.
+adhaḥ,अधः,below,adverb,place,वृक्षस्य अधः छाया अस्ति।,There is shade below the tree.
+purataḥ,पुरतः,in front,adverb,place,गृहस्य पुरतः उद्यानम् अस्ति।,There is a garden in front of the house.
+pṛṣṭhataḥ,पृष्ठतः,behind,adverb,place,गृहस्य पृष्ठतः वृक्षः अस्ति।,There is a tree behind the house.
+samīpe,समीपे,near,adverb,place,विद्यालयः समीपे अस्ति।,The school is nearby.
+dūre,दूरे,far,adverb,place,ग्रामः दूरे अस्ति।,The village is far.
+ca,च,and,conjunction,connector,रामः सीता च गच्छतः।,Rama and Sita go.
+vā,वा,or,conjunction,connector,चायं वा दुग्धं वा पिबतु।,Drink tea or milk.
+api,अपि,"also, even",particle,connector,सः अपि आगच्छति।,He also comes.
+eva,एव,"only, indeed",particle,connector,त्वम् एव मम मित्रम्।,You alone are my friend.
+na,न,not,particle,negation,सः न गच्छति।,He does not go.
+iti,इति,"thus, (quote marker)",particle,connector,सः आगच्छामि इति वदति।,"He says ""I am coming""."
+yadi,यदि,if,conjunction,connector,यदि वृष्टिः भवेत् तर्हि सस्यं वर्धेत।,"If it rains, crops will grow."
+tarhi,तर्हि,"then, in that case",conjunction,connector,यदि पठसि तर्हि जयसि।,"If you study, then you win."
+kintu,किन्तु,but,conjunction,connector,सः आगतः किन्तु न उपविशति।,He came but does not sit.
+yataḥ,यतः,because,conjunction,connector,सः दुःखी यतः सः रुग्णः।,He is sad because he is sick.
+tasmāt,तस्मात्,therefore,conjunction,connector,वृष्टिः अस्ति तस्मात् गृहे तिष्ठ।,"It is raining, therefore stay home."
+atha,अथ,"now, then (beginning)",particle,connector,अथ कथा आरभ्यते।,Now the story begins.
+punaḥ,पुनः,again,adverb,time,पुनः आगच्छ।,Come again.
+bahu,बहु,"much, many",adjective,quantity,बहु धनम् अस्ति।,There is much wealth.
+alpa,अल्प,"little, few",adjective,quantity,अल्पं जलम् अस्ति।,There is little water.
+kiñcit,किञ्चित्,"a little, something",adverb,quantity,किञ्चित् जलं देहि।,Give me a little water.
+sarvam,सर्वम्,everything,noun,quantity,सर्वं मम अस्ति।,Everything is mine.
+ekaḥ,एकः,one,numeral,number,एकः बालकः अस्ति।,There is one boy.
+dvau,द्वौ,two,numeral,number,द्वौ मित्रे स्तः।,There are two friends.
+trayaḥ,त्रयः,three,numeral,number,त्रयः बालकाः सन्ति।,There are three boys.
+catvāraḥ,चत्वारः,four,numeral,number,चत्वारः वेदाः सन्ति।,There are four Vedas.
+pañca,पञ्च,five,numeral,number,पञ्च अङ्गुल्यः सन्ति।,There are five fingers.
+ṣaṭ,षट्,six,numeral,number,षट् ऋतवः सन्ति।,There are six seasons.
+sapta,सप्त,seven,numeral,number,सप्त वाराः सन्ति।,There are seven days of the week.
+aṣṭa,अष्ट,eight,numeral,number,अष्ट दिशः सन्ति।,There are eight directions.
+nava,नव,nine,numeral,number,नव ग्रहाः सन्ति।,There are nine planets.
+daśa,दश,ten,numeral,number,दश बालकाः सन्ति।,There are ten boys.
+śatam,शतम्,hundred,numeral,number,शतं पुस्तकानि सन्ति।,There are a hundred books.
+sahasram,सहस्रम्,thousand,numeral,number,सहस्रं जनाः सन्ति।,There are a thousand people.
+pūrvaḥ,पूर्वः,"east, former",noun,direction,सूर्यः पूर्वस्यां दिशि उदेति।,The sun rises in the east.
+paścimaḥ,पश्चिमः,west,noun,direction,सूर्यः पश्चिमे अस्तं गच्छति।,The sun sets in the west.
+uttaraḥ,उत्तरः,north,noun,direction,हिमालयः उत्तरे अस्ति।,The Himalayas are in the north.
+dakṣiṇaḥ,दक्षिणः,south,noun,direction,केरलं दक्षिणे अस्ति।,Kerala is in the south.
+vasantaḥ,वसन्तः,spring,noun,season,वसन्ते पुष्पाणि विकसन्ति।,Flowers bloom in spring.
+grīṣmaḥ,ग्रीष्मः,summer,noun,season,ग्रीष्मे उष्णता भवति।,It is hot in summer.
+varṣā,वर्षा,"monsoon, rain",noun,season,वर्षासु मेघाः गर्जन्ति।,Clouds thunder in the rainy season.
+śaradṛtuḥ,शरदृतुः,autumn,noun,season,शरदृतौ आकाशः निर्मलः भवति।,The sky is clear in autumn.
+hemantaḥ,हेमन्तः,early winter,noun,season,हेमन्ते शीतं भवति।,It is cold in early winter.
+śiśiraḥ,शिशिरः,winter,noun,season,शिशिरे पत्राणि पतन्ति।,Leaves fall in winter.
+somavāsaraḥ,सोमवासरः,Monday,noun,day,सोमवासरे विद्यालयः उद्घाट्यते।,The school opens on Monday.
+maṅgalavāsaraḥ,मङ्गलवासरः,Tuesday,noun,day,मङ्गलवासरे अहं गमिष्यामि।,I will go on Tuesday.
+budhavāsaraḥ,बुधवासरः,Wednesday,noun,day,बुधवासरे परीक्षा अस्ति।,There is an exam on Wednesday.
+guruvāsaraḥ,गुरुवासरः,Thursday,noun,day,गुरुवासरे पूजा भवति।,Worship happens on Thursday.
+śukravāsaraḥ,शुक्रवासरः,Friday,noun,day,शुक्रवासरे चलचित्रं पश्यामः।,We watch a film on Friday.
+śanivāsaraḥ,शनिवासरः,Saturday,noun,day,शनिवासरे विरामः अस्ति।,There is a holiday on Saturday.
+ravivāsaraḥ,रविवासरः,Sunday,noun,day,रविवासरे वयं भ्रमामः।,We wander about on Sunday.
+namaste,नमस्ते,greetings,interjection,greeting,नमस्ते गुरो।,"Greetings, teacher."
+svāgatam,स्वागतम्,welcome,interjection,greeting,भवतां स्वागतम्।,Welcome to you all.
+dhanyavādaḥ,धन्यवादः,thank you,noun,greeting,भवते धन्यवादः।,Thank you.
+kṣamyatām,क्षम्यताम्,please forgive,interjection,greeting,"क्षम्यतां, अहं विलम्बितः।","Sorry, I am late."
+śubham,शुभम्,"auspicious, good",adjective,greeting,शुभं भवतु।,May it be auspicious.
+śubhaprabhātam,शुभप्रभातम्,good morning,interjection,greeting,शुभप्रभातं मित्र।,"Good morning, friend."
+śubharātriḥ,शुभरात्रिः,good night,interjection,greeting,शुभरात्रिः पुत्र।,"Good night, son."
+āma,आम्,yes,particle,reply,"आम्, अहं गच्छामि।","Yes, I am going."
+no,नो,no (colloquial),particle,reply,"नो, अहं न गच्छामि।","No, I am not going."
+bhoḥ,भोः,"hey, O (address)",interjection,address,"भोः मित्र, आगच्छ।","Hey friend, come."
+aho,अहो,oh! wow!,interjection,exclamation,अहो सुन्दरम्!,"Oh, how beautiful!"

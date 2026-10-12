@@ -1,14 +1,16 @@
 """
 Paninian Grammar Analyzer
 -------------------------
-A wrapper around the `prakriya` Sanskrit verb analyzer.
+A wrapper around the `prakriya` Sanskrit verb analyzer and generator.
 
 Scope (deliberately limited):
 - Devanagari → SLP1 via indic-transliteration.
-- Uses Prakriya's documented get_info() API.
+- Uses Prakriya's documented get_info() API for analysis.
+- Uses Prakriya's VerbFormGenerator for correction synthesis.
 - Recognizes finite (tiṅanta) verb forms.
 - Extracts: dhatu, lakara, purusha, vacana, gana, pada, suffix,
   derivation sutras.
+- Generates correct verb forms for any root the generator knows.
 - Does NOT do: subanta analysis, sandhi splitting, samasa, karaka,
   or syntactic parsing.
 """
@@ -19,12 +21,33 @@ import re
 import unicodedata
 from typing import Any, Dict, List, Optional
 
+# ─── Prakriya analyzer import ─────────────────────────────
 try:
     from prakriya import Prakriya
     PRAKRIYA_AVAILABLE = True
 except ImportError:
     PRAKRIYA_AVAILABLE = False
 
+# ─── Prakriya verb-form generator import ──────────────────
+# Prakriya renamed `Generate` to `VerbFormGenerator` in newer versions.
+# Try both names so the code works on either.
+GENERATOR_AVAILABLE = False
+_GENERATOR_CLASS = None
+
+try:
+    from prakriya import VerbFormGenerator
+    GENERATOR_AVAILABLE = True
+    _GENERATOR_CLASS = VerbFormGenerator
+except ImportError:
+    try:
+        from prakriya import Generate as _Generate
+        GENERATOR_AVAILABLE = True
+        _GENERATOR_CLASS = _Generate
+    except ImportError:
+        GENERATOR_AVAILABLE = False
+        _GENERATOR_CLASS = None
+
+# ─── Transliteration import ───────────────────────────────
 try:
     from indic_transliteration import sanscript
     SANSCRIPT_AVAILABLE = True
@@ -38,10 +61,48 @@ class PaninianAnalyzer:
     # part of the SLP1 phonetic inventory. Safe to strip.
     _IT_MARKERS = ("x", "X", "~", "\\", "'", "^", "|", "#", "@", "!", "$", "%", "&", "*")
 
+    # Map internal lakara codes to the generator's valid set.
+    _LAKARA_TO_GENERATOR = {
+        "law": "law",       # present
+        "laG": "laN",       # past (laṅ)
+        "laN": "laN",
+        "lfw": "lfw",       # simple future (lṛṭ)
+        "luw": "luw",       # periphrastic future (luṭ)
+        "low": "low",       # imperative (loṭ)
+        "loW": "low",
+        "viDiliG": "viDiliN",
+        "viDiliN": "viDiliN",
+    }
+
+    # Map our pipeline's person/number vocabulary to SLP1 for the generator.
+    _PURUSHA_TO_GENERATOR = {
+        "praTama": "praTama",
+        "maDyama": "maDyama",
+        "uttama": "uttama",
+        "prathama": "praTama",
+        "madhyama": "maDyama",
+    }
+
+    _VACHANA_TO_GENERATOR = {
+        "eka": "eka",
+        "dvi": "dvi",
+        "bahu": "bahu",
+    }
+
+    # Roots for which the generator tends to produce causatives or other
+    # wrong derivations. We refuse outputs containing these substrings.
+    # Fallback to the paradigm table takes over in that case.
+    _WEAK_FORMS = {
+        "BU": ("भावय",),      # reject causative of भू
+        "as": ("अस्या",),  # reject wrong derivation of अस् # reject wrong derivations of अस्
+    }
+
     def __init__(self):
         self.prakriya: Optional[Any] = None
+        self.generator: Optional[Any] = None
         self._init_error: Optional[str] = None
 
+        # ── Initialize analyzer ───────────────────────────────
         if PRAKRIYA_AVAILABLE:
             try:
                 self.prakriya = Prakriya()
@@ -57,6 +118,22 @@ class PaninianAnalyzer:
         else:
             self._init_error = "prakriya not installed"
             print("⚠️ prakriya not installed")
+
+        # ── Initialize generator ──────────────────────────────
+        if GENERATOR_AVAILABLE and _GENERATOR_CLASS is not None:
+            try:
+                self.generator = _GENERATOR_CLASS()
+                try:
+                    self.generator.input_translit("slp1")
+                    self.generator.output_translit("devanagari")
+                except Exception:
+                    pass
+                print("✅ Paninian Analyzer: VerbFormGenerator initialized")
+            except Exception as exc:
+                print(f"⚠️ Paninian Analyzer: generator init failed: {exc}")
+                self.generator = None
+        else:
+            print("⚠️ Paninian Analyzer: VerbFormGenerator not available")
 
         if not SANSCRIPT_AVAILABLE:
             print("⚠️ indic-transliteration not installed")
@@ -93,7 +170,7 @@ class PaninianAnalyzer:
         return sanscript.transliterate(slp1, sanscript.SLP1, sanscript.DEVANAGARI)
 
     # ─────────────────────────────────────────────────────────────
-    # Prakriya field access (with list unwrapping)
+    # Prakriya field access (analyzer)
     # ─────────────────────────────────────────────────────────────
     @staticmethod
     def _unwrap(value: Any) -> Any:
@@ -141,11 +218,24 @@ class PaninianAnalyzer:
     # Root extraction
     # ─────────────────────────────────────────────────────────────
     @classmethod
+    def _clean_root(cls, slp1_root: str) -> str:
+        """
+        Strip IT markers from a raw SLP1 root.
+        The generator needs a clean root, not one with x/~ markers.
+        """
+        if not slp1_root:
+            return ""
+        s = str(slp1_root).strip()
+        for marker in cls._IT_MARKERS:
+            s = s.replace(marker, "")
+        return s.strip()
+
+    @classmethod
     def _extract_root(cls, derivation: List[Dict[str, str]], raw_verb: Any) -> str:
         """
         Extract the clean root.
-        Strategy: take the form IMMEDIATELY BEFORE the first derivation step
-        whose form contains '+' (i.e. before suffix attachment begins).
+        Take the form IMMEDIATELY BEFORE the first derivation step
+        whose form contains '+' (before suffix attachment begins).
         """
         clean_root = ""
         for step in derivation:
@@ -156,14 +246,11 @@ class PaninianAnalyzer:
                 clean_root = form
 
         if clean_root:
-            return clean_root
+            return cls._clean_root(clean_root)
 
-        # Fallback: strip known non-phoneme markers from the raw verb field
+        # Fallback: strip IT markers from raw verb
         if raw_verb:
-            s = str(raw_verb)
-            for m in cls._IT_MARKERS:
-                s = s.replace(m, "")
-            return s.strip()
+            return cls._clean_root(str(raw_verb))
 
         return ""
 
@@ -271,6 +358,129 @@ class PaninianAnalyzer:
         }
 
     # ─────────────────────────────────────────────────────────────
+    # Verb-form generation (for correction)
+    # ─────────────────────────────────────────────────────────────
+    def generate_verb_form(
+        self,
+        root_slp1: str,
+        lakara: str,
+        purusha: str,
+        vachana: str,
+        raw_root_with_markers: Optional[str] = None,
+    ) -> Optional[str]:
+        """
+        Generate the correct Devanagari form for a given root and features.
+
+        Tries multiple root spellings, because Prakriya's generator expects
+        the Dhatupatha canonical form (which may include IT markers).
+
+        Resolution order of root candidates:
+          1. raw_root_with_markers — Prakriya's own analyzer output, most authoritative
+          2. root_slp1 — cleaned root from the caller
+          3. variants — with/without trailing 'a'
+        """
+        if not self.generator:
+            return None
+        if not lakara or not purusha or not vachana:
+            return None
+
+        # ── Build ordered list of root candidates ──────────────
+        candidates: List[str] = []
+
+        # 1. Raw root with IT markers
+        if raw_root_with_markers:
+            raw = str(raw_root_with_markers).strip()
+            if raw:
+                candidates.append(raw)
+                # also try with trailing marker characters stripped
+                cleaned_step = raw.rstrip("~Xx")
+                if cleaned_step and cleaned_step not in candidates:
+                    candidates.append(cleaned_step)
+
+        # 2. Clean root passed by the caller
+        if root_slp1:
+            cleaned = self._clean_root(str(root_slp1)).strip()
+            if cleaned and cleaned not in candidates:
+                candidates.append(cleaned)
+
+            if cleaned:
+                # 3. Variant: without trailing 'a'
+                if cleaned.endswith("a") and len(cleaned) > 2:
+                    variant = cleaned[:-1]
+                    if variant not in candidates:
+                        candidates.append(variant)
+                # 4. Variant: with trailing 'a'
+                variant = cleaned + "a"
+                if variant not in candidates:
+                    candidates.append(variant)
+
+        if not candidates:
+            return None
+
+        # ── Feature mapping ─────────────────────────────────────
+        lakara_gen = self._LAKARA_TO_GENERATOR.get(lakara, lakara)
+        purusha_gen = self._PURUSHA_TO_GENERATOR.get(purusha, purusha)
+        vachana_gen = self._VACHANA_TO_GENERATOR.get(vachana, vachana)
+
+        # ── Try each candidate ──────────────────────────────────
+        for root in candidates:
+            try:
+                raw = self.generator.getforms(
+                    root, lakara_gen, purusha_gen, vachana_gen
+                )
+            except SystemExit:
+                # Prakriya's generator calls sys.exit() on unknown verbs.
+                continue
+            except Exception:
+                continue
+
+            form = self._extract_form_from_generator_output(raw)
+            if not form:
+                continue
+
+            # ── Sanity filter: reject known-wrong outputs ──────
+            base_root = self._clean_root(str(root))
+            weak_markers = self._WEAK_FORMS.get(base_root)
+            if weak_markers and any(wm in form for wm in weak_markers):
+                continue
+
+            return form
+
+        return None
+
+    @staticmethod
+    def _extract_form_from_generator_output(raw: Any) -> Optional[str]:
+        """
+        The generator returns nested dicts / lists. Flatten to a single
+        Devanagari string, defensively walking whatever structure we get.
+        """
+        if raw is None:
+            return None
+
+        # Plain string
+        if isinstance(raw, str):
+            s = raw.strip()
+            return s or None
+
+        # List
+        if isinstance(raw, list):
+            for item in raw:
+                found = PaninianAnalyzer._extract_form_from_generator_output(item)
+                if found:
+                    return found
+            return None
+
+        # Dict — walk values
+        if isinstance(raw, dict):
+            for value in raw.values():
+                found = PaninianAnalyzer._extract_form_from_generator_output(value)
+                if found:
+                    return found
+            return None
+
+        return None
+
+    # ─────────────────────────────────────────────────────────────
     # Derivation trace
     # ─────────────────────────────────────────────────────────────
     def get_derivation_trace(self, dev_form: str) -> str:
@@ -314,13 +524,6 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"  {w} -> ERROR: {e}")
 
-    print("\n--- SLP1 -> Devanagari ---")
-    for s in ["gam", "gacCati", "paWati", "rAmaH", "dfS"]:
-        try:
-            print(f"  {s} -> {analyzer.to_devanagari(s)}")
-        except Exception as e:
-            print(f"  {s} -> ERROR: {e}")
-
     print("\n--- Verb Analysis ---")
     for w in ["गच्छति", "पठति", "करोति", "भवति", "पिबति", "खादति",
               "रामः", "वनम्"]:
@@ -334,16 +537,23 @@ if __name__ == "__main__":
         else:
             print(f"  {w:10s} → not verb  ({r.get('error')})")
 
-    print("\n--- Derivation Trace ---")
-    print(analyzer.get_derivation_trace("गच्छति"))
-
-    print("\n--- Sentence Analysis ---")
-    r = analyzer.analyze_sentence("रामः वनं गच्छति।")
-    print(f"  Tokens     : {r['tokens']}")
-    print(f"  Has verb   : {r['has_verb']}")
-    print(f"  Verb count : {r['verb_count']}")
-    for entry in r["word_analyses"]:
-        if entry["is_verb"]:
-            m = entry["morphology"]
-            print(f"    {entry['surface']} → root={m['root']}, "
-                  f"purusha={m['person']}, vacana={m['number']}")
+    print("\n--- Generator Test ---")
+    if analyzer.generator:
+        tests = [
+            # (root, lakara, purusha, vachana, expected, raw_root_hint)
+            ("gam", "law", "praTama", "bahu",  "गच्छन्ति", "gamx~"),
+            ("gam", "law", "uttama",  "eka",   "गच्छामि", "gamx~"),
+            ("paW", "law", "praTama", "eka",   "पठति",   "paWa"),
+            ("kR",  "law", "praTama", "bahu",  "कुर्वन्ति", "qukfY"),
+            ("BU",  "law", "praTama", "eka",   "भवति",   "BU"),
+            ("as",  "law", "uttama",  "eka",   "अस्मि",   "asa"),
+        ]
+        for root, lak, pur, vac, expected, raw in tests:
+            got = analyzer.generate_verb_form(
+                root, lak, pur, vac, raw_root_with_markers=raw
+            )
+            mark = "✅" if got == expected else "❌"
+            print(f"  {mark} {root:5s} {lak:4s} {pur:8s} {vac:5s} "
+                  f"→ {got}  (expected {expected})")
+    else:
+        print("  Generator not initialized")

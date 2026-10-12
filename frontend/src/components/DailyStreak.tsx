@@ -320,25 +320,33 @@ export default function DailyStreak() {
                                     const isSelected = selectedOption === opt;
                                     const hasDevanagari = /[\u0900-\u097F]/.test(opt);
                                     return (
-                                        <motion.button
+                                        <motion.div
                                             key={i}
-                                            whileHover={{ y: -3, borderColor: 'var(--primary)' }}
-                                            whileTap={{ scale: 0.98 }}
-                                            onClick={() => handleAnswer(opt)}
-                                            className={`option-btn ${isSelected ? 'selected' : ''}`}
-                                            disabled={selectedOption !== null}
+                                            whileHover={{ y: selectedOption === null ? -3 : 0 }}
+                                            whileTap={{ scale: selectedOption === null ? 0.98 : 1 }}
+                                            className="option-card"
                                         >
-                                            <div className="option-index">{String.fromCharCode(65 + i)}</div>
-                                            <div className="option-text flex-1 text-left">{opt}</div>
+                                            <button
+                                                type="button"
+                                                onClick={() => handleAnswer(opt)}
+                                                className={`option-btn ${isSelected ? 'selected' : ''}`}
+                                                disabled={selectedOption !== null}
+                                            >
+                                                <div className="option-index">{String.fromCharCode(65 + i)}</div>
+                                                <div className="option-text flex-1 text-left">{opt}</div>
+                                                {isSelected && (
+                                                    <motion.div layoutId="highlight" className="option-glow" />
+                                                )}
+                                            </button>
                                             {hasDevanagari && (
-                                                <div onClick={(e) => e.stopPropagation()} className="ml-auto">
-                                                    <AudioPronounceButton text={opt} size={14} title={`Pronounce: ${opt}`} />
-                                                </div>
+                                                <AudioPronounceButton
+                                                    text={opt}
+                                                    size={14}
+                                                    title={`Pronounce: ${opt}`}
+                                                    style={{ position: 'absolute', top: 13, right: 13, zIndex: 1 }}
+                                                />
                                             )}
-                                            {isSelected && (
-                                                <motion.div layoutId="highlight" className="option-glow" />
-                                            )}
-                                        </motion.button>
+                                        </motion.div>
                                     );
                                 })}
                             </div>
@@ -399,7 +407,9 @@ export default function DailyStreak() {
                             .options-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
                             @media (min-width: 768px) { .options-grid { grid-template-columns: repeat(3, 1fr); } }
 
+                            .option-card { position: relative; }
                             .option-btn {
+                                width: 100%;
                                 background: var(--bg-main);
                                 border: 1.5px solid var(--border-soft);
                                 border-radius: var(--radius-lg);
@@ -414,7 +424,7 @@ export default function DailyStreak() {
                                 color: var(--text-main);
                                 box-shadow: var(--shadow-sm);
                             }
-                            .option-btn:hover:not(.selected) { border-color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+                            .option-card:hover .option-btn:not(.selected) { border-color: var(--primary); box-shadow: var(--shadow-md); }
                             .option-btn.selected {
                                 background: var(--primary);
                                 border-color: var(--primary);
