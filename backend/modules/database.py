@@ -292,4 +292,3 @@ class MockDB:
         """Get BKT summary for the user."""
         engine = self.get_bkt_engine()
         return engine.get_user_summary(username)
-

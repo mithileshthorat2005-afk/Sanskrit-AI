@@ -1,7 +1,19 @@
+import sys
+import os
+
+# Ensure the backend/ directory is on sys.path so that `modules.*` imports
+# work regardless of where uvicorn is invoked from.
+_BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+if _BACKEND_DIR not in sys.path:
+    sys.path.insert(0, _BACKEND_DIR)
+
+# Windows terminals can default to cp1252; reconfigure stdout for Unicode.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 from fastapi import FastAPI, HTTPException, Depends, Body
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional, List, Dict, Any
-import os
 import json
 from pydantic import BaseModel
 
@@ -13,6 +25,7 @@ from modules.auth import Authenticator
 from modules.translator import SanskritTranslator
 from modules.snake_ladder import start_new_game, process_turn
 from modules.odd_one_out import get_random_question, check_answer
+from modules.skill_mapper import SkillMapper          # NEW
 
 app = FastAPI(title="SanskritAI API")
 
@@ -44,6 +57,7 @@ translator = SanskritTranslator(
     csv_path=os.path.join(DATA_DIR, 'sanskrit_words.csv'),
     sentences_path=os.path.join(DATA_DIR, 'sanskrit_sentences.json')
 )
+skill_mapper = SkillMapper()                          # NEW
 
 # Pydantic models for request/response
 class LoginRequest(BaseModel):
@@ -63,6 +77,7 @@ class TranslateRequest(BaseModel):
 class GrammarRequest(BaseModel):
     text: str
     use_ai: bool = False
+    username: str = "demo"        # NEW — needed for BKT persistence
 
 class GameTurnRequest(BaseModel):
     current_position: int = 0
@@ -146,67 +161,56 @@ def get_time_and_days():
 
 @app.get("/api/lessons/vibhakti")
 def get_vibhakti():
-    """Get vibhakti (case) data for Lesson 11"""
     data = db.get_vibhakti()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/sandhi")
 def get_sandhi():
-    """Get sandhi data for Lesson 12"""
     data = db.get_sandhi()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/tenses")
 def get_tenses():
-    """Get verb tenses data for Lesson 13"""
     data = db.get_tenses()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/moods")
 def get_moods():
-    """Get verb moods data for Lesson 14"""
     data = db.get_moods()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/pronouns-extended")
 def get_pronouns_extended():
-    """Get extended pronouns data for Lesson 15"""
     data = db.get_pronouns_extended()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/upasarga")
 def get_upasarga():
-    """Get upasarga data for Lesson 16"""
     data = db.get_upasarga()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/voice")
 def get_voice():
-    """Get active/passive voice data for Lesson 17"""
     data = db.get_voice()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/indeclinables")
 def get_indeclinables():
-    """Get indeclinables data for Lesson 18"""
     data = db.get_indeclinables()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/participles")
 def get_participles():
-    """Get participles data for Lesson 19"""
     data = db.get_participles()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/reading-composition")
 def get_reading_composition():
-    """Get reading and composition data for Lesson 20"""
     data = db.get_reading_composition()
     return {"success": True, "data": data}
 
 @app.get("/api/lessons/samasa1")
 def get_samasa1():
-    """Get Samāsa Part 1 data for Lesson 21"""
     data = db.get_samasa1()
     return {"success": True, "data": data}
 
@@ -254,38 +258,120 @@ def translate_text(req: TranslateRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# ─── Grammar Check — with Skill-Mapping + BKT pipeline ───────────────────────
 @app.post("/grammar/check")
 def check_grammar(req: GrammarRequest):
+    """
+    Grammar analysis with linguistically-grounded BKT pipeline:
+
+    1. Run NLP analysis  → structured issues list (each has error_type)
+    2. For each issue    → SkillMapper resolves error_type → skill_id
+    3. Deduplicate       → one BKT observation per unique skill per submission
+    4. BKT update        → db.record_bkt_attempt(username, skill_id, correct=False)
+    5. One recommendation→ db.get_bkt_recommendation(username) after all updates
+    6. Return analysis + bkt_updates + skipped_issues + recommendation
+    """
     analysis = nlp.analyze_text(req.text, use_ai=req.use_ai)
-    return analysis
+    if "error" in analysis:
+        return analysis
+
+    issues = analysis.get("issues", [])
+    bkt_updates   = []
+    skipped_issues = []
+    seen_skill_ids: set = set()
+
+    for issue in issues:
+        # Issues from updated nlp_processor are dicts; guard against plain strings
+        if isinstance(issue, dict):
+            raw_error_type = issue.get("error_type", "")
+        else:
+            raw_error_type = str(issue)
+
+        skill_info = skill_mapper.map_error_to_skill(raw_error_type)
+
+        # Not in mapping at all
+        if skill_info is None:
+            skipped_issues.append({
+                "raw_error_type": raw_error_type,
+                "reason": "error_type not found in skill_mapping.json — no BKT update",
+            })
+            continue
+
+        # Intentionally unmapped (e.g. agreement_error, unknown_error)
+        # Use .get() throughout — works with both new SkillMapper dict
+        # and the raw JSON dict that older skill_mapper.py versions return.
+        is_unmapped = skill_info.get("intentionally_unmapped", False)
+        if is_unmapped:
+            skipped_issues.append({
+                "raw_error_type": raw_error_type,
+                "normalized_error_type": skill_info.get("normalized_error_type", raw_error_type),
+                "reason": "intentionally_unmapped — no BKT update",
+            })
+            continue
+
+        skill_id = skill_info.get("skill_id")
+        if skill_id is None:
+            skipped_issues.append({
+                "raw_error_type": raw_error_type,
+                "reason": "skill_id is None — no BKT update",
+            })
+            continue
+
+        # Deduplicate: one observation per skill per submission
+        if skill_id in seen_skill_ids:
+            continue
+        seen_skill_ids.add(skill_id)
+
+        # Grammar error → is_correct = False
+        difficulty = skill_info.get("difficulty") or 3
+        lesson = next(
+            (l for l in learning_engine.lessons if l.get("id") == skill_id), None
+        )
+        actual_difficulty = lesson.get("difficulty", difficulty) if lesson else difficulty
+
+        result = db.record_bkt_attempt(
+            req.username, skill_id, is_correct=False, difficulty=actual_difficulty
+        )
+        bkt_updates.append({
+            "error_type":  skill_info.get("normalized_error_type", raw_error_type),
+            "skill_id":    skill_id,
+            "skill_name":  skill_info.get("skill_name"),
+            "mastery":     result["mastery"],
+            "attempts":    result["attempts"],
+        })
+
+    # Single recommendation computed after all BKT updates
+    recommendation = db.get_bkt_recommendation(req.username) if bkt_updates else None
+
+    return {
+        **analysis,
+        "bkt_updates":    bkt_updates,
+        "skipped_issues": skipped_issues,
+        "recommendation": recommendation,
+    }
 
 @app.get("/dashboard/stats/{username}")
 def get_dashboard_stats(username: str):
-    progress = db.get_user_progress(username)
+    progress   = db.get_user_progress(username)
     activities = db.get_recent_activities(username)
-    stats = translator.get_database_stats()
-    
+    stats      = translator.get_database_stats()
     return {
-        "words_learned": len(activities),
-        "lessons_completed": progress.get('completed', 0),
-        "current_level": progress.get('level', 'beginner'),
-        "points": progress.get('points', 0),
-        "db_stats": stats
+        "words_learned":      len(activities),
+        "lessons_completed":  progress.get('completed', 0),
+        "current_level":      progress.get('level', 'beginner'),
+        "points":             progress.get('points', 0),
+        "db_stats":           stats
     }
 
 # ─── Suggestions Endpoint (Local DB + Groq Fallback) ──────────────────────────
 @app.get("/suggestions")
 def get_suggestions(prefix: str, limit: int = 6):
-    """
-    Return Devanagari word suggestions using local DB + Groq API.
-    """
     if not prefix or len(prefix) < 1:
         return {"suggestions": []}
-    
+
     matches = []
     seen = set()
-    
-    # First, search local database in 'devanagari' column
+
     df = translator.df
     for _, row in df.iterrows():
         dev = str(row.get('devanagari', ''))
@@ -298,12 +384,10 @@ def get_suggestions(prefix: str, limit: int = 6):
             })
             if len(matches) >= limit:
                 return {"suggestions": matches}
-    
-    # Also check 'sanskrit' transliterated column (e.g., "agniḥ" -> "अग्निः")
+
     if len(matches) < limit:
         for _, row in df.iterrows():
             san = str(row.get('sanskrit', ''))
-            # Convert IAST/roman to Devanagari for matching? For now, direct compare
             if san.startswith(prefix) and san not in seen:
                 seen.add(san)
                 matches.append({
@@ -313,12 +397,10 @@ def get_suggestions(prefix: str, limit: int = 6):
                 })
                 if len(matches) >= limit:
                     return {"suggestions": matches}
-    
-    # If not enough matches and Groq API key exists, call AI for suggestions
+
     if len(matches) < limit and translator.api_key:
         try:
             import requests
-            import json
             import re
             remaining = limit - len(matches)
             prompt = f"""
@@ -352,32 +434,28 @@ def get_suggestions(prefix: str, limit: int = 6):
                                 break
         except Exception as e:
             print(f"Groq suggestion error: {e}")
-    
+
     return {"suggestions": matches}
 
 # ─── Snake & Ladder Translation Game ──────────────────────────
 @app.get("/game/start")
 def game_start():
-    """Initialize a new Snake & Ladder game session."""
     return start_new_game()
 
 @app.post("/game/turn")
 def game_turn(req: GameTurnRequest):
-    """Process one turn: validate the answer, move the player."""
     return process_turn(req.current_position, req.asked_word, req.user_answer)
 
 # ─── Odd One Out Game ─────────────────────────────────────────
 @app.get("/game/odd/question")
 def odd_question():
-    """Get a random Odd One Out question."""
     return get_random_question()
 
 @app.post("/game/odd/answer")
 def odd_answer(req: OddAnswerRequest):
-    """Check the user's answer for Odd One Out."""
     return check_answer(req.question_data, req.user_choice)
 
-# ─── BKT / Adaptive Learning Endpoints ──────────────────
+# ─── BKT / Adaptive Learning Endpoints ───────────────────────
 
 class LessonAttemptRequest(BaseModel):
     lesson_id: int
@@ -386,35 +464,25 @@ class LessonAttemptRequest(BaseModel):
 
 @app.post("/lesson/attempt")
 def lesson_attempt(req: LessonAttemptRequest):
-    """
-    Record a student's attempt on a lesson (skill).
-    Updates BKT mastery and returns updated progress.
-    """
-    # Get lesson difficulty to set initial parameters
     lesson = next((l for l in learning_engine.lessons if l.get('id') == req.lesson_id), None)
     if not lesson:
         raise HTTPException(status_code=404, detail="Lesson not found")
-    
+
     difficulty = lesson.get('difficulty', 3)
     result = db.record_bkt_attempt(req.username, req.lesson_id, req.correct, difficulty)
-    
-    # Also update traditional progress
     db.update_progress(req.username, req.lesson_id, 'completed' if req.correct else 'started')
-    
-    # Get next recommendation
     recommended = db.get_bkt_recommendation(req.username)
-    
+
     return {
-        "skill_id": result["skill_id"],
-        "mastery": result["mastery"],
-        "attempts": result["attempts"],
-        "correct": result["correct"],
+        "skill_id":          result["skill_id"],
+        "mastery":           result["mastery"],
+        "attempts":          result["attempts"],
+        "correct":           result["correct"],
         "recommended_lesson": recommended,
     }
 
 @app.get("/recommendation/{username}")
 def get_recommendation(username: str):
-    """Get the next recommended lesson based on BKT."""
     recommended = db.get_bkt_recommendation(username)
     if not recommended:
         return {"recommendation": None, "message": "All lessons mastered or no lessons available."}
@@ -422,12 +490,10 @@ def get_recommendation(username: str):
 
 @app.get("/bkt/summary/{username}")
 def get_bkt_summary(username: str):
-    """Get BKT progress summary for a user."""
     return db.get_bkt_summary(username)
 
 @app.get("/bkt/mastery/{username}")
 def get_bkt_mastery(username: str):
-    """Get mastery for all lessons (or specific ones via query param)."""
     lessons = learning_engine.lessons
     skill_ids = [l.get('id') for l in lessons if l.get('id')]
     mastery_map = db.get_bkt_mastery_for_skills(username, skill_ids)
@@ -436,29 +502,25 @@ def get_bkt_mastery(username: str):
         "total_lessons": len(lessons),
     }
 
-
 # ─── Test API Key Endpoint ────────────────────────────────────
 @app.get("/test-api")
 def test_api():
-    """Test if API key is loaded correctly"""
-    api_key = os.getenv("XAI_API_KEY")
+    api_key  = os.getenv("XAI_API_KEY")
     base_url = os.getenv("BASE_URL")
     return {
-        "has_api_key": bool(api_key),
-        "key_preview": api_key[:10] + "..." if api_key and len(api_key) > 10 else None,
-        "provider": "Groq" if api_key and api_key.startswith("gsk_") else "Grok" if api_key else "None",
-        "base_url": base_url,
+        "has_api_key":  bool(api_key),
+        "key_preview":  api_key[:10] + "..." if api_key and len(api_key) > 10 else None,
+        "provider":     "Groq" if api_key and api_key.startswith("gsk_") else "Grok" if api_key else "None",
+        "base_url":     base_url,
         "ai_available": bool(api_key)
     }
 
 if __name__ == "__main__":
     import uvicorn
-    import os
-    
-    # Allow overriding the port via .env file, mapping it gracefully for user execution.
+
     port_str = os.getenv("PORT", "8005")
     port = int(port_str) if port_str.isdigit() else 8005
-    
+
     try:
         uvicorn.run(app, host="0.0.0.0", port=port)
     except OSError as e:
