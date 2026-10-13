@@ -1,0 +1,394 @@
+{
+  "lessons": [
+    {
+      "id": 1,
+      "title": "Sanskrit Alphabet (Devanagari Script)",
+      "description": "Learn the basic building blocks of Sanskrit",
+      "level": "beginner",
+      "duration": 15,
+      "difficulty": 3,
+      "content": "# Sanskrit Alphabet\n\nSanskrit is written in **Devanagari** script...",
+      "quiz": [
+        {
+          "id": 1,
+          "question": "How many vowels are there in Sanskrit?",
+          "options": [
+            "10",
+            "13",
+            "15",
+            "20"
+          ],
+          "answer": "13",
+          "explanation": "Sanskrit has 13 vowel sounds"
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "id": 2,
+      "title": "Basic Greetings and Phrases",
+      "description": "Learn common Sanskrit greetings and expressions",
+      "level": "beginner",
+      "duration": 20,
+      "difficulty": 4,
+      "content": "# Common Greetings\n\n1. **नमस्ते** (Namaste) - Hello...",
+      "quiz": [
+        {
+          "id": 1,
+          "question": "What does 'धन्यवादः' mean?",
+          "options": [
+            "Hello",
+            "Thank you",
+            "Goodbye",
+            "Please"
+          ],
+          "answer": "Thank you",
+          "explanation": "धन्यवादः means 'Thank you'"
+        }
+      ],
+      "prerequisites": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Numbers in Sanskrit",
+      "description": "Learn to count in Sanskrit",
+      "level": "beginner",
+      "duration": 15,
+      "difficulty": 3,
+      "content": "# Numbers in Sanskrit\n\n1 - एकः (ekaḥ)\n2 - द्वौ (dvau)...",
+      "quiz": [
+        {
+          "id": 1,
+          "question": "What is the Sanskrit word for 5?",
+          "options": [
+            "एकः",
+            "द्वौ",
+            "त्रयः",
+            "पञ्च"
+          ],
+          "answer": "पञ्च",
+          "explanation": "पञ्च (pañca) means 5"
+        }
+      ],
+      "prerequisites": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Self Introduction in Sanskrit",
+      "description": "Learn to introduce yourself - name, age, profession, and where you live",
+      "level": "beginner",
+      "duration": 25,
+      "difficulty": 4,
+      "content": "self_introduction_special",
+      "quiz": [],
+      "prerequisites": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Basic Pronouns",
+      "description": "Learn the most common Sanskrit pronouns and their gendered forms",
+      "level": "beginner",
+      "duration": 15,
+      "difficulty": 3,
+      "content": "pronouns_special",
+      "quiz": [],
+      "prerequisites": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Basic Action Words (Verbs)",
+      "description": "Learn the 10 most common daily actions and how to use them with pronouns",
+      "level": "beginner",
+      "duration": 20,
+      "difficulty": 4,
+      "content": "verbs_special",
+      "quiz": [],
+      "prerequisites": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Nouns & Genders (Sorting)",
+      "description": "Learn the secret 'cheat code' to identify Sanskrit genders and master word classifications.",
+      "level": "beginner",
+      "duration": 15,
+      "difficulty": 4,
+      "content": "nouns_special",
+      "quiz": [],
+      "prerequisites": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Family & Relationships (कुटुम्बः)",
+      "description": "Learn Sanskrit words for family members with an interactive family tree map.",
+      "level": "beginner",
+      "duration": 20,
+      "difficulty": 3,
+      "content": "family_special",
+      "quiz": [],
+      "prerequisites": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Question Words (प्रश्नपदानि)",
+      "description": "Master the 8 essential Sanskrit question words through an interactive chatbot interrogation game.",
+      "level": "beginner",
+      "duration": 20,
+      "difficulty": 3,
+      "content": "questions_special",
+      "quiz": [],
+      "prerequisites": [
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Time & Days (समयः वासरः च)",
+      "description": "Learn to tell the time in Sanskrit with an interactive draggable clock and master the days of the week through a timeline puzzle.",
+      "level": "beginner",
+      "duration": 25,
+      "difficulty": 3,
+      "content": "time_special",
+      "quiz": [],
+      "prerequisites": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Vibhakti – The 7 Cases",
+      "description": "Master the 7 grammatical cases (Nominative, Accusative, Instrumental, Dative, Ablative, Genitive, Locative) with declension tables and practice exercises.",
+      "level": "intermediate",
+      "duration": 30,
+      "difficulty": 6,
+      "content": "vibhakti_special",
+      "quiz": [],
+      "prerequisites": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Sandhi – Euphonic Combinations",
+      "description": "Learn how sounds merge when words combine. Master Vowel Sandhi, Visarga Sandhi, and Consonant Sandhi rules for flawless Sanskrit pronunciation and writing.",
+      "level": "intermediate",
+      "duration": 35,
+      "difficulty": 7,
+      "content": "sandhi_special",
+      "quiz": [],
+      "prerequisites": [
+        1,
+        4,
+        5,
+        11
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Verb Tenses – Past & Future",
+      "description": "Expand your verb knowledge beyond the present tense. Learn the past (Imperfect) and future tenses to describe actions across time.",
+      "level": "intermediate",
+      "duration": 30,
+      "difficulty": 6,
+      "content": "tenses_special",
+      "quiz": [],
+      "prerequisites": [
+        6,
+        11
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Verb Moods – Imperative & Optative",
+      "description": "Learn how to give commands (Imperative), make polite requests, express wishes, and talk about possibilities (Optative) in Sanskrit.",
+      "level": "intermediate",
+      "duration": 25,
+      "difficulty": 6,
+      "content": "moods_special",
+      "quiz": [],
+      "prerequisites": [
+        6,
+        13
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Pronouns – Dual & Plural Forms",
+      "description": "Master the complete pronoun system: learn dual (for two persons) and plural forms for first, second, and third persons, plus demonstrative pronouns in all numbers and genders.",
+      "level": "intermediate",
+      "duration": 25,
+      "difficulty": 5,
+      "content": "pronouns_extended_special",
+      "quiz": [],
+      "prerequisites": [
+        5,
+        11
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Upasarga – Verbal Prefixes",
+      "description": "Master the 20+ verbal prefixes (उपसर्ग) that modify and enrich verb meanings. Learn how prefixes like प्र, परा, अप, सम् transform basic verbs into new words.",
+      "level": "intermediate",
+      "duration": 25,
+      "difficulty": 5,
+      "content": "upasarga_special",
+      "quiz": [],
+      "prerequisites": [
+        6,
+        13
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Active & Passive Voice",
+      "description": "Learn how to transform sentences between active and passive voice in Sanskrit. Master karmaṇi prayoga (passive construction) and bhāve prayoga (impersonal passive).",
+      "level": "intermediate",
+      "duration": 25,
+      "difficulty": 6,
+      "content": "voice_special",
+      "quiz": [],
+      "prerequisites": [
+        6,
+        11,
+        13
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Indeclinables (अव्यय)",
+      "description": "Master the words that never change form. Learn conjunctions (च, वा), adverbs (अत्र, कुत्र), particles (अपि, एव), prepositions, and interjections essential for fluent Sanskrit.",
+      "level": "intermediate",
+      "duration": 20,
+      "difficulty": 5,
+      "content": "indeclinables_special",
+      "quiz": [],
+      "prerequisites": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Participles – Part 1 (कृत् प्रत्यय)",
+      "description": "Learn the essential participle forms: Past Passive Participle (क्त), Future Passive Participle (तव्य/अनीयर्), and Gerund (क्त्वा). These are crucial for expressing completed actions, obligations, and sequential actions.",
+      "level": "intermediate",
+      "duration": 30,
+      "difficulty": 7,
+      "content": "participles_special",
+      "quiz": [],
+      "prerequisites": [
+        6,
+        11,
+        13
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Reading & Composition",
+      "description": "Apply all your Sanskrit knowledge! Read short passages with comprehension questions, expand your vocabulary, and practice writing paragraphs on given topics.",
+      "level": "intermediate",
+      "duration": 30,
+      "difficulty": 5,
+      "content": "reading_composition_special",
+      "quiz": [],
+      "prerequisites": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Samāsa – Compounds (Part 1)",
+      "description": "Understand the four main types of Sanskrit compounds: Avyayībhāva, Tatpuruṣa, Bahuvrīhi, and Dvandva. Essential for reading classical texts.",
+      "level": "advanced",
+      "duration": 35,
+      "difficulty": 8,
+      "content": "samasa_part1_special",
+      "quiz": [],
+      "prerequisites": [
+        11,
+        12,
+        18
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Samāsa – Compounds (Part 2)",
+      "description": "Advanced compound analysis and interpretation. Learn to identify compound types in texts, analyze their semantics, and expand them into full sentences.",
+      "level": "advanced",
+      "duration": 30,
+      "difficulty": 8,
+      "content": "samasa_part2_special",
+      "quiz": [],
+      "prerequisites": [
+        21
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Participles – Part 2 (Advanced)",
+      "description": "Master the remaining participle forms: Present active participle (शतृ/शानच्), Future active participle, and conditional forms for advanced reading.",
+      "level": "advanced",
+      "duration": 30,
+      "difficulty": 8,
+      "content": "participles_part2_special",
+      "quiz": [],
+      "prerequisites": [
+        19
+      ]
+    },
+    {
+      "id": 24,
+      "title": "Strī Pratyaya – Feminine Formation",
+      "description": "Understand how feminine nouns are derived from masculine stems. Master the rules of feminine suffix formation and practice with common noun families.",
+      "level": "advanced",
+      "duration": 25,
+      "difficulty": 7,
+      "content": "strī_pratyaya_special",
+      "quiz": [],
+      "prerequisites": [
+        7,
+        11
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Introduction to Sanskrit Prosody (Chandas)",
+      "description": "Explore the poetic meters of Sanskrit. Learn the technical terms (Laghu, Guru, Gana, Mātrā), common meters (Anuṣṭubh, Indravajrā), and practice reading and reciting verses.",
+      "level": "advanced",
+      "duration": 35,
+      "difficulty": 9,
+      "content": "chandas_special",
+      "quiz": [],
+      "prerequisites": [
+        20,
+        21
+      ]
+    }
+  ]
+}

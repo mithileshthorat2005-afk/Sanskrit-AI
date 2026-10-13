@@ -1,0 +1,218 @@
+[
+  {
+    "id": "pro_1s",
+    "category": "First Person",
+    "number": "singular",
+    "gender": null,
+    "sanskrit": "अहम्",
+    "transliteration": "Aham",
+    "englishMeaning": "I"
+  },
+  {
+    "id": "pro_1d",
+    "category": "First Person",
+    "number": "dual",
+    "gender": null,
+    "sanskrit": "आवाम्",
+    "transliteration": "Āvām",
+    "englishMeaning": "We (two of us)"
+  },
+  {
+    "id": "pro_1p",
+    "category": "First Person",
+    "number": "plural",
+    "gender": null,
+    "sanskrit": "वयम्",
+    "transliteration": "Vayam",
+    "englishMeaning": "We (all of us)"
+  },
+  {
+    "id": "pro_2s",
+    "category": "Second Person",
+    "number": "singular",
+    "gender": null,
+    "sanskrit": "त्वम्",
+    "transliteration": "Tvam",
+    "englishMeaning": "You (singular)"
+  },
+  {
+    "id": "pro_2d",
+    "category": "Second Person",
+    "number": "dual",
+    "gender": null,
+    "sanskrit": "युवाम्",
+    "transliteration": "Yuvām",
+    "englishMeaning": "You (two of you)"
+  },
+  {
+    "id": "pro_2p",
+    "category": "Second Person",
+    "number": "plural",
+    "gender": null,
+    "sanskrit": "यूयम्",
+    "transliteration": "Yūyam",
+    "englishMeaning": "You (all)"
+  },
+  {
+    "id": "pro_3sm",
+    "category": "Third Person",
+    "number": "singular",
+    "gender": "masculine",
+    "sanskrit": "सः",
+    "transliteration": "Saḥ",
+    "englishMeaning": "He / That (masc)"
+  },
+  {
+    "id": "pro_3sf",
+    "category": "Third Person",
+    "number": "singular",
+    "gender": "feminine",
+    "sanskrit": "सा",
+    "transliteration": "Sā",
+    "englishMeaning": "She / That (fem)"
+  },
+  {
+    "id": "pro_3sn",
+    "category": "Third Person",
+    "number": "singular",
+    "gender": "neuter",
+    "sanskrit": "तत्",
+    "transliteration": "Tat",
+    "englishMeaning": "It / That (neut)"
+  },
+  {
+    "id": "pro_3dm",
+    "category": "Third Person",
+    "number": "dual",
+    "gender": "masculine",
+    "sanskrit": "तौ",
+    "transliteration": "Tau",
+    "englishMeaning": "They (two masc)"
+  },
+  {
+    "id": "pro_3df",
+    "category": "Third Person",
+    "number": "dual",
+    "gender": "feminine",
+    "sanskrit": "ते",
+    "transliteration": "Te",
+    "englishMeaning": "They (two fem)"
+  },
+  {
+    "id": "pro_3dn",
+    "category": "Third Person",
+    "number": "dual",
+    "gender": "neuter",
+    "sanskrit": "ते",
+    "transliteration": "Te",
+    "englishMeaning": "They (two neut)"
+  },
+  {
+    "id": "pro_3pm",
+    "category": "Third Person",
+    "number": "plural",
+    "gender": "masculine",
+    "sanskrit": "ते",
+    "transliteration": "Te",
+    "englishMeaning": "They (masc)"
+  },
+  {
+    "id": "pro_3pf",
+    "category": "Third Person",
+    "number": "plural",
+    "gender": "feminine",
+    "sanskrit": "ताः",
+    "transliteration": "Tāḥ",
+    "englishMeaning": "They (fem)"
+  },
+  {
+    "id": "pro_3pn",
+    "category": "Third Person",
+    "number": "plural",
+    "gender": "neuter",
+    "sanskrit": "तानि",
+    "transliteration": "Tāni",
+    "englishMeaning": "They (neut)"
+  },
+  {
+    "id": "dem_sm",
+    "category": "Demonstrative (this)",
+    "number": "singular",
+    "gender": "masculine",
+    "sanskrit": "एषः",
+    "transliteration": "Eṣaḥ",
+    "englishMeaning": "This (masc)"
+  },
+  {
+    "id": "dem_sf",
+    "category": "Demonstrative (this)",
+    "number": "singular",
+    "gender": "feminine",
+    "sanskrit": "एषा",
+    "transliteration": "Eṣā",
+    "englishMeaning": "This (fem)"
+  },
+  {
+    "id": "dem_sn",
+    "category": "Demonstrative (this)",
+    "number": "singular",
+    "gender": "neuter",
+    "sanskrit": "एतत्",
+    "transliteration": "Etat",
+    "englishMeaning": "This (neut)"
+  },
+  {
+    "id": "dem_dm",
+    "category": "Demonstrative (this)",
+    "number": "dual",
+    "gender": "masculine",
+    "sanskrit": "एतौ",
+    "transliteration": "Etau",
+    "englishMeaning": "These two (masc)"
+  },
+  {
+    "id": "dem_df",
+    "category": "Demonstrative (this)",
+    "number": "dual",
+    "gender": "feminine",
+    "sanskrit": "एते",
+    "transliteration": "Ete",
+    "englishMeaning": "These two (fem)"
+  },
+  {
+    "id": "dem_dn",
+    "category": "Demonstrative (this)",
+    "number": "dual",
+    "gender": "neuter",
+    "sanskrit": "एते",
+    "transliteration": "Ete",
+    "englishMeaning": "These two (neut)"
+  },
+  {
+    "id": "dem_pm",
+    "category": "Demonstrative (this)",
+    "number": "plural",
+    "gender": "masculine",
+    "sanskrit": "एते",
+    "transliteration": "Ete",
+    "englishMeaning": "These (masc)"
+  },
+  {
+    "id": "dem_pf",
+    "category": "Demonstrative (this)",
+    "number": "plural",
+    "gender": "feminine",
+    "sanskrit": "एताः",
+    "transliteration": "Etāḥ",
+    "englishMeaning": "These (fem)"
+  },
+  {
+    "id": "dem_pn",
+    "category": "Demonstrative (this)",
+    "number": "plural",
+    "gender": "neuter",
+    "sanskrit": "एतानि",
+    "transliteration": "Etāni",
+    "englishMeaning": "These (neut)"
+  }
+]

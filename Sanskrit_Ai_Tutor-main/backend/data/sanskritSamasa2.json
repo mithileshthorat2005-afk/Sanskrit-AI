@@ -1,0 +1,62 @@
+[
+  {
+    "id": "samasa2_1",
+    "type": "Compound Identification",
+    "description": "Given a compound, identify its type (Avyayībhāva, Tatpuruṣa, Bahuvrīhi, Dvandva).",
+    "examples": [
+      {
+        "compound": "अनुग्रामम्",
+        "components": "अनु + ग्रामम्",
+        "type": "Avyayībhāva",
+        "meaning": "along the village",
+        "sentence": "अनुग्रामम् नदी वहति।",
+        "translation": "The river flows along the village."
+      },
+      {
+        "compound": "राजपुत्रः",
+        "components": "राजन् + पुत्रः",
+        "type": "Tatpuruṣa",
+        "meaning": "king's son",
+        "sentence": "राजपुत्रः राज्यं शास्ति।",
+        "translation": "The king's son rules the kingdom."
+      },
+      {
+        "compound": "चक्रपाणिः",
+        "components": "चक्र + पाणिः",
+        "type": "Bahuvrīhi",
+        "meaning": "one holding a discus",
+        "sentence": "चक्रपाणिः विष्णुः।",
+        "translation": "Viṣṇu is the one holding a discus."
+      },
+      {
+        "compound": "रामलक्ष्मणौ",
+        "components": "राम + लक्ष्मण",
+        "type": "Dvandva",
+        "meaning": "Rama and Lakshmana",
+        "sentence": "रामलक्ष्मणौ गुरुं नमतः।",
+        "translation": "Rāma and Lakṣmaṇa bow to the teacher."
+      }
+    ]
+  },
+  {
+    "id": "samasa2_2",
+    "type": "Compound Expansion",
+    "description": "Expand a compound into its constituent words and explain the relationship.",
+    "examples": [
+      {
+        "compound": "ग्रामवासी",
+        "expansion": "ग्रामे वसति इति ग्रामवासी",
+        "explanation": "one who lives in the village",
+        "sentence": "ग्रामवासी कृषिकार्यं करोति।",
+        "translation": "The villager does farming work."
+      },
+      {
+        "compound": "सत्यसंकल्पः",
+        "expansion": "सत्यः संकल्पः यस्य सः सत्यसंकल्पः",
+        "explanation": "one whose resolve is true",
+        "sentence": "सत्यसंकल्पः सिद्धिं प्राप्नोति।",
+        "translation": "One whose resolve is true attains success."
+      }
+    ]
+  }
+]

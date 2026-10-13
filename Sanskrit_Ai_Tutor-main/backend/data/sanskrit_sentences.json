@@ -1,0 +1,4164 @@
+{
+  "sentences": [
+    {
+      "id": 1,
+      "sanskrit": "रामः वनं गच्छति।",
+      "devanagari": "रामः वनं गच्छति।",
+      "translation": "Rama goes to the forest.",
+      "words": [
+        "रामः",
+        "वनं",
+        "गच्छति"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "action",
+        "movement"
+      ],
+      "created_at": "2026-02-15T02:09:05.169976"
+    },
+    {
+      "id": 2,
+      "sanskrit": "vāyuḥ phalam asti।",
+      "devanagari": "vāyuḥ phalam asti।",
+      "translation": "Air fruit tos.",
+      "words": [
+        "vāyuḥ",
+        "phalam",
+        "asti"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T02:35:44.626927"
+    },
+    {
+      "id": 3,
+      "sanskrit": "putraḥ khādati।",
+      "devanagari": "putraḥ khādati।",
+      "translation": "Son tos.",
+      "words": [
+        "putraḥ",
+        "khādati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T02:35:44.627929"
+    },
+    {
+      "id": 4,
+      "sanskrit": "phalam vāyuḥ asti।",
+      "devanagari": "phalam vāyuḥ asti।",
+      "translation": "Fruit air tos.",
+      "words": [
+        "phalam",
+        "vāyuḥ",
+        "asti"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T02:35:44.629927"
+    },
+    {
+      "id": 5,
+      "sanskrit": "मित्रम् अस्ति।",
+      "devanagari": "मित्रम् अस्ति।",
+      "translation": "Friend is.",
+      "words": [
+        "मित्रम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:42:30.923687"
+    },
+    {
+      "id": 6,
+      "sanskrit": "मित्रम् गच्छति।",
+      "devanagari": "मित्रम् गच्छति।",
+      "translation": "Friend goes.",
+      "words": [
+        "मित्रम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:42:30.924630"
+    },
+    {
+      "id": 7,
+      "sanskrit": "मित्रम् पठति।",
+      "devanagari": "मित्रम् पठति।",
+      "translation": "Friend reads.",
+      "words": [
+        "मित्रम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:42:30.924630"
+    },
+    {
+      "id": 8,
+      "sanskrit": "नामः अस्ति।",
+      "devanagari": "नामः अस्ति।",
+      "translation": "Name is.",
+      "words": [
+        "नामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:44:58.656400"
+    },
+    {
+      "id": 9,
+      "sanskrit": "नामः गच्छति।",
+      "devanagari": "नामः गच्छति।",
+      "translation": "Name goes.",
+      "words": [
+        "नामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:44:58.656400"
+    },
+    {
+      "id": 10,
+      "sanskrit": "नामः पठति।",
+      "devanagari": "नामः पठति।",
+      "translation": "Name reads.",
+      "words": [
+        "नामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T11:44:58.658988"
+    },
+    {
+      "id": 11,
+      "sanskrit": "candraḥ मित्रम् khādati।",
+      "devanagari": "candraḥ मित्रम् khādati।",
+      "translation": "Moon translation tos.",
+      "words": [
+        "candraḥ",
+        "मित्रम्",
+        "khādati"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T11:47:07.442368"
+    },
+    {
+      "id": 12,
+      "sanskrit": "मित्रम् gacchati।",
+      "devanagari": "मित्रम् gacchati।",
+      "translation": "Translation of friend translation tos.",
+      "words": [
+        "मित्रम्",
+        "gacchati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T11:47:07.444360"
+    },
+    {
+      "id": 13,
+      "sanskrit": "नामः sūryaḥ khādati।",
+      "devanagari": "नामः sūryaḥ khādati।",
+      "translation": "Translation of name sun tos.",
+      "words": [
+        "नामः",
+        "sūryaḥ",
+        "khādati"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T11:47:07.447369"
+    },
+    {
+      "id": 14,
+      "sanskrit": "क्रिकेट् इति अस्ति।",
+      "devanagari": "क्रिकेट् इति अस्ति।",
+      "translation": "Cricket is.",
+      "words": [
+        "क्रिकेट् इति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:18.833478"
+    },
+    {
+      "id": 15,
+      "sanskrit": "क्रिकेट् इति गच्छति।",
+      "devanagari": "क्रिकेट् इति गच्छति।",
+      "translation": "Cricket goes.",
+      "words": [
+        "क्रिकेट् इति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:18.833478"
+    },
+    {
+      "id": 16,
+      "sanskrit": "क्रिकेट् इति पठति।",
+      "devanagari": "क्रिकेट् इति पठति।",
+      "translation": "Cricket reads.",
+      "words": [
+        "क्रिकेट् इति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:18.833478"
+    },
+    {
+      "id": 17,
+      "sanskrit": "अग्नयः अस्ति।",
+      "devanagari": "अग्नयः अस्ति।",
+      "translation": "Agnih is.",
+      "words": [
+        "अग्नयः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:35.915493"
+    },
+    {
+      "id": 18,
+      "sanskrit": "अग्नयः गच्छति।",
+      "devanagari": "अग्नयः गच्छति।",
+      "translation": "Agnih goes.",
+      "words": [
+        "अग्नयः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:35.915493"
+    },
+    {
+      "id": 19,
+      "sanskrit": "अग्नयः पठति।",
+      "devanagari": "अग्नयः पठति।",
+      "translation": "Agnih reads.",
+      "words": [
+        "अग्नयः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:35.915493"
+    },
+    {
+      "id": 20,
+      "sanskrit": "अग्नयः । अस्ति।",
+      "devanagari": "अग्नयः । अस्ति।",
+      "translation": "Agnih: is.",
+      "words": [
+        "अग्नयः ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:44.776343"
+    },
+    {
+      "id": 21,
+      "sanskrit": "अग्नयः । गच्छति।",
+      "devanagari": "अग्नयः । गच्छति।",
+      "translation": "Agnih: goes.",
+      "words": [
+        "अग्नयः ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:44.776343"
+    },
+    {
+      "id": 22,
+      "sanskrit": "अग्नयः । पठति।",
+      "devanagari": "अग्नयः । पठति।",
+      "translation": "Agnih: reads.",
+      "words": [
+        "अग्नयः ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-02-15T12:20:44.776343"
+    },
+    {
+      "id": 23,
+      "sanskrit": "अग्नयः । asti।",
+      "devanagari": "अग्नयः । asti।",
+      "translation": "Translation of agnih: tos.",
+      "words": [
+        "अग्नयः ।",
+        "asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T12:20:55.189373"
+    },
+    {
+      "id": 24,
+      "sanskrit": "अग्नयः sūryaḥ khādati।",
+      "devanagari": "अग्नयः sūryaḥ khādati।",
+      "translation": "Translation of agnih sun tos.",
+      "words": [
+        "अग्नयः",
+        "sūryaḥ",
+        "khādati"
+      ],
+      "pattern": "Subject Object Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T12:20:55.191369"
+    },
+    {
+      "id": 25,
+      "sanskrit": "bhūmiḥ gacchati।",
+      "devanagari": "bhūmiḥ gacchati।",
+      "translation": "Earth tos.",
+      "words": [
+        "bhūmiḥ",
+        "gacchati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "auto-generated",
+      "tags": [
+        "auto-generated"
+      ],
+      "created_at": "2026-02-15T12:20:55.193369"
+    },
+    {
+      "id": 26,
+      "sanskrit": "क्षणिक अस्ति।",
+      "devanagari": "क्षणिक अस्ति।",
+      "translation": "Instant is.",
+      "words": [
+        "क्षणिक"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:33.599712"
+    },
+    {
+      "id": 27,
+      "sanskrit": "क्षणिक गच्छति।",
+      "devanagari": "क्षणिक गच्छति।",
+      "translation": "Instant goes.",
+      "words": [
+        "क्षणिक"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:33.599722"
+    },
+    {
+      "id": 28,
+      "sanskrit": "क्षणिक पठति।",
+      "devanagari": "क्षणिक पठति।",
+      "translation": "Instant reads.",
+      "words": [
+        "क्षणिक"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:33.599724"
+    },
+    {
+      "id": 29,
+      "sanskrit": "भविष्यति अस्ति।",
+      "devanagari": "भविष्यति अस्ति।",
+      "translation": "Will is.",
+      "words": [
+        "भविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:45.477131"
+    },
+    {
+      "id": 30,
+      "sanskrit": "भविष्यति गच्छति।",
+      "devanagari": "भविष्यति गच्छति।",
+      "translation": "Will goes.",
+      "words": [
+        "भविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:45.477138"
+    },
+    {
+      "id": 31,
+      "sanskrit": "भविष्यति पठति।",
+      "devanagari": "भविष्यति पठति।",
+      "translation": "Will reads.",
+      "words": [
+        "भविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:45.477140"
+    },
+    {
+      "id": 32,
+      "sanskrit": "इच्छाशक्तिः अस्ति।",
+      "devanagari": "इच्छाशक्तिः अस्ति।",
+      "translation": "Willpower is.",
+      "words": [
+        "इच्छाशक्तिः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:52.378105"
+    },
+    {
+      "id": 33,
+      "sanskrit": "इच्छाशक्तिः गच्छति।",
+      "devanagari": "इच्छाशक्तिः गच्छति।",
+      "translation": "Willpower goes.",
+      "words": [
+        "इच्छाशक्तिः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:52.378113"
+    },
+    {
+      "id": 34,
+      "sanskrit": "इच्छाशक्तिः पठति।",
+      "devanagari": "इच्छाशक्तिः पठति।",
+      "translation": "Willpower reads.",
+      "words": [
+        "इच्छाशक्तिः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:45:52.378115"
+    },
+    {
+      "id": 35,
+      "sanskrit": "अन्विष्यति अस्ति।",
+      "devanagari": "अन्विष्यति अस्ति।",
+      "translation": "Seek is.",
+      "words": [
+        "अन्विष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:52:42.055731"
+    },
+    {
+      "id": 36,
+      "sanskrit": "अन्विष्यति गच्छति।",
+      "devanagari": "अन्विष्यति गच्छति।",
+      "translation": "Seek goes.",
+      "words": [
+        "अन्विष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:52:42.055742"
+    },
+    {
+      "id": 37,
+      "sanskrit": "अन्विष्यति पठति।",
+      "devanagari": "अन्विष्यति पठति।",
+      "translation": "Seek reads.",
+      "words": [
+        "अन्विष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:52:42.055744"
+    },
+    {
+      "id": 38,
+      "sanskrit": "भवान् किं करोति अस्ति।",
+      "devanagari": "भवान् किं करोति अस्ति।",
+      "translation": "Hello How Are You Doing is.",
+      "words": [
+        "भवान् किं करोति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:53:18.589903"
+    },
+    {
+      "id": 39,
+      "sanskrit": "भवान् किं करोति गच्छति।",
+      "devanagari": "भवान् किं करोति गच्छति।",
+      "translation": "Hello How Are You Doing goes.",
+      "words": [
+        "भवान् किं करोति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:53:18.589915"
+    },
+    {
+      "id": 40,
+      "sanskrit": "भवान् किं करोति पठति।",
+      "devanagari": "भवान् किं करोति पठति।",
+      "translation": "Hello How Are You Doing reads.",
+      "words": [
+        "भवान् किं करोति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:53:18.589918"
+    },
+    {
+      "id": 41,
+      "sanskrit": "प्रयासः अस्ति।",
+      "devanagari": "प्रयासः अस्ति।",
+      "translation": "Effort is.",
+      "words": [
+        "प्रयासः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:59:28.491108"
+    },
+    {
+      "id": 42,
+      "sanskrit": "प्रयासः गच्छति।",
+      "devanagari": "प्रयासः गच्छति।",
+      "translation": "Effort goes.",
+      "words": [
+        "प्रयासः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:59:28.491144"
+    },
+    {
+      "id": 43,
+      "sanskrit": "प्रयासः पठति।",
+      "devanagari": "प्रयासः पठति।",
+      "translation": "Effort reads.",
+      "words": [
+        "प्रयासः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-14T23:59:28.491153"
+    },
+    {
+      "id": 44,
+      "sanskrit": "अहं भद्रं करोमि अस्ति।",
+      "devanagari": "अहं भद्रं करोमि अस्ति।",
+      "translation": "I Am Doing Good is.",
+      "words": [
+        "अहं भद्रं करोमि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:00.650498"
+    },
+    {
+      "id": 45,
+      "sanskrit": "अहं भद्रं करोमि गच्छति।",
+      "devanagari": "अहं भद्रं करोमि गच्छति।",
+      "translation": "I Am Doing Good goes.",
+      "words": [
+        "अहं भद्रं करोमि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:00.650512"
+    },
+    {
+      "id": 46,
+      "sanskrit": "अहं भद्रं करोमि पठति।",
+      "devanagari": "अहं भद्रं करोमि पठति।",
+      "translation": "I Am Doing Good reads.",
+      "words": [
+        "अहं भद्रं करोमि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:00.650517"
+    },
+    {
+      "id": 47,
+      "sanskrit": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् अस्ति।",
+      "devanagari": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् अस्ति।",
+      "translation": "I Was Playing Football is.",
+      "words": [
+        "अहं फुटबॉलक्रीडां कुर्वन् आसीत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:22.459590"
+    },
+    {
+      "id": 48,
+      "sanskrit": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् गच्छति।",
+      "devanagari": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् गच्छति।",
+      "translation": "I Was Playing Football goes.",
+      "words": [
+        "अहं फुटबॉलक्रीडां कुर्वन् आसीत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:22.459604"
+    },
+    {
+      "id": 49,
+      "sanskrit": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् पठति।",
+      "devanagari": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् पठति।",
+      "translation": "I Was Playing Football reads.",
+      "words": [
+        "अहं फुटबॉलक्रीडां कुर्वन् आसीत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:22.459608"
+    },
+    {
+      "id": 50,
+      "sanskrit": "अहं जारीं अङ्गीकृतवान् अस्ति।",
+      "devanagari": "अहं जारीं अङ्गीकृतवान् अस्ति।",
+      "translation": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् is.",
+      "words": [
+        "अहं जारीं अङ्गीकृतवान्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:53.933061"
+    },
+    {
+      "id": 51,
+      "sanskrit": "अहं जारीं अङ्गीकृतवान् गच्छति।",
+      "devanagari": "अहं जारीं अङ्गीकृतवान् गच्छति।",
+      "translation": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् goes.",
+      "words": [
+        "अहं जारीं अङ्गीकृतवान्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:53.933068"
+    },
+    {
+      "id": 52,
+      "sanskrit": "अहं जारीं अङ्गीकृतवान् पठति।",
+      "devanagari": "अहं जारीं अङ्गीकृतवान् पठति।",
+      "translation": "अहं फुटबॉलक्रीडां कुर्वन् आसीत् reads.",
+      "words": [
+        "अहं जारीं अङ्गीकृतवान्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:00:53.933071"
+    },
+    {
+      "id": 53,
+      "sanskrit": "नियोग अस्ति।",
+      "devanagari": "नियोग अस्ति।",
+      "translation": "Function is.",
+      "words": [
+        "नियोग"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:01:09.731073"
+    },
+    {
+      "id": 54,
+      "sanskrit": "नियोग गच्छति।",
+      "devanagari": "नियोग गच्छति।",
+      "translation": "Function goes.",
+      "words": [
+        "नियोग"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:01:09.731086"
+    },
+    {
+      "id": 55,
+      "sanskrit": "नियोग पठति।",
+      "devanagari": "नियोग पठति।",
+      "translation": "Function reads.",
+      "words": [
+        "नियोग"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:01:09.731090"
+    },
+    {
+      "id": 56,
+      "sanskrit": "मध्ये अस्ति।",
+      "devanagari": "मध्ये अस्ति।",
+      "translation": "Between is.",
+      "words": [
+        "मध्ये"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:06:41.385055"
+    },
+    {
+      "id": 57,
+      "sanskrit": "मध्ये गच्छति।",
+      "devanagari": "मध्ये गच्छति।",
+      "translation": "Between goes.",
+      "words": [
+        "मध्ये"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:06:41.385062"
+    },
+    {
+      "id": 58,
+      "sanskrit": "मध्ये पठति।",
+      "devanagari": "मध्ये पठति।",
+      "translation": "Between reads.",
+      "words": [
+        "मध्ये"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:06:41.385063"
+    },
+    {
+      "id": 59,
+      "sanskrit": "अंतर अस्ति।",
+      "devanagari": "अंतर अस्ति।",
+      "translation": "Gap is.",
+      "words": [
+        "अंतर"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:14:37.504221"
+    },
+    {
+      "id": 60,
+      "sanskrit": "अंतर गच्छति।",
+      "devanagari": "अंतर गच्छति।",
+      "translation": "Gap goes.",
+      "words": [
+        "अंतर"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:14:37.504230"
+    },
+    {
+      "id": 61,
+      "sanskrit": "अंतर पठति।",
+      "devanagari": "अंतर पठति।",
+      "translation": "Gap reads.",
+      "words": [
+        "अंतर"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:14:37.504233"
+    },
+    {
+      "id": 62,
+      "sanskrit": "स्वस्थः अस्ति।",
+      "devanagari": "स्वस्थः अस्ति।",
+      "translation": "Healthy is.",
+      "words": [
+        "स्वस्थः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:20:37.199823"
+    },
+    {
+      "id": 63,
+      "sanskrit": "स्वस्थः गच्छति।",
+      "devanagari": "स्वस्थः गच्छति।",
+      "translation": "Healthy goes.",
+      "words": [
+        "स्वस्थः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:20:37.199833"
+    },
+    {
+      "id": 64,
+      "sanskrit": "स्वस्थः पठति।",
+      "devanagari": "स्वस्थः पठति।",
+      "translation": "Healthy reads.",
+      "words": [
+        "स्वस्थः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:20:37.199836"
+    },
+    {
+      "id": 65,
+      "sanskrit": "शाश्वत अस्ति।",
+      "devanagari": "शाश्वत अस्ति।",
+      "translation": "Eternal is.",
+      "words": [
+        "शाश्वत"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:23:19.683456"
+    },
+    {
+      "id": 66,
+      "sanskrit": "शाश्वत गच्छति।",
+      "devanagari": "शाश्वत गच्छति।",
+      "translation": "Eternal goes.",
+      "words": [
+        "शाश्वत"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:23:19.683468"
+    },
+    {
+      "id": 67,
+      "sanskrit": "शाश्वत पठति।",
+      "devanagari": "शाश्वत पठति।",
+      "translation": "Eternal reads.",
+      "words": [
+        "शाश्वत"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T00:23:19.683471"
+    },
+    {
+      "id": 68,
+      "sanskrit": "अर्हति अस्ति।",
+      "devanagari": "अर्हति अस्ति।",
+      "translation": "Deserve is.",
+      "words": [
+        "अर्हति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T01:55:47.208558"
+    },
+    {
+      "id": 69,
+      "sanskrit": "अर्हति गच्छति।",
+      "devanagari": "अर्हति गच्छति।",
+      "translation": "Deserve goes.",
+      "words": [
+        "अर्हति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T01:55:47.208567"
+    },
+    {
+      "id": 70,
+      "sanskrit": "अर्हति पठति।",
+      "devanagari": "अर्हति पठति।",
+      "translation": "Deserve reads.",
+      "words": [
+        "अर्हति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T01:55:47.208569"
+    },
+    {
+      "id": 71,
+      "sanskrit": "अहं क्रीडां क्रीडामि अस्ति।",
+      "devanagari": "अहं क्रीडां क्रीडामि अस्ति।",
+      "translation": "I Am Playing Game is.",
+      "words": [
+        "अहं क्रीडां क्रीडामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:09:51.844277"
+    },
+    {
+      "id": 72,
+      "sanskrit": "अहं क्रीडां क्रीडामि गच्छति।",
+      "devanagari": "अहं क्रीडां क्रीडामि गच्छति।",
+      "translation": "I Am Playing Game goes.",
+      "words": [
+        "अहं क्रीडां क्रीडामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:09:51.844296"
+    },
+    {
+      "id": 73,
+      "sanskrit": "अहं क्रीडां क्रीडामि पठति।",
+      "devanagari": "अहं क्रीडां क्रीडामि पठति।",
+      "translation": "I Am Playing Game reads.",
+      "words": [
+        "अहं क्रीडां क्रीडामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:09:51.844300"
+    },
+    {
+      "id": 74,
+      "sanskrit": "अहं भोजनं खादामि अस्ति।",
+      "devanagari": "अहं भोजनं खादामि अस्ति।",
+      "translation": "I Eat Food is.",
+      "words": [
+        "अहं भोजनं खादामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:13:51.648909"
+    },
+    {
+      "id": 75,
+      "sanskrit": "अहं भोजनं खादामि गच्छति।",
+      "devanagari": "अहं भोजनं खादामि गच्छति।",
+      "translation": "I Eat Food goes.",
+      "words": [
+        "अहं भोजनं खादामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:13:51.648918"
+    },
+    {
+      "id": 76,
+      "sanskrit": "अहं भोजनं खादामि पठति।",
+      "devanagari": "अहं भोजनं खादामि पठति।",
+      "translation": "I Eat Food reads.",
+      "words": [
+        "अहं भोजनं खादामि"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:13:51.648920"
+    },
+    {
+      "id": 77,
+      "sanskrit": "आहारः अस्ति।",
+      "devanagari": "आहारः अस्ति।",
+      "translation": "Food is.",
+      "words": [
+        "आहारः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:32:23.099075"
+    },
+    {
+      "id": 78,
+      "sanskrit": "आहारः गच्छति।",
+      "devanagari": "आहारः गच्छति।",
+      "translation": "Food goes.",
+      "words": [
+        "आहारः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:32:23.099086"
+    },
+    {
+      "id": 79,
+      "sanskrit": "आहारः पठति।",
+      "devanagari": "आहारः पठति।",
+      "translation": "Food reads.",
+      "words": [
+        "आहारः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:32:23.099089"
+    },
+    {
+      "id": 80,
+      "sanskrit": "अहम्‌ अस्ति।",
+      "devanagari": "अहम्‌ अस्ति।",
+      "translation": "I is.",
+      "words": [
+        "अहम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:33:23.572829"
+    },
+    {
+      "id": 81,
+      "sanskrit": "अहम्‌ गच्छति।",
+      "devanagari": "अहम्‌ गच्छति।",
+      "translation": "I goes.",
+      "words": [
+        "अहम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:33:23.572841"
+    },
+    {
+      "id": 82,
+      "sanskrit": "अहम्‌ पठति।",
+      "devanagari": "अहम्‌ पठति।",
+      "translation": "I reads.",
+      "words": [
+        "अहम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:33:23.572845"
+    },
+    {
+      "id": 83,
+      "sanskrit": "अहं भोजनं खादामि। अस्ति।",
+      "devanagari": "अहं भोजनं खादामि। अस्ति।",
+      "translation": "I Eat Food. is.",
+      "words": [
+        "अहं भोजनं खादामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:49:27.862241"
+    },
+    {
+      "id": 84,
+      "sanskrit": "अहं भोजनं खादामि। गच्छति।",
+      "devanagari": "अहं भोजनं खादामि। गच्छति।",
+      "translation": "I Eat Food. goes.",
+      "words": [
+        "अहं भोजनं खादामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:49:27.862270"
+    },
+    {
+      "id": 85,
+      "sanskrit": "अहं भोजनं खादामि। पठति।",
+      "devanagari": "अहं भोजनं खादामि। पठति।",
+      "translation": "I Eat Food. reads.",
+      "words": [
+        "अहं भोजनं खादामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:49:27.862342"
+    },
+    {
+      "id": 86,
+      "sanskrit": "सेवफल अस्ति।",
+      "devanagari": "सेवफल अस्ति।",
+      "translation": "Apple is.",
+      "words": [
+        "सेवफल"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:51:30.393937"
+    },
+    {
+      "id": 87,
+      "sanskrit": "सेवफल गच्छति।",
+      "devanagari": "सेवफल गच्छति।",
+      "translation": "Apple goes.",
+      "words": [
+        "सेवफल"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:51:30.393947"
+    },
+    {
+      "id": 88,
+      "sanskrit": "सेवफल पठति।",
+      "devanagari": "सेवफल पठति।",
+      "translation": "Apple reads.",
+      "words": [
+        "सेवफल"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T02:51:30.393949"
+    },
+    {
+      "id": 89,
+      "sanskrit": "पवित्र अस्ति।",
+      "devanagari": "पवित्र अस्ति।",
+      "translation": "Divine is.",
+      "words": [
+        "पवित्र"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:02:42.336930"
+    },
+    {
+      "id": 90,
+      "sanskrit": "पवित्र गच्छति।",
+      "devanagari": "पवित्र गच्छति।",
+      "translation": "Divine goes.",
+      "words": [
+        "पवित्र"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:02:42.336942"
+    },
+    {
+      "id": 91,
+      "sanskrit": "पवित्र पठति।",
+      "devanagari": "पवित्र पठति।",
+      "translation": "Divine reads.",
+      "words": [
+        "पवित्र"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:02:42.336946"
+    },
+    {
+      "id": 92,
+      "sanskrit": "पुनः संयोजयन्तु अस्ति।",
+      "devanagari": "पुनः संयोजयन्तु अस्ति।",
+      "translation": "Reassemble is.",
+      "words": [
+        "पुनः संयोजयन्तु"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:03:30.148828"
+    },
+    {
+      "id": 93,
+      "sanskrit": "पुनः संयोजयन्तु गच्छति।",
+      "devanagari": "पुनः संयोजयन्तु गच्छति।",
+      "translation": "Reassemble goes.",
+      "words": [
+        "पुनः संयोजयन्तु"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:03:30.148835"
+    },
+    {
+      "id": 94,
+      "sanskrit": "पुनः संयोजयन्तु पठति।",
+      "devanagari": "पुनः संयोजयन्तु पठति।",
+      "translation": "Reassemble reads.",
+      "words": [
+        "पुनः संयोजयन्तु"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T03:03:30.148836"
+    },
+    {
+      "id": 95,
+      "sanskrit": "नमस्कार जगत् अस्ति।",
+      "devanagari": "नमस्कार जगत् अस्ति।",
+      "translation": "Hello World is.",
+      "words": [
+        "नमस्कार जगत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T13:46:42.064152"
+    },
+    {
+      "id": 96,
+      "sanskrit": "नमस्कार जगत् गच्छति।",
+      "devanagari": "नमस्कार जगत् गच्छति।",
+      "translation": "Hello World goes.",
+      "words": [
+        "नमस्कार जगत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T13:46:42.064186"
+    },
+    {
+      "id": 97,
+      "sanskrit": "नमस्कार जगत् पठति।",
+      "devanagari": "नमस्कार जगत् पठति।",
+      "translation": "Hello World reads.",
+      "words": [
+        "नमस्कार जगत्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T13:46:42.064196"
+    },
+    {
+      "id": 98,
+      "sanskrit": "मम क्रीडनं रोचते अस्ति।",
+      "devanagari": "मम क्रीडनं रोचते अस्ति।",
+      "translation": "I Like Playing is.",
+      "words": [
+        "मम क्रीडनं रोचते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:09:54.316503"
+    },
+    {
+      "id": 99,
+      "sanskrit": "मम क्रीडनं रोचते गच्छति।",
+      "devanagari": "मम क्रीडनं रोचते गच्छति।",
+      "translation": "I Like Playing goes.",
+      "words": [
+        "मम क्रीडनं रोचते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:09:54.316517"
+    },
+    {
+      "id": 100,
+      "sanskrit": "मम क्रीडनं रोचते पठति।",
+      "devanagari": "मम क्रीडनं रोचते पठति।",
+      "translation": "I Like Playing reads.",
+      "words": [
+        "मम क्रीडनं रोचते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:09:54.316521"
+    },
+    {
+      "id": 101,
+      "sanskrit": "aham bhakshami अस्ति।",
+      "devanagari": "aham bhakshami अस्ति।",
+      "translation": "I Eat is.",
+      "words": [
+        "aham bhakshami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:24:00.229026"
+    },
+    {
+      "id": 102,
+      "sanskrit": "aham bhakshami गच्छति।",
+      "devanagari": "aham bhakshami गच्छति।",
+      "translation": "I Eat goes.",
+      "words": [
+        "aham bhakshami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:24:00.229039"
+    },
+    {
+      "id": 103,
+      "sanskrit": "aham bhakshami पठति।",
+      "devanagari": "aham bhakshami पठति।",
+      "translation": "I Eat reads.",
+      "words": [
+        "aham bhakshami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-15T14:24:00.229043"
+    },
+    {
+      "id": 104,
+      "sanskrit": "ahamapi bhavatA saha AgacchAmi vA अस्ति।",
+      "devanagari": "ahamapi bhavatA saha AgacchAmi vA अस्ति।",
+      "translation": "I Will Come With You Too is.",
+      "words": [
+        "ahamapi bhavatA saha AgacchAmi vA"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:46:14.115472"
+    },
+    {
+      "id": 105,
+      "sanskrit": "ahamapi bhavatA saha AgacchAmi vA गच्छति।",
+      "devanagari": "ahamapi bhavatA saha AgacchAmi vA गच्छति।",
+      "translation": "I Will Come With You Too goes.",
+      "words": [
+        "ahamapi bhavatA saha AgacchAmi vA"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:46:14.115490"
+    },
+    {
+      "id": 106,
+      "sanskrit": "ahamapi bhavatA saha AgacchAmi vA पठति।",
+      "devanagari": "ahamapi bhavatA saha AgacchAmi vA पठति।",
+      "translation": "I Will Come With You Too reads.",
+      "words": [
+        "ahamapi bhavatA saha AgacchAmi vA"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:46:14.115496"
+    },
+    {
+      "id": 107,
+      "sanskrit": "aham gantum na shaknomi अस्ति।",
+      "devanagari": "aham gantum na shaknomi अस्ति।",
+      "translation": "I Am Not Able To Go is.",
+      "words": [
+        "aham gantum na shaknomi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:47:07.867222"
+    },
+    {
+      "id": 108,
+      "sanskrit": "aham gantum na shaknomi गच्छति।",
+      "devanagari": "aham gantum na shaknomi गच्छति।",
+      "translation": "I Am Not Able To Go goes.",
+      "words": [
+        "aham gantum na shaknomi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:47:07.867234"
+    },
+    {
+      "id": 109,
+      "sanskrit": "aham gantum na shaknomi पठति।",
+      "devanagari": "aham gantum na shaknomi पठति।",
+      "translation": "I Am Not Able To Go reads.",
+      "words": [
+        "aham gantum na shaknomi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T20:47:07.867237"
+    },
+    {
+      "id": 110,
+      "sanskrit": "aham nagapure vasami अस्ति।",
+      "devanagari": "aham nagapure vasami अस्ति।",
+      "translation": "I Live In Nagpur is.",
+      "words": [
+        "aham nagapure vasami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:00:04.548819"
+    },
+    {
+      "id": 111,
+      "sanskrit": "aham nagapure vasami गच्छति।",
+      "devanagari": "aham nagapure vasami गच्छति।",
+      "translation": "I Live In Nagpur goes.",
+      "words": [
+        "aham nagapure vasami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:00:04.548825"
+    },
+    {
+      "id": 112,
+      "sanskrit": "aham nagapure vasami पठति।",
+      "devanagari": "aham nagapure vasami पठति।",
+      "translation": "I Live In Nagpur reads.",
+      "words": [
+        "aham nagapure vasami"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:00:04.548827"
+    },
+    {
+      "id": 113,
+      "sanskrit": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi अस्ति।",
+      "devanagari": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi अस्ति।",
+      "translation": "I Like Bowling More Than Batting is.",
+      "words": [
+        "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:01:25.299147"
+    },
+    {
+      "id": 114,
+      "sanskrit": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi गच्छति।",
+      "devanagari": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi गच्छति।",
+      "translation": "I Like Bowling More Than Batting goes.",
+      "words": [
+        "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:01:25.299161"
+    },
+    {
+      "id": 115,
+      "sanskrit": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi पठति।",
+      "devanagari": "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi पठति।",
+      "translation": "I Like Bowling More Than Batting reads.",
+      "words": [
+        "Aham golaakaandasya praatiyaa battingaprekshayaa adhikam prīti karoṣi"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:01:25.299165"
+    },
+    {
+      "id": 116,
+      "sanskrit": "ahaM tvaM pashyaami tvaM khadati vaartaam अस्ति।",
+      "devanagari": "ahaM tvaM pashyaami tvaM khadati vaartaam अस्ति।",
+      "translation": "I Like To Watch Television While Eating Food is.",
+      "words": [
+        "ahaM tvaM pashyaami tvaM khadati vaartaam"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:02:28.597530"
+    },
+    {
+      "id": 117,
+      "sanskrit": "ahaM tvaM pashyaami tvaM khadati vaartaam गच्छति।",
+      "devanagari": "ahaM tvaM pashyaami tvaM khadati vaartaam गच्छति।",
+      "translation": "I Like To Watch Television While Eating Food goes.",
+      "words": [
+        "ahaM tvaM pashyaami tvaM khadati vaartaam"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:02:28.597537"
+    },
+    {
+      "id": 118,
+      "sanskrit": "ahaM tvaM pashyaami tvaM khadati vaartaam पठति।",
+      "devanagari": "ahaM tvaM pashyaami tvaM khadati vaartaam पठति।",
+      "translation": "I Like To Watch Television While Eating Food reads.",
+      "words": [
+        "ahaM tvaM pashyaami tvaM khadati vaartaam"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:02:28.597539"
+    },
+    {
+      "id": 119,
+      "sanskrit": "bhojanaM khadan dUradarshanaM draShTuM rocate अस्ति।",
+      "devanagari": "bhojanaM khadan dUradarshanaM draShTuM rocate अस्ति।",
+      "translation": "He Likes To Watch Tv While Eating is.",
+      "words": [
+        "bhojanaM khadan dUradarshanaM draShTuM rocate"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:13:58.713229"
+    },
+    {
+      "id": 120,
+      "sanskrit": "bhojanaM khadan dUradarshanaM draShTuM rocate गच्छति।",
+      "devanagari": "bhojanaM khadan dUradarshanaM draShTuM rocate गच्छति।",
+      "translation": "He Likes To Watch Tv While Eating goes.",
+      "words": [
+        "bhojanaM khadan dUradarshanaM draShTuM rocate"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:13:58.713241"
+    },
+    {
+      "id": 121,
+      "sanskrit": "bhojanaM khadan dUradarshanaM draShTuM rocate पठति।",
+      "devanagari": "bhojanaM khadan dUradarshanaM draShTuM rocate पठति।",
+      "translation": "He Likes To Watch Tv While Eating reads.",
+      "words": [
+        "bhojanaM khadan dUradarshanaM draShTuM rocate"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-03-16T21:13:58.713244"
+    },
+    {
+      "id": 122,
+      "sanskrit": "Mithilesha अस्ति।",
+      "devanagari": "Mithilesha अस्ति।",
+      "translation": "Lord Of Mithila is.",
+      "words": [
+        "Mithilesha"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:32.266696"
+    },
+    {
+      "id": 123,
+      "sanskrit": "Mithilesha गच्छति।",
+      "devanagari": "Mithilesha गच्छति।",
+      "translation": "Lord Of Mithila goes.",
+      "words": [
+        "Mithilesha"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:32.266729"
+    },
+    {
+      "id": 124,
+      "sanskrit": "Mithilesha पठति।",
+      "devanagari": "Mithilesha पठति।",
+      "translation": "Lord Of Mithila reads.",
+      "words": [
+        "Mithilesha"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:32.266739"
+    },
+    {
+      "id": 125,
+      "sanskrit": "mama naama अस्ति।",
+      "devanagari": "mama naama अस्ति।",
+      "translation": "My Name Is is.",
+      "words": [
+        "mama naama"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:46.286241"
+    },
+    {
+      "id": 126,
+      "sanskrit": "mama naama गच्छति।",
+      "devanagari": "mama naama गच्छति।",
+      "translation": "My Name Is goes.",
+      "words": [
+        "mama naama"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:46.286248"
+    },
+    {
+      "id": 127,
+      "sanskrit": "mama naama पठति।",
+      "devanagari": "mama naama पठति।",
+      "translation": "My Name Is reads.",
+      "words": [
+        "mama naama"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:38:46.286250"
+    },
+    {
+      "id": 128,
+      "sanskrit": "narakam vraja अस्ति।",
+      "devanagari": "narakam vraja अस्ति।",
+      "translation": "Go To Hell is.",
+      "words": [
+        "narakam vraja"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:39:02.609926"
+    },
+    {
+      "id": 129,
+      "sanskrit": "narakam vraja गच्छति।",
+      "devanagari": "narakam vraja गच्छति।",
+      "translation": "Go To Hell goes.",
+      "words": [
+        "narakam vraja"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:39:02.609940"
+    },
+    {
+      "id": 130,
+      "sanskrit": "narakam vraja पठति।",
+      "devanagari": "narakam vraja पठति।",
+      "translation": "Go To Hell reads.",
+      "words": [
+        "narakam vraja"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:39:02.609943"
+    },
+    {
+      "id": 131,
+      "sanskrit": "myname अस्ति।",
+      "devanagari": "myname अस्ति।",
+      "translation": "My Name is.",
+      "words": [
+        "myname"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:40:30.635527"
+    },
+    {
+      "id": 132,
+      "sanskrit": "myname गच्छति।",
+      "devanagari": "myname गच्छति।",
+      "translation": "My Name goes.",
+      "words": [
+        "myname"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:40:30.635544"
+    },
+    {
+      "id": 133,
+      "sanskrit": "myname पठति।",
+      "devanagari": "myname पठति।",
+      "translation": "My Name reads.",
+      "words": [
+        "myname"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:40:30.635550"
+    },
+    {
+      "id": 134,
+      "sanskrit": "himanshuh muurkhaH अस्ति।",
+      "devanagari": "himanshuh muurkhaH अस्ति।",
+      "translation": "Himanshu Is Fool is.",
+      "words": [
+        "himanshuh muurkhaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:46:28.159353"
+    },
+    {
+      "id": 135,
+      "sanskrit": "himanshuh muurkhaH गच्छति।",
+      "devanagari": "himanshuh muurkhaH गच्छति।",
+      "translation": "Himanshu Is Fool goes.",
+      "words": [
+        "himanshuh muurkhaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:46:28.159369"
+    },
+    {
+      "id": 136,
+      "sanskrit": "himanshuh muurkhaH पठति।",
+      "devanagari": "himanshuh muurkhaH पठति।",
+      "translation": "Himanshu Is Fool reads.",
+      "words": [
+        "himanshuh muurkhaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:46:28.159372"
+    },
+    {
+      "id": 137,
+      "sanskrit": " अस्ति।",
+      "devanagari": " अस्ति।",
+      "translation": "The Input Text 'Ghjksdhk' Does Not Appear To Be A Valid English Word Or Phrase. is.",
+      "words": [
+        ""
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:47:04.556366"
+    },
+    {
+      "id": 138,
+      "sanskrit": " गच्छति।",
+      "devanagari": " गच्छति।",
+      "translation": "The Input Text 'Ghjksdhk' Does Not Appear To Be A Valid English Word Or Phrase. goes.",
+      "words": [
+        ""
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:47:04.556384"
+    },
+    {
+      "id": 139,
+      "sanskrit": " पठति।",
+      "devanagari": " पठति।",
+      "translation": "The Input Text 'Ghjksdhk' Does Not Appear To Be A Valid English Word Or Phrase. reads.",
+      "words": [
+        ""
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T14:47:04.556388"
+    },
+    {
+      "id": 140,
+      "sanskrit": "namaste अस्ति।",
+      "devanagari": "namaste अस्ति।",
+      "translation": "Greetings, I Bow To You is.",
+      "words": [
+        "namaste"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:26:58.701226"
+    },
+    {
+      "id": 141,
+      "sanskrit": "namaste गच्छति।",
+      "devanagari": "namaste गच्छति।",
+      "translation": "Greetings, I Bow To You goes.",
+      "words": [
+        "namaste"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:26:58.701238"
+    },
+    {
+      "id": 142,
+      "sanskrit": "namaste पठति।",
+      "devanagari": "namaste पठति।",
+      "translation": "Greetings, I Bow To You reads.",
+      "words": [
+        "namaste"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:26:58.701241"
+    },
+    {
+      "id": 143,
+      "sanskrit": "nāmāvalī अस्ति।",
+      "devanagari": "nāmāvalī अस्ति।",
+      "translation": "Registry is.",
+      "words": [
+        "nāmāvalī"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:32:32.452469"
+    },
+    {
+      "id": 144,
+      "sanskrit": "nāmāvalī गच्छति।",
+      "devanagari": "nāmāvalī गच्छति।",
+      "translation": "Registry goes.",
+      "words": [
+        "nāmāvalī"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:32:32.452493"
+    },
+    {
+      "id": 145,
+      "sanskrit": "nāmāvalī पठति।",
+      "devanagari": "nāmāvalī पठति।",
+      "translation": "Registry reads.",
+      "words": [
+        "nāmāvalī"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:32:32.452500"
+    },
+    {
+      "id": 146,
+      "sanskrit": "raajaa raajyam shasati अस्ति।",
+      "devanagari": "raajaa raajyam shasati अस्ति।",
+      "translation": "The King Rules The Kingdom is.",
+      "words": [
+        "raajaa raajyam shasati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:36:39.028493"
+    },
+    {
+      "id": 147,
+      "sanskrit": "raajaa raajyam shasati गच्छति।",
+      "devanagari": "raajaa raajyam shasati गच्छति।",
+      "translation": "The King Rules The Kingdom goes.",
+      "words": [
+        "raajaa raajyam shasati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:36:39.028507"
+    },
+    {
+      "id": 148,
+      "sanskrit": "raajaa raajyam shasati पठति।",
+      "devanagari": "raajaa raajyam shasati पठति।",
+      "translation": "The King Rules The Kingdom reads.",
+      "words": [
+        "raajaa raajyam shasati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:36:39.028509"
+    },
+    {
+      "id": 149,
+      "sanskrit": "Chhandra अस्ति।",
+      "devanagari": "Chhandra अस्ति।",
+      "translation": "Having A Beauty Spot Or A Moon-Like Appearance is.",
+      "words": [
+        "Chhandra"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:57:57.532005"
+    },
+    {
+      "id": 150,
+      "sanskrit": "Chhandra गच्छति।",
+      "devanagari": "Chhandra गच्छति।",
+      "translation": "Having A Beauty Spot Or A Moon-Like Appearance goes.",
+      "words": [
+        "Chhandra"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:57:57.532016"
+    },
+    {
+      "id": 151,
+      "sanskrit": "Chhandra पठति।",
+      "devanagari": "Chhandra पठति।",
+      "translation": "Having A Beauty Spot Or A Moon-Like Appearance reads.",
+      "words": [
+        "Chhandra"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T15:57:57.532018"
+    },
+    {
+      "id": 152,
+      "sanskrit": "purvānubhūti अस्ति।",
+      "devanagari": "purvānubhūti अस्ति।",
+      "translation": "Dejavu is.",
+      "words": [
+        "purvānubhūti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:21.546285"
+    },
+    {
+      "id": 153,
+      "sanskrit": "purvānubhūti गच्छति।",
+      "devanagari": "purvānubhūti गच्छति।",
+      "translation": "Dejavu goes.",
+      "words": [
+        "purvānubhūti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:21.546304"
+    },
+    {
+      "id": 154,
+      "sanskrit": "purvānubhūti पठति।",
+      "devanagari": "purvānubhūti पठति।",
+      "translation": "Dejavu reads.",
+      "words": [
+        "purvānubhūti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:21.546307"
+    },
+    {
+      "id": 155,
+      "sanskrit": "Rameśa अस्ति।",
+      "devanagari": "Rameśa अस्ति।",
+      "translation": "Ramesh is.",
+      "words": [
+        "Rameśa"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:41.089838"
+    },
+    {
+      "id": 156,
+      "sanskrit": "Rameśa गच्छति।",
+      "devanagari": "Rameśa गच्छति।",
+      "translation": "Ramesh goes.",
+      "words": [
+        "Rameśa"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:41.089860"
+    },
+    {
+      "id": 157,
+      "sanskrit": "Rameśa पठति।",
+      "devanagari": "Rameśa पठति।",
+      "translation": "Ramesh reads.",
+      "words": [
+        "Rameśa"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:00:41.089866"
+    },
+    {
+      "id": 158,
+      "sanskrit": "Ramesh mahashayaH svakarmani shreshThaH अस्ति।",
+      "devanagari": "Ramesh mahashayaH svakarmani shreshThaH अस्ति।",
+      "translation": "Ramesh Sir Is Good At His Work is.",
+      "words": [
+        "Ramesh mahashayaH svakarmani shreshThaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:01:12.327042"
+    },
+    {
+      "id": 159,
+      "sanskrit": "Ramesh mahashayaH svakarmani shreshThaH गच्छति।",
+      "devanagari": "Ramesh mahashayaH svakarmani shreshThaH गच्छति।",
+      "translation": "Ramesh Sir Is Good At His Work goes.",
+      "words": [
+        "Ramesh mahashayaH svakarmani shreshThaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:01:12.327055"
+    },
+    {
+      "id": 160,
+      "sanskrit": "Ramesh mahashayaH svakarmani shreshThaH पठति।",
+      "devanagari": "Ramesh mahashayaH svakarmani shreshThaH पठति।",
+      "translation": "Ramesh Sir Is Good At His Work reads.",
+      "words": [
+        "Ramesh mahashayaH svakarmani shreshThaH"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:01:12.327062"
+    },
+    {
+      "id": 161,
+      "sanskrit": "chhara अस्ति।",
+      "devanagari": "chhara अस्ति।",
+      "translation": "A Splinter, A Fragment is.",
+      "words": [
+        "chhara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:01.996934"
+    },
+    {
+      "id": 162,
+      "sanskrit": "chhara गच्छति।",
+      "devanagari": "chhara गच्छति।",
+      "translation": "A Splinter, A Fragment goes.",
+      "words": [
+        "chhara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:01.996995"
+    },
+    {
+      "id": 163,
+      "sanskrit": "chhara पठति।",
+      "devanagari": "chhara पठति।",
+      "translation": "A Splinter, A Fragment reads.",
+      "words": [
+        "chhara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:01.997007"
+    },
+    {
+      "id": 164,
+      "sanskrit": "Mitihilesah अस्ति।",
+      "devanagari": "Mitihilesah अस्ति।",
+      "translation": "No Direct Translation, Appears To Be A Distorted Or Incorrect Text is.",
+      "words": [
+        "Mitihilesah"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:21.891012"
+    },
+    {
+      "id": 165,
+      "sanskrit": "Mitihilesah गच्छति।",
+      "devanagari": "Mitihilesah गच्छति।",
+      "translation": "No Direct Translation, Appears To Be A Distorted Or Incorrect Text goes.",
+      "words": [
+        "Mitihilesah"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:21.891039"
+    },
+    {
+      "id": 166,
+      "sanskrit": "Mitihilesah पठति।",
+      "devanagari": "Mitihilesah पठति।",
+      "translation": "No Direct Translation, Appears To Be A Distorted Or Incorrect Text reads.",
+      "words": [
+        "Mitihilesah"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T16:17:21.891045"
+    },
+    {
+      "id": 167,
+      "sanskrit": "mAm अस्ति।",
+      "devanagari": "mAm अस्ति।",
+      "translation": "To Me is.",
+      "words": [
+        "mAm"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:01:34.807656"
+    },
+    {
+      "id": 168,
+      "sanskrit": "mAm गच्छति।",
+      "devanagari": "mAm गच्छति।",
+      "translation": "To Me goes.",
+      "words": [
+        "mAm"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:01:34.807690"
+    },
+    {
+      "id": 169,
+      "sanskrit": "mAm पठति।",
+      "devanagari": "mAm पठति।",
+      "translation": "To Me reads.",
+      "words": [
+        "mAm"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:01:34.807698"
+    },
+    {
+      "id": 170,
+      "sanskrit": "prasthAna kriyA kara अस्ति।",
+      "devanagari": "prasthAna kriyA kara अस्ति।",
+      "translation": "Get Set Go is.",
+      "words": [
+        "prasthAna kriyA kara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:08:58.177867"
+    },
+    {
+      "id": 171,
+      "sanskrit": "prasthAna kriyA kara गच्छति।",
+      "devanagari": "prasthAna kriyA kara गच्छति।",
+      "translation": "Get Set Go goes.",
+      "words": [
+        "prasthAna kriyA kara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:08:58.177893"
+    },
+    {
+      "id": 172,
+      "sanskrit": "prasthAna kriyA kara पठति।",
+      "devanagari": "prasthAna kriyA kara पठति।",
+      "translation": "Get Set Go reads.",
+      "words": [
+        "prasthAna kriyA kara"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T21:08:58.177901"
+    },
+    {
+      "id": 173,
+      "sanskrit": "asti अस्ति।",
+      "devanagari": "asti अस्ति।",
+      "translation": "Is, Exists, There Is is.",
+      "words": [
+        "asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T00:09:03.096566"
+    },
+    {
+      "id": 174,
+      "sanskrit": "asti गच्छति।",
+      "devanagari": "asti गच्छति।",
+      "translation": "Is, Exists, There Is goes.",
+      "words": [
+        "asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T00:09:03.096587"
+    },
+    {
+      "id": 175,
+      "sanskrit": "asti पठति।",
+      "devanagari": "asti पठति।",
+      "translation": "Is, Exists, There Is reads.",
+      "words": [
+        "asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T00:09:03.096591"
+    },
+    {
+      "id": 176,
+      "sanskrit": "namaste svagatam applicationaya अस्ति।",
+      "devanagari": "namaste svagatam applicationaya अस्ति।",
+      "translation": "Hello Welcome To Application is.",
+      "words": [
+        "namaste svagatam applicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:11:55.864455"
+    },
+    {
+      "id": 177,
+      "sanskrit": "namaste svagatam applicationaya गच्छति।",
+      "devanagari": "namaste svagatam applicationaya गच्छति।",
+      "translation": "Hello Welcome To Application goes.",
+      "words": [
+        "namaste svagatam applicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:11:55.864467"
+    },
+    {
+      "id": 178,
+      "sanskrit": "namaste svagatam applicationaya पठति।",
+      "devanagari": "namaste svagatam applicationaya पठति।",
+      "translation": "Hello Welcome To Application reads.",
+      "words": [
+        "namaste svagatam applicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:11:55.864469"
+    },
+    {
+      "id": 179,
+      "sanskrit": "Namaste Svagatam Aplicationaya अस्ति।",
+      "devanagari": "Namaste Svagatam Aplicationaya अस्ति।",
+      "translation": "Greetings, Welcome To The Application is.",
+      "words": [
+        "Namaste Svagatam Aplicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:12:40.006781"
+    },
+    {
+      "id": 180,
+      "sanskrit": "Namaste Svagatam Aplicationaya गच्छति।",
+      "devanagari": "Namaste Svagatam Aplicationaya गच्छति।",
+      "translation": "Greetings, Welcome To The Application goes.",
+      "words": [
+        "Namaste Svagatam Aplicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:12:40.006790"
+    },
+    {
+      "id": 181,
+      "sanskrit": "Namaste Svagatam Aplicationaya पठति।",
+      "devanagari": "Namaste Svagatam Aplicationaya पठति।",
+      "translation": "Greetings, Welcome To The Application reads.",
+      "words": [
+        "Namaste Svagatam Aplicationaya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T18:12:40.006792"
+    },
+    {
+      "id": 182,
+      "sanskrit": "raamaH vanam gacchati अस्ति।",
+      "devanagari": "raamaH vanam gacchati अस्ति।",
+      "translation": "Rama Goes To The Forest is.",
+      "words": [
+        "raamaH vanam gacchati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T19:36:21.596892"
+    },
+    {
+      "id": 183,
+      "sanskrit": "raamaH vanam gacchati गच्छति।",
+      "devanagari": "raamaH vanam gacchati गच्छति।",
+      "translation": "Rama Goes To The Forest goes.",
+      "words": [
+        "raamaH vanam gacchati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T19:36:21.596905"
+    },
+    {
+      "id": 184,
+      "sanskrit": "raamaH vanam gacchati पठति।",
+      "devanagari": "raamaH vanam gacchati पठति।",
+      "translation": "Rama Goes To The Forest reads.",
+      "words": [
+        "raamaH vanam gacchati"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T19:36:21.596908"
+    },
+    {
+      "id": 185,
+      "sanskrit": "dauvarika अस्ति।",
+      "devanagari": "dauvarika अस्ति।",
+      "translation": "Runner is.",
+      "words": [
+        "dauvarika"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:53:26.086780"
+    },
+    {
+      "id": 186,
+      "sanskrit": "dauvarika गच्छति।",
+      "devanagari": "dauvarika गच्छति।",
+      "translation": "Runner goes.",
+      "words": [
+        "dauvarika"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:53:26.086790"
+    },
+    {
+      "id": 187,
+      "sanskrit": "dauvarika पठति।",
+      "devanagari": "dauvarika पठति।",
+      "translation": "Runner reads.",
+      "words": [
+        "dauvarika"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:53:26.086792"
+    },
+    {
+      "id": 188,
+      "sanskrit": "avikriya अस्ति।",
+      "devanagari": "avikriya अस्ति।",
+      "translation": "Unchange is.",
+      "words": [
+        "avikriya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:54:11.883574"
+    },
+    {
+      "id": 189,
+      "sanskrit": "avikriya गच्छति।",
+      "devanagari": "avikriya गच्छति।",
+      "translation": "Unchange goes.",
+      "words": [
+        "avikriya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:54:11.883589"
+    },
+    {
+      "id": 190,
+      "sanskrit": "avikriya पठति।",
+      "devanagari": "avikriya पठति।",
+      "translation": "Unchange reads.",
+      "words": [
+        "avikriya"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-03T20:54:11.883593"
+    },
+    {
+      "id": 191,
+      "sanskrit": "Gau maata अस्ति।",
+      "devanagari": "Gau maata अस्ति।",
+      "translation": "The Cow Is My Mother is.",
+      "words": [
+        "Gau maata"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:30:18.203318"
+    },
+    {
+      "id": 192,
+      "sanskrit": "Gau maata गच्छति।",
+      "devanagari": "Gau maata गच्छति।",
+      "translation": "The Cow Is My Mother goes.",
+      "words": [
+        "Gau maata"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:30:18.203359"
+    },
+    {
+      "id": 193,
+      "sanskrit": "Gau maata पठति।",
+      "devanagari": "Gau maata पठति।",
+      "translation": "The Cow Is My Mother reads.",
+      "words": [
+        "Gau maata"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:30:18.203429"
+    },
+    {
+      "id": 194,
+      "sanskrit": "raameSh sir mama nirNayamaNDaliyE asti अस्ति।",
+      "devanagari": "raameSh sir mama nirNayamaNDaliyE asti अस्ति।",
+      "translation": "Ramesh Sir Is In Our Judging Panel is.",
+      "words": [
+        "raameSh sir mama nirNayamaNDaliyE asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:40:11.885801"
+    },
+    {
+      "id": 195,
+      "sanskrit": "raameSh sir mama nirNayamaNDaliyE asti गच्छति।",
+      "devanagari": "raameSh sir mama nirNayamaNDaliyE asti गच्छति।",
+      "translation": "Ramesh Sir Is In Our Judging Panel goes.",
+      "words": [
+        "raameSh sir mama nirNayamaNDaliyE asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:40:11.885832"
+    },
+    {
+      "id": 196,
+      "sanskrit": "raameSh sir mama nirNayamaNDaliyE asti पठति।",
+      "devanagari": "raameSh sir mama nirNayamaNDaliyE asti पठति।",
+      "translation": "Ramesh Sir Is In Our Judging Panel reads.",
+      "words": [
+        "raameSh sir mama nirNayamaNDaliyE asti"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-04-04T10:40:11.885839"
+    },
+    {
+      "id": 197,
+      "sanskrit": "दत्तांश अस्ति।",
+      "devanagari": "दत्तांश अस्ति।",
+      "translation": "Data is.",
+      "words": [
+        "दत्तांश"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:38:04.914204"
+    },
+    {
+      "id": 198,
+      "sanskrit": "दत्तांश गच्छति।",
+      "devanagari": "दत्तांश गच्छति।",
+      "translation": "Data goes.",
+      "words": [
+        "दत्तांश"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:38:04.914261"
+    },
+    {
+      "id": 199,
+      "sanskrit": "दत्तांश पठति।",
+      "devanagari": "दत्तांश पठति।",
+      "translation": "Data reads.",
+      "words": [
+        "दत्तांश"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:38:04.914285"
+    },
+    {
+      "id": 200,
+      "sanskrit": "व्यजनम्‌ अस्ति।",
+      "devanagari": "व्यजनम्‌ अस्ति।",
+      "translation": "Fan is.",
+      "words": [
+        "व्यजनम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:39:29.267221"
+    },
+    {
+      "id": 201,
+      "sanskrit": "व्यजनम्‌ गच्छति।",
+      "devanagari": "व्यजनम्‌ गच्छति।",
+      "translation": "Fan goes.",
+      "words": [
+        "व्यजनम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:39:29.267234"
+    },
+    {
+      "id": 202,
+      "sanskrit": "व्यजनम्‌ पठति।",
+      "devanagari": "व्यजनम्‌ पठति।",
+      "translation": "Fan reads.",
+      "words": [
+        "व्यजनम्‌"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-02T21:39:29.267238"
+    },
+    {
+      "id": 203,
+      "sanskrit": "मूर्त अस्ति।",
+      "devanagari": "मूर्त अस्ति।",
+      "translation": "Abstract is.",
+      "words": [
+        "मूर्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:32.451949"
+    },
+    {
+      "id": 204,
+      "sanskrit": "मूर्त गच्छति।",
+      "devanagari": "मूर्त गच्छति।",
+      "translation": "Abstract goes.",
+      "words": [
+        "मूर्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:32.451965"
+    },
+    {
+      "id": 205,
+      "sanskrit": "मूर्त पठति।",
+      "devanagari": "मूर्त पठति।",
+      "translation": "Abstract reads.",
+      "words": [
+        "मूर्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:32.451968"
+    },
+    {
+      "id": 206,
+      "sanskrit": "अनुशीलय अस्ति।",
+      "devanagari": "अनुशीलय अस्ति।",
+      "translation": "Check is.",
+      "words": [
+        "अनुशीलय"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:53.943195"
+    },
+    {
+      "id": 207,
+      "sanskrit": "अनुशीलय गच्छति।",
+      "devanagari": "अनुशीलय गच्छति।",
+      "translation": "Check goes.",
+      "words": [
+        "अनुशीलय"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:53.943207"
+    },
+    {
+      "id": 208,
+      "sanskrit": "अनुशीलय पठति।",
+      "devanagari": "अनुशीलय पठति।",
+      "translation": "Check reads.",
+      "words": [
+        "अनुशीलय"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:35:53.943209"
+    },
+    {
+      "id": 209,
+      "sanskrit": "निर्दिष्टः अस्ति।",
+      "devanagari": "निर्दिष्टः अस्ति।",
+      "translation": "Refered is.",
+      "words": [
+        "निर्दिष्टः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:36:38.291536"
+    },
+    {
+      "id": 210,
+      "sanskrit": "निर्दिष्टः गच्छति।",
+      "devanagari": "निर्दिष्टः गच्छति।",
+      "translation": "Refered goes.",
+      "words": [
+        "निर्दिष्टः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:36:38.291543"
+    },
+    {
+      "id": 211,
+      "sanskrit": "निर्दिष्टः पठति।",
+      "devanagari": "निर्दिष्टः पठति।",
+      "translation": "Refered reads.",
+      "words": [
+        "निर्दिष्टः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T02:36:38.291545"
+    },
+    {
+      "id": 212,
+      "sanskrit": "आत्त अस्ति।",
+      "devanagari": "आत्त अस्ति।",
+      "translation": "Ready is.",
+      "words": [
+        "आत्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:05.587956"
+    },
+    {
+      "id": 213,
+      "sanskrit": "आत्त गच्छति।",
+      "devanagari": "आत्त गच्छति।",
+      "translation": "Ready goes.",
+      "words": [
+        "आत्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:05.587973"
+    },
+    {
+      "id": 214,
+      "sanskrit": "आत्त पठति।",
+      "devanagari": "आत्त पठति।",
+      "translation": "Ready reads.",
+      "words": [
+        "आत्त"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:05.587976"
+    },
+    {
+      "id": 215,
+      "sanskrit": "उत्तीर्णः अस्ति।",
+      "devanagari": "उत्तीर्णः अस्ति।",
+      "translation": "Pass is.",
+      "words": [
+        "उत्तीर्णः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:11.547508"
+    },
+    {
+      "id": 216,
+      "sanskrit": "उत्तीर्णः गच्छति।",
+      "devanagari": "उत्तीर्णः गच्छति।",
+      "translation": "Pass goes.",
+      "words": [
+        "उत्तीर्णः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:11.547515"
+    },
+    {
+      "id": 217,
+      "sanskrit": "उत्तीर्णः पठति।",
+      "devanagari": "उत्तीर्णः पठति।",
+      "translation": "Pass reads.",
+      "words": [
+        "उत्तीर्णः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-09-03T14:21:11.547517"
+    },
+    {
+      "id": 218,
+      "sanskrit": "मिथिलेशः mithilesh अस्ति।",
+      "devanagari": "मिथिलेशः mithilesh अस्ति।",
+      "translation": "Mithilesh is.",
+      "words": [
+        "मिथिलेशः mithilesh"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:02:50.145484"
+    },
+    {
+      "id": 219,
+      "sanskrit": "मिथिलेशः mithilesh गच्छति।",
+      "devanagari": "मिथिलेशः mithilesh गच्छति।",
+      "translation": "Mithilesh goes.",
+      "words": [
+        "मिथिलेशः mithilesh"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:02:50.145520"
+    },
+    {
+      "id": 220,
+      "sanskrit": "मिथिलेशः mithilesh पठति।",
+      "devanagari": "मिथिलेशः mithilesh पठति।",
+      "translation": "Mithilesh reads.",
+      "words": [
+        "मिथिलेशः mithilesh"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:02:50.145529"
+    },
+    {
+      "id": 221,
+      "sanskrit": "भारतम् अस्ति।",
+      "devanagari": "भारतम् अस्ति।",
+      "translation": "India is.",
+      "words": [
+        "भारतम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:03:43.550116"
+    },
+    {
+      "id": 222,
+      "sanskrit": "भारतम् गच्छति।",
+      "devanagari": "भारतम् गच्छति।",
+      "translation": "India goes.",
+      "words": [
+        "भारतम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:03:43.550171"
+    },
+    {
+      "id": 223,
+      "sanskrit": "भारतम् पठति।",
+      "devanagari": "भारतम् पठति।",
+      "translation": "India reads.",
+      "words": [
+        "भारतम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:03:43.550184"
+    },
+    {
+      "id": 224,
+      "sanskrit": "सांस्कृतिकम् अस्ति।",
+      "devanagari": "सांस्कृतिकम् अस्ति।",
+      "translation": "Cultural is.",
+      "words": [
+        "सांस्कृतिकम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:04:22.265186"
+    },
+    {
+      "id": 225,
+      "sanskrit": "सांस्कृतिकम् गच्छति।",
+      "devanagari": "सांस्कृतिकम् गच्छति।",
+      "translation": "Cultural goes.",
+      "words": [
+        "सांस्कृतिकम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:04:22.265231"
+    },
+    {
+      "id": 226,
+      "sanskrit": "सांस्कृतिकम् पठति।",
+      "devanagari": "सांस्कृतिकम् पठति।",
+      "translation": "Cultural reads.",
+      "words": [
+        "सांस्कृतिकम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:04:22.265241"
+    },
+    {
+      "id": 227,
+      "sanskrit": "न्अम्अस्त्ए अस्ति।",
+      "devanagari": "न्अम्अस्त्ए अस्ति।",
+      "translation": "Namaste is.",
+      "words": [
+        "न्अम्अस्त्ए"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:05:16.316027"
+    },
+    {
+      "id": 228,
+      "sanskrit": "न्अम्अस्त्ए गच्छति।",
+      "devanagari": "न्अम्अस्त्ए गच्छति।",
+      "translation": "Namaste goes.",
+      "words": [
+        "न्अम्अस्त्ए"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:05:16.316058"
+    },
+    {
+      "id": 229,
+      "sanskrit": "न्अम्अस्त्ए पठति।",
+      "devanagari": "न्अम्अस्त्ए पठति।",
+      "translation": "Namaste reads.",
+      "words": [
+        "न्अम्अस्त्ए"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:05:16.316070"
+    },
+    {
+      "id": 230,
+      "sanskrit": "णह्-मह्-स्तय् अस्ति।",
+      "devanagari": "णह्-मह्-स्तय् अस्ति।",
+      "translation": "Ahhhh-Style is.",
+      "words": [
+        "णह्-मह्-स्तय्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:06:00.243783"
+    },
+    {
+      "id": 231,
+      "sanskrit": "णह्-मह्-स्तय् गच्छति।",
+      "devanagari": "णह्-मह्-स्तय् गच्छति।",
+      "translation": "Ahhhh-Style goes.",
+      "words": [
+        "णह्-मह्-स्तय्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:06:00.243817"
+    },
+    {
+      "id": 232,
+      "sanskrit": "णह्-मह्-स्तय् पठति।",
+      "devanagari": "णह्-मह्-स्तय् पठति।",
+      "translation": "Ahhhh-Style reads.",
+      "words": [
+        "णह्-मह्-स्तय्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:06:00.243823"
+    },
+    {
+      "id": 233,
+      "sanskrit": "गुणनम् अस्ति।",
+      "devanagari": "गुणनम् अस्ति।",
+      "translation": "Multiply is.",
+      "words": [
+        "गुणनम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:08:26.224840"
+    },
+    {
+      "id": 234,
+      "sanskrit": "गुणनम् गच्छति।",
+      "devanagari": "गुणनम् गच्छति।",
+      "translation": "Multiply goes.",
+      "words": [
+        "गुणनम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:08:26.224868"
+    },
+    {
+      "id": 235,
+      "sanskrit": "गुणनम् पठति।",
+      "devanagari": "गुणनम् पठति।",
+      "translation": "Multiply reads.",
+      "words": [
+        "गुणनम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T21:08:26.224874"
+    },
+    {
+      "id": 236,
+      "sanskrit": "निर्विघ्नतः अस्ति।",
+      "devanagari": "निर्विघ्नतः अस्ति।",
+      "translation": "Seamlessly is.",
+      "words": [
+        "निर्विघ्नतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T22:35:22.040647"
+    },
+    {
+      "id": 237,
+      "sanskrit": "निर्विघ्नतः गच्छति।",
+      "devanagari": "निर्विघ्नतः गच्छति।",
+      "translation": "Seamlessly goes.",
+      "words": [
+        "निर्विघ्नतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T22:35:22.040677"
+    },
+    {
+      "id": 238,
+      "sanskrit": "निर्विघ्नतः पठति।",
+      "devanagari": "निर्विघ्नतः पठति।",
+      "translation": "Seamlessly reads.",
+      "words": [
+        "निर्विघ्नतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T22:35:22.040686"
+    },
+    {
+      "id": 239,
+      "sanskrit": "ॐ भूर्भुवः शब्दाय नमः ४५६ अस्ति।",
+      "devanagari": "ॐ भूर्भुवः शब्दाय नमः ४५६ अस्ति।",
+      "translation": "Xyzunknownword456 is.",
+      "words": [
+        "ॐ भूर्भुवः शब्दाय नमः ४५६"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T23:40:08.324156"
+    },
+    {
+      "id": 240,
+      "sanskrit": "ॐ भूर्भुवः शब्दाय नमः ४५६ गच्छति।",
+      "devanagari": "ॐ भूर्भुवः शब्दाय नमः ४५६ गच्छति।",
+      "translation": "Xyzunknownword456 goes.",
+      "words": [
+        "ॐ भूर्भुवः शब्दाय नमः ४५६"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T23:40:08.324191"
+    },
+    {
+      "id": 241,
+      "sanskrit": "ॐ भूर्भुवः शब्दाय नमः ४५६ पठति।",
+      "devanagari": "ॐ भूर्भुवः शब्दाय नमः ४५६ पठति।",
+      "translation": "Xyzunknownword456 reads.",
+      "words": [
+        "ॐ भूर्भुवः शब्दाय नमः ४५६"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-12T23:40:08.324200"
+    },
+    {
+      "id": 242,
+      "sanskrit": "आयनः अस्ति।",
+      "devanagari": "आयनः अस्ति।",
+      "translation": "Ion is.",
+      "words": [
+        "आयनः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:33:33.966073"
+    },
+    {
+      "id": 243,
+      "sanskrit": "आयनः गच्छति।",
+      "devanagari": "आयनः गच्छति।",
+      "translation": "Ion goes.",
+      "words": [
+        "आयनः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:33:33.966581"
+    },
+    {
+      "id": 244,
+      "sanskrit": "आयनः पठति।",
+      "devanagari": "आयनः पठति।",
+      "translation": "Ion reads.",
+      "words": [
+        "आयनः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:33:33.966595"
+    },
+    {
+      "id": 245,
+      "sanskrit": "मङ्गलः अस्ति।",
+      "devanagari": "मङ्गलः अस्ति।",
+      "translation": "Mars is.",
+      "words": [
+        "मङ्गलः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:38:40.987245"
+    },
+    {
+      "id": 246,
+      "sanskrit": "मङ्गलः गच्छति।",
+      "devanagari": "मङ्गलः गच्छति।",
+      "translation": "Mars goes.",
+      "words": [
+        "मङ्गलः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:38:40.987321"
+    },
+    {
+      "id": 247,
+      "sanskrit": "मङ्गलः पठति।",
+      "devanagari": "मङ्गलः पठति।",
+      "translation": "Mars reads.",
+      "words": [
+        "मङ्गलः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T00:38:40.987334"
+    },
+    {
+      "id": 248,
+      "sanskrit": "शशवतः अस्ति।",
+      "devanagari": "शशवतः अस्ति।",
+      "translation": "Shashwat is.",
+      "words": [
+        "शशवतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T09:15:43.981725"
+    },
+    {
+      "id": 249,
+      "sanskrit": "शशवतः गच्छति।",
+      "devanagari": "शशवतः गच्छति।",
+      "translation": "Shashwat goes.",
+      "words": [
+        "शशवतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T09:15:43.981781"
+    },
+    {
+      "id": 250,
+      "sanskrit": "शशवतः पठति।",
+      "devanagari": "शशवतः पठति।",
+      "translation": "Shashwat reads.",
+      "words": [
+        "शशवतः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T09:15:43.981793"
+    },
+    {
+      "id": 251,
+      "sanskrit": "साहसिकः अस्ति।",
+      "devanagari": "साहसिकः अस्ति।",
+      "translation": "Daring is.",
+      "words": [
+        "साहसिकः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:50:34.485431"
+    },
+    {
+      "id": 252,
+      "sanskrit": "साहसिकः गच्छति।",
+      "devanagari": "साहसिकः गच्छति।",
+      "translation": "Daring goes.",
+      "words": [
+        "साहसिकः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:50:34.486286"
+    },
+    {
+      "id": 253,
+      "sanskrit": "साहसिकः पठति।",
+      "devanagari": "साहसिकः पठति।",
+      "translation": "Daring reads.",
+      "words": [
+        "साहसिकः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:50:34.486302"
+    },
+    {
+      "id": 254,
+      "sanskrit": "मिलानम् अस्ति।",
+      "devanagari": "मिलानम् अस्ति।",
+      "translation": "Match is.",
+      "words": [
+        "मिलानम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:53:21.637786"
+    },
+    {
+      "id": 255,
+      "sanskrit": "मिलानम् गच्छति।",
+      "devanagari": "मिलानम् गच्छति।",
+      "translation": "Match goes.",
+      "words": [
+        "मिलानम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:53:21.637818"
+    },
+    {
+      "id": 256,
+      "sanskrit": "मिलानम् पठति।",
+      "devanagari": "मिलानम् पठति।",
+      "translation": "Match reads.",
+      "words": [
+        "मिलानम्"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:53:21.637827"
+    },
+    {
+      "id": 257,
+      "sanskrit": "प्रवाहः अस्ति।",
+      "devanagari": "प्रवाहः अस्ति।",
+      "translation": "Flow is.",
+      "words": [
+        "प्रवाहः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:54:32.731401"
+    },
+    {
+      "id": 258,
+      "sanskrit": "प्रवाहः गच्छति।",
+      "devanagari": "प्रवाहः गच्छति।",
+      "translation": "Flow goes.",
+      "words": [
+        "प्रवाहः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:54:32.731499"
+    },
+    {
+      "id": 259,
+      "sanskrit": "प्रवाहः पठति।",
+      "devanagari": "प्रवाहः पठति।",
+      "translation": "Flow reads.",
+      "words": [
+        "प्रवाहः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-13T12:54:32.731508"
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "Subject Object Verb",
+      "template": "{subject} {object} {verb}।",
+      "examples": [
+        "रामः वनं गच्छति।"
+      ]
+    }
+  ]
+}

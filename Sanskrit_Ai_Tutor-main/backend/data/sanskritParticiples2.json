@@ -1,0 +1,65 @@
+[
+  {
+    "id": "part2_1",
+    "category": "Present Active Participle (शतृ)",
+    "description": "Indicates an action that is ongoing; translates as '...ing'.",
+    "formation": "Root + अत् (for active) or आन (for middle)",
+    "examples": [
+      {
+        "root": "पठ्",
+        "participle": "पठन्",
+        "meaning": "reading (masculine)",
+        "sentence": "पठन् छात्रः आसने उपविशति।",
+        "translation": "The reading student sits on the chair."
+      },
+      {
+        "root": "गम्",
+        "participle": "गच्छन्",
+        "meaning": "going",
+        "sentence": "गच्छन् बालकः पतितः।",
+        "translation": "The going boy fell."
+      }
+    ]
+  },
+  {
+    "id": "part2_2",
+    "category": "Present Active Participle (शानच्)",
+    "description": "Middle voice present participle, often used for reflexive or intransitive verbs.",
+    "examples": [
+      {
+        "root": "सेव्",
+        "participle": "सेवमानः",
+        "meaning": "serving",
+        "sentence": "सेवमानः भृत्यः राजानं पश्यति।",
+        "translation": "The serving servant sees the king."
+      }
+    ]
+  },
+  {
+    "id": "part2_3",
+    "category": "Future Active Participle",
+    "description": "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'.",
+    "formation": "Root + स्यत्",
+    "examples": [
+      {
+        "root": "पठ्",
+        "participle": "पठिष्यन्",
+        "meaning": "about to read",
+        "sentence": "पठिष्यन् छात्रः पुस्तकं गृह्णाति।",
+        "translation": "The student about to read takes the book."
+      }
+    ]
+  },
+  {
+    "id": "part2_4",
+    "category": "Conditional",
+    "description": "Expresses a hypothetical action; uses the conditional mood.",
+    "examples": [
+      {
+        "sanskrit": "यदि वर्षेत् तर्हि अहं न गच्छेयम्।",
+        "translation": "If it were to rain, I would not go.",
+        "breakdown": "conditional construction"
+      }
+    ]
+  }
+]

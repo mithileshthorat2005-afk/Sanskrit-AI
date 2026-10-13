@@ -1,0 +1,132 @@
+[
+  {
+    "text": "\u0930\u093e\u092e\u0903 \u0935\u0928\u0902 \u0917\u091a\u094d\u091b\u0924\u093f\u0964",
+    "analysis": {
+      "score": 85,
+      "issues": [
+        "Sentence missing a verb"
+      ],
+      "breakdown": [
+        {
+          "word": "\u0930\u093e\u092e\u0903",
+          "pos": "noun",
+          "meaning": "Rama",
+          "analysis": {
+            "pos": "noun",
+            "gender": "masculine",
+            "case": "nominative",
+            "number": "singular",
+            "meaning": "Rama"
+          }
+        },
+        {
+          "word": "\u0935\u0928\u0902",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        },
+        {
+          "word": "\u0917\u091a\u094d\u091b\u0924\u093f\u0964",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        }
+      ],
+      "word_count": 3,
+      "translation": "Rama goes to the forest.",
+      "analysis_mode": "Basic Grammar Check"
+    },
+    "timestamp": "2026-02-15T02:27:33.646150"
+  },
+  {
+    "text": "\u0930\u093e\u092e\u0903 \u0935\u0928\u0902 \u0917\u091a\u094d\u091b",
+    "analysis": {
+      "score": 70,
+      "issues": [
+        "Sentence should end with '\u0964' (purna virama)",
+        "Sentence missing a verb"
+      ],
+      "breakdown": [
+        {
+          "word": "\u0930\u093e\u092e\u0903",
+          "pos": "noun",
+          "meaning": "Rama",
+          "analysis": {
+            "pos": "noun",
+            "gender": "masculine",
+            "case": "nominative",
+            "number": "singular",
+            "meaning": "Rama"
+          }
+        },
+        {
+          "word": "\u0935\u0928\u0902",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        },
+        {
+          "word": "\u0917\u091a\u094d\u091b",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        }
+      ],
+      "word_count": 3,
+      "translation": "Translation of '\u0930\u093e\u092e\u0903...' would appear here",
+      "analysis_mode": "Basic Grammar Check"
+    },
+    "timestamp": "2026-02-15T11:49:42.931440"
+  },
+  {
+    "text": "\u0938\u0941\u0924\u0903 \u092a\u0941\u0938\u094d\u0924\u0915\u0902 \u092a\u0920\u0924\u093f\u0964",
+    "analysis": {
+      "score": 85,
+      "issues": [
+        "Sentence missing a verb"
+      ],
+      "breakdown": [
+        {
+          "word": "\u0938\u0941\u0924\u0903",
+          "pos": "noun",
+          "meaning": "son",
+          "analysis": {
+            "pos": "noun",
+            "gender": "masculine",
+            "case": "nominative",
+            "number": "singular",
+            "meaning": "son"
+          }
+        },
+        {
+          "word": "\u092a\u0941\u0938\u094d\u0924\u0915\u0902",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        },
+        {
+          "word": "\u092a\u0920\u0924\u093f\u0964",
+          "pos": "unknown",
+          "meaning": "unknown",
+          "analysis": {
+            "note": "Word not in vocabulary"
+          }
+        }
+      ],
+      "word_count": 3,
+      "translation": "The son reads a book.",
+      "analysis_mode": "Detailed Analysis"
+    },
+    "timestamp": "2026-02-15T12:05:12.348128"
+  }
+]

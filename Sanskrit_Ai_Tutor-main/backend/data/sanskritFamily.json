@@ -1,0 +1,107 @@
+[
+  {
+    "id": "fam_1",
+    "sanskrit": "माता",
+    "transliteration": "Mātā",
+    "englishMeaning": "Mother",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_2",
+    "sanskrit": "पिता",
+    "transliteration": "Pitā",
+    "englishMeaning": "Father",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_3",
+    "sanskrit": "भ्राता",
+    "transliteration": "Bhrātā",
+    "englishMeaning": "Brother",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_4",
+    "sanskrit": "भगिनी",
+    "transliteration": "Bhaginī",
+    "englishMeaning": "Sister",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_5",
+    "sanskrit": "पुत्रः",
+    "transliteration": "Putraḥ",
+    "englishMeaning": "Son",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_6",
+    "sanskrit": "पुत्री",
+    "transliteration": "Putrī",
+    "englishMeaning": "Daughter",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_7",
+    "sanskrit": "पितामहः",
+    "transliteration": "Pitāmahaḥ",
+    "englishMeaning": "Grandfather (Paternal)",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_8",
+    "sanskrit": "पितामही",
+    "transliteration": "Pitāmahī",
+    "englishMeaning": "Grandmother (Paternal)",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_9",
+    "sanskrit": "मातामहः",
+    "transliteration": "Mātāmahaḥ",
+    "englishMeaning": "Grandfather (Maternal)",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_10",
+    "sanskrit": "मातामही",
+    "transliteration": "Mātāmahī",
+    "englishMeaning": "Grandmother (Maternal)",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_11",
+    "sanskrit": "पितृव्यः",
+    "transliteration": "Pitṛvyaḥ",
+    "englishMeaning": "Uncle (Father's Brother)",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_12",
+    "sanskrit": "मातुलः",
+    "transliteration": "Mātulaḥ",
+    "englishMeaning": "Uncle (Mother's Brother)",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_13",
+    "sanskrit": "पतिः",
+    "transliteration": "Patiḥ",
+    "englishMeaning": "Husband",
+    "gender": "masculine"
+  },
+  {
+    "id": "fam_14",
+    "sanskrit": "पत्नी",
+    "transliteration": "Patnī",
+    "englishMeaning": "Wife",
+    "gender": "feminine"
+  },
+  {
+    "id": "fam_15",
+    "sanskrit": "मित्रम्",
+    "transliteration": "Mitram",
+    "englishMeaning": "Friend",
+    "gender": "neuter"
+  }
+]

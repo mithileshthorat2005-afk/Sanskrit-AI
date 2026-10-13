@@ -1,0 +1,165 @@
+[
+  {
+    "id": "mood_imperative",
+    "name": "Imperative (लोट्)",
+    "description": "Used for commands, instructions, requests, and blessings. Expresses 'should do' or 'must do'.",
+    "usage_rules": [
+      "Use for direct commands and instructions",
+      "Use for polite requests (with कृपया)",
+      "Use for blessings and well-wishes",
+      "Often has 'त' ending for singular, 'त' or 'तात्' for plural"
+    ],
+    "conjugations": [
+      {
+        "person": "2nd Singular (You)",
+        "sanskrit": "पठ",
+        "transliteration": "paṭha",
+        "english": "Read! (you - informal)"
+      },
+      {
+        "person": "2nd Singular (You - polite)",
+        "sanskrit": "पठतात्",
+        "transliteration": "paṭhatāt",
+        "english": "Please read! (you - formal)"
+      },
+      {
+        "person": "2nd Dual (You two)",
+        "sanskrit": "पठतम्",
+        "transliteration": "paṭhatam",
+        "english": "You two read!"
+      },
+      {
+        "person": "2nd Plural (You all)",
+        "sanskrit": "पठत",
+        "transliteration": "paṭhata",
+        "english": "You all read!"
+      },
+      {
+        "person": "3rd Singular (He/She/It)",
+        "sanskrit": "पठतु",
+        "transliteration": "paṭhatu",
+        "english": "Let him/her read!"
+      },
+      {
+        "person": "3rd Dual (They two)",
+        "sanskrit": "पठताम्",
+        "transliteration": "paṭhatām",
+        "english": "Let them two read!"
+      },
+      {
+        "person": "3rd Plural (They)",
+        "sanskrit": "पठन्तु",
+        "transliteration": "paṭhantu",
+        "english": "Let them read!"
+      }
+    ],
+    "example_sentences": [
+      {
+        "sanskrit": "पुस्तकं पठ।",
+        "translation": "Read the book.",
+        "transliteration": "pustakaṃ paṭha.",
+        "context": "Informal command"
+      },
+      {
+        "sanskrit": "कृपया पुस्तकं पठतात्।",
+        "translation": "Please read the book.",
+        "transliteration": "kṛpayā pustakaṃ paṭhatāt.",
+        "context": "Formal request"
+      },
+      {
+        "sanskrit": "बालकः पुस्तकं पठतु।",
+        "translation": "Let the boy read the book.",
+        "transliteration": "bālakaḥ pustakaṃ paṭhatu.",
+        "context": "Permission / blessing"
+      }
+    ]
+  },
+  {
+    "id": "mood_optative",
+    "name": "Optative (विधिलिङ्)",
+    "description": "Used for wishes, possibilities, suggestions, and hypothetical situations. Expresses 'may do', 'should do', or 'could do'.",
+    "usage_rules": [
+      "Use for expressing wishes and desires",
+      "Use for polite suggestions (equivalent to 'should')",
+      "Use for hypothetical or conditional statements",
+      "Use in 'if... then...' constructions",
+      "Often translated as 'may...' or 'should...'"
+    ],
+    "conjugations": [
+      {
+        "person": "1st Singular (I)",
+        "sanskrit": "पठेयम्",
+        "transliteration": "paṭheyam",
+        "english": "May I read / I should read"
+      },
+      {
+        "person": "2nd Singular (You)",
+        "sanskrit": "पठेः",
+        "transliteration": "paṭheḥ",
+        "english": "May you read / You should read"
+      },
+      {
+        "person": "3rd Singular (He/She/It)",
+        "sanskrit": "पठेत्",
+        "transliteration": "paṭhet",
+        "english": "May he/she read / Should read"
+      },
+      {
+        "person": "1st Dual (We two)",
+        "sanskrit": "पठेव",
+        "transliteration": "paṭheva",
+        "english": "May we two read"
+      },
+      {
+        "person": "2nd Dual (You two)",
+        "sanskrit": "पठेतम्",
+        "transliteration": "paṭhetam",
+        "english": "May you two read"
+      },
+      {
+        "person": "3rd Dual (They two)",
+        "sanskrit": "पठेताम्",
+        "transliteration": "paṭhetām",
+        "english": "May they two read"
+      },
+      {
+        "person": "1st Plural (We)",
+        "sanskrit": "पठेम",
+        "transliteration": "paṭhema",
+        "english": "May we read / We should read"
+      },
+      {
+        "person": "2nd Plural (You all)",
+        "sanskrit": "पठेत",
+        "transliteration": "paṭheta",
+        "english": "May you all read"
+      },
+      {
+        "person": "3rd Plural (They)",
+        "sanskrit": "पठेयुः",
+        "transliteration": "paṭheyuḥ",
+        "english": "May they read"
+      }
+    ],
+    "example_sentences": [
+      {
+        "sanskrit": "अहं पुस्तकं पठेयम्।",
+        "translation": "May I read the book. / I should read the book.",
+        "transliteration": "ahaṃ pustakaṃ paṭheyam.",
+        "context": "Wish / suggestion"
+      },
+      {
+        "sanskrit": "सः पुस्तकं पठेत्।",
+        "translation": "May he read the book. / He should read the book.",
+        "transliteration": "saḥ pustakaṃ paṭhet.",
+        "context": "Suggestion / possibility"
+      },
+      {
+        "sanskrit": "यदि वर्षा भवेत् तर्हि अहं न गच्छेयम्।",
+        "translation": "If it rains, I would not go.",
+        "transliteration": "yadi varṣā bhavet tarhi ahaṃ na gaccheyam.",
+        "context": "Hypothetical condition"
+      }
+    ]
+  }
+]

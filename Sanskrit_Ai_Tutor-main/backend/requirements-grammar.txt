@@ -1,0 +1,5 @@
+# Optional morphology support for /grammar/check.
+# Install in an isolated Python 3.11 environment after reviewing the GPL-3.0
+# license for prakriya. These are not required for the FastAPI app to start.
+prakriya==0.2.4
+indic-transliteration==2.3.75

@@ -1,0 +1,70 @@
+[
+  {
+    "id": "read_1",
+    "title": "रामस्य वनगमनम् – Rama's Journey to the Forest",
+    "text": "रामः राज्यात् वनं गच्छति। सीता च लक्ष्मणः च तेन सह गच्छतः। मार्गे ते नदीं तरन्ति। वने ते वृक्षान् पश्यन्ति। रामः सीतायै पुष्पाणि ददाति। लक्ष्मणः फलानि आहरति। ते सुखेन वसन्ति।",
+    "translation": "Rama goes from the kingdom to the forest. Sita and Lakshmana also go with him. On the way they cross a river. In the forest they see trees. Rama gives flowers to Sita. Lakshmana brings fruits. They live happily.",
+    "vocabulary": [
+      { "word": "वनम्", "meaning": "forest" },
+      { "word": "मार्गे", "meaning": "on the way" },
+      { "word": "नदी", "meaning": "river" },
+      { "word": "तरन्ति", "meaning": "they cross" },
+      { "word": "पुष्पाणि", "meaning": "flowers" },
+      { "word": "आहरति", "meaning": "brings" }
+    ],
+    "questions": [
+      { "question": "कः वनं गच्छति?", "answer": "रामः" },
+      { "question": "रामेण सह कौ गच्छतः?", "answer": "सीता च लक्ष्मणः च" },
+      { "question": "मार्गे ते किं कुर्वन्ति?", "answer": "नदीं तरन्ति" },
+      { "question": "रामः सीतायै किं ददाति?", "answer": "पुष्पाणि" },
+      { "question": "ते कथं वसन्ति?", "answer": "सुखेन" }
+    ],
+    "composition_prompt": "Write a short paragraph (3-5 sentences) describing a journey you have taken or would like to take. Use vocabulary related to travel, nature, and people."
+  },
+  {
+    "id": "read_2",
+    "title": "विद्यालयस्य दिनचर्या – A Day at School",
+    "text": "प्रातः ८ वादने विद्यार्थिनः विद्यालयं गच्छन्ति। तत्र ते गुरुभ्यः नमन्ति। प्रथमं पाठं संस्कृतस्य भवति। ते पुस्तकानि पठन्ति। ततो गणितपाठः भवति। मध्याह्ने ते भोजनं कुर्वन्ति। अपराह्णे ते क्रीडनं कुर्वन्ति। सायं ४ वादने गृहं प्रत्यागच्छन्ति।",
+    "translation": "At 8 o'clock in the morning the students go to school. There they bow to the teachers. The first lesson is of Sanskrit. They read books. Then there is a math lesson. At noon they eat food. In the afternoon they play. At 4 pm they return home.",
+    "vocabulary": [
+      { "word": "विद्यार्थिनः", "meaning": "students" },
+      { "word": "गुरुभ्यः", "meaning": "to the teachers" },
+      { "word": "प्रथमं", "meaning": "first" },
+      { "word": "ततः", "meaning": "then" },
+      { "word": "मध्याह्ने", "meaning": "at noon" },
+      { "word": "अपराह्णे", "meaning": "in the afternoon" },
+      { "word": "प्रत्यागच्छन्ति", "meaning": "return" }
+    ],
+    "questions": [
+      { "question": "विद्यार्थिनः कदा विद्यालयं गच्छन्ति?", "answer": "प्रातः ८ वादने" },
+      { "question": "ते कस्मै नमन्ति?", "answer": "गुरुभ्यः" },
+      { "question": "प्रथमं कः पाठः भवति?", "answer": "संस्कृतस्य" },
+      { "question": "मध्याह्ने ते किं कुर्वन्ति?", "answer": "भोजनं कुर्वन्ति" },
+      { "question": "ते कदा गृहं प्रत्यागच्छन्ति?", "answer": "सायं ४ वादने" }
+    ],
+    "composition_prompt": "Write a short paragraph (3-5 sentences) describing your daily routine. Include times, activities, and people you meet."
+  },
+  {
+    "id": "read_3",
+    "title": "उद्याने क्रीडा – Play in the Garden",
+    "text": "बालकाः उद्याने क्रीडन्ति। तत्र वृक्षाः सन्ति। पक्षिणः गायन्ति। बालकाः फलानि खादन्ति। एकः बालकः सिंहासने उपविशति। सः राजा भवति। अन्ये बालकाः सेवकाः भवन्ति। ते सर्वे आनन्देन क्रीडन्ति। सूर्यः अस्तं गच्छति, तदा ते गृहं गच्छन्ति।",
+    "translation": "The boys play in the garden. There are trees there. Birds sing. The boys eat fruits. One boy sits on a throne. He becomes the king. The other boys become servants. They all play happily. The sun sets, then they go home.",
+    "vocabulary": [
+      { "word": "उद्याने", "meaning": "in the garden" },
+      { "word": "पक्षिणः", "meaning": "birds" },
+      { "word": "सिंहासने", "meaning": "on a throne" },
+      { "word": "राजा", "meaning": "king" },
+      { "word": "सेवकाः", "meaning": "servants" },
+      { "word": "आनन्देन", "meaning": "happily" },
+      { "word": "अस्तं गच्छति", "meaning": "sets" }
+    ],
+    "questions": [
+      { "question": "बालकाः कुत्र क्रीडन्ति?", "answer": "उद्याने" },
+      { "question": "तत्र के सन्ति?", "answer": "वृक्षाः" },
+      { "question": "पक्षिणः किं कुर्वन्ति?", "answer": "गायन्ति" },
+      { "question": "एकः बालकः किम् भवति?", "answer": "राजा" },
+      { "question": "अन्ये बालकाः किम् भवन्ति?", "answer": "सेवकाः" }
+    ],
+    "composition_prompt": "Write a short paragraph (3-5 sentences) describing a game you played with friends. Mention where, with whom, and what happened."
+  }
+]

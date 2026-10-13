@@ -1,0 +1,49 @@
+{
+  "demo": {
+    "skills": {
+      "1": {
+        "mastery": 0.9881069939158501,
+        "attempts": 6,
+        "correct": 5
+      },
+      "25": {
+        "mastery": 0.28539823008849563,
+        "attempts": 1,
+        "correct": 1
+      },
+      "11": {
+        "mastery": 0.3928571428571429,
+        "attempts": 1,
+        "correct": 1
+      },
+      "2": {
+        "mastery": 0.6136363636363636,
+        "attempts": 1,
+        "correct": 1
+      }
+    }
+  },
+  "user": {
+    "skills": {
+      "1": {
+        "mastery": 0.8734676007005254,
+        "attempts": 2,
+        "correct": 2
+      },
+      "2": {
+        "mastery": 0.6136363636363636,
+        "attempts": 1,
+        "correct": 1
+      }
+    }
+  },
+  "mithileshthorat": {
+    "skills": {
+      "1": {
+        "mastery": 0.17308497788729021,
+        "attempts": 5,
+        "correct": 0
+      }
+    }
+  }
+}

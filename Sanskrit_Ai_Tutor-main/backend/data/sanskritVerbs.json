@@ -1,0 +1,92 @@
+[
+  {
+    "id": "verb_1",
+    "root": "पठ् (paṭh)",
+    "sanskrit": "पठति",
+    "transliteration": "paṭhati",
+    "englishMeaning": "Reads / is reading",
+    "exampleSanskrit": "बालकः पठति।",
+    "exampleEnglish": "The boy reads."
+  },
+  {
+    "id": "verb_2",
+    "root": "लिख् (likh)",
+    "sanskrit": "लिखति",
+    "transliteration": "likhati",
+    "englishMeaning": "Writes / is writing",
+    "exampleSanskrit": "सा लिखति।",
+    "exampleEnglish": "She writes."
+  },
+  {
+    "id": "verb_3",
+    "root": "खाद् (khād)",
+    "sanskrit": "खादति",
+    "transliteration": "khādati",
+    "englishMeaning": "Eats / is eating",
+    "exampleSanskrit": "सः खादति।",
+    "exampleEnglish": "He eats."
+  },
+  {
+    "id": "verb_4",
+    "root": "पा (pā)",
+    "sanskrit": "पिबति",
+    "transliteration": "pibati",
+    "englishMeaning": "Drinks / is drinking",
+    "exampleSanskrit": "एषा जलं पिबति।",
+    "exampleEnglish": "She (this girl) drinks water."
+  },
+  {
+    "id": "verb_5",
+    "root": "गम् (gam)",
+    "sanskrit": "गच्छति",
+    "transliteration": "gacchati",
+    "englishMeaning": "Goes / is going",
+    "exampleSanskrit": "छात्रः गच्छति।",
+    "exampleEnglish": "The student goes."
+  },
+  {
+    "id": "verb_6",
+    "root": "आ + गम् (ā + gam)",
+    "sanskrit": "आगच्छति",
+    "transliteration": "āgacchati",
+    "englishMeaning": "Comes / is coming",
+    "exampleSanskrit": "शिक्षकः आगच्छति।",
+    "exampleEnglish": "The teacher comes."
+  },
+  {
+    "id": "verb_7",
+    "root": "वद् (vad)",
+    "sanskrit": "वदति",
+    "transliteration": "vadati",
+    "englishMeaning": "Speaks / says",
+    "exampleSanskrit": "तत् वदति।",
+    "exampleEnglish": "It speaks."
+  },
+  {
+    "id": "verb_8",
+    "root": "क्रीड् (krīḍ)",
+    "sanskrit": "क्रीडति",
+    "transliteration": "krīḍati",
+    "englishMeaning": "Plays / is playing",
+    "exampleSanskrit": "बालिका क्रीडति।",
+    "exampleEnglish": "The girl plays."
+  },
+  {
+    "id": "verb_9",
+    "root": "दृश् (dṛś)",
+    "sanskrit": "पश्यति",
+    "transliteration": "paśyati",
+    "englishMeaning": "Sees / looks",
+    "exampleSanskrit": "सः चित्रं पश्यति।",
+    "exampleEnglish": "He sees a picture."
+  },
+  {
+    "id": "verb_10",
+    "root": "हस् (has)",
+    "sanskrit": "हसति",
+    "transliteration": "hasati",
+    "englishMeaning": "Laughs / smiles",
+    "exampleSanskrit": "एषः हसति।",
+    "exampleEnglish": "He (this boy) laughs."
+  }
+]

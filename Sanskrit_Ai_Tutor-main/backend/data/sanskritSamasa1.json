@@ -1,0 +1,83 @@
+[
+  {
+    "id": "samasa_1",
+    "type": "Avyayībhāva (अव्ययीभाव)",
+    "description": "Indeclinable compound where the first member is an indeclinable (usually a preposition) and the compound as a whole acts as an adverb.",
+    "formation": "First member is an indeclinable (अव्यय) + second member (noun) = compound in neuter singular",
+    "example": {
+      "components": "उप + ग्रामम्",
+      "compound": "उपग्रामम्",
+      "meaning": "near the village",
+      "sentence": "बालकाः उपग्रामम् क्रीडन्ति।",
+      "translation": "The boys play near the village."
+    },
+    "common_prefixes": ["उप", "प्रति", "अनु", "आ", "अति", "नि", "सम्"]
+  },
+  {
+    "id": "samasa_2",
+    "type": "Tatpuruṣa (तत्पुरुष)",
+    "description": "Dependent compound where the second member is the main noun and the first member modifies it (usually in a case relationship).",
+    "formation": "First member (in a case relationship) + second member (noun) = compound",
+    "examples": [
+      {
+        "components": "राज + पुत्रः (genitive)",
+        "compound": "राजपुत्रः",
+        "meaning": "the king's son",
+        "sentence": "राजपुत्रः वीरः अस्ति।",
+        "translation": "The king's son is brave."
+      },
+      {
+        "components": "ग्राम + वासी (locative)",
+        "compound": "ग्रामवासी",
+        "meaning": "one living in the village",
+        "sentence": "ग्रामवासी सुखी अस्ति।",
+        "translation": "The villager is happy."
+      }
+    ],
+    "subtypes": ["Karmadhāraya (descriptive)", "Dvigu (numerical)"]
+  },
+  {
+    "id": "samasa_3",
+    "type": "Bahuvrīhi (बहुव्रीहि)",
+    "description": "Possessive compound that refers to something other than its components; it acts as an adjective.",
+    "formation": "First member + second member = compound that describes a noun (not directly mentioned)",
+    "example": {
+      "components": "वन + वासी",
+      "compound": "वनवासी",
+      "meaning": "one who lives in the forest (adjective)",
+      "sentence": "वनवासी ऋषिः तपस्यति।",
+      "translation": "The hermit who lives in the forest performs penance."
+    },
+    "additional_examples": [
+      {
+        "components": "चक्र + पाणिः",
+        "compound": "चक्रपाणिः",
+        "meaning": "one who holds a discus in hand",
+        "sentence": "चक्रपाणिः विष्णुः अस्ति।",
+        "translation": "Viṣṇu is the one who holds a discus."
+      }
+    ]
+  },
+  {
+    "id": "samasa_4",
+    "type": "Dvandva (द्वन्द्व)",
+    "description": "Coordinative compound where both members are of equal importance; often translates as 'X and Y'.",
+    "formation": "Two or more nouns joined together, often in dual or plural",
+    "examples": [
+      {
+        "components": "राम + लक्ष्मण",
+        "compound": "रामलक्ष्मणौ",
+        "meaning": "Rāma and Lakṣmaṇa (dual)",
+        "sentence": "रामलक्ष्मणौ वनं गच्छतः।",
+        "translation": "Rāma and Lakṣmaṇa go to the forest."
+      },
+      {
+        "components": "माता + पिता",
+        "compound": "मातापितरौ",
+        "meaning": "mother and father",
+        "sentence": "मातापितरौ वृद्धौ स्तः।",
+        "translation": "Mother and father are old."
+      }
+    ]
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "intro_1",
+    "category": "Name",
+    "templateSanskrit": "मम नाम [Name] अस्ति।",
+    "templateTransliteration": "Mama nāma [Name] asti.",
+    "englishMeaning": "My name is [Name].",
+    "options": []
+  },
+  {
+    "id": "intro_2",
+    "category": "City",
+    "templateSanskrit": "अहम् [City] नगरे वसामि।",
+    "templateTransliteration": "Aham [City] nagare vasāmi.",
+    "englishMeaning": "I live in the city of [City].",
+    "options": []
+  },
+  {
+    "id": "intro_3",
+    "category": "Profession",
+    "templateSanskrit": "अहम् [Profession] अस्मि।",
+    "templateTransliteration": "Aham [Profession] asmi.",
+    "englishMeaning": "I am a [Profession].",
+    "options": [
+      { "english": "Student (M)", "sanskrit": "छात्रः", "transliteration": "Chātraḥ" },
+      { "english": "Student (F)", "sanskrit": "छात्रा", "transliteration": "Chātrā" },
+      { "english": "Teacher (M)", "sanskrit": "शिक्षकः", "transliteration": "Śikṣakaḥ" },
+      { "english": "Teacher (F)", "sanskrit": "शिक्षिका", "transliteration": "Śikṣikā" },
+      { "english": "Engineer (M)", "sanskrit": "अभियन्ता", "transliteration": "Abhiyantā" },
+      { "english": "Engineer (F)", "sanskrit": "अभियन्त्री", "transliteration": "Abhiyantrī" },
+      { "english": "Doctor (M)", "sanskrit": "वैद्यः", "transliteration": "Vaidyaḥ" },
+      { "english": "Doctor (F)", "sanskrit": "वैद्या", "transliteration": "Vaidyā" }
+    ]
+  },
+  {
+    "id": "intro_5",
+    "category": "Hobby",
+    "templateSanskrit": "मह्यम् [Hobby] रोचते।",
+    "templateTransliteration": "Mahyam [Hobby] rocate.",
+    "englishMeaning": "I like [Hobby].",
+    "options": [
+      { "english": "Reading", "sanskrit": "पठनम्", "transliteration": "Paṭhanam" },
+      { "english": "Playing", "sanskrit": "क्रीडनम्", "transliteration": "Krīḍanam" },
+      { "english": "Music", "sanskrit": "सङ्गीतम्", "transliteration": "Saṅgītam" },
+      { "english": "Traveling", "sanskrit": "भ्रमणम्", "transliteration": "Bhramaṇam" }
+    ]
+  },
+  {
+    "id": "intro_6",
+    "category": "Age",
+    "templateSanskrit": "मम आयुः [Age] वर्षाणि अस्ति।",
+    "templateTransliteration": "Mama āyuḥ [Age] varṣāṇi asti.",
+    "englishMeaning": "I am [Age] years old.",
+    "options": []
+  },
+  {
+    "id": "intro_7",
+    "category": "Country of Origin",
+    "templateSanskrit": "अहम् [Country] देशतः अस्मि।",
+    "templateTransliteration": "Aham [Country] deśataḥ asmi.",
+    "englishMeaning": "I am from [Country].",
+    "options": [
+      { "english": "India", "sanskrit": "भारत", "transliteration": "Bhārata" },
+      { "english": "USA", "sanskrit": "अमेरिका", "transliteration": "Amerikā" },
+      { "english": "UK", "sanskrit": "ब्रिटेन्", "transliteration": "Briṭen" },
+      { "english": "Nepal", "sanskrit": "नेपाल", "transliteration": "Nepāla" }
+    ]
+  },
+  {
+    "id": "intro_8",
+    "category": "Language",
+    "templateSanskrit": "अहम् [Language] वदामि।",
+    "templateTransliteration": "Aham [Language] vadāmi.",
+    "englishMeaning": "I speak [Language].",
+    "options": [
+      { "english": "English", "sanskrit": "आङ्ग्लभाषाम्", "transliteration": "Āṅglabhāṣām" },
+      { "english": "Hindi", "sanskrit": "हिन्दीभाषाम्", "transliteration": "Hindībhāṣām" },
+      { "english": "Sanskrit", "sanskrit": "संस्कृतभाषाम्", "transliteration": "Saṃskṛtabhāṣām" },
+      { "english": "French", "sanskrit": "फ्रेञ्चभाषाम्", "transliteration": "Phreñcabhāṣām" }
+    ]
+  },
+  {
+    "id": "intro_9",
+    "category": "Closing",
+    "templateSanskrit": "मिलित्वा आनन्दः जातः।",
+    "templateTransliteration": "Militvā ānandaḥ jātaḥ.",
+    "englishMeaning": "Nice to meet you.",
+    "options": []
+  }
+]

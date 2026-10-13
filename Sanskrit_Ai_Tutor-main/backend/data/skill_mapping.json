@@ -1,0 +1,81 @@
+{
+  "_comment": "Maps normalized error_type strings to lesson/skill IDs from lessons.json (IDs 1-25). Only error types with a clear, unambiguous Sanskrit competency mapping are included. See 'intentionally_unmapped' for types that are recognized but excluded from BKT until a valid mapping is decided.",
+
+  "vibhakti_error": {
+    "skill_id": 11,
+    "lesson_id": 11,
+    "skill_name": "Vibhakti – The 7 Cases",
+    "difficulty": 6
+  },
+  "sandhi_error": {
+    "skill_id": 12,
+    "lesson_id": 12,
+    "skill_name": "Sandhi – Euphonic Combinations",
+    "difficulty": 7
+  },
+  "tense_error": {
+    "skill_id": 13,
+    "lesson_id": 13,
+    "skill_name": "Verb Tenses – Past & Future",
+    "difficulty": 6
+  },
+  "pronoun_error": {
+    "skill_id": 5,
+    "lesson_id": 5,
+    "skill_name": "Basic Pronouns",
+    "difficulty": 3
+  },
+  "upasarga_error": {
+    "skill_id": 16,
+    "lesson_id": 16,
+    "skill_name": "Upasarga – Verbal Prefixes",
+    "difficulty": 5
+  },
+  "verb_conjugation_error": {
+    "skill_id": 6,
+    "lesson_id": 6,
+    "skill_name": "Basic Action Words (Verbs)",
+    "difficulty": 4
+  },
+  "gender_error": {
+    "skill_id": 7,
+    "lesson_id": 7,
+    "skill_name": "Nouns & Genders (Sorting)",
+    "difficulty": 4
+  },
+  "samasa_error": {
+    "skill_id": 21,
+    "lesson_id": 21,
+    "skill_name": "Samāsa – Compounds (Part 1)",
+    "difficulty": 8
+  },
+  "voice_error": {
+    "skill_id": 17,
+    "lesson_id": 17,
+    "skill_name": "Active & Passive Voice",
+    "difficulty": 6
+  },
+  "participle_error": {
+    "skill_id": 19,
+    "lesson_id": 19,
+    "skill_name": "Participles – Part 1 (कृत् प्रत्यय)",
+    "difficulty": 7
+  },
+  "mood_error": {
+    "skill_id": 14,
+    "lesson_id": 14,
+    "skill_name": "Verb Moods – Imperative & Optative",
+    "difficulty": 6
+  },
+  "punctuation_error": {
+    "skill_id": 1,
+    "lesson_id": 1,
+    "skill_name": "Sanskrit Alphabet (Devanagari Script)",
+    "difficulty": 3
+  },
+
+  "intentionally_unmapped": {
+    "agreement_error": "Subject-verb and noun-adjective agreement errors span multiple skills (Vibhakti, Verbs, Pronouns). No single skill_id can be unambiguously assigned. Exclude from BKT until a compound skill is designed.",
+    "unknown_error": "Input could not be attributed to a specific Sanskrit competency. No BKT update is performed. A description is still returned to the learner."
+  }
+}

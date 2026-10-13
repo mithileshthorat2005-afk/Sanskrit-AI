@@ -1,0 +1,155 @@
+[
+  {
+    "id": "part_kt",
+    "category": "Past Passive Participle (क्त)",
+    "description": "Indicates a completed action. The most common participle in Sanskrit. Usually translates as 'having been...' or simply as a past passive adjective.",
+    "formation": "Root + (इ)त or (आ)न; often takes a prefix",
+    "usage": "Used as an adjective modifying a noun, or as a verb in past tense constructions",
+    "examples": [
+      {
+        "root": "गम् (to go)",
+        "participle": "गतः",
+        "meaning": "gone, having gone",
+        "sentence": "रामः वनं गतः।",
+        "translation": "Rama has gone to the forest."
+      },
+      {
+        "root": "पठ् (to read)",
+        "participle": "पठितः",
+        "meaning": "read, having been read",
+        "sentence": "पुस्तकं पठितम्।",
+        "translation": "The book has been read."
+      },
+      {
+        "root": "खाद् (to eat)",
+        "participle": "खादितः",
+        "meaning": "eaten, having been eaten",
+        "sentence": "फलं खादितम्।",
+        "translation": "The fruit has been eaten."
+      },
+      {
+        "root": "कृ (to do)",
+        "participle": "कृतः",
+        "meaning": "done, having been done",
+        "sentence": "कार्यं कृतम्।",
+        "translation": "The work has been done."
+      },
+      {
+        "root": "लिख् (to write)",
+        "participle": "लिखितः",
+        "meaning": "written, having been written",
+        "sentence": "पत्रं लिखितम्।",
+        "translation": "The letter has been written."
+      },
+      {
+        "root": "दृश् (to see)",
+        "participle": "दृष्टः",
+        "meaning": "seen, having been seen",
+        "sentence": "सः मया दृष्टः।",
+        "translation": "He has been seen by me."
+      },
+      {
+        "root": "श्रु (to hear)",
+        "participle": "श्रुतः",
+        "meaning": "heard, having been heard",
+        "sentence": "वृत्तान्तः श्रुतः।",
+        "translation": "The news has been heard."
+      }
+    ]
+  },
+  {
+    "id": "part_tavyat",
+    "category": "Future Passive Participle (तव्य / अनीयर्)",
+    "description": "Indicates obligation, necessity, or possibility. Translates as 'must be...', 'should be...', 'fit to be...'.",
+    "formation": "Root + तव्य / अनीय",
+    "usage": "Used to express duty, necessity, or worthiness",
+    "examples": [
+      {
+        "root": "गम् (to go)",
+        "participle": "गन्तव्यम्",
+        "meaning": "must be gone, should be gone",
+        "sentence": "मया गन्तव्यम्।",
+        "translation": "I must go. (By me, it should be gone.)"
+      },
+      {
+        "root": "पठ् (to read)",
+        "participle": "पठितव्यम्",
+        "meaning": "must be read, should be read",
+        "sentence": "पुस्तकं पठितव्यम्।",
+        "translation": "The book must be read."
+      },
+      {
+        "root": "कृ (to do)",
+        "participle": "कर्तव्यम्",
+        "meaning": "must be done, should be done",
+        "sentence": "कार्यं कर्तव्यम्।",
+        "translation": "The work must be done."
+      },
+      {
+        "root": "खाद् (to eat)",
+        "participle": "खादितव्यम्",
+        "meaning": "must be eaten, should be eaten",
+        "sentence": "अन्नं खादितव्यम्।",
+        "translation": "The food must be eaten."
+      },
+      {
+        "root": "ज्ञा (to know)",
+        "participle": "ज्ञातव्यम्",
+        "meaning": "must be known, should be known",
+        "sentence": "सत्यं ज्ञातव्यम्।",
+        "translation": "Truth must be known."
+      }
+    ]
+  },
+  {
+    "id": "part_ktva",
+    "category": "Gerund (क्त्वा)",
+    "description": "Indicates an action completed before another action. Translates as 'having done...'.",
+    "formation": "Root + त्वा (or या for compound verbs)",
+    "usage": "Used to express sequential actions: 'after doing X, (then) Y'",
+    "examples": [
+      {
+        "root": "गम् (to go)",
+        "participle": "गत्वा",
+        "meaning": "having gone, after going",
+        "sentence": "गत्वा पश्य।",
+        "translation": "Having gone, see. (Go and see.)"
+      },
+      {
+        "root": "पठ् (to read)",
+        "participle": "पठित्वा",
+        "meaning": "having read, after reading",
+        "sentence": "पठित्वा लिख।",
+        "translation": "Having read, write."
+      },
+      {
+        "root": "कृ (to do)",
+        "participle": "कृत्वा",
+        "meaning": "having done, after doing",
+        "sentence": "कृत्वा आगच्छ।",
+        "translation": "Having done, come."
+      },
+      {
+        "root": "खाद् (to eat)",
+        "participle": "खादित्वा",
+        "meaning": "having eaten, after eating",
+        "sentence": "खादित्वा पिब।",
+        "translation": "Having eaten, drink."
+      },
+      {
+        "root": "स्ना (to bathe)",
+        "participle": "स्नात्वा",
+        "meaning": "having bathed, after bathing",
+        "sentence": "स्नात्वा भुङ्क्ष्व।",
+        "translation": "Having bathed, eat."
+      },
+      {
+        "root": "प्र + कृ (to do - compound)",
+        "participle": "प्रकृत्य",
+        "meaning": "having done, after doing",
+        "sentence": "प्रकृत्य गच्छ।",
+        "translation": "Having done, go."
+      }
+    ]
+  }
+]

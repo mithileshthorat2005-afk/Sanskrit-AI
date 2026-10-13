@@ -1,0 +1,91 @@
+[
+  {
+    "id": "voice_active",
+    "name": "Active Voice (कर्तरि प्रयोग)",
+    "description": "The subject performs the action. The verb agrees with the subject in person and number.",
+    "rules": [
+      "Subject is in nominative case (प्रथमा विभक्ति)",
+      "Verb ending agrees with subject (person and number)",
+      "Object is in accusative case (द्वितीया विभक्ति) if present"
+    ],
+    "examples": [
+      {
+        "sanskrit": "रामः फलं खादति।",
+        "translation": "Rama eats a fruit.",
+        "breakdown": {
+          "subject": "रामः (Rama - nominative)",
+          "object": "फलम् (fruit - accusative)",
+          "verb": "खादति (eats - 3rd person singular)"
+        }
+      },
+      {
+        "sanskrit": "बालकाः पुस्तकं पठन्ति।",
+        "translation": "The boys read a book.",
+        "breakdown": {
+          "subject": "बालकाः (boys - nominative plural)",
+          "object": "पुस्तकम् (book - accusative)",
+          "verb": "पठन्ति (read - 3rd person plural)"
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice_passive",
+    "name": "Passive Voice (कर्मणि प्रयोग)",
+    "description": "The object becomes the subject, and the focus is on the action being done to it.",
+    "rules": [
+      "Original object becomes subject (nominative case)",
+      "Original subject becomes agent (instrumental case - तृतीया विभक्ति)",
+      "Verb takes the passive suffix -य (or -यत) and agrees with the new subject in person and number",
+      "Passive verb endings are usually in the third person (but can vary)"
+    ],
+    "examples": [
+      {
+        "sanskrit": "रामेण फलं खाद्यते।",
+        "translation": "The fruit is eaten by Rama.",
+        "breakdown": {
+          "agent": "रामेण (by Rama - instrumental)",
+          "subject": "फलम् (fruit - nominative)",
+          "verb": "खाद्यते (is eaten - 3rd person singular passive)"
+        }
+      },
+      {
+        "sanskrit": "बालकैः पुस्तकं पठ्यते।",
+        "translation": "The book is read by the boys.",
+        "breakdown": {
+          "agent": "बालकैः (by boys - instrumental plural)",
+          "subject": "पुस्तकम् (book - nominative)",
+          "verb": "पठ्यते (is read - 3rd person singular passive)"
+        }
+      }
+    ]
+  },
+  {
+    "id": "voice_impersonal",
+    "name": "Impersonal Passive (भावे प्रयोग)",
+    "description": "Used when the action is important, not the agent. Often with intransitive verbs, or when the agent is unknown.",
+    "rules": [
+      "No nominative subject; verb is always 3rd person singular",
+      "Agent (if present) is in instrumental case",
+      "Often translates as 'it is...' or there is an implied subject"
+    ],
+    "examples": [
+      {
+        "sanskrit": "रामेण गम्यते।",
+        "translation": "It is gone by Rama. (Rama goes.)",
+        "breakdown": {
+          "agent": "रामेण (by Rama - instrumental)",
+          "verb": "गम्यते (is gone - 3rd singular impersonal passive)"
+        }
+      },
+      {
+        "sanskrit": "मया न गम्यते।",
+        "translation": "It is not gone by me. (I do not go.)",
+        "breakdown": {
+          "agent": "मया (by me - instrumental)",
+          "verb": "गम्यते (is gone - 3rd singular impersonal passive)"
+        }
+      }
+    ]
+  }
+]
