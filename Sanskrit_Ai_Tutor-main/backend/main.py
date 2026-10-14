@@ -24,7 +24,7 @@ from modules.learning_engine import AdaptiveLearning
 from modules.nlp_processor import SanskritNLP
 from modules.auth import Authenticator
 from modules.translator import SanskritTranslator
-from modules.snake_ladder import start_new_game, process_turn
+from modules.snake_ladder import start_new_game, process_turn, MIN_POSITION, WIN_THRESHOLD
 from modules.odd_one_out import get_random_question, check_answer
 from modules.skill_mapper import SkillMapper
 from modules.sqlite_repository import SQLiteRepository
@@ -33,7 +33,10 @@ from modules.translator import SanskritTranslator
 
 app = FastAPI(title="SanskritAI API")
 
-# Configure CORS for frontend access
+# CORS: strictly pin to the expected frontend origins. The previous
+# configuration reflected any http(s)://* origin while also allowing
+# credentials, which let an attacker-controlled page read authenticated
+# responses (classic CORS + credentials misconfiguration).
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -42,10 +45,12 @@ app.add_middleware(
         "http://localhost:8005",
         "http://127.0.0.1:8005",
     ],
-    allow_origin_regex=r"https?://.*",
+    # No `allow_origin_regex=r"https?://.*"` and no wildcard: an unexpected
+    # origin receives no CORS headers, so the browser blocks cross-origin
+    # reads even when credentials are present.
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 # Base directory for data
@@ -170,7 +175,12 @@ def login(req: LoginRequest):
 
 @app.post("/auth/signup")
 def signup(req: SignupRequest):
-    user = auth.signup(req.username, req.password, req.role)
+    try:
+        user = auth.signup(req.username, req.password, req.role)
+    except ValueError as exc:
+        # Password rejected by the strength policy, or the store could not be
+        # written. Surfaced verbatim so the user sees the actual reason.
+        raise HTTPException(status_code=400, detail=str(exc))
     if not user:
         raise HTTPException(status_code=400, detail="Username already exists")
     return user
@@ -338,13 +348,38 @@ def get_progress(user: Dict = Depends(get_current_user)):
     progress = db.get_user_progress(username)
     completed_ids = list(learning_db.get_completed_lesson_ids(user_id))
     streak = learning_db.get_streak_summary(user_id)
+    learning_stats = learning_db.get_dashboard_summary(
+        user_id, learning_engine.lessons
+    )["statistics"]
+
+    # The legacy JSON carries `avg_score`, but nothing in the codebase has
+    # ever written it, so it is permanently 0. Drop it from the response
+    # rather than keep feeding a dead metric to the UI; the persisted
+    # quiz/grammar averages below replace it.
+    progress.pop("avg_score", None)
+
     # Keep the legacy fields and add persisted completion/streak details.
     return {
         **progress,
+        # Authoritative curriculum size from the lesson catalog. Overrides the
+        # hardcoded total_lessons=20 baked into the legacy per-user JSON.
+        "total_lessons": learning_stats["total_lessons"],
         "completed_lesson_ids": completed_ids,
+        # max(), not a sum: the legacy counter and the SQLite completion table
+        # both describe the same events, so one figure is chosen rather than
+        # double-counting them.
         "lessons_completed": max(int(progress.get("completed", 0)), len(completed_ids)),
         "current_streak": streak["current_streak"],
         "longest_streak": streak["longest_streak"],
+        # Real, user-scoped, persisted learning statistics.
+        "quiz_attempts": learning_stats["quiz_attempts"],
+        "quiz_average_score": learning_stats["quiz_average_score"],
+        "grammar_activity_count": learning_stats["grammar_activity_count"],
+        "grammar_average_score": learning_stats["grammar_average_score"],
+        # Per-attempt quiz detail (best / last / questions answered), read from
+        # the same persisted rows as the average above.
+        "quiz": learning_db.get_quiz_summary(user_id),
+        "points": learning_db.get_xp_balance(user_id),
     }
 
 @app.get("/activities")
@@ -352,8 +387,10 @@ def get_activities(user: Dict = Depends(get_current_user)):
     username = user["username"]
     user_id = _ensure_learning_user(username)
     recent = learning_db.get_dashboard_summary(user_id, learning_engine.lessons)["recent_activity"]
+    # No fabricated fallback rows: a user with no recorded activity gets an
+    # empty list, and the dashboard renders its honest empty state.
     if not recent:
-        return db.get_recent_activities(username)
+        return []
     activity_names = {"lesson": "Completed lesson", "quiz": "Quiz attempt", "grammar": "Grammar check"}
     return [
         {
@@ -413,6 +450,14 @@ def complete_lesson(payload: Dict[str, Any] = Body(...), user: Dict = Depends(ge
     if completion["created"]:
         db.update_progress(username, int(lesson_id), "completed")
         learning_db.record_learning_day(user_id, source="lesson")
+        # Real learning evidence: this lesson was newly marked complete.
+        # The idempotency key is derived from the event, and
+        # completion["created"] is already false on a repeat, so neither a
+        # refresh nor a re-request can inflate the balance.
+        learning_db.award_xp(
+            user_id, 20, "Lesson completed", "lesson", str(lesson_id),
+            f"lesson:{user_id}:{lesson_id}",
+        )
     return {
         "success": True,
         "username": username,
@@ -484,6 +529,14 @@ def submit_lesson_quiz(req: QuizSubmissionRequest, user: Dict = Depends(get_curr
         mastery = learning_db.record_bkt_observation(user_id, req.lesson_id, is_correct, difficulty)
         db.record_bkt_attempt(username, int(req.lesson_id), is_correct, difficulty)
     learning_db.record_learning_day(user_id, source="quiz", score_percent=score)
+    # First submission of this quiz only: the key encodes user+lesson+quiz,
+    # so a resubmit or a page refresh is a no-op on the UNIQUE constraint
+    # and cannot farm XP by repeating the same attempt.
+    learning_db.award_xp(
+        user_id, 10, f"Quiz submitted ({score}%)", "quiz",
+        f"{req.lesson_id}:{req.quiz_id}",
+        f"quiz:{user_id}:{req.lesson_id}:{req.quiz_id}",
+    )
     if correct_answers == total_questions:
         completion = learning_db.complete_lesson(user_id, str(req.lesson_id), source="quiz")
         if completion["created"]:
@@ -505,7 +558,10 @@ def translate_text(req: TranslateRequest):
 def check_grammar(req: GrammarRequest, user: Optional[Dict] = Depends(get_optional_user)):
     analysis = nlp.analyze_text(req.text, use_ai=req.use_ai)
     if "error" in analysis:
-        return analysis
+        # Previously returned HTTP 200 with {"error": ...}, which the frontend
+        # treated as a successful analysis and then failed to render. A rejection
+        # is a 400 with a `detail` message so apiRequest surfaces the reason.
+        raise HTTPException(status_code=400, detail=analysis["error"])
 
     bkt_updates = []
     skipped_issues = []
@@ -582,13 +638,19 @@ def get_dashboard_stats(user: Dict = Depends(get_current_user)):
     progress = db.get_user_progress(username)
     user_id = _ensure_learning_user(username)
     summary = learning_db.get_dashboard_summary(user_id, learning_engine.lessons)
-    activities = summary["recent_activity"] or db.get_recent_activities(username)
     stats = translator.get_database_stats()
     return {
-        "words_learned": len(activities),
+        # null = "not tracked yet". The previous implementation returned
+        # len(activities), which counted activity rows (not words) and fell
+        # back to three hardcoded placeholder rows, so a brand-new user was
+        # told they had learned 3 words. There is no per-user vocabulary
+        # store in this backend, so an honest null is reported instead.
+        "words_learned": None,
         "lessons_completed": max(progress.get('completed', 0), summary["statistics"]["lessons_completed"]),
         "current_level": progress.get('level', 'beginner'),
-        "points": progress.get('points', 0),
+        # Persisted XP ledger — never derived from frontend state and never
+        # awarded for merely opening a page.
+        "points": learning_db.get_xp_balance(user_id),
         "db_stats": stats,
         "learning_stats": summary["statistics"],
     }
@@ -703,7 +765,29 @@ def game_start():
 @app.post("/game/turn")
 def game_turn(req: GameTurnRequest):
     """Process one turn: validate the answer, move the player."""
-    return process_turn(req.current_position, req.asked_word, req.user_answer)
+    position = req.current_position
+    if position < MIN_POSITION or position > WIN_THRESHOLD:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"current_position must be between {MIN_POSITION} and "
+                f"{WIN_THRESHOLD} (received {position})."
+            ),
+        )
+    if not req.asked_word or not req.asked_word.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="asked_word is required and cannot be blank.",
+        )
+    if len(req.asked_word) > 200:
+        raise HTTPException(
+            status_code=400, detail="asked_word is too long (max 200 characters)."
+        )
+    if len(req.user_answer) > 200:
+        raise HTTPException(
+            status_code=400, detail="user_answer is too long (max 200 characters)."
+        )
+    return process_turn(position, req.asked_word.strip(), req.user_answer)
 
 # ─── Odd One Out Game ─────────────────────────────────────────
 @app.get("/game/odd/question")
@@ -713,8 +797,51 @@ def odd_question():
 
 @app.post("/game/odd/answer")
 def odd_answer(req: OddAnswerRequest):
-    """Check the user's answer for Odd One Out."""
-    return check_answer(req.question_data, req.user_choice)
+    """Check the user's answer for Odd One Out.
+
+    The question payload is echoed back by the client, so it is re-validated
+    here: previously an empty or partial dict raised KeyError/IndexError and
+    surfaced as a 500, and an out-of-range choice was silently graded as a
+    wrong answer instead of being rejected.
+    """
+    data = req.question_data
+    options = data.get("options") if isinstance(data, dict) else None
+    correct_index = data.get("correct_index") if isinstance(data, dict) else None
+
+    if not isinstance(data, dict) or not data:
+        raise HTTPException(
+            status_code=400, detail="question_data must be a non-empty object."
+        )
+    if not isinstance(options, list) or not options:
+        raise HTTPException(
+            status_code=400, detail="question_data.options must be a non-empty list."
+        )
+    if not isinstance(correct_index, int) or isinstance(correct_index, bool):
+        raise HTTPException(
+            status_code=400,
+            detail="question_data.correct_index must be an integer index into options.",
+        )
+    if correct_index < 0 or correct_index >= len(options):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"question_data.correct_index ({correct_index}) is outside the "
+                f"valid range 0..{len(options) - 1}."
+            ),
+        )
+    if not isinstance(data.get("category"), str) or not data["category"].strip():
+        raise HTTPException(
+            status_code=400, detail="question_data.category must be a non-empty string."
+        )
+    if req.user_choice < 1 or req.user_choice > len(options):
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"user_choice must be between 1 and {len(options)} "
+                f"(received {req.user_choice})."
+            ),
+        )
+    return check_answer(data, req.user_choice)
 
 # ─── BKT / Adaptive Learning Endpoints ──────────────────
 
@@ -782,12 +909,20 @@ def get_bkt_summary(user: Dict = Depends(get_current_user)):
 
 @app.get("/bkt/mastery")
 def get_bkt_mastery(user: Dict = Depends(get_current_user)):
-    """Get mastery for all lessons (or specific ones via query param)."""
+    """Get mastery for all lessons (or specific ones via query param).
+
+    `attempts` is returned alongside `mastery` because mastery == 0.0 on its
+    own is ambiguous: it means either "never attempted" or "attempted and
+    scored zero". The frontend needs the attempt count to say which.
+    """
     lessons = learning_engine.lessons
     skill_ids = [l.get('id') for l in lessons if l.get('id')]
-    mastery_map = db.get_bkt_mastery_for_skills(user["username"], skill_ids)
+    username = user["username"]
+    mastery_map = db.get_bkt_mastery_for_skills(username, skill_ids)
+    attempts_map = db.get_bkt_attempts_for_skills(username, skill_ids)
     return {
         "mastery": {str(k): v for k, v in mastery_map.items()},
+        "attempts": {str(k): v for k, v in attempts_map.items()},
         "total_lessons": len(lessons),
     }
 

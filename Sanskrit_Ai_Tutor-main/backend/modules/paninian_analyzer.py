@@ -179,6 +179,17 @@ class PaninianAnalyzer:
                 return None
             if len(value) == 1:
                 return value[0]
+            # Prakriya returns one entry per matching dhātu, so a form that
+            # resolves to two dhātus (e.g. धावसि -> धावु / सृ) yields the same
+            # value repeated. When every entry is identical there is no
+            # ambiguity and the scalar is the correct answer. Returning the
+            # list here silently disabled every downstream comparison: the
+            # agreement normaliser rejected len != 1, so person/number checks
+            # never fired for these verbs.
+            if all(item == value[0] for item in value):
+                return value[0]
+            # Genuinely ambiguous (distinct values) — keep the list so
+            # callers can treat it as "undecidable" rather than guess.
             return value
         return value
 
@@ -248,7 +259,14 @@ class PaninianAnalyzer:
         if clean_root:
             return cls._clean_root(clean_root)
 
-        # Fallback: strip IT markers from raw verb
+        # Fallback: strip IT markers from raw verb.
+        # raw_verb can be a list when Prakriya matches more than one dhātu;
+        # str()-ing it produced the malformed root "[DAvu, sf]". Take the
+        # first (stable) match so root stays a usable SLP1 identifier.
+        if isinstance(raw_verb, (list, tuple)):
+            raw_verb = next((v for v in raw_verb if v), None)
+            if isinstance(raw_verb, (list, tuple)):
+                return ""
         if raw_verb:
             return cls._clean_root(str(raw_verb))
 

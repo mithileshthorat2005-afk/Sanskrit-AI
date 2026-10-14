@@ -1,0 +1,3016 @@
+{
+  "dataset_name": "Sanskrit Grammar Benchmark — Agreement v1",
+  "version": "1.0",
+  "case_count": 300,
+  "valid_count": 150,
+  "invalid_count": 150,
+  "scope": "Present-tense parasmaipada subject–verb person/number agreement",
+  "limitations": [
+    "This is a focused agreement benchmark, not a comprehensive Sanskrit grammar benchmark.",
+    "Labels are curated from standard paradigm patterns but have not been independently reviewed by a Sanskrit specialist.",
+    "Do not present results as independently expert-validated accuracy until labels are reviewed.",
+    "The schema may need mapping to the project's existing evaluator format; do not overwrite the existing 51-case dataset."
+  ],
+  "cases": [
+    {
+      "id": "AGR-250",
+      "sentence": "बालकौ नयसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form नयसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-175",
+      "sentence": "त्वम् धावसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form धावसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-105",
+      "sentence": "बालकाः खादन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form खादन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-213",
+      "sentence": "बालकः क्रीडति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form क्रीडति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-050",
+      "sentence": "अहम् पठन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form पठन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-113",
+      "sentence": "वयम् खादामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form खादामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-030",
+      "sentence": "यूयम् गच्छावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form गच्छावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-009",
+      "sentence": "बालकौ गच्छतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form गच्छतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-136",
+      "sentence": "बालकाः वदथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form वदथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-295",
+      "sentence": "त्वम् पश्यसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form पश्यसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-235",
+      "sentence": "त्वम् क्रीडसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form क्रीडसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-221",
+      "sentence": "छात्रौ क्रीडतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form क्रीडतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-259",
+      "sentence": "अहम् नयामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form नयामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-276",
+      "sentence": "छात्रः पश्यथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form पश्यथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-129",
+      "sentence": "बालकौ वदतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form वदतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-208",
+      "sentence": "युवाम् हसामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form हसामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-036",
+      "sentence": "छात्रः पठथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form पठथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-128",
+      "sentence": "रामौ वदसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form वदसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-186",
+      "sentence": "छात्रः हसथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form हसथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-153",
+      "sentence": "बालकः धावति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form धावति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-226",
+      "sentence": "बालकाः क्रीडथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form क्रीडथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-260",
+      "sentence": "अहम् नयन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form नयन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-110",
+      "sentence": "अहम् खादन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form खादन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-193",
+      "sentence": "रामाः हसन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form हसन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-016",
+      "sentence": "बालकाः गच्छथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form गच्छथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-114",
+      "sentence": "वयम् खादतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form खादतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-246",
+      "sentence": "छात्रः नयथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form नयथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-066",
+      "sentence": "छात्रः लिखथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form लिखथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-268",
+      "sentence": "युवाम् नयामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form नयामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-063",
+      "sentence": "बालकः लिखति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form लिखति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-232",
+      "sentence": "आवाम् क्रीडति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form क्रीडति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-218",
+      "sentence": "रामौ क्रीडसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form क्रीडसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-046",
+      "sentence": "बालकाः पठथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form पठथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-158",
+      "sentence": "रामौ धावसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form धावसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-293",
+      "sentence": "वयम् पश्यामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form पश्यामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-034",
+      "sentence": "बालकः पठथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form पठथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-082",
+      "sentence": "आवाम् लिखति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form लिखति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-011",
+      "sentence": "छात्रौ गच्छतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form गच्छतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-163",
+      "sentence": "रामाः धावन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form धावन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-018",
+      "sentence": "छात्राः गच्छथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form गच्छथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-168",
+      "sentence": "छात्राः धावथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form धावथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-299",
+      "sentence": "यूयम् पश्यथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form पश्यथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-197",
+      "sentence": "छात्राः हसन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form हसन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-017",
+      "sentence": "छात्राः गच्छन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form गच्छन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-283",
+      "sentence": "रामाः पश्यन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form पश्यन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-134",
+      "sentence": "रामाः वदथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form वदथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-165",
+      "sentence": "बालकाः धावन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form धावन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-239",
+      "sentence": "यूयम् क्रीडथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form क्रीडथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-150",
+      "sentence": "यूयम् वदावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form वदावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-116",
+      "sentence": "त्वम् खादामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form खादामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-188",
+      "sentence": "रामौ हससि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form हससि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-064",
+      "sentence": "बालकः लिखथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form लिखथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-012",
+      "sentence": "छात्रौ गच्छसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form गच्छसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-044",
+      "sentence": "रामाः पठथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form पठथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-085",
+      "sentence": "त्वम् लिखसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form लिखसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-049",
+      "sentence": "अहम् पठामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form पठामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-106",
+      "sentence": "बालकाः खादथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form खादथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-027",
+      "sentence": "युवाम् गच्छथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form गच्छथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-065",
+      "sentence": "छात्रः लिखति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form लिखति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-290",
+      "sentence": "अहम् पश्यन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form पश्यन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-220",
+      "sentence": "बालकौ क्रीडसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form क्रीडसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-146",
+      "sentence": "त्वम् वदामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form वदामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-008",
+      "sentence": "रामौ गच्छसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form गच्छसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-245",
+      "sentence": "छात्रः नयति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form नयति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-052",
+      "sentence": "आवाम् पठति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form पठति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-125",
+      "sentence": "छात्रः वदति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form वदति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-138",
+      "sentence": "छात्राः वदथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form वदथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-267",
+      "sentence": "युवाम् नयथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form नयथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-209",
+      "sentence": "यूयम् हसथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form हसथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-194",
+      "sentence": "रामाः हसथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form हसथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-088",
+      "sentence": "युवाम् लिखामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form लिखामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-070",
+      "sentence": "बालकौ लिखसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form लिखसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-041",
+      "sentence": "छात्रौ पठतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form पठतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-263",
+      "sentence": "वयम् नयामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form नयामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-104",
+      "sentence": "रामाः खादथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form खादथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-234",
+      "sentence": "वयम् क्रीडतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form क्रीडतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-130",
+      "sentence": "बालकौ वदसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form वदसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-033",
+      "sentence": "बालकः पठति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form पठति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-173",
+      "sentence": "वयम् धावामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form धावामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-248",
+      "sentence": "रामौ नयसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form नयसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-021",
+      "sentence": "आवाम् गच्छावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form गच्छावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-174",
+      "sentence": "वयम् धावतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form धावतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-237",
+      "sentence": "युवाम् क्रीडथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form क्रीडथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-286",
+      "sentence": "बालकाः पश्यथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form पश्यथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-206",
+      "sentence": "त्वम् हसामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form हसामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-215",
+      "sentence": "छात्रः क्रीडति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form क्रीडति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-145",
+      "sentence": "त्वम् वदसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form वदसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-120",
+      "sentence": "यूयम् खादावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form खादावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-084",
+      "sentence": "वयम् लिखतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form लिखतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-272",
+      "sentence": "रामः पश्यथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form पश्यथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-131",
+      "sentence": "छात्रौ वदतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form वदतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-108",
+      "sentence": "छात्राः खादथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form खादथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-287",
+      "sentence": "छात्राः पश्यन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form पश्यन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-281",
+      "sentence": "छात्रौ पश्यतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form पश्यतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-004",
+      "sentence": "बालकः गच्छथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form गच्छथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-079",
+      "sentence": "अहम् लिखामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form लिखामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-274",
+      "sentence": "बालकः पश्यथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form पश्यथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-176",
+      "sentence": "त्वम् धावामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form धावामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-249",
+      "sentence": "बालकौ नयतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form नयतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-160",
+      "sentence": "बालकौ धावसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form धावसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-229",
+      "sentence": "अहम् क्रीडामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form क्रीडामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-072",
+      "sentence": "छात्रौ लिखसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form लिखसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-075",
+      "sentence": "बालकाः लिखन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form लिखन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-210",
+      "sentence": "यूयम् हसावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form हसावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-010",
+      "sentence": "बालकौ गच्छसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form गच्छसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-024",
+      "sentence": "वयम् गच्छतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form गच्छतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-048",
+      "sentence": "छात्राः पठथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form पठथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-154",
+      "sentence": "बालकः धावथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form धावथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-032",
+      "sentence": "रामः पठथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form पठथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-203",
+      "sentence": "वयम् हसामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form हसामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-211",
+      "sentence": "रामः क्रीडति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form क्रीडति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-256",
+      "sentence": "बालकाः नयथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form नयथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-289",
+      "sentence": "अहम् पश्यामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form पश्यामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-147",
+      "sentence": "युवाम् वदथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form वदथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-042",
+      "sentence": "छात्रौ पठसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form पठसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-087",
+      "sentence": "युवाम् लिखथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form लिखथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-296",
+      "sentence": "त्वम् पश्यामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form पश्यामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-255",
+      "sentence": "बालकाः नयन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form नयन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-277",
+      "sentence": "रामौ पश्यतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form पश्यतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-124",
+      "sentence": "बालकः वदथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form वदथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-115",
+      "sentence": "त्वम् खादसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form खादसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-141",
+      "sentence": "आवाम् वदावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form वदावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-144",
+      "sentence": "वयम् वदतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form वदतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-271",
+      "sentence": "रामः पश्यति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form पश्यति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-022",
+      "sentence": "आवाम् गच्छति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form गच्छति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-181",
+      "sentence": "रामः हसति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form हसति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-200",
+      "sentence": "अहम् हसन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form हसन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-228",
+      "sentence": "छात्राः क्रीडथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form क्रीडथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-014",
+      "sentence": "रामाः गच्छथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form गच्छथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-099",
+      "sentence": "बालकौ खादतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form खादतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-282",
+      "sentence": "छात्रौ पश्यसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form पश्यसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-086",
+      "sentence": "त्वम् लिखामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form लिखामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-019",
+      "sentence": "अहम् गच्छामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form गच्छामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-098",
+      "sentence": "रामौ खादसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form खादसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-152",
+      "sentence": "रामः धावथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form धावथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-061",
+      "sentence": "रामः लिखति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form लिखति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-156",
+      "sentence": "छात्रः धावथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form धावथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-071",
+      "sentence": "छात्रौ लिखतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form लिखतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-083",
+      "sentence": "वयम् लिखामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form लिखामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-091",
+      "sentence": "रामः खादति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form खादति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-040",
+      "sentence": "बालकौ पठसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form पठसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-013",
+      "sentence": "रामाः गच्छन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form गच्छन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-100",
+      "sentence": "बालकौ खादसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form खादसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-054",
+      "sentence": "वयम् पठतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form पठतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-045",
+      "sentence": "बालकाः पठन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form पठन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-285",
+      "sentence": "बालकाः पश्यन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form पश्यन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-058",
+      "sentence": "युवाम् पठामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form पठामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-028",
+      "sentence": "युवाम् गच्छामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form गच्छामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-101",
+      "sentence": "छात्रौ खादतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form खादतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-089",
+      "sentence": "यूयम् लिखथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form लिखथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-080",
+      "sentence": "अहम् लिखन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form लिखन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-112",
+      "sentence": "आवाम् खादति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form खादति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-097",
+      "sentence": "रामौ खादतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form खादतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-060",
+      "sentence": "यूयम् पठावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form पठावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-167",
+      "sentence": "छात्राः धावन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form धावन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-178",
+      "sentence": "युवाम् धावामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form धावामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-166",
+      "sentence": "बालकाः धावथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form धावथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-169",
+      "sentence": "अहम् धावामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form धावामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-127",
+      "sentence": "रामौ वदतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form वदतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-107",
+      "sentence": "छात्राः खादन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form खादन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-109",
+      "sentence": "अहम् खादामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form खादामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-189",
+      "sentence": "बालकौ हसतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form हसतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-291",
+      "sentence": "आवाम् पश्यावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form पश्यावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-236",
+      "sentence": "त्वम् क्रीडामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form क्रीडामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-278",
+      "sentence": "रामौ पश्यसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form पश्यसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-231",
+      "sentence": "आवाम् क्रीडावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form क्रीडावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-102",
+      "sentence": "छात्रौ खादसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form खादसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-020",
+      "sentence": "अहम् गच्छन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form गच्छन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-257",
+      "sentence": "छात्राः नयन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form नयन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-292",
+      "sentence": "आवाम् पश्यति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form पश्यति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-225",
+      "sentence": "बालकाः क्रीडन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form क्रीडन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-298",
+      "sentence": "युवाम् पश्यामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form पश्यामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-118",
+      "sentence": "युवाम् खादामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form खादामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-179",
+      "sentence": "यूयम् धावथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form धावथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-216",
+      "sentence": "छात्रः क्रीडथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form क्रीडथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-171",
+      "sentence": "आवाम् धावावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form धावावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-119",
+      "sentence": "यूयम् खादथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form खादथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-157",
+      "sentence": "रामौ धावतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form धावतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-180",
+      "sentence": "यूयम् धावावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form धावावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-121",
+      "sentence": "रामः वदति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form वदति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-244",
+      "sentence": "बालकः नयथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form नयथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-233",
+      "sentence": "वयम् क्रीडामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form क्रीडामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-117",
+      "sentence": "युवाम् खादथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form खादथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-185",
+      "sentence": "छात्रः हसति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form हसति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-006",
+      "sentence": "छात्रः गच्छथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form गच्छथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-037",
+      "sentence": "रामौ पठतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form पठतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-056",
+      "sentence": "त्वम् पठामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form पठामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-155",
+      "sentence": "छात्रः धावति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form धावति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-273",
+      "sentence": "बालकः पश्यति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form पश्यति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-132",
+      "sentence": "छात्रौ वदसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form वदसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-067",
+      "sentence": "रामौ लिखतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form लिखतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-137",
+      "sentence": "छात्राः वदन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form वदन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-094",
+      "sentence": "बालकः खादथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form खादथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-198",
+      "sentence": "छात्राः हसथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form हसथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-183",
+      "sentence": "बालकः हसति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form हसति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-202",
+      "sentence": "आवाम् हसति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form हसति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-262",
+      "sentence": "आवाम् नयति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form नयति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-204",
+      "sentence": "वयम् हसतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form हसतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-151",
+      "sentence": "रामः धावति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form धावति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-149",
+      "sentence": "यूयम् वदथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form वदथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-187",
+      "sentence": "रामौ हसतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form हसतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-266",
+      "sentence": "त्वम् नयामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form नयामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-038",
+      "sentence": "रामौ पठसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form पठसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-212",
+      "sentence": "रामः क्रीडथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form क्रीडथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-238",
+      "sentence": "युवाम् क्रीडामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form क्रीडामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-073",
+      "sentence": "रामाः लिखन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form लिखन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-253",
+      "sentence": "रामाः नयन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form नयन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-059",
+      "sentence": "यूयम् पठथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form पठथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-219",
+      "sentence": "बालकौ क्रीडतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form क्रीडतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-081",
+      "sentence": "आवाम् लिखावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form लिखावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-264",
+      "sentence": "वयम् नयतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form नयतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-252",
+      "sentence": "छात्रौ नयसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form नयसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-043",
+      "sentence": "रामाः पठन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form पठन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-191",
+      "sentence": "छात्रौ हसतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form हसतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-240",
+      "sentence": "यूयम् क्रीडावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form क्रीडावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-297",
+      "sentence": "युवाम् पश्यथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form पश्यथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-055",
+      "sentence": "त्वम् पठसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form पठसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-005",
+      "sentence": "छात्रः गच्छति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form गच्छति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-251",
+      "sentence": "छात्रौ नयतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form नयतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-123",
+      "sentence": "बालकः वदति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form वदति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-148",
+      "sentence": "युवाम् वदामि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject युवाम् is second-person dual; verb form वदामि is first-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-195",
+      "sentence": "बालकाः हसन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form हसन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-029",
+      "sentence": "यूयम् गच्छथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form गच्छथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-241",
+      "sentence": "रामः नयति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form नयति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-279",
+      "sentence": "बालकौ पश्यतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form पश्यतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-242",
+      "sentence": "रामः नयथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form नयथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-092",
+      "sentence": "रामः खादथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form खादथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-205",
+      "sentence": "त्वम् हससि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form हससि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-026",
+      "sentence": "त्वम् गच्छामः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject त्वम् is second-person singular; verb form गच्छामः is first-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-265",
+      "sentence": "त्वम् नयसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form नयसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-126",
+      "sentence": "छात्रः वदथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form वदथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-192",
+      "sentence": "छात्रौ हससि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form हससि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-199",
+      "sentence": "अहम् हसामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form हसामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-294",
+      "sentence": "वयम् पश्यतः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject वयम् is first-person plural; verb form पश्यतः is third-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-284",
+      "sentence": "रामाः पश्यथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form पश्यथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-095",
+      "sentence": "छात्रः खादति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form खादति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-023",
+      "sentence": "वयम् गच्छामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form गच्छामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-288",
+      "sentence": "छात्राः पश्यथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form पश्यथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-069",
+      "sentence": "बालकौ लिखतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form लिखतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-214",
+      "sentence": "बालकः क्रीडथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form क्रीडथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-001",
+      "sentence": "रामः गच्छति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form गच्छति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-002",
+      "sentence": "रामः गच्छथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form गच्छथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-143",
+      "sentence": "वयम् वदामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form वदामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-133",
+      "sentence": "रामाः वदन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form वदन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-076",
+      "sentence": "बालकाः लिखथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form लिखथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-243",
+      "sentence": "बालकः नयति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form नयति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-003",
+      "sentence": "बालकः गच्छति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form गच्छति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-053",
+      "sentence": "वयम् पठामः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject वयम् is first-person plural; verb form पठामः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-254",
+      "sentence": "रामाः नयथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form नयथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-035",
+      "sentence": "छात्रः पठति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form पठति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-177",
+      "sentence": "युवाम् धावथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form धावथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-275",
+      "sentence": "छात्रः पश्यति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रः is third-person singular; verb form पश्यति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-096",
+      "sentence": "छात्रः खादथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रः is third-person singular; verb form खादथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-015",
+      "sentence": "बालकाः गच्छन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form गच्छन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-093",
+      "sentence": "बालकः खादति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकः is third-person singular; verb form खादति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-140",
+      "sentence": "अहम् वदन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form वदन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-074",
+      "sentence": "रामाः लिखथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form लिखथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-068",
+      "sentence": "रामौ लिखसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामौ is third-person dual; verb form लिखसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-047",
+      "sentence": "छात्राः पठन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form पठन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-269",
+      "sentence": "यूयम् नयथ।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject यूयम् is second-person plural; verb form नयथ matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-223",
+      "sentence": "रामाः क्रीडन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form क्रीडन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-062",
+      "sentence": "रामः लिखथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form लिखथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-201",
+      "sentence": "आवाम् हसावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form हसावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-142",
+      "sentence": "आवाम् वदति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form वदति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-190",
+      "sentence": "बालकौ हससि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form हससि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-025",
+      "sentence": "त्वम् गच्छसि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject त्वम् is second-person singular; verb form गच्छसि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-007",
+      "sentence": "रामौ गच्छतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form गच्छतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-051",
+      "sentence": "आवाम् पठावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form पठावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-196",
+      "sentence": "बालकाः हसथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकाः is third-person plural; verb form हसथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-057",
+      "sentence": "युवाम् पठथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form पठथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-111",
+      "sentence": "आवाम् खादावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form खादावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-172",
+      "sentence": "आवाम् धावति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject आवाम् is first-person dual; verb form धावति is third-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-039",
+      "sentence": "बालकौ पठतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form पठतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-103",
+      "sentence": "रामाः खादन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामाः is third-person plural; verb form खादन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-217",
+      "sentence": "रामौ क्रीडतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form क्रीडतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-135",
+      "sentence": "बालकाः वदन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकाः is third-person plural; verb form वदन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-162",
+      "sentence": "छात्रौ धावसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form धावसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-207",
+      "sentence": "युवाम् हसथः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject युवाम् is second-person dual; verb form हसथः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-258",
+      "sentence": "छात्राः नयथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form नयथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-161",
+      "sentence": "छात्रौ धावतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form धावतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-230",
+      "sentence": "अहम् क्रीडन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form क्रीडन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-031",
+      "sentence": "रामः पठति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामः is third-person singular; verb form पठति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-122",
+      "sentence": "रामः वदथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form वदथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-139",
+      "sentence": "अहम् वदामि।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject अहम् is first-person singular; verb form वदामि matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-222",
+      "sentence": "छात्रौ क्रीडसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्रौ is third-person dual; verb form क्रीडसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-227",
+      "sentence": "छात्राः क्रीडन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form क्रीडन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-159",
+      "sentence": "बालकौ धावतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject बालकौ is third-person dual; verb form धावतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-224",
+      "sentence": "रामाः क्रीडथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form क्रीडथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-300",
+      "sentence": "यूयम् पश्यावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form पश्यावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-078",
+      "sentence": "छात्राः लिखथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject छात्राः is third-person plural; verb form लिखथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-182",
+      "sentence": "रामः हसथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामः is third-person singular; verb form हसथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-270",
+      "sentence": "यूयम् नयावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form नयावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-164",
+      "sentence": "रामाः धावथः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject रामाः is third-person plural; verb form धावथः is second-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-184",
+      "sentence": "बालकः हसथ।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकः is third-person singular; verb form हसथ is second-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-170",
+      "sentence": "अहम् धावन्ति।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject अहम् is first-person singular; verb form धावन्ति is third-person plural.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-261",
+      "sentence": "आवाम् नयावः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject आवाम् is first-person dual; verb form नयावः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-247",
+      "sentence": "रामौ नयतः।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject रामौ is third-person dual; verb form नयतः matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-077",
+      "sentence": "छात्राः लिखन्ति।",
+      "expected_valid": true,
+      "category": "person_number_agreement",
+      "issue": null,
+      "validation_basis": "Subject छात्राः is third-person plural; verb form लिखन्ति matches the corresponding लट् परस्मैपद person/number form.",
+      "label_status": "rule_based_curated",
+      "source_note": "Curated from standard present-tense parasmaipada person/number paradigms; independent expert review recommended."
+    },
+    {
+      "id": "AGR-090",
+      "sentence": "यूयम् लिखावः।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject यूयम् is second-person plural; verb form लिखावः is first-person dual.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    },
+    {
+      "id": "AGR-280",
+      "sentence": "बालकौ पश्यसि।",
+      "expected_valid": false,
+      "category": "person_number_agreement",
+      "issue": "subject_verb_person_number_mismatch",
+      "validation_basis": "Subject बालकौ is third-person dual; verb form पश्यसि is second-person singular.",
+      "label_status": "rule_based_curated",
+      "source_note": "Constructed minimal negative control by mismatching a standard present-tense parasmaipada form; independent expert review recommended."
+    }
+  ]
+}

@@ -95,3 +95,9 @@ raameSh sir mama nirNayamaNDaliyE asti,रामेश सर मम निर�
 साहसिकः,साहसिकः,daring,,unknown,साहसिकः,,local-model,"api,local_model",local_model
 मिलानम्,मिलानम्,match,मिलानम्,noun,Translation of match,,api-added,"api,mymemory_api",mymemory_api
 प्रवाहः,प्रवाहः,flow,,unknown,प्रवाहः,,local-model,"api,local_model",local_model
+मम नाम मिथिलेशः अस्ति।,मम नाम मिथिलेशः अस्ति।,my name is mithilesh,,sentence,मम नाम मिथिलेशः अस्ति।,,local-model,"api,local_model",local_model
+यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे,यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे,I live in savner,यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे,sentence,यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे,,api-added,"api,mymemory_api",mymemory_api
+अहं प्रतिदिनम् मिथ्यामि।,अहं प्रतिदिनम् मिथ्यामि।,i lie daily,,sentence,अहं प्रतिदिनम् मिथ्यामि।,,local-model,"api,local_model",local_model
+अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।,अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।,i lie monthly,अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।,sentence,अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।,,api-added,"api,mymemory_api",mymemory_api
+वायुः।,वायुः।,The Air:,The Air:,noun,Translation of वायुः।,,api-added,"api,mymemory_api",mymemory_api
+जादुः,जादुः,magic,,unknown,जादुः,,local-model,"api,local_model",local_model

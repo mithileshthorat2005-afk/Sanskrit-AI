@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Breakdown {
   [key: string]: string;
@@ -225,6 +226,7 @@ export default function VoiceLesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 {quizQuestion.translation}
               </div>
@@ -354,6 +356,7 @@ export default function VoiceLesson({ onBack }: { onBack: () => void }) {
                       <div className="devanagari" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
                         {ex.sanskrit}
                       </div>
+                      <AudioPronounceButton text={ex.sanskrit} size={20} title={`Pronounce ${ex.sanskrit}`} />
                       <div style={{ fontSize: '1rem', color: 'var(--text-dim)', marginTop: '4px' }}>
                         {ex.translation}
                       </div>

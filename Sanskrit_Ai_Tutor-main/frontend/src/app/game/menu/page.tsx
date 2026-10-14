@@ -1,22 +1,23 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
+import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
-import { Dice5, Grid3X3, Trophy, PlayCircle, Star, Sparkles, ChevronRight } from "lucide-react";
+import { Dice5, Grid3X3, Trophy, PlayCircle, Sparkles, ChevronRight } from "lucide-react";
 
 export default function GameMenu() {
-  const [user, setUser] = useState<any>(null);
+  // Same session source as every other page. Reading localStorage directly
+  // here meant this route could disagree with the rest of the app about
+  // whether the visitor was signed in.
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (!storedUser) {
-      router.push("/");
-      return;
-    }
-    setUser(JSON.parse(storedUser));
-  }, [router]);
+    // Wait for AuthContext to hydrate; user is null while `loading` is true.
+    if (authLoading) return;
+    if (!user) router.push("/");
+  }, [router, user, authLoading]);
 
   const games = [
     {
@@ -41,7 +42,8 @@ export default function GameMenu() {
     }
   ];
 
-  if (!user) return null;
+  // Resolving the session or signed out: render nothing while redirecting.
+  if (authLoading || !user) return null;
 
   return (
     <div className="page-layout">
@@ -101,11 +103,7 @@ export default function GameMenu() {
                 </div>
               </div>
 
-              <div style={{ padding: '20px 40px', background: 'var(--bg-card)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border-soft)' }}>
-                <div className="flex items-center gap-2" style={{ color: '#f39c12' }}>
-                   <Star size={16} fill="#f39c12" />
-                   <span style={{ fontWeight: '700', fontSize: '0.9rem', color: 'var(--text-main)' }}>4.9/5</span>
-                </div>
+              <div style={{ padding: '20px 40px', background: 'var(--bg-card)', display: 'flex', justifyContent: 'flex-end', alignItems: 'center', borderTop: '1px solid var(--border-soft)' }}>
                 <button className="btn-primary" style={{ padding: '10px 24px', background: game.color, border: 'none', color: '#fff' }}>
                   Enter Arena <ChevronRight size={18} />
                 </button>
@@ -113,29 +111,6 @@ export default function GameMenu() {
             </motion.div>
           ))}
         </div>
-
-        {/* Global Stats Footer */}
-        <motion.section 
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ delay: 0.5 }}
-           style={{ marginTop: '80px', textAlign: 'center' }}
-        >
-          <div className="flex justify-center gap-10" style={{ color: 'var(--text-light)' }}>
-             <div className="flex flex-col gap-1">
-                <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-main)' }}>1.2k+</span>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase' }}>Active Players</span>
-             </div>
-             <div className="flex flex-col gap-1">
-                <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-main)' }}>50k+</span>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase' }}>Words Learned</span>
-             </div>
-             <div className="flex flex-col gap-1">
-                <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--text-main)' }}>98%</span>
-                <span style={{ fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase' }}>Retention Rate</span>
-             </div>
-          </div>
-        </motion.section>
       </main>
     </div>
   );

@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface VocabularyItem {
   word: string;
@@ -271,12 +272,14 @@ export default function ReadingCompositionLesson({ onBack }: { onBack: () => voi
               <h2 className="devanagari" style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '16px' }}>
                 {activePassage.title}
               </h2>
+              <AudioPronounceButton text={activePassage.title} size={22} title={`Pronounce ${activePassage.title}`} />
 
               {/* Text */}
               <div style={{ padding: '20px', background: 'var(--bg-main)', borderRadius: '16px', border: '1px solid var(--border-soft)', marginBottom: '16px' }}>
                 <div className="devanagari" style={{ fontSize: '1.4rem', lineHeight: '1.8', color: 'var(--text-main)', fontWeight: 500 }}>
                   {activePassage.text}
                 </div>
+                <AudioPronounceButton text={activePassage.text} size={20} title={`Pronounce ${activePassage.text}`} />
                 <button
                   onClick={() => setShowTranslation(!showTranslation)}
                   style={{

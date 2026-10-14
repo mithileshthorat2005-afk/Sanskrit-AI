@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion } from "framer-motion";
 import { useAuth } from "@/context/AuthContext";
+import { api } from "@/lib/api";
 import { 
   LayoutGrid, 
   Library, 
@@ -22,17 +23,70 @@ import {
 
 
 
-const Sidebar = ({ user }: { user: any }) => {
+/**
+ * Authenticated user as stored in localStorage / provided by useAuth().
+ * The full shape lives in @/context/AuthContext; only the fields this
+ * component actually reads are declared here.
+ */
+interface SidebarUser {
+  username?: string;
+  role?: string;
+  level?: string;
+}
+
+/** Shape of the GET /streak response (only the field the sidebar reads). */
+interface StreakSummary {
+  current_streak?: number;
+  longest_streak?: number;
+}
+
+const Sidebar = ({ user }: { user: SidebarUser }) => {
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuth();
   const [theme, setTheme] = useState('light');
+  // Server-side streaks cached per account key. Previously this read the
+  // GLOBAL localStorage key `sanskrit_streak`, which meant every account in
+  // the same browser inherited the same streak and the sidebar disagreed
+  // with the progress page (which reads /progress.current_streak).
+  // Keyed by username so switching accounts shows that account's own value;
+  // the display falls back to 0 (nothing shown) for a signed-out user or an
+  // account that has not fetched yet.
+  const [streakByUser, setStreakByUser] = useState<Record<string, number>>({});
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'light';
     setTheme(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
   }, []);
+
+  useEffect(() => {
+    const username: string | undefined = user?.username;
+    // Signed out or still resolving: render nothing rather than calling
+    // setState synchronously inside the effect body.
+    if (!username) return;
+    let alive = true;
+    api.user
+      .getStreak()
+      .then((data: StreakSummary) => {
+        // Async callback: updates the cache for this account only.
+        if (alive) {
+          setStreakByUser((prev) => ({
+            ...prev,
+            [username]: Number(data?.current_streak) || 0,
+          }));
+        }
+      })
+      .catch(() => {
+        // No streak shown rather than falling back to another user's value.
+        if (alive) setStreakByUser((prev) => ({ ...prev, [username]: 0 }));
+      });
+    return () => { alive = false; };
+  }, [user?.username]);
+
+  // Derived, not stored: guarantees a signed-out user can never display the
+  // previous account's cached value, and every account sees its own.
+  const streak = user?.username ? (streakByUser[user.username] ?? 0) : 0;
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -58,9 +112,6 @@ const Sidebar = ({ user }: { user: any }) => {
     logout();
     router.push('/');
   };
-
-  // Calculate streak from localStorage
-  const streak = parseInt(localStorage.getItem('sanskrit_streak') || '0', 10);
 
   return (
     <motion.aside 

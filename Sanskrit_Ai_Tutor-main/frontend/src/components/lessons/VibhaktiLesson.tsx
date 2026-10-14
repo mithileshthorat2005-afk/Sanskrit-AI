@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Sparkles, HelpCircle, RotateCcw, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface CaseData {
   id: string;
@@ -212,6 +213,7 @@ export default function VibhaktiLesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--text-main)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 {quizQuestion.translation}
                 <span style={{ display: 'block', marginTop: '4px', fontStyle: 'italic' }}>
@@ -309,6 +311,7 @@ export default function VibhaktiLesson({ onBack }: { onBack: () => void }) {
                 <h2 className="devanagari" style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)' }}>
                   {selectedCase.sanskrit_name}
                 </h2>
+                <AudioPronounceButton text={selectedCase.sanskrit_name} size={22} title={`Pronounce ${selectedCase.sanskrit_name}`} />
                 <p style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-main)' }}>
                   {selectedCase.english_name}
                 </p>
@@ -348,6 +351,7 @@ export default function VibhaktiLesson({ onBack }: { onBack: () => void }) {
                           </span>
                         ))}
                       </div>
+                      <AudioPronounceButton text={ex.sanskrit} size={18} title={`Pronounce ${ex.sanskrit}`} />
                       <div style={{ fontSize: '1rem', color: 'var(--text-dim)', marginTop: '4px' }}>{ex.translation}</div>
                     </div>
                   ))}

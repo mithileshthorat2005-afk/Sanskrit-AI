@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Example {
   components: string;
@@ -237,6 +238,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '8px' }}>
                 {quizQuestion.compound}
               </div>
+              <AudioPronounceButton text={quizQuestion.compound} size={22} title={`Pronounce ${quizQuestion.compound}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 {quizQuestion.meaning}
                 {quizQuestion.components && <div style={{ fontSize: '0.85rem' }}>Components: {quizQuestion.components}</div>}
@@ -360,6 +362,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                     <div className="devanagari" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
                       {activeType.example.compound}
                     </div>
+                    <AudioPronounceButton text={activeType.example.compound} size={20} title={`Pronounce ${activeType.example.compound}`} />
                     <div style={{ fontSize: '0.95rem', color: 'var(--text-dim)' }}>
                       {activeType.example.components && <span>Components: {activeType.example.components}</span>}
                       <span style={{ marginLeft: '12px' }}>Meaning: {activeType.example.meaning}</span>
@@ -369,6 +372,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                         <div className="devanagari" style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)' }}>
                           {activeType.example.sentence}
                         </div>
+                        <AudioPronounceButton text={activeType.example.sentence} size={18} title={`Pronounce ${activeType.example.sentence}`} />
                         <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>{activeType.example.translation}</div>
                       </div>
                     )}
@@ -381,6 +385,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                     <div className="devanagari" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
                       {ex.compound}
                     </div>
+                    <AudioPronounceButton text={ex.compound} size={20} title={`Pronounce ${ex.compound}`} />
                     <div style={{ fontSize: '0.95rem', color: 'var(--text-dim)' }}>
                       {ex.components && <span>Components: {ex.components}</span>}
                       <span style={{ marginLeft: '12px' }}>Meaning: {ex.meaning}</span>
@@ -390,6 +395,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                         <div className="devanagari" style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)' }}>
                           {ex.sentence}
                         </div>
+                        <AudioPronounceButton text={ex.sentence} size={18} title={`Pronounce ${ex.sentence}`} />
                         <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>{ex.translation}</div>
                       </div>
                     )}
@@ -437,6 +443,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                         <div className="devanagari" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
                           {ex.compound}
                         </div>
+                        <AudioPronounceButton text={ex.compound} size={20} title={`Pronounce ${ex.compound}`} />
                         <div style={{ fontSize: '0.95rem', color: 'var(--text-dim)' }}>
                           {ex.components && <span>Components: {ex.components}</span>}
                           <span style={{ marginLeft: '12px' }}>Meaning: {ex.meaning}</span>
@@ -446,6 +453,7 @@ export default function Samasa1Lesson({ onBack }: { onBack: () => void }) {
                             <div className="devanagari" style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)' }}>
                               {ex.sentence}
                             </div>
+                            <AudioPronounceButton text={ex.sentence} size={18} title={`Pronounce ${ex.sentence}`} />
                             <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>{ex.translation}</div>
                           </div>
                         )}

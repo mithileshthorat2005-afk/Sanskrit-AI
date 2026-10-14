@@ -8,6 +8,14 @@ interface SanskritInputProps {
     style?: React.CSSProperties;
     className?: string;
     showLabel?: boolean;
+    /**
+     * Render the "⌨️ Devanagari Keyboard" toggle (and the keyboard itself).
+     * Set to false in contexts where a Sanskrit virtual keyboard is not
+     * wanted — e.g. the translation page, whose source field is plain text
+     * input in both directions. Defaults to true so existing consumers
+     * (grammar checker, lessons) keep the keyboard unchanged.
+     */
+    showKeyboardToggle?: boolean;
 }
 
 export default function SanskritInput({ 
@@ -16,7 +24,8 @@ export default function SanskritInput({
     placeholder = "Type in English, or use the virtual keyboard for Hindi/Sanskrit...",
     style,
     className = "",
-    showLabel = true
+    showLabel = true,
+    showKeyboardToggle = true
 }: SanskritInputProps) {
     const [showKeyboard, setShowKeyboard] = useState(false);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -96,13 +105,17 @@ export default function SanskritInput({
     return (
         <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}>
 
-            {/* Header & Toggle Button */}
+            {/* Header & Toggle Button — omitted entirely when neither the
+                label nor the keyboard toggle is wanted (avoids an empty
+                container with dead spacing). */}
+            {(showLabel || showKeyboardToggle) && (
             <div style={{ display: 'flex', justifyContent: showLabel ? 'space-between' : 'flex-end', marginBottom: '12px' }}>
                 {showLabel && (
                     <label style={{ fontWeight: '700', fontSize: '1rem', color: 'var(--text-main)', letterSpacing: '-0.2px' }}>
                         Enter Text (पाठम् लिखतु)
                     </label>
                 )}
+                {showKeyboardToggle && (
                 <button
                     onClick={() => setShowKeyboard(!showKeyboard)}
                     style={{
@@ -125,7 +138,9 @@ export default function SanskritInput({
                 >
                     {showKeyboard ? '✕ Close Keyboard' : '⌨️ Devanagari Keyboard'}
                 </button>
+                )}
             </div>
+            )}
 
             {/* The Actual Text Box */}
             <textarea
@@ -154,8 +169,10 @@ export default function SanskritInput({
                 className={`focus:outline-none focus:border-primary ${className}`}
             />
 
-            {/* Render the Keyboard conditionally */}
-            {showKeyboard && (
+            {/* Render the Keyboard conditionally. Gated on showKeyboardToggle
+                as well, so a consumer that hides the toggle also never keeps
+                a stale open keyboard after a mode/direction switch. */}
+            {showKeyboardToggle && showKeyboard && (
                 <div style={{ marginTop: '20px' }}>
                     <VirtualKeyboard
                         onKeyPress={handleKeyPress}

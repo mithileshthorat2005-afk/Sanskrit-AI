@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Example {
   root: string;
@@ -241,6 +242,7 @@ export default function ParticiplesLesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '8px' }}>
                 {quizQuestion.participle}
               </div>
+              <AudioPronounceButton text={quizQuestion.participle} size={22} title={`Pronounce ${quizQuestion.participle}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 From root "{quizQuestion.root}" · Meaning: {quizQuestion.meaning}
               </div>
@@ -378,9 +380,11 @@ export default function ParticiplesLesson({ onBack }: { onBack: () => void }) {
                           → {ex.participle}
                         </span>
                       </div>
+                      <AudioPronounceButton text={ex.participle} size={16} title={`Pronounce ${ex.participle}`} />
                       <div className="devanagari" style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text-main)' }}>
                         {ex.sentence}
                       </div>
+                      <AudioPronounceButton text={ex.sentence} size={18} title={`Pronounce ${ex.sentence}`} />
                       <div style={{ fontSize: '0.95rem', color: 'var(--text-dim)', marginTop: '4px' }}>
                         {ex.translation}
                       </div>

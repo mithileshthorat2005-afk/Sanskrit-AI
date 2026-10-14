@@ -67,6 +67,73 @@ const ScoreRing = ({ value }: { value: number }) => {
   );
 };
 
+/**
+ * Validates and normalises a /grammar/check payload before it is stored as a
+ * successful analysis.
+ *
+ * The renderer dereferences `analysis.breakdown.some(...)`,
+ * `analysis.breakdown.map(...)` and `analysis.issues.length` unconditionally,
+ * so a 200 response with an unexpected shape used to throw inside render and
+ * take the page down (there was also no error state to fall back to).
+ *
+ * Returns `error` for payloads that are too malformed to display, otherwise
+ * returns a copy whose optional fields are defaulted so no dereference can
+ * throw.
+ */
+function normalizeAnalysis(
+  raw: unknown
+): { data: Record<string, unknown> | null; error: string | null } {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    return { data: null, error: "The server returned an unexpected response." };
+  }
+  const r = raw as Record<string, any>;
+
+  // Fields the results panel cannot render without.
+  if (!Array.isArray(r.breakdown)) {
+    return { data: null, error: "The response is missing the word-by-word breakdown." };
+  }
+  if (!Array.isArray(r.issues)) {
+    return { data: null, error: "The response is missing the detected-issues list." };
+  }
+  if (typeof r.score !== "number" || !Number.isFinite(r.score)) {
+    return { data: null, error: "The response is missing a valid grammar score." };
+  }
+
+  return {
+    data: {
+      ...r,
+      score: Math.min(100, Math.max(0, Math.round(r.score))),
+      // Safe defaults for the fields the panel reads with `||` or `.length`.
+      breakdown: r.breakdown.filter(
+        (b: unknown) => b !== null && typeof b === "object"
+      ),
+      issues: r.issues.filter((i: unknown) => typeof i === "string"),
+      word_count: typeof r.word_count === "number" ? r.word_count : r.breakdown.length,
+      corrected_sentence: typeof r.corrected_sentence === "string" ? r.corrected_sentence : null,
+      correction_summary:
+        typeof r.correction_summary === "string" ? r.correction_summary : "",
+      analysis_mode:
+        typeof r.analysis_mode === "string" ? r.analysis_mode : "rule-based",
+      recommendation:
+        r.recommendation && typeof r.recommendation === "object"
+          ? r.recommendation
+          : null,
+      skipped_issues: Array.isArray(r.skipped_issues) ? r.skipped_issues : [],
+      source_counts:
+        r.source_counts && typeof r.source_counts === "object" ? r.source_counts : null,
+      // Uncertainty contract. Defaults keep the renderer safe when an older
+      // backend omits the fields entirely.
+      unknown_words: Array.isArray(r.unknown_words)
+        ? r.unknown_words.filter((u: unknown) => u !== null && typeof u === "object")
+        : [],
+      partially_verified: r.partially_verified === true,
+      score_breakdown:
+        r.score_breakdown && typeof r.score_breakdown === "object" ? r.score_breakdown : null,
+    },
+    error: null,
+  };
+}
+
 export default function Grammar() {
   const { user, loading: authLoading } = useAuth();
   const [inputText, setInputText] = useState("");
@@ -75,6 +142,9 @@ export default function Grammar() {
   const [useAi, setUseAi] = useState(false);
   const [history, setHistory] = useState<any[]>([]);
   const [historyLoading, setHistoryLoading] = useState(false);
+  // Dedicated failure state. A backend timeout, a non-2xx response, or a
+  // malformed payload must never be rendered as if it were a valid analysis.
+  const [checkError, setCheckError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const router = useRouter();
 
@@ -96,15 +166,31 @@ export default function Grammar() {
   }, [user]);
 
   const handleCheck = async () => {
-    if (!inputText) return;
+    if (!inputText.trim()) {
+      setCheckError("Enter a Sanskrit sentence to check.");
+      return;
+    }
     setLoading(true);
     setAnalysis(null);
+    setCheckError(null);
     try {
       const res = await api.tools.checkGrammar(inputText, useAi);
-      setAnalysis(res);
+      const { data, error } = normalizeAnalysis(res);
+      if (error) {
+        // A 200 with an unusable body is a failure, not an empty result.
+        setCheckError(error);
+        return;
+      }
+      setAnalysis(data);
       if (user) fetchHistory();
     } catch (err) {
+      // Covers backend unreachable, request timeout, and any HTTP 4xx/5xx.
       console.error(err);
+      setCheckError(
+        err instanceof Error && err.message
+          ? err.message
+          : "The grammar check could not be completed. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -228,6 +314,28 @@ export default function Grammar() {
                   <span>{loading ? "Checking..." : "Check Grammar"}</span>
                 </button>
               </div>
+
+              {checkError && (
+                <div
+                  role="alert"
+                  className="flex items-start gap-3 p-4 rounded-xl"
+                  style={{
+                    marginTop: '20px',
+                    border: '1.5px solid rgba(192, 90, 43, 0.35)',
+                    background: 'rgba(192, 90, 43, 0.05)',
+                    color: 'var(--primary)',
+                    fontSize: '0.88rem',
+                  }}
+                >
+                  <AlertCircle size={18} style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <div>
+                    <strong>Check failed:</strong> {checkError}
+                    <div style={{ marginTop: '4px', color: 'var(--text-dim)', fontSize: '0.8rem' }}>
+                      No result was saved and no score was recorded for this attempt.
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="zen-card" style={{ padding: '24px' }}>
@@ -289,13 +397,84 @@ export default function Grammar() {
                 {!analysis ? (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '300px', color: 'var(--text-light)', textAlign: 'center' }}>
                     <Sparkles size={40} style={{ opacity: 0.1, marginBottom: '20px' }} />
-                    <p>Enter a sentence and verify to see the analysis table.</p>
+                    <p>Enter a sentence and verify to see the analysis table.<br /> <span style={{ cursor: 'pointer', textDecoration: 'underline', color: 'var(--primary)' }} onClick={() => setInputText('रामः वनं गच्छति।')}>Try Example 1</span></p>
                   </div>
                 ) : (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                   >
+                    {/* ── Uncertainty panel — deliberately ABOVE the score, so a
+                        word the pipeline could not resolve is never mistaken for
+                        a confirmed verdict. "Unknown" is neither correct nor
+                        incorrect; it means no analyser could verify it. ── */}
+                    {analysis.unknown_words.length > 0 && (
+                      <div
+                        role="status"
+                        style={{
+                          border: '1px solid rgba(230, 150, 20, 0.45)',
+                          background: 'rgba(230, 150, 20, 0.08)',
+                          borderRadius: '18px',
+                          padding: '20px 22px',
+                          marginBottom: '24px'
+                        }}
+                      >
+                        <div style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '1px', color: '#b9770e', marginBottom: '4px' }}>
+                          UNABLE TO VERIFY
+                        </div>
+                        <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '14px' }}>
+                          {analysis.unknown_words.length === 1
+                            ? '1 word could not be analysed.'
+                            : `${analysis.unknown_words.length} words could not be analysed.`}{' '}
+                          This is not a confirmed error — the sentence is only partially verified.
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                          {analysis.unknown_words.map((item: any, i: number) => (
+                            <div
+                              key={`${item.word}-${i}`}
+                              style={{
+                                background: 'var(--bg-main)',
+                                borderRadius: '14px',
+                                padding: '14px 16px',
+                                border: '1px solid var(--border-soft)'
+                              }}
+                            >
+                              <div className="flex items-center gap-3" style={{ flexWrap: 'wrap' }}>
+                                <span className="devanagari" style={{ fontSize: '1.3rem', color: 'var(--primary)', fontWeight: 600 }}>
+                                  {item.word}
+                                </span>
+                                <span
+                                  style={{
+                                    fontSize: '0.68rem',
+                                    fontWeight: 800,
+                                    letterSpacing: '0.5px',
+                                    padding: '3px 10px',
+                                    borderRadius: '999px',
+                                    background: 'rgba(230, 150, 20, 0.15)',
+                                    color: '#b9770e',
+                                    whiteSpace: 'nowrap'
+                                  }}
+                                >
+                                  {item.status || 'Uncertain — Unable to Verify'}
+                                </span>
+                              </div>
+                              {item.reason && (
+                                <p style={{ fontSize: '0.82rem', color: 'var(--text-dim)', margin: '8px 0 0', lineHeight: 1.5 }}>
+                                  {item.reason}
+                                </p>
+                              )}
+                              {item.suggestion && (
+                                <p style={{ fontSize: '0.82rem', color: 'var(--text-light)', margin: '6px 0 0', lineHeight: 1.5 }}>
+                                  <strong>Suggestion:</strong> {item.suggestion}
+                                </p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     {/* ── Score row: ring + counts ── */}
                     <div className="grid" style={{ gridTemplateColumns: '1.5fr 1fr', gap: '16px', marginBottom: '24px' }}>
                       <div className="flex items-center gap-4 p-5" style={{ background: 'var(--bg-main)', borderRadius: '20px', border: '1px solid var(--border-soft)' }}>
@@ -303,10 +482,17 @@ export default function Grammar() {
                         <div>
                           <div style={{ fontSize: '0.7rem', fontWeight: '800', color: 'var(--text-light)', letterSpacing: '1px' }}>GRAMMAR SCORE</div>
                           <div style={{ fontSize: '1.05rem', color: '#27ae60', fontWeight: '600', lineHeight: '1.3' }}>
-                            {analysis.breakdown.some((b: any) => isUnresolved(b)) ? 'Unable to determine reliably' : (analysis.correction_summary || 'Analysis complete')}
+                            {/* `partially_verified` is the backend's verdict: the
+                                sentence must never read as fully correct while a
+                                word remains unverified. */}
+                            {analysis.partially_verified
+                              ? (analysis.correction_summary || 'Partially verified')
+                              : (analysis.correction_summary || 'Analysis complete')}
                           </div>
-                          {analysis.breakdown.some((b: any) => isUnresolved(b)) && (
-                            <div style={{ fontSize: '0.8rem', color: 'var(--primary)', marginTop: '2px' }}>Notice: Limited lexicon confidence</div>
+                          {analysis.partially_verified && (
+                            <div style={{ fontSize: '0.8rem', color: '#b9770e', marginTop: '2px' }}>
+                              Score capped below 100% — {analysis.unknown_words.length} word{analysis.unknown_words.length === 1 ? '' : 's'} could not be verified
+                            </div>
                           )}
                         </div>
                       </div>

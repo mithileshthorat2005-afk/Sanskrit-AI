@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface IndeclinableData {
   id: string;
@@ -253,6 +254,7 @@ export default function IndeclinablesLesson({ onBack }: { onBack: () => void }) 
               <div className="devanagari" style={{ fontSize: '3.5rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 {quizQuestion.transliteration} · {quizQuestion.category}
               </div>
@@ -409,6 +411,7 @@ export default function IndeclinablesLesson({ onBack }: { onBack: () => void }) 
                       <div className="devanagari" style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>
                         {item.sanskrit}
                       </div>
+                      <AudioPronounceButton text={item.sanskrit} size={22} title={`Pronounce ${item.sanskrit}`} />
                       <span style={{ 
                         fontSize: '0.7rem', 
                         padding: '3px 10px', 
@@ -438,6 +441,7 @@ export default function IndeclinablesLesson({ onBack }: { onBack: () => void }) 
                         <div className="devanagari" style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-main)', marginTop: '6px' }}>
                           {item.example_sentence}
                         </div>
+                        <AudioPronounceButton text={item.example_sentence} size={18} title={`Pronounce ${item.example_sentence}`} />
                         <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)', fontStyle: 'italic' }}>
                           {item.sentence_translation}
                         </div>

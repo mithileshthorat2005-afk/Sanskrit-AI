@@ -40,14 +40,25 @@ export default function DailyStreak() {
             }
         };
         fetchQuestions();
-    }, []);
+        // Re-run when the signed-in account changes so a second user on the
+        // same browser reads their own scoped streak, not the previous one.
+    }, [user?.username]);
+
+    /**
+     * Local streak state is scoped to the signed-in account. The previous
+     * global keys (`sanskrit_streak`, `sanskrit_last_played`,
+     * `sanskrit_current_day`) meant every user of the same browser shared one
+     * streak, and switching accounts exposed the previous user's progress.
+     */
+    const scopedKey = (base: string) =>
+        `sanskrit_${base}_${user?.username ?? 'signed_out'}`;
 
     const initializeStreak = (allQs: any[]) => {
         if (!allQs || allQs.length === 0) return;
 
-        const storedStreak = parseInt(localStorage.getItem('sanskrit_streak') || '0', 10);
-        const storedLastPlayed = localStorage.getItem('sanskrit_last_played');
-        const storedCurrentDay = parseInt(localStorage.getItem('sanskrit_current_day') || '1', 10);
+        const storedStreak = parseInt(localStorage.getItem(scopedKey('streak')) || '0', 10);
+        const storedLastPlayed = localStorage.getItem(scopedKey('last_played'));
+        const storedCurrentDay = parseInt(localStorage.getItem(scopedKey('current_day')) || '1', 10);
 
         setStreak(storedStreak);
         setCurrentDay(storedCurrentDay);
@@ -70,7 +81,7 @@ export default function DailyStreak() {
                 setStatus('playing');
             } else {
                 setStreak(0);
-                localStorage.setItem('sanskrit_streak', '0');
+                localStorage.setItem(scopedKey('streak'), '0');
                 setStatus('playing');
             }
         } else {
@@ -87,8 +98,8 @@ export default function DailyStreak() {
         if (option === currentQ.answer) {
             const newStreak = streak + 1;
             setStreak(newStreak);
-            localStorage.setItem('sanskrit_streak', newStreak.toString());
-            localStorage.setItem('sanskrit_last_played', currentDayStr);
+            localStorage.setItem(scopedKey('streak'), newStreak.toString());
+            localStorage.setItem(scopedKey('last_played'), currentDayStr);
 
             try {
                 if (user?.username) {
@@ -101,7 +112,7 @@ export default function DailyStreak() {
             }
             
             const nextDay = Math.min(currentQ.day + 1, questions.length);
-            localStorage.setItem('sanskrit_current_day', nextDay.toString());
+            localStorage.setItem(scopedKey('current_day'), nextDay.toString());
             
             setTimeout(() => setStatus('completed'), 700);
         } else {
@@ -115,8 +126,8 @@ export default function DailyStreak() {
                 }, 600);
             } else {
                 setStreak(0);
-                localStorage.setItem('sanskrit_streak', '0');
-                localStorage.setItem('sanskrit_last_played', currentDayStr);
+                localStorage.setItem(scopedKey('streak'), '0');
+                localStorage.setItem(scopedKey('last_played'), currentDayStr);
                 setTimeout(() => setStatus('failed'), 700);
             }
         }

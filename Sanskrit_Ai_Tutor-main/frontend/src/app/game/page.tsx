@@ -22,7 +22,8 @@ import {
   Info,
   Sparkle,
   CircleDot,
-  Grid3X3
+  Grid3X3,
+  AlertTriangle
 } from "lucide-react";
 
 // Floating Particle Component
@@ -269,7 +270,14 @@ const GameBoard = ({ currentPosition }: { currentPosition: number }) => {
 };
 
 export default function GamePage() {
-  const [user, setUser] = useState<any>(null);
+  // `user` used to be a piece of local state that was declared but never
+  // assigned anywhere, so it was permanently null. The guard below then
+  // pushed every visitor to "/", where AuthContext still had a valid session
+  // and forwarded them on to /dashboard — the game board never rendered.
+  // useAuth() is the same source of truth every other page uses.
+  const { user, loading: authLoading } = useAuth();
+  // Surface transport/API failures instead of leaving the board silently stuck.
+  const [gameError, setGameError] = useState<string | null>(null);
   const [position, setPosition] = useState(1);
   const [currentWord, setCurrentWord] = useState<any>(null);
   const [hint, setHint] = useState("");
@@ -301,6 +309,11 @@ export default function GamePage() {
   const [oddHistory, setOddHistory] = useState<any[]>([]);
 
   useEffect(() => {
+    // AuthContext starts with user === null while it hydrates from
+    // localStorage, so wait for `loading` to settle before treating a null
+    // user as "signed out" — otherwise this fires on the first paint and
+    // bounces a perfectly valid session away from the page.
+    if (authLoading) return;
     if (!user) {
       router.push("/");
       return;
@@ -313,7 +326,7 @@ export default function GamePage() {
     } else {
       setActiveGame("snake");
     }
-  }, [router, user]);
+  }, [router, user, authLoading]);
 
   // ── Odd One Out Functions ──
   const startOddGame = async () => {
@@ -363,12 +376,16 @@ export default function GamePage() {
       }, 2000);
     } catch (err) {
       console.error("Odd answer failed:", err);
+      setGameError(
+        err instanceof Error ? err.message : "Could not score that answer. Please try again."
+      );
       setOddLoading(false);
     }
   };
 
   const startGame = async () => {
     try {
+      setGameError(null);
       const res = await api.game.start();
       setPosition(res.position);
       setCurrentWord(res.next_word);
@@ -393,6 +410,7 @@ export default function GamePage() {
     setShowHint(false);
 
     try {
+      setGameError(null);
       const res = await api.game.turn({
         current_position: position,
         asked_word: currentWord.sanskrit,
@@ -441,7 +459,11 @@ export default function GamePage() {
       setUserAnswer("");
       setTimeout(() => inputRef.current?.focus(), 300);
     } catch (err) {
+      // The turn was not scored — keep the board where it was and say why.
       console.error("Turn failed:", err);
+      setGameError(
+        err instanceof Error ? err.message : "Could not score that answer. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -449,7 +471,9 @@ export default function GamePage() {
 
   const progressPercent = Math.min((position / TOTAL_CELLS) * 100, 100);
 
-  if (!user) return null;
+  // Still resolving the session: render nothing rather than flashing the board
+  // and then redirecting.
+  if (authLoading || !user) return null;
 
   return (
     <div className="page-layout">
@@ -948,6 +972,21 @@ export default function GamePage() {
                   </div>
 
                   <div style={{ padding: "20px 40px 40px" }}>
+                    {gameError && (
+                      <div
+                        role="alert"
+                        className="flex items-center gap-2 p-3 mb-3 rounded-xl"
+                        style={{
+                          background: "rgba(192, 90, 43, 0.08)",
+                          border: "1px solid rgba(192, 90, 43, 0.3)",
+                          color: "var(--primary)",
+                          fontSize: "0.85rem",
+                        }}
+                      >
+                        <AlertTriangle size={16} />
+                        <span>{gameError}</span>
+                      </div>
+                    )}
                     <div
                       className="flex gap-3"
                       style={{ alignItems: "stretch" }}

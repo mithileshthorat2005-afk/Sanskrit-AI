@@ -10,7 +10,7 @@
       "content": "# Sanskrit Alphabet\n\nSanskrit is written in **Devanagari** script...",
       "quiz": [
         {
-          "id": 1,
+          "id": "q1",
           "question": "How many vowels are there in Sanskrit?",
           "options": [
             "10",
@@ -18,8 +18,73 @@
             "15",
             "20"
           ],
-          "answer": "13",
-          "explanation": "Sanskrit has 13 vowel sounds"
+          "answer": "13"
+        },
+        {
+          "id": "q2",
+          "question": "Which of these is a vowel (स्वर)?",
+          "options": [
+            "म",
+            "ग",
+            "अ",
+            "ख"
+          ],
+          "answer": "अ"
+        },
+        {
+          "id": "q3",
+          "question": "Which of these is a consonant (व्यञ्जन)?",
+          "options": [
+            "क",
+            "आ",
+            "ई",
+            "ऊ"
+          ],
+          "answer": "क"
+        },
+        {
+          "id": "q4",
+          "question": "The vowels (स्वर) section of this lesson is headed by which letter?",
+          "options": [
+            "ग",
+            "म",
+            "अ",
+            "स"
+          ],
+          "answer": "अ"
+        },
+        {
+          "id": "q5",
+          "question": "The consonants (व्यञ्जन) section of this lesson is headed by which letter?",
+          "options": [
+            "ग",
+            "क",
+            "म",
+            "स"
+          ],
+          "answer": "क"
+        },
+        {
+          "id": "q6",
+          "question": "Which group do अ, आ and इ belong to?",
+          "options": [
+            "Punctuation (पूर्णविराम)",
+            "Consonants (व्यञ्जन)",
+            "Vowels (स्वर)",
+            "Matras (मात्रा)"
+          ],
+          "answer": "Vowels (स्वर)"
+        },
+        {
+          "id": "q7",
+          "question": "Which group do क, ख and ग belong to?",
+          "options": [
+            "Vowels (स्वर)",
+            "Matras (मात्रा)",
+            "Punctuation (पूर्णविराम)",
+            "Consonants (व्यञ्जन)"
+          ],
+          "answer": "Consonants (व्यञ्जन)"
         }
       ],
       "prerequisites": []
@@ -34,16 +99,103 @@
       "content": "# Common Greetings\n\n1. **नमस्ते** (Namaste) - Hello...",
       "quiz": [
         {
-          "id": 1,
-          "question": "What does 'धन्यवादः' mean?",
+          "id": "q1",
+          "question": "How do you say “Welcome” in Sanskrit?",
           "options": [
-            "Hello",
-            "Thank you",
-            "Goodbye",
-            "Please"
+            "शुभरात्रिः",
+            "आम्",
+            "स्वागतम्",
+            "अस्तु"
           ],
-          "answer": "Thank you",
-          "explanation": "धन्यवादः means 'Thank you'"
+          "answer": "स्वागतम्"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “Hello / Greetings” in Sanskrit?",
+          "options": [
+            "स्वागतम्",
+            "धन्यवादः",
+            "नमस्ते",
+            "सुप्रभातम्"
+          ],
+          "answer": "नमस्ते"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Okay / Let it be” in Sanskrit?",
+          "options": [
+            "अस्तु",
+            "शुभरात्रिः",
+            "क्षम्यताम्",
+            "धन्यवादः"
+          ],
+          "answer": "अस्तु"
+        },
+        {
+          "id": "q4",
+          "question": "How do you say “Excuse me / Sorry” in Sanskrit?",
+          "options": [
+            "न",
+            "मम नाम ...",
+            "क्षम्यताम्",
+            "नमस्ते"
+          ],
+          "answer": "क्षम्यताम्"
+        },
+        {
+          "id": "q5",
+          "question": "How do you say “Don't worry” in Sanskrit?",
+          "options": [
+            "भवतः नाम किम्?",
+            "नमस्ते",
+            "चिन्ता मास्तु",
+            "कृपया"
+          ],
+          "answer": "चिन्ता मास्तु"
+        },
+        {
+          "id": "q6",
+          "question": "What does “स्वागतम्” mean?",
+          "options": [
+            "Welcome",
+            "Okay / Let it be",
+            "Please",
+            "Hello / Greetings"
+          ],
+          "answer": "Welcome"
+        },
+        {
+          "id": "q7",
+          "question": "What does “नमस्ते” mean?",
+          "options": [
+            "What is your name? (To a female)",
+            "Good Morning",
+            "Hello / Greetings",
+            "Welcome"
+          ],
+          "answer": "Hello / Greetings"
+        },
+        {
+          "id": "q8",
+          "question": "What does “अस्तु” mean?",
+          "options": [
+            "My name is ...",
+            "Welcome",
+            "Okay / Let it be",
+            "Hello / Greetings"
+          ],
+          "answer": "Okay / Let it be"
+        },
+        {
+          "id": "q9",
+          "question": "What does “क्षम्यताम्” mean?",
+          "options": [
+            "Okay / Let it be",
+            "Good Night",
+            "What is your name? (To a male)",
+            "Excuse me / Sorry"
+          ],
+          "answer": "Excuse me / Sorry"
         }
       ],
       "prerequisites": [
@@ -60,16 +212,114 @@
       "content": "# Numbers in Sanskrit\n\n1 - एकः (ekaḥ)\n2 - द्वौ (dvau)...",
       "quiz": [
         {
-          "id": 1,
-          "question": "What is the Sanskrit word for 5?",
+          "id": "q1",
+          "question": "How do you write the number 9 in Sanskrit?",
           "options": [
-            "एकः",
-            "द्वौ",
-            "त्रयः",
-            "पञ्च"
+            "नव",
+            "षट्",
+            "द्वादश",
+            "एकम्"
           ],
-          "answer": "पञ्च",
-          "explanation": "पञ्च (pañca) means 5"
+          "answer": "नव"
+        },
+        {
+          "id": "q2",
+          "question": "How do you write the number 7 in Sanskrit?",
+          "options": [
+            "नव",
+            "एकम्",
+            "सप्त",
+            "अष्टादश"
+          ],
+          "answer": "सप्त"
+        },
+        {
+          "id": "q3",
+          "question": "How do you write the number 19 in Sanskrit?",
+          "options": [
+            "नवदश",
+            "सप्तदश",
+            "षट्",
+            "द्वे"
+          ],
+          "answer": "नवदश"
+        },
+        {
+          "id": "q4",
+          "question": "How do you write the number 1 in Sanskrit?",
+          "options": [
+            "दश",
+            "द्वे",
+            "एकम्",
+            "नवदश"
+          ],
+          "answer": "एकम्"
+        },
+        {
+          "id": "q5",
+          "question": "How do you write the number 11 in Sanskrit?",
+          "options": [
+            "एकादश",
+            "षट्",
+            "एकम्",
+            "विंशतिः"
+          ],
+          "answer": "एकादश"
+        },
+        {
+          "id": "q6",
+          "question": "How do you write the number 8 in Sanskrit?",
+          "options": [
+            "सप्तदश",
+            "एकादश",
+            "अष्ट",
+            "षट्"
+          ],
+          "answer": "अष्ट"
+        },
+        {
+          "id": "q7",
+          "question": "What number is “नव” (Nava)?",
+          "options": [
+            "19",
+            "9",
+            "1",
+            "13"
+          ],
+          "answer": "9"
+        },
+        {
+          "id": "q8",
+          "question": "What number is “सप्त” (Sapta)?",
+          "options": [
+            "4",
+            "2",
+            "9",
+            "7"
+          ],
+          "answer": "7"
+        },
+        {
+          "id": "q9",
+          "question": "What number is “नवदश” (Navadaśa)?",
+          "options": [
+            "4",
+            "19",
+            "20",
+            "7"
+          ],
+          "answer": "19"
+        },
+        {
+          "id": "q10",
+          "question": "What number is “एकम्” (Ekam)?",
+          "options": [
+            "9",
+            "6",
+            "11",
+            "1"
+          ],
+          "answer": "1"
         }
       ],
       "prerequisites": [
@@ -84,7 +334,107 @@
       "duration": 25,
       "difficulty": 4,
       "content": "self_introduction_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Which template expresses “My name is [Name].”?",
+          "options": [
+            "अहम् [City] नगरे वसामि।",
+            "मम नाम [Name] अस्ति।",
+            "मह्यम् [Hobby] रोचते।",
+            "मम आयुः [Age] वर्षाणि अस्ति।"
+          ],
+          "answer": "मम नाम [Name] अस्ति।"
+        },
+        {
+          "id": "q2",
+          "question": "Which template expresses “I am from [Country].”?",
+          "options": [
+            "अहम् [Country] देशतः अस्मि।",
+            "मम आयुः [Age] वर्षाणि अस्ति।",
+            "मम नाम [Name] अस्ति।",
+            "मिलित्वा आनन्दः जातः।"
+          ],
+          "answer": "अहम् [Country] देशतः अस्मि।"
+        },
+        {
+          "id": "q3",
+          "question": "Which template expresses “Nice to meet you.”?",
+          "options": [
+            "अहम् [Country] देशतः अस्मि।",
+            "अहम् [Profession] अस्मि।",
+            "मिलित्वा आनन्दः जातः।",
+            "अहम् [Language] वदामि।"
+          ],
+          "answer": "मिलित्वा आनन्दः जातः।"
+        },
+        {
+          "id": "q4",
+          "question": "Which template expresses “I live in the city of [City].”?",
+          "options": [
+            "अहम् [City] नगरे वसामि।",
+            "मम नाम [Name] अस्ति।",
+            "मिलित्वा आनन्दः जातः।",
+            "मम आयुः [Age] वर्षाणि अस्ति।"
+          ],
+          "answer": "अहम् [City] नगरे वसामि।"
+        },
+        {
+          "id": "q5",
+          "question": "Which template expresses “I am [Age] years old.”?",
+          "options": [
+            "मम आयुः [Age] वर्षाणि अस्ति।",
+            "अहम् [Country] देशतः अस्मि।",
+            "अहम् [City] नगरे वसामि।",
+            "मम नाम [Name] अस्ति।"
+          ],
+          "answer": "मम आयुः [Age] वर्षाणि अस्ति।"
+        },
+        {
+          "id": "q6",
+          "question": "What does the template “मम नाम [Name] अस्ति।” mean?",
+          "options": [
+            "I live in the city of [City].",
+            "I speak [Language].",
+            "I am from [Country].",
+            "My name is [Name]."
+          ],
+          "answer": "My name is [Name]."
+        },
+        {
+          "id": "q7",
+          "question": "What does the template “अहम् [Country] देशतः अस्मि।” mean?",
+          "options": [
+            "I am a [Profession].",
+            "My name is [Name].",
+            "I like [Hobby].",
+            "I am from [Country]."
+          ],
+          "answer": "I am from [Country]."
+        },
+        {
+          "id": "q8",
+          "question": "What does the template “मिलित्वा आनन्दः जातः।” mean?",
+          "options": [
+            "Nice to meet you.",
+            "I speak [Language].",
+            "I like [Hobby].",
+            "I live in the city of [City]."
+          ],
+          "answer": "Nice to meet you."
+        },
+        {
+          "id": "q9",
+          "question": "What does the template “अहम् [City] नगरे वसामि।” mean?",
+          "options": [
+            "I live in the city of [City].",
+            "I like [Hobby].",
+            "I am [Age] years old.",
+            "I am a [Profession]."
+          ],
+          "answer": "I live in the city of [City]."
+        }
+      ],
       "prerequisites": [
         1,
         2
@@ -98,7 +448,118 @@
       "duration": 15,
       "difficulty": 3,
       "content": "pronouns_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “This (Neuter - close by)” in Sanskrit?",
+          "options": [
+            "अहम्",
+            "एतत्",
+            "एषा",
+            "सः"
+          ],
+          "answer": "एतत्"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “This (Feminine - close by)” in Sanskrit?",
+          "options": [
+            "एषा",
+            "सा",
+            "त्वम्",
+            "एतत्"
+          ],
+          "answer": "एषा"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “I” in Sanskrit?",
+          "options": [
+            "एषा",
+            "एषः",
+            "अहम्",
+            "एतत्"
+          ],
+          "answer": "अहम्"
+        },
+        {
+          "id": "q4",
+          "question": "What does “एतत्” mean?",
+          "options": [
+            "He / That (Masculine)",
+            "This (Neuter - close by)",
+            "It / That (Neuter)",
+            "You"
+          ],
+          "answer": "This (Neuter - close by)"
+        },
+        {
+          "id": "q5",
+          "question": "What does “एषा” mean?",
+          "options": [
+            "This (Feminine - close by)",
+            "It / That (Neuter)",
+            "This (Neuter - close by)",
+            "She / That (Feminine)"
+          ],
+          "answer": "This (Feminine - close by)"
+        },
+        {
+          "id": "q6",
+          "question": "What does “अहम्” mean?",
+          "options": [
+            "It / That (Neuter)",
+            "This (Feminine - close by)",
+            "I",
+            "He / That (Masculine)"
+          ],
+          "answer": "I"
+        },
+        {
+          "id": "q7",
+          "question": "Which person category does “त्वम्” belong to?",
+          "options": [
+            "Third Person (Masculine)",
+            "Second Person",
+            "Demonstrative (Masculine)",
+            "Demonstrative (Feminine)"
+          ],
+          "answer": "Second Person"
+        },
+        {
+          "id": "q8",
+          "question": "Which person category does “सः” belong to?",
+          "options": [
+            "Third Person (Masculine)",
+            "Third Person (Feminine)",
+            "Demonstrative (Masculine)",
+            "First Person"
+          ],
+          "answer": "Third Person (Masculine)"
+        },
+        {
+          "id": "q9",
+          "question": "Which person category does “तत्” belong to?",
+          "options": [
+            "Demonstrative (Neuter)",
+            "Demonstrative (Masculine)",
+            "Third Person (Feminine)",
+            "Third Person (Neuter)"
+          ],
+          "answer": "Third Person (Neuter)"
+        },
+        {
+          "id": "q10",
+          "question": "Which person category does “एषा” belong to?",
+          "options": [
+            "Demonstrative (Feminine)",
+            "Demonstrative (Neuter)",
+            "Third Person (Feminine)",
+            "Demonstrative (Masculine)"
+          ],
+          "answer": "Demonstrative (Feminine)"
+        }
+      ],
       "prerequisites": [
         1,
         2
@@ -112,7 +573,118 @@
       "duration": 20,
       "difficulty": 4,
       "content": "verbs_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “Speaks / says” in Sanskrit?",
+          "options": [
+            "क्रीडति",
+            "लिखति",
+            "वदति",
+            "पठति"
+          ],
+          "answer": "वदति"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “Writes / is writing” in Sanskrit?",
+          "options": [
+            "खादति",
+            "लिखति",
+            "पठति",
+            "गच्छति"
+          ],
+          "answer": "लिखति"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Plays / is playing” in Sanskrit?",
+          "options": [
+            "हसति",
+            "पश्यति",
+            "क्रीडति",
+            "गच्छति"
+          ],
+          "answer": "क्रीडति"
+        },
+        {
+          "id": "q4",
+          "question": "What does “वदति” mean?",
+          "options": [
+            "Plays / is playing",
+            "Speaks / says",
+            "Laughs / smiles",
+            "Sees / looks"
+          ],
+          "answer": "Speaks / says"
+        },
+        {
+          "id": "q5",
+          "question": "What does “पठति” mean?",
+          "options": [
+            "Reads / is reading",
+            "Comes / is coming",
+            "Laughs / smiles",
+            "Eats / is eating"
+          ],
+          "answer": "Reads / is reading"
+        },
+        {
+          "id": "q6",
+          "question": "Which is the present-tense form of the root “पठ् (paṭh)”?",
+          "options": [
+            "पठति",
+            "क्रीडति",
+            "पिबति",
+            "वदति"
+          ],
+          "answer": "पठति"
+        },
+        {
+          "id": "q7",
+          "question": "Which is the present-tense form of the root “खाद् (khād)”?",
+          "options": [
+            "वदति",
+            "खादति",
+            "क्रीडति",
+            "लिखति"
+          ],
+          "answer": "खादति"
+        },
+        {
+          "id": "q8",
+          "question": "Which is the present-tense form of the root “गम् (gam)”?",
+          "options": [
+            "पश्यति",
+            "पिबति",
+            "पठति",
+            "गच्छति"
+          ],
+          "answer": "गच्छति"
+        },
+        {
+          "id": "q9",
+          "question": "Which is the present-tense form of the root “वद् (vad)”?",
+          "options": [
+            "पठति",
+            "हसति",
+            "लिखति",
+            "वदति"
+          ],
+          "answer": "वदति"
+        },
+        {
+          "id": "q10",
+          "question": "Which is the present-tense form of the root “दृश् (dṛś)”?",
+          "options": [
+            "वदति",
+            "पठति",
+            "पश्यति",
+            "आगच्छति"
+          ],
+          "answer": "पश्यति"
+        }
+      ],
       "prerequisites": [
         5
       ]
@@ -125,7 +697,116 @@
       "duration": 15,
       "difficulty": 4,
       "content": "nouns_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “Pen” in Sanskrit?",
+          "options": [
+            "चषकः",
+            "गृहम्",
+            "नदी",
+            "लेखनी"
+          ],
+          "answer": "लेखनी"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “House” in Sanskrit?",
+          "options": [
+            "सूर्यः",
+            "बालिका",
+            "गृहम्",
+            "माला"
+          ],
+          "answer": "गृहम्"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Girl” in Sanskrit?",
+          "options": [
+            "बालिका",
+            "बालकः",
+            "सूर्यः",
+            "गृहम्"
+          ],
+          "answer": "बालिका"
+        },
+        {
+          "id": "q4",
+          "question": "How do you say “Book” in Sanskrit?",
+          "options": [
+            "बालिका",
+            "पुस्तकम्",
+            "जलम्",
+            "फलम्"
+          ],
+          "answer": "पुस्तकम्"
+        },
+        {
+          "id": "q5",
+          "question": "What does “गृहम्” mean?",
+          "options": [
+            "Garland / Necklace",
+            "House",
+            "Boy",
+            "Tree"
+          ],
+          "answer": "House"
+        },
+        {
+          "id": "q6",
+          "question": "What does “बालकः” mean?",
+          "options": [
+            "Tree",
+            "Sun",
+            "Cup / Glass",
+            "Boy"
+          ],
+          "answer": "Boy"
+        },
+        {
+          "id": "q7",
+          "question": "What is the gender of “लेखनी”?",
+          "options": [
+            "neuter",
+            "feminine",
+            "masculine"
+          ],
+          "answer": "feminine"
+        },
+        {
+          "id": "q8",
+          "question": "What is the gender of “गृहम्”?",
+          "options": [
+            "feminine",
+            "neuter",
+            "masculine"
+          ],
+          "answer": "neuter"
+        },
+        {
+          "id": "q9",
+          "question": "Which of these is a masculine noun?",
+          "options": [
+            "बालिका",
+            "नदी",
+            "वृक्षः",
+            "लेखनी"
+          ],
+          "answer": "वृक्षः"
+        },
+        {
+          "id": "q10",
+          "question": "Which of these is a feminine noun?",
+          "options": [
+            "बालिका",
+            "पुस्तकम्",
+            "जलम्",
+            "चषकः"
+          ],
+          "answer": "बालिका"
+        }
+      ],
       "prerequisites": [
         6
       ]
@@ -138,7 +819,116 @@
       "duration": 20,
       "difficulty": 3,
       "content": "family_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “Daughter” in Sanskrit?",
+          "options": [
+            "पितामहः",
+            "पितृव्यः",
+            "मित्रम्",
+            "पुत्री"
+          ],
+          "answer": "पुत्री"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “Uncle (Father's Brother)” in Sanskrit?",
+          "options": [
+            "मित्रम्",
+            "पतिः",
+            "पितृव्यः",
+            "पत्नी"
+          ],
+          "answer": "पितृव्यः"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Husband” in Sanskrit?",
+          "options": [
+            "पतिः",
+            "पत्नी",
+            "पुत्री",
+            "पितृव्यः"
+          ],
+          "answer": "पतिः"
+        },
+        {
+          "id": "q4",
+          "question": "How do you say “Brother” in Sanskrit?",
+          "options": [
+            "भगिनी",
+            "भ्राता",
+            "पिता",
+            "पितामही"
+          ],
+          "answer": "भ्राता"
+        },
+        {
+          "id": "q5",
+          "question": "What does “पितृव्यः” mean?",
+          "options": [
+            "Friend",
+            "Brother",
+            "Uncle (Father's Brother)",
+            "Mother"
+          ],
+          "answer": "Uncle (Father's Brother)"
+        },
+        {
+          "id": "q6",
+          "question": "What does “भगिनी” mean?",
+          "options": [
+            "Grandmother (Paternal)",
+            "Son",
+            "Brother",
+            "Sister"
+          ],
+          "answer": "Sister"
+        },
+        {
+          "id": "q7",
+          "question": "What is the gender of “पुत्री”?",
+          "options": [
+            "feminine",
+            "neuter",
+            "masculine"
+          ],
+          "answer": "feminine"
+        },
+        {
+          "id": "q8",
+          "question": "What is the gender of “पितृव्यः”?",
+          "options": [
+            "masculine",
+            "feminine",
+            "neuter"
+          ],
+          "answer": "masculine"
+        },
+        {
+          "id": "q9",
+          "question": "Which of these is a masculine noun?",
+          "options": [
+            "भगिनी",
+            "पिता",
+            "मातामही",
+            "पत्नी"
+          ],
+          "answer": "पिता"
+        },
+        {
+          "id": "q10",
+          "question": "Which of these is a feminine noun?",
+          "options": [
+            "पतिः",
+            "पिता",
+            "मातुलः",
+            "माता"
+          ],
+          "answer": "माता"
+        }
+      ],
       "prerequisites": [
         7
       ]
@@ -151,7 +941,118 @@
       "duration": 20,
       "difficulty": 3,
       "content": "questions_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “How many?” in Sanskrit?",
+          "options": [
+            "किम्",
+            "कः",
+            "कति",
+            "का"
+          ],
+          "answer": "कति"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “When?” in Sanskrit?",
+          "options": [
+            "किमर्थम्",
+            "कदा",
+            "कः",
+            "का"
+          ],
+          "answer": "कदा"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Why?” in Sanskrit?",
+          "options": [
+            "किमर्थम्",
+            "कति",
+            "का",
+            "किम्"
+          ],
+          "answer": "किमर्थम्"
+        },
+        {
+          "id": "q4",
+          "question": "What does “कति” mean?",
+          "options": [
+            "Where?",
+            "How?",
+            "What?",
+            "How many?"
+          ],
+          "answer": "How many?"
+        },
+        {
+          "id": "q5",
+          "question": "What does “कदा” mean?",
+          "options": [
+            "Why?",
+            "When?",
+            "Who? (Feminine)",
+            "How many?"
+          ],
+          "answer": "When?"
+        },
+        {
+          "id": "q6",
+          "question": "What does “किमर्थम्” mean?",
+          "options": [
+            "Who? (Masculine)",
+            "Why?",
+            "Who? (Feminine)",
+            "Where?"
+          ],
+          "answer": "Why?"
+        },
+        {
+          "id": "q7",
+          "question": "Which question word does this sentence use “Who is she?”?",
+          "options": [
+            "कथम्",
+            "का",
+            "किमर्थम्",
+            "कति"
+          ],
+          "answer": "का"
+        },
+        {
+          "id": "q8",
+          "question": "Which question word does this sentence use “What is that?”?",
+          "options": [
+            "कुत्र",
+            "किमर्थम्",
+            "कः",
+            "किम्"
+          ],
+          "answer": "किम्"
+        },
+        {
+          "id": "q9",
+          "question": "Which question word does this sentence use “When are you coming?”?",
+          "options": [
+            "का",
+            "कदा",
+            "कथम्",
+            "कुत्र"
+          ],
+          "answer": "कदा"
+        },
+        {
+          "id": "q10",
+          "question": "Which question word does this sentence use “Why are you laughing?”?",
+          "options": [
+            "कुत्र",
+            "कः",
+            "किमर्थम्",
+            "कदा"
+          ],
+          "answer": "किमर्थम्"
+        }
+      ],
       "prerequisites": [
         8
       ]
@@ -164,7 +1065,118 @@
       "duration": 25,
       "difficulty": 3,
       "content": "time_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “2:00 O'clock” in Sanskrit?",
+          "options": [
+            "द्विवादनम्",
+            "शुक्रवासरः",
+            "त्रिवादनम्",
+            "पञ्चवादनम्"
+          ],
+          "answer": "द्विवादनम्"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “4:00 O'clock” in Sanskrit?",
+          "options": [
+            "भानुवासरः",
+            "चतुर्वादनम्",
+            "बुधवासरः",
+            "अद्य"
+          ],
+          "answer": "चतुर्वादनम्"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “Monday” in Sanskrit?",
+          "options": [
+            "पञ्चवादनम्",
+            "ह्यः",
+            "बुधवासरः",
+            "सोमवासरः"
+          ],
+          "answer": "सोमवासरः"
+        },
+        {
+          "id": "q4",
+          "question": "How do you say “2:45 (Quarter to three)” in Sanskrit?",
+          "options": [
+            "सोमवासरः",
+            "भानुवासरः",
+            "पादोन-त्रिवादनम्",
+            "पञ्चवादनम्"
+          ],
+          "answer": "पादोन-त्रिवादनम्"
+        },
+        {
+          "id": "q5",
+          "question": "How do you say “Yesterday” in Sanskrit?",
+          "options": [
+            "चतुर्वादनम्",
+            "षड्वादनम्",
+            "ह्यः",
+            "सार्ध-द्विवादनम्"
+          ],
+          "answer": "ह्यः"
+        },
+        {
+          "id": "q6",
+          "question": "What does “चतुर्वादनम्” mean?",
+          "options": [
+            "Today",
+            "Saturday",
+            "Friday",
+            "4:00 O'clock"
+          ],
+          "answer": "4:00 O'clock"
+        },
+        {
+          "id": "q7",
+          "question": "What does “सोमवासरः” mean?",
+          "options": [
+            "5:00 O'clock",
+            "3:00 O'clock",
+            "Monday",
+            "2:30 (Half past two)"
+          ],
+          "answer": "Monday"
+        },
+        {
+          "id": "q8",
+          "question": "What does “पादोन-त्रिवादनम्” mean?",
+          "options": [
+            "2:45 (Quarter to three)",
+            "Saturday",
+            "Monday",
+            "Friday"
+          ],
+          "answer": "2:45 (Quarter to three)"
+        },
+        {
+          "id": "q9",
+          "question": "What is the category of “द्विवादनम्”?",
+          "options": [
+            "Fractions",
+            "Relative Time",
+            "Days",
+            "Hours"
+          ],
+          "answer": "Hours"
+        },
+        {
+          "id": "q10",
+          "question": "What is the category of “चतुर्वादनम्”?",
+          "options": [
+            "Relative Time",
+            "Days",
+            "Fractions",
+            "Hours"
+          ],
+          "answer": "Hours"
+        }
+      ],
       "prerequisites": [
         9
       ]
@@ -177,7 +1189,118 @@
       "duration": 30,
       "difficulty": 6,
       "content": "vibhakti_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "What is the English name of “प्रथमा”?",
+          "options": [
+            "Nominative",
+            "Genitive",
+            "Dative",
+            "Locative"
+          ],
+          "answer": "Nominative"
+        },
+        {
+          "id": "q2",
+          "question": "What is the English name of “पञ्चमी”?",
+          "options": [
+            "Ablative",
+            "Locative",
+            "Nominative",
+            "Genitive"
+          ],
+          "answer": "Ablative"
+        },
+        {
+          "id": "q3",
+          "question": "Which case is “Accusative (द्वितीया)”?",
+          "options": [
+            "Recipient / Purpose (सम्प्रदान)",
+            "Location / Context (अधिकरण)",
+            "Instrument / Means (करण)",
+            "Object (कर्म)"
+          ],
+          "answer": "Object (कर्म)"
+        },
+        {
+          "id": "q4",
+          "question": "Which case is “Genitive (षष्ठी)”?",
+          "options": [
+            "Possession (सम्बन्ध)",
+            "Instrument / Means (करण)",
+            "Location / Context (अधिकरण)",
+            "Object (कर्म)"
+          ],
+          "answer": "Possession (सम्बन्ध)"
+        },
+        {
+          "id": "q5",
+          "question": "What is the neuter ending of Nominative (प्रथमा)?",
+          "options": [
+            "इ",
+            "म्",
+            "आ",
+            "ः"
+          ],
+          "answer": "म्"
+        },
+        {
+          "id": "q6",
+          "question": "What is the feminine ending of Instrumental (तृतीया)?",
+          "options": [
+            "या",
+            "म्",
+            "य",
+            "याम्"
+          ],
+          "answer": "या"
+        },
+        {
+          "id": "q7",
+          "question": "What is the neuter ending of Dative (चतुर्थी)?",
+          "options": [
+            "ना",
+            "य",
+            "त्",
+            "याम्"
+          ],
+          "answer": "य"
+        },
+        {
+          "id": "q8",
+          "question": "What is the masculine ending of Genitive (षष्ठी)?",
+          "options": [
+            "म्",
+            "ना",
+            "स्य",
+            "य"
+          ],
+          "answer": "स्य"
+        },
+        {
+          "id": "q9",
+          "question": "What is the feminine ending of Locative (सप्तमी)?",
+          "options": [
+            "या",
+            "याम्",
+            "य",
+            "ः"
+          ],
+          "answer": "याम्"
+        },
+        {
+          "id": "q10",
+          "question": "In “बालकः हस्तेन लिखति।”, which word is in the Instrumental case?",
+          "options": [
+            "ग्रामे",
+            "हस्तेन",
+            "फलं",
+            "रामः"
+          ],
+          "answer": "हस्तेन"
+        }
+      ],
       "prerequisites": [
         4,
         5
@@ -191,7 +1314,117 @@
       "duration": 35,
       "difficulty": 7,
       "content": "sandhi_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "When two vowels meet they combine into one sound. Which category of sandhi covers this?",
+          "options": [
+            "Consonant Sandhi (हल्-सन्धिः)",
+            "Visarga Sandhi (विसर्गसन्धिः)",
+            "Vowel Sandhi (अच्-सन्धिः)"
+          ],
+          "answer": "Vowel Sandhi (अच्-सन्धिः)"
+        },
+        {
+          "id": "q2",
+          "question": "What is the sandhi result of “नमः + गुरवे”?",
+          "options": [
+            "तच्च",
+            "गङ्गोदकम्",
+            "नरेन्द्रः",
+            "नमो गुरवे"
+          ],
+          "answer": "नमो गुरवे"
+        },
+        {
+          "id": "q3",
+          "question": "What is the sandhi result of “नर + इन्द्रः”?",
+          "options": [
+            "तन्नाम",
+            "नमो गुरवे",
+            "नरेन्द्रः",
+            "महौजः"
+          ],
+          "answer": "नरेन्द्रः"
+        },
+        {
+          "id": "q4",
+          "question": "What is the sandhi result of “तत् + नाम”?",
+          "options": [
+            "तच्च",
+            "महैश्वर्यम्",
+            "तन्नाम",
+            "नमो गुरवे"
+          ],
+          "answer": "तन्नाम"
+        },
+        {
+          "id": "q5",
+          "question": "What is the sandhi result of “राम + अस्ति”?",
+          "options": [
+            "स्वौषधम्",
+            "नमो गुरवे",
+            "रामोऽस्ति",
+            "तच्च"
+          ],
+          "answer": "रामोऽस्ति"
+        },
+        {
+          "id": "q6",
+          "question": "What is the sandhi result of “तत् + च”?",
+          "options": [
+            "स्वौषधम्",
+            "तच्च",
+            "रामैकः",
+            "नमो गुरवे"
+          ],
+          "answer": "तच्च"
+        },
+        {
+          "id": "q7",
+          "question": "What is the sandhi result of “नर + ऋषिः”?",
+          "options": [
+            "स्वौषधम्",
+            "रामैकः",
+            "नरर्षिः",
+            "महौजः"
+          ],
+          "answer": "नरर्षिः"
+        },
+        {
+          "id": "q8",
+          "question": "“नमो गुरवे” is formed from which combination?",
+          "options": [
+            "महा + ओजः",
+            "नमः + गुरवे",
+            "रामः + अस्ति",
+            "नर + इन्द्रः"
+          ],
+          "answer": "नमः + गुरवे"
+        },
+        {
+          "id": "q9",
+          "question": "“नरेन्द्रः” is formed from which combination?",
+          "options": [
+            "राम + एकः",
+            "राम + अस्ति",
+            "तत् + नाम",
+            "नर + इन्द्रः"
+          ],
+          "answer": "नर + इन्द्रः"
+        },
+        {
+          "id": "q10",
+          "question": "“तन्नाम” is formed from which combination?",
+          "options": [
+            "गङ्गा + उदकम्",
+            "रामः + करोति",
+            "नर + ऋषिः",
+            "तत् + नाम"
+          ],
+          "answer": "तत् + नाम"
+        }
+      ],
       "prerequisites": [
         1,
         4,
@@ -207,7 +1440,116 @@
       "duration": 30,
       "difficulty": 6,
       "content": "tenses_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Which tense is “Present (वर्तमान)”?",
+          "options": [
+            "Used for actions happening now or generally true.",
+            "Used for simple past actions (narrative past).",
+            "Used for actions that will happen."
+          ],
+          "answer": "Used for actions happening now or generally true."
+        },
+        {
+          "id": "q2",
+          "question": "Which tense is “Future (लृट्)”?",
+          "options": [
+            "Used for actions that will happen.",
+            "Used for simple past actions (narrative past).",
+            "Used for actions happening now or generally true."
+          ],
+          "answer": "Used for actions that will happen."
+        },
+        {
+          "id": "q3",
+          "question": "What is “We two will read” in the Future (लृट्) tense?",
+          "options": [
+            "पठिष्यतः",
+            "पठिष्यामि",
+            "पठिष्यावः",
+            "पठिष्यसि"
+          ],
+          "answer": "पठिष्यावः"
+        },
+        {
+          "id": "q4",
+          "question": "What is “You read” in the Present (वर्तमान) tense?",
+          "options": [
+            "पठतः",
+            "पठसि",
+            "पठति",
+            "पठावः"
+          ],
+          "answer": "पठसि"
+        },
+        {
+          "id": "q5",
+          "question": "What is “He/She/It read” in the Past (Imperfect – लङ्) tense?",
+          "options": [
+            "अपठत्",
+            "अपठाव",
+            "अपठाम",
+            "अपठतम्"
+          ],
+          "answer": "अपठत्"
+        },
+        {
+          "id": "q6",
+          "question": "What is “I will read” in the Future (लृट्) tense?",
+          "options": [
+            "पठिष्यावः",
+            "पठिष्यति",
+            "पठिष्यामः",
+            "पठिष्यामि"
+          ],
+          "answer": "पठिष्यामि"
+        },
+        {
+          "id": "q7",
+          "question": "What does “पठिष्यावः” (paṭhiṣyāvaḥ) mean?",
+          "options": [
+            "They will read",
+            "They two will read",
+            "He/She/It will read",
+            "We two will read"
+          ],
+          "answer": "We two will read"
+        },
+        {
+          "id": "q8",
+          "question": "What does “पठसि” (paṭhasi) mean?",
+          "options": [
+            "You read",
+            "You all read",
+            "They read",
+            "You two read"
+          ],
+          "answer": "You read"
+        },
+        {
+          "id": "q9",
+          "question": "Which person and number does “पठामः” express?",
+          "options": [
+            "2nd Singular",
+            "1st Plural",
+            "3rd Dual",
+            "2nd Plural"
+          ],
+          "answer": "1st Plural"
+        },
+        {
+          "id": "q10",
+          "question": "Which person and number does “पठथः” express?",
+          "options": [
+            "1st Singular",
+            "2nd Plural",
+            "2nd Dual",
+            "3rd Plural"
+          ],
+          "answer": "2nd Dual"
+        }
+      ],
       "prerequisites": [
         6,
         11
@@ -221,7 +1563,118 @@
       "duration": 25,
       "difficulty": 6,
       "content": "moods_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "What is “Let them read!” in the Imperative (लोट्) mood?",
+          "options": [
+            "पठत",
+            "पठतु",
+            "पठन्तु",
+            "पठताम्"
+          ],
+          "answer": "पठन्तु"
+        },
+        {
+          "id": "q2",
+          "question": "What is “May you read / You should read” in the Optative (विधिलिङ्) mood?",
+          "options": [
+            "पठेः",
+            "पठेत",
+            "पठेव",
+            "पठेत्"
+          ],
+          "answer": "पठेः"
+        },
+        {
+          "id": "q3",
+          "question": "What is “May I read / I should read” in the Optative (विधिलिङ्) mood?",
+          "options": [
+            "पठेतम्",
+            "पठेत्",
+            "पठेयम्",
+            "पठेः"
+          ],
+          "answer": "पठेयम्"
+        },
+        {
+          "id": "q4",
+          "question": "What is “May you all read” in the Optative (विधिलिङ्) mood?",
+          "options": [
+            "पठेताम्",
+            "पठेत",
+            "पठेः",
+            "पठेत्"
+          ],
+          "answer": "पठेत"
+        },
+        {
+          "id": "q5",
+          "question": "What is “May you two read” in the Optative (विधिलिङ्) mood?",
+          "options": [
+            "पठेव",
+            "पठेम",
+            "पठेताम्",
+            "पठेतम्"
+          ],
+          "answer": "पठेतम्"
+        },
+        {
+          "id": "q6",
+          "question": "What is “May we two read” in the Optative (विधिलिङ्) mood?",
+          "options": [
+            "पठेः",
+            "पठेत",
+            "पठेतम्",
+            "पठेव"
+          ],
+          "answer": "पठेव"
+        },
+        {
+          "id": "q7",
+          "question": "What does “पठन्तु” (paṭhantu) mean?",
+          "options": [
+            "Let them two read!",
+            "Let them read!",
+            "Read! (you - informal)",
+            "You all read!"
+          ],
+          "answer": "Let them read!"
+        },
+        {
+          "id": "q8",
+          "question": "What does “पठेः” (paṭheḥ) mean?",
+          "options": [
+            "May we two read",
+            "May he/she read / Should read",
+            "May we read / We should read",
+            "May you read / You should read"
+          ],
+          "answer": "May you read / You should read"
+        },
+        {
+          "id": "q9",
+          "question": "What does “पठेयम्” (paṭheyam) mean?",
+          "options": [
+            "May we two read",
+            "May I read / I should read",
+            "May they read",
+            "May he/she read / Should read"
+          ],
+          "answer": "May I read / I should read"
+        },
+        {
+          "id": "q10",
+          "question": "What does “पठेत” (paṭheta) mean?",
+          "options": [
+            "May we read / We should read",
+            "May they two read",
+            "May you read / You should read",
+            "May you all read"
+          ],
+          "answer": "May you all read"
+        }
+      ],
       "prerequisites": [
         6,
         13
@@ -235,7 +1688,114 @@
       "duration": 25,
       "difficulty": 5,
       "content": "pronouns_extended_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “This (masc)” in Sanskrit?",
+          "options": [
+            "एषः",
+            "सा",
+            "त्वम्",
+            "ताः"
+          ],
+          "answer": "एषः"
+        },
+        {
+          "id": "q2",
+          "question": "What does “एषः” mean?",
+          "options": [
+            "These two (fem)",
+            "I",
+            "You (two of you)",
+            "This (masc)"
+          ],
+          "answer": "This (masc)"
+        },
+        {
+          "id": "q3",
+          "question": "“वयम्” is which number in the first person?",
+          "options": [
+            "plural",
+            "singular",
+            "dual"
+          ],
+          "answer": "plural"
+        },
+        {
+          "id": "q4",
+          "question": "“सा” is which number in the third person?",
+          "options": [
+            "dual",
+            "singular",
+            "plural"
+          ],
+          "answer": "singular"
+        },
+        {
+          "id": "q5",
+          "question": "“तानि” is which number in the third person?",
+          "options": [
+            "plural",
+            "singular",
+            "dual"
+          ],
+          "answer": "plural"
+        },
+        {
+          "id": "q6",
+          "question": "“एते” is which number in the demonstrative (this)?",
+          "options": [
+            "plural",
+            "dual",
+            "singular"
+          ],
+          "answer": "dual"
+        },
+        {
+          "id": "q7",
+          "question": "Which person does the plural form “वयम्” belong to?",
+          "options": [
+            "Demonstrative (this)",
+            "First Person",
+            "Third Person",
+            "Second Person"
+          ],
+          "answer": "First Person"
+        },
+        {
+          "id": "q8",
+          "question": "Which person does the singular form “सा” belong to?",
+          "options": [
+            "Demonstrative (this)",
+            "Second Person",
+            "Third Person",
+            "First Person"
+          ],
+          "answer": "Third Person"
+        },
+        {
+          "id": "q9",
+          "question": "Which person does the plural form “ताः” belong to?",
+          "options": [
+            "Demonstrative (this)",
+            "Third Person",
+            "First Person",
+            "Second Person"
+          ],
+          "answer": "Third Person"
+        },
+        {
+          "id": "q10",
+          "question": "Which person does the dual form “एतौ” belong to?",
+          "options": [
+            "Second Person",
+            "Demonstrative (this)",
+            "Third Person",
+            "First Person"
+          ],
+          "answer": "Demonstrative (this)"
+        }
+      ],
       "prerequisites": [
         5,
         11
@@ -249,7 +1809,118 @@
       "duration": 25,
       "difficulty": 5,
       "content": "upasarga_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "What does the prefix “अभि” (abhi) mean?",
+          "options": [
+            "together, with",
+            "forward, forth, in front",
+            "well, good, easily",
+            "toward, over, into"
+          ],
+          "answer": "toward, over, into"
+        },
+        {
+          "id": "q2",
+          "question": "What does the prefix “व्य” (vya) mean?",
+          "options": [
+            "bad, hard, difficult",
+            "apart, through",
+            "over, above, upon",
+            "toward, against, back"
+          ],
+          "answer": "apart, through"
+        },
+        {
+          "id": "q3",
+          "question": "What does the prefix “अधि” (adhi) mean?",
+          "options": [
+            "secretly, beyond sight",
+            "over, above, upon",
+            "toward, against, back",
+            "well, good, easily"
+          ],
+          "answer": "over, above, upon"
+        },
+        {
+          "id": "q4",
+          "question": "What does the prefix “निस्” (nis) mean?",
+          "options": [
+            "out, forth, without",
+            "forward, forth, in front",
+            "after, along, according to",
+            "secretly, beyond sight"
+          ],
+          "answer": "out, forth, without"
+        },
+        {
+          "id": "q5",
+          "question": "Which prefix means “apart, through”?",
+          "options": [
+            "व्य",
+            "वि",
+            "अभि",
+            "नि"
+          ],
+          "answer": "व्य"
+        },
+        {
+          "id": "q6",
+          "question": "Which prefix means “over, above, upon”?",
+          "options": [
+            "अधि",
+            "तिरस्",
+            "उप",
+            "निस्"
+          ],
+          "answer": "अधि"
+        },
+        {
+          "id": "q7",
+          "question": "Which prefix means “apart, away, without”?",
+          "options": [
+            "वि",
+            "अप",
+            "नि",
+            "अनु"
+          ],
+          "answer": "वि"
+        },
+        {
+          "id": "q8",
+          "question": "What does “व्यगच्छति” mean?",
+          "options": [
+            "goes out, exits",
+            "follows, goes after",
+            "goes beyond, surpasses",
+            "goes apart, separates"
+          ],
+          "answer": "goes apart, separates"
+        },
+        {
+          "id": "q9",
+          "question": "What does “अधिगच्छति” mean?",
+          "options": [
+            "goes toward, approaches",
+            "goes away, departs",
+            "goes up, rises",
+            "goes over, studies, attains"
+          ],
+          "answer": "goes over, studies, attains"
+        },
+        {
+          "id": "q10",
+          "question": "Which prefix is used in “व्यगच्छति”?",
+          "options": [
+            "निस्",
+            "व्य",
+            "प्रति",
+            "निर्"
+          ],
+          "answer": "व्य"
+        }
+      ],
       "prerequisites": [
         6,
         13
@@ -263,7 +1934,118 @@
       "duration": 25,
       "difficulty": 6,
       "content": "voice_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "In the passive voice the original subject becomes the agent. In which case is that agent placed?",
+          "options": [
+            "Dative (चतुर्थी)",
+            "Instrumental (तृतीया)",
+            "Accusative (द्वितीया)",
+            "Ablative (पञ्चमी)"
+          ],
+          "answer": "Instrumental (तृतीया)"
+        },
+        {
+          "id": "q2",
+          "question": "In the active voice, in which case is the direct object placed?",
+          "options": [
+            "Nominative (प्रथमा)",
+            "Accusative (द्वितीया)",
+            "Dative (चतुर्थी)",
+            "Genitive (षष्ठी)"
+          ],
+          "answer": "Accusative (द्वितीया)"
+        },
+        {
+          "id": "q3",
+          "question": "In “बालकाः पुस्तकं पठन्ति।” (The boys read a book.), what is the verb?",
+          "options": [
+            "खादति (eats - 3rd person singular)",
+            "गम्यते (is gone - 3rd singular impersonal passive)",
+            "खाद्यते (is eaten - 3rd person singular passive)",
+            "पठन्ति (read - 3rd person plural)"
+          ],
+          "answer": "पठन्ति (read - 3rd person plural)"
+        },
+        {
+          "id": "q4",
+          "question": "In “रामेण फलं खाद्यते।” (The fruit is eaten by Rama.), what is the verb?",
+          "options": [
+            "गम्यते (is gone - 3rd singular impersonal passive)",
+            "पठन्ति (read - 3rd person plural)",
+            "खाद्यते (is eaten - 3rd person singular passive)",
+            "पठ्यते (is read - 3rd person singular passive)"
+          ],
+          "answer": "खाद्यते (is eaten - 3rd person singular passive)"
+        },
+        {
+          "id": "q5",
+          "question": "In “बालकैः पुस्तकं पठ्यते।” (The book is read by the boys.), what is the verb?",
+          "options": [
+            "पठ्यते (is read - 3rd person singular passive)",
+            "गम्यते (is gone - 3rd singular impersonal passive)",
+            "खादति (eats - 3rd person singular)",
+            "खाद्यते (is eaten - 3rd person singular passive)"
+          ],
+          "answer": "पठ्यते (is read - 3rd person singular passive)"
+        },
+        {
+          "id": "q6",
+          "question": "In “रामः फलं खादति।” (Rama eats a fruit.), what is the verb?",
+          "options": [
+            "पठन्ति (read - 3rd person plural)",
+            "गम्यते (is gone - 3rd singular impersonal passive)",
+            "खादति (eats - 3rd person singular)",
+            "पठ्यते (is read - 3rd person singular passive)"
+          ],
+          "answer": "खादति (eats - 3rd person singular)"
+        },
+        {
+          "id": "q7",
+          "question": "In “रामेण फलं खाद्यते।” (The fruit is eaten by Rama.), what is the subject?",
+          "options": [
+            "फलम् (fruit - nominative)",
+            "पुस्तकम् (book - nominative)",
+            "रामः (Rama - nominative)",
+            "बालकाः (boys - nominative plural)"
+          ],
+          "answer": "फलम् (fruit - nominative)"
+        },
+        {
+          "id": "q8",
+          "question": "In “बालकैः पुस्तकं पठ्यते।” (The book is read by the boys.), what is the subject?",
+          "options": [
+            "पुस्तकम् (book - nominative)",
+            "रामः (Rama - nominative)",
+            "बालकाः (boys - nominative plural)",
+            "फलम् (fruit - nominative)"
+          ],
+          "answer": "पुस्तकम् (book - nominative)"
+        },
+        {
+          "id": "q9",
+          "question": "What does “बालकाः पुस्तकं पठन्ति।” mean?",
+          "options": [
+            "The fruit is eaten by Rama.",
+            "Rama eats a fruit.",
+            "The book is read by the boys.",
+            "The boys read a book."
+          ],
+          "answer": "The boys read a book."
+        },
+        {
+          "id": "q10",
+          "question": "What does “रामेण फलं खाद्यते।” mean?",
+          "options": [
+            "It is gone by Rama. (Rama goes.)",
+            "The fruit is eaten by Rama.",
+            "It is not gone by me. (I do not go.)",
+            "The boys read a book."
+          ],
+          "answer": "The fruit is eaten by Rama."
+        }
+      ],
       "prerequisites": [
         6,
         11,
@@ -278,7 +2060,118 @@
       "duration": 20,
       "difficulty": 5,
       "content": "indeclinables_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "How do you say “so, thus” in Sanskrit?",
+          "options": [
+            "तथा",
+            "नमः",
+            "सदा",
+            "इह"
+          ],
+          "answer": "तथा"
+        },
+        {
+          "id": "q2",
+          "question": "How do you say “and” in Sanskrit?",
+          "options": [
+            "अपि",
+            "अतः",
+            "अद्य",
+            "च"
+          ],
+          "answer": "च"
+        },
+        {
+          "id": "q3",
+          "question": "How do you say “here” in Sanskrit?",
+          "options": [
+            "श्वः",
+            "अद्य",
+            "एव",
+            "अत्र"
+          ],
+          "answer": "अत्र"
+        },
+        {
+          "id": "q4",
+          "question": "How do you say “without” in Sanskrit?",
+          "options": [
+            "अतः",
+            "च",
+            "नमः",
+            "विना"
+          ],
+          "answer": "विना"
+        },
+        {
+          "id": "q5",
+          "question": "How do you say “here, in this world” in Sanskrit?",
+          "options": [
+            "यथा",
+            "इह",
+            "सदा",
+            "तथा"
+          ],
+          "answer": "इह"
+        },
+        {
+          "id": "q6",
+          "question": "What does “च” mean?",
+          "options": [
+            "today",
+            "without",
+            "when?",
+            "and"
+          ],
+          "answer": "and"
+        },
+        {
+          "id": "q7",
+          "question": "What does “अत्र” mean?",
+          "options": [
+            "now",
+            "there",
+            "salutation, obeisance",
+            "here"
+          ],
+          "answer": "here"
+        },
+        {
+          "id": "q8",
+          "question": "What does “विना” mean?",
+          "options": [
+            "without",
+            "as, just as",
+            "today",
+            "now"
+          ],
+          "answer": "without"
+        },
+        {
+          "id": "q9",
+          "question": "What is the category of “तथा”?",
+          "options": [
+            "Conjunction",
+            "Preposition",
+            "Adverb",
+            "Particle"
+          ],
+          "answer": "Adverb"
+        },
+        {
+          "id": "q10",
+          "question": "What is the category of “च”?",
+          "options": [
+            "Preposition",
+            "Conjunction",
+            "Interjection",
+            "Particle"
+          ],
+          "answer": "Conjunction"
+        }
+      ],
       "prerequisites": [
         4,
         5,
@@ -293,7 +2186,114 @@
       "duration": 30,
       "difficulty": 7,
       "content": "participles_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Which participle type is “Past Passive Participle (क्त)”?",
+          "options": [
+            "Indicates an action completed before another action. Translates as 'having done...'.",
+            "Indicates a completed action. The most common participle in Sanskrit. Usually translates as 'having been...' or simply as a past passive adjective.",
+            "Indicates obligation, necessity, or possibility. Translates as 'must be...', 'should be...', 'fit to be...'."
+          ],
+          "answer": "Indicates a completed action. The most common participle in Sanskrit. Usually translates as 'having been...' or simply as a past passive adjective."
+        },
+        {
+          "id": "q2",
+          "question": "Which participle type is “Future Passive Participle (तव्य / अनीयर्)”?",
+          "options": [
+            "Indicates an action completed before another action. Translates as 'having done...'.",
+            "Indicates obligation, necessity, or possibility. Translates as 'must be...', 'should be...', 'fit to be...'.",
+            "Indicates a completed action. The most common participle in Sanskrit. Usually translates as 'having been...' or simply as a past passive adjective."
+          ],
+          "answer": "Indicates obligation, necessity, or possibility. Translates as 'must be...', 'should be...', 'fit to be...'."
+        },
+        {
+          "id": "q3",
+          "question": "How is the Past Passive Participle (क्त) formed?",
+          "options": [
+            "Root + (इ)त or (आ)न; often takes a prefix",
+            "Root + त्वा (or या for compound verbs)",
+            "Root + तव्य / अनीय"
+          ],
+          "answer": "Root + (इ)त or (आ)न; often takes a prefix"
+        },
+        {
+          "id": "q4",
+          "question": "How is the Gerund (क्त्वा) formed?",
+          "options": [
+            "Root + (इ)त or (आ)न; often takes a prefix",
+            "Root + त्वा (or या for compound verbs)",
+            "Root + तव्य / अनीय"
+          ],
+          "answer": "Root + त्वा (or या for compound verbs)"
+        },
+        {
+          "id": "q5",
+          "question": "What is the participle of “खाद् (to eat)” in the Past Passive Participle (क्त)?",
+          "options": [
+            "खादितः",
+            "स्नात्वा",
+            "श्रुतः",
+            "कृतः"
+          ],
+          "answer": "खादितः"
+        },
+        {
+          "id": "q6",
+          "question": "What is the participle of “गम् (to go)” in the Past Passive Participle (क्त)?",
+          "options": [
+            "ज्ञातव्यम्",
+            "गतः",
+            "लिखितः",
+            "कृत्वा"
+          ],
+          "answer": "गतः"
+        },
+        {
+          "id": "q7",
+          "question": "What is the participle of “पठ् (to read)” in the Future Passive Participle (तव्य / अनीयर्)?",
+          "options": [
+            "कर्तव्यम्",
+            "कृतः",
+            "खादित्वा",
+            "पठितव्यम्"
+          ],
+          "answer": "पठितव्यम्"
+        },
+        {
+          "id": "q8",
+          "question": "What does “खादितः” mean?",
+          "options": [
+            "having eaten, after eating",
+            "eaten, having been eaten",
+            "having bathed, after bathing",
+            "must be read, should be read"
+          ],
+          "answer": "eaten, having been eaten"
+        },
+        {
+          "id": "q9",
+          "question": "What does “गतः” mean?",
+          "options": [
+            "gone, having gone",
+            "having bathed, after bathing",
+            "must be known, should be known",
+            "having done, after doing"
+          ],
+          "answer": "gone, having gone"
+        },
+        {
+          "id": "q10",
+          "question": "What does “फलं खादितम्।” mean?",
+          "options": [
+            "Having done, come.",
+            "The news has been heard.",
+            "The work must be done.",
+            "The fruit has been eaten."
+          ],
+          "answer": "The fruit has been eaten."
+        }
+      ],
       "prerequisites": [
         6,
         11,
@@ -308,7 +2308,118 @@
       "duration": 30,
       "difficulty": 5,
       "content": "reading_composition_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "What does “वनम्” mean?",
+          "options": [
+            "in the afternoon",
+            "river",
+            "forest",
+            "on the way"
+          ],
+          "answer": "forest"
+        },
+        {
+          "id": "q2",
+          "question": "What does “मार्गे” mean?",
+          "options": [
+            "at noon",
+            "on the way",
+            "first",
+            "they cross"
+          ],
+          "answer": "on the way"
+        },
+        {
+          "id": "q3",
+          "question": "What does “नदी” mean?",
+          "options": [
+            "river",
+            "brings",
+            "forest",
+            "in the afternoon"
+          ],
+          "answer": "river"
+        },
+        {
+          "id": "q4",
+          "question": "What does “तरन्ति” mean?",
+          "options": [
+            "at noon",
+            "they cross",
+            "on a throne",
+            "flowers"
+          ],
+          "answer": "they cross"
+        },
+        {
+          "id": "q5",
+          "question": "What does “पुष्पाणि” mean?",
+          "options": [
+            "flowers",
+            "on the way",
+            "happily",
+            "sets"
+          ],
+          "answer": "flowers"
+        },
+        {
+          "id": "q6",
+          "question": "What does “विद्यार्थिनः” mean?",
+          "options": [
+            "return",
+            "flowers",
+            "students",
+            "at noon"
+          ],
+          "answer": "students"
+        },
+        {
+          "id": "q7",
+          "question": "What does “गुरुभ्यः” mean?",
+          "options": [
+            "sets",
+            "flowers",
+            "first",
+            "to the teachers"
+          ],
+          "answer": "to the teachers"
+        },
+        {
+          "id": "q8",
+          "question": "Which word in this lesson means “forest”?",
+          "options": [
+            "नदी",
+            "पुष्पाणि",
+            "उद्याने",
+            "वनम्"
+          ],
+          "answer": "वनम्"
+        },
+        {
+          "id": "q9",
+          "question": "Which word in this lesson means “on the way”?",
+          "options": [
+            "प्रथमं",
+            "आनन्देन",
+            "मार्गे",
+            "ततः"
+          ],
+          "answer": "मार्गे"
+        },
+        {
+          "id": "q10",
+          "question": "Which word in this lesson means “river”?",
+          "options": [
+            "नदी",
+            "आहरति",
+            "अस्तं गच्छति",
+            "प्रथमं"
+          ],
+          "answer": "नदी"
+        }
+      ],
       "prerequisites": [
         11,
         12,
@@ -329,7 +2440,118 @@
       "duration": 35,
       "difficulty": 8,
       "content": "samasa_part1_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Which compound type is described as: “Indeclinable compound where the first member is an indeclinable (usually a preposition) and the compound as a whole acts as an adverb.”?",
+          "options": [
+            "Bahuvrīhi (बहुव्रीहि)",
+            "Dvandva (द्वन्द्व)",
+            "Tatpuruṣa (तत्पुरुष)",
+            "Avyayībhāva (अव्ययीभाव)"
+          ],
+          "answer": "Avyayībhāva (अव्ययीभाव)"
+        },
+        {
+          "id": "q2",
+          "question": "Which compound type is described as: “Dependent compound where the second member is the main noun and the first member modifies it (usually in a case relationship).”?",
+          "options": [
+            "Avyayībhāva (अव्ययीभाव)",
+            "Dvandva (द्वन्द्व)",
+            "Bahuvrīhi (बहुव्रीहि)",
+            "Tatpuruṣa (तत्पुरुष)"
+          ],
+          "answer": "Tatpuruṣa (तत्पुरुष)"
+        },
+        {
+          "id": "q3",
+          "question": "Which compound type is described as: “Possessive compound that refers to something other than its components; it acts as an adjective.”?",
+          "options": [
+            "Bahuvrīhi (बहुव्रीहि)",
+            "Tatpuruṣa (तत्पुरुष)",
+            "Avyayībhāva (अव्ययीभाव)",
+            "Dvandva (द्वन्द्व)"
+          ],
+          "answer": "Bahuvrīhi (बहुव्रीहि)"
+        },
+        {
+          "id": "q4",
+          "question": "Which compound type is described as: “Coordinative compound where both members are of equal importance; often translates as 'X and Y'.”?",
+          "options": [
+            "Dvandva (द्वन्द्व)",
+            "Tatpuruṣa (तत्पुरुष)",
+            "Bahuvrīhi (बहुव्रीहि)",
+            "Avyayībhāva (अव्ययीभाव)"
+          ],
+          "answer": "Dvandva (द्वन्द्व)"
+        },
+        {
+          "id": "q5",
+          "question": "What does “उपग्रामम्” mean?",
+          "options": [
+            "one living in the village",
+            "one who lives in the forest (adjective)",
+            "near the village",
+            "the king's son"
+          ],
+          "answer": "near the village"
+        },
+        {
+          "id": "q6",
+          "question": "What does “ग्रामवासी” mean?",
+          "options": [
+            "one who lives in the forest (adjective)",
+            "one living in the village",
+            "Rāma and Lakṣmaṇa (dual)",
+            "the king's son"
+          ],
+          "answer": "one living in the village"
+        },
+        {
+          "id": "q7",
+          "question": "What does “रामलक्ष्मणौ” mean?",
+          "options": [
+            "Rāma and Lakṣmaṇa (dual)",
+            "one who lives in the forest (adjective)",
+            "near the village",
+            "mother and father"
+          ],
+          "answer": "Rāma and Lakṣmaṇa (dual)"
+        },
+        {
+          "id": "q8",
+          "question": "“राजपुत्रः” is made from which components?",
+          "options": [
+            "ग्राम + वासी (locative)",
+            "राम + लक्ष्मण",
+            "राज + पुत्रः (genitive)",
+            "माता + पिता"
+          ],
+          "answer": "राज + पुत्रः (genitive)"
+        },
+        {
+          "id": "q9",
+          "question": "“वनवासी” is made from which components?",
+          "options": [
+            "माता + पिता",
+            "उप + ग्रामम्",
+            "वन + वासी",
+            "राम + लक्ष्मण"
+          ],
+          "answer": "वन + वासी"
+        },
+        {
+          "id": "q10",
+          "question": "Identify the compound type of “राजपुत्रः”.",
+          "options": [
+            "Dvandva (द्वन्द्व)",
+            "Avyayībhāva (अव्ययीभाव)",
+            "Bahuvrīhi (बहुव्रीहि)",
+            "Tatpuruṣa (तत्पुरुष)"
+          ],
+          "answer": "Tatpuruṣa (तत्पुरुष)"
+        }
+      ],
       "prerequisites": [
         11,
         12,
@@ -344,7 +2566,118 @@
       "duration": 30,
       "difficulty": 8,
       "content": "samasa_part2_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Identify the compound type of “अनुग्रामम्” (अनु + ग्रामम्).",
+          "options": [
+            "Avyayībhāva",
+            "Bahuvrīhi",
+            "Dvandva",
+            "Tatpuruṣa"
+          ],
+          "answer": "Avyayībhāva"
+        },
+        {
+          "id": "q2",
+          "question": "Identify the compound type of “राजपुत्रः” (राजन् + पुत्रः).",
+          "options": [
+            "Tatpuruṣa",
+            "Dvandva",
+            "Avyayībhāva",
+            "Bahuvrīhi"
+          ],
+          "answer": "Tatpuruṣa"
+        },
+        {
+          "id": "q3",
+          "question": "Identify the compound type of “चक्रपाणिः” (चक्र + पाणिः).",
+          "options": [
+            "Bahuvrīhi",
+            "Dvandva",
+            "Tatpuruṣa",
+            "Avyayībhāva"
+          ],
+          "answer": "Bahuvrīhi"
+        },
+        {
+          "id": "q4",
+          "question": "What does “अनुग्रामम्” mean?",
+          "options": [
+            "king's son",
+            "one holding a discus",
+            "along the village",
+            "Rama and Lakshmana"
+          ],
+          "answer": "along the village"
+        },
+        {
+          "id": "q5",
+          "question": "What does “राजपुत्रः” mean?",
+          "options": [
+            "one holding a discus",
+            "king's son",
+            "along the village",
+            "Rama and Lakshmana"
+          ],
+          "answer": "king's son"
+        },
+        {
+          "id": "q6",
+          "question": "What does “रामलक्ष्मणौ” mean?",
+          "options": [
+            "king's son",
+            "along the village",
+            "Rama and Lakshmana",
+            "one holding a discus"
+          ],
+          "answer": "Rama and Lakshmana"
+        },
+        {
+          "id": "q7",
+          "question": "What does “अनुग्रामम् नदी वहति।” mean?",
+          "options": [
+            "One whose resolve is true attains success.",
+            "The river flows along the village.",
+            "Viṣṇu is the one holding a discus.",
+            "Rāma and Lakṣmaṇa bow to the teacher."
+          ],
+          "answer": "The river flows along the village."
+        },
+        {
+          "id": "q8",
+          "question": "What does “राजपुत्रः राज्यं शास्ति।” mean?",
+          "options": [
+            "The villager does farming work.",
+            "Viṣṇu is the one holding a discus.",
+            "The king's son rules the kingdom.",
+            "Rāma and Lakṣmaṇa bow to the teacher."
+          ],
+          "answer": "The king's son rules the kingdom."
+        },
+        {
+          "id": "q9",
+          "question": "What does “रामलक्ष्मणौ गुरुं नमतः।” mean?",
+          "options": [
+            "One whose resolve is true attains success.",
+            "Rāma and Lakṣmaṇa bow to the teacher.",
+            "The river flows along the village.",
+            "Viṣṇu is the one holding a discus."
+          ],
+          "answer": "Rāma and Lakṣmaṇa bow to the teacher."
+        },
+        {
+          "id": "q10",
+          "question": "What does “ग्रामवासी कृषिकार्यं करोति।” mean?",
+          "options": [
+            "One whose resolve is true attains success.",
+            "The king's son rules the kingdom.",
+            "The villager does farming work.",
+            "Viṣṇu is the one holding a discus."
+          ],
+          "answer": "The villager does farming work."
+        }
+      ],
       "prerequisites": [
         21
       ]
@@ -357,7 +2690,118 @@
       "duration": 30,
       "difficulty": 8,
       "content": "participles_part2_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Which participle type is “Present Active Participle (शतृ)”?",
+          "options": [
+            "Middle voice present participle, often used for reflexive or intransitive verbs.",
+            "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'.",
+            "Expresses a hypothetical action; uses the conditional mood.",
+            "Indicates an action that is ongoing; translates as '...ing'."
+          ],
+          "answer": "Indicates an action that is ongoing; translates as '...ing'."
+        },
+        {
+          "id": "q2",
+          "question": "Which participle type is “Present Active Participle (शानच्)”?",
+          "options": [
+            "Expresses a hypothetical action; uses the conditional mood.",
+            "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'.",
+            "Middle voice present participle, often used for reflexive or intransitive verbs.",
+            "Indicates an action that is ongoing; translates as '...ing'."
+          ],
+          "answer": "Middle voice present participle, often used for reflexive or intransitive verbs."
+        },
+        {
+          "id": "q3",
+          "question": "Which participle type is “Future Active Participle”?",
+          "options": [
+            "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'.",
+            "Middle voice present participle, often used for reflexive or intransitive verbs.",
+            "Expresses a hypothetical action; uses the conditional mood.",
+            "Indicates an action that is ongoing; translates as '...ing'."
+          ],
+          "answer": "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'."
+        },
+        {
+          "id": "q4",
+          "question": "Which participle type is “Conditional”?",
+          "options": [
+            "Expresses a hypothetical action; uses the conditional mood.",
+            "Middle voice present participle, often used for reflexive or intransitive verbs.",
+            "Indicates an action that is ongoing; translates as '...ing'.",
+            "Indicates an action that will happen; translates as 'about to ...' or 'going to ...'."
+          ],
+          "answer": "Expresses a hypothetical action; uses the conditional mood."
+        },
+        {
+          "id": "q5",
+          "question": "What is the participle of “पठ्” in the Future Active Participle?",
+          "options": [
+            "पठन्",
+            "गच्छन्",
+            "पठिष्यन्",
+            "सेवमानः"
+          ],
+          "answer": "पठिष्यन्"
+        },
+        {
+          "id": "q6",
+          "question": "What is the participle of “सेव्” in the Present Active Participle (शानच्)?",
+          "options": [
+            "सेवमानः",
+            "गच्छन्",
+            "पठिष्यन्",
+            "पठन्"
+          ],
+          "answer": "सेवमानः"
+        },
+        {
+          "id": "q7",
+          "question": "What is the participle of “गम्” in the Present Active Participle (शतृ)?",
+          "options": [
+            "पठन्",
+            "सेवमानः",
+            "गच्छन्",
+            "पठिष्यन्"
+          ],
+          "answer": "गच्छन्"
+        },
+        {
+          "id": "q8",
+          "question": "What does “पठिष्यन्” mean?",
+          "options": [
+            "reading (masculine)",
+            "about to read",
+            "serving",
+            "going"
+          ],
+          "answer": "about to read"
+        },
+        {
+          "id": "q9",
+          "question": "What does “सेवमानः” mean?",
+          "options": [
+            "reading (masculine)",
+            "going",
+            "about to read",
+            "serving"
+          ],
+          "answer": "serving"
+        },
+        {
+          "id": "q10",
+          "question": "What does “पठन् छात्रः आसने उपविशति।” mean?",
+          "options": [
+            "The serving servant sees the king.",
+            "If it were to rain, I would not go.",
+            "The reading student sits on the chair.",
+            "The going boy fell."
+          ],
+          "answer": "The reading student sits on the chair."
+        }
+      ],
       "prerequisites": [
         19
       ]
@@ -370,7 +2814,118 @@
       "duration": 25,
       "difficulty": 7,
       "content": "strī_pratyaya_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "What is the feminine form of “बालकः”?",
+          "options": [
+            "धनवती",
+            "गुर्वी",
+            "विद्यावती",
+            "बालिका"
+          ],
+          "answer": "बालिका"
+        },
+        {
+          "id": "q2",
+          "question": "What is the feminine form of “पुत्रः”?",
+          "options": [
+            "पुत्री",
+            "विद्यावती",
+            "धनवती",
+            "माता"
+          ],
+          "answer": "पुत्री"
+        },
+        {
+          "id": "q3",
+          "question": "What is the feminine form of “गुरुः”?",
+          "options": [
+            "योगिनी",
+            "बालिका",
+            "गुर्वी",
+            "पुत्री"
+          ],
+          "answer": "गुर्वी"
+        },
+        {
+          "id": "q4",
+          "question": "What is the feminine form of “विद्यावान्”?",
+          "options": [
+            "गुर्वी",
+            "विद्यावती",
+            "पुत्री",
+            "बालिका"
+          ],
+          "answer": "विद्यावती"
+        },
+        {
+          "id": "q5",
+          "question": "“बालकः” (m) becomes “बालिका” (f). Which suffix rule applies?",
+          "options": [
+            "नी",
+            "ई",
+            "इनी",
+            "आ"
+          ],
+          "answer": "आ"
+        },
+        {
+          "id": "q6",
+          "question": "“पिता” (m) becomes “माता” (f). Which suffix rule applies?",
+          "options": [
+            "ई",
+            "इनी",
+            "नी",
+            "आ"
+          ],
+          "answer": "ई"
+        },
+        {
+          "id": "q7",
+          "question": "“धनवान्” (m) becomes “धनवती” (f). Which suffix rule applies?",
+          "options": [
+            "नी",
+            "ई",
+            "आ",
+            "इनी"
+          ],
+          "answer": "इनी"
+        },
+        {
+          "id": "q8",
+          "question": "Which rule applies here: “Many masculine nouns add -ई to form feminine”?",
+          "options": [
+            "ई",
+            "नी",
+            "इनी",
+            "आ"
+          ],
+          "answer": "ई"
+        },
+        {
+          "id": "q9",
+          "question": "Which rule applies here: “Nouns ending in -इन् often become -नी”?",
+          "options": [
+            "ई",
+            "इनी",
+            "आ",
+            "नी"
+          ],
+          "answer": "नी"
+        },
+        {
+          "id": "q10",
+          "question": "“पुत्रः” / “पुत्री” means what?",
+          "options": [
+            "father/mother",
+            "yogi (m/f)",
+            "learned person",
+            "son/daughter"
+          ],
+          "answer": "son/daughter"
+        }
+      ],
       "prerequisites": [
         7,
         11
@@ -384,7 +2939,108 @@
       "duration": 35,
       "difficulty": 9,
       "content": "chandas_special",
-      "quiz": [],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "In Sanskrit prosody, what is “लघु”?",
+          "options": [
+            "a group of 3 syllables",
+            "long syllable (2 mātrās)",
+            "short syllable (1 mātrā)"
+          ],
+          "answer": "short syllable (1 mātrā)"
+        },
+        {
+          "id": "q2",
+          "question": "In Sanskrit prosody, what is “गुरु”?",
+          "options": [
+            "a group of 3 syllables",
+            "short syllable (1 mātrā)",
+            "long syllable (2 mātrās)"
+          ],
+          "answer": "long syllable (2 mātrās)"
+        },
+        {
+          "id": "q3",
+          "question": "In Sanskrit prosody, what is “गण”?",
+          "options": [
+            "long syllable (2 mātrās)",
+            "a group of 3 syllables",
+            "short syllable (1 mātrā)"
+          ],
+          "answer": "a group of 3 syllables"
+        },
+        {
+          "id": "q4",
+          "question": "Which term means “short syllable (1 mātrā)”?",
+          "options": [
+            "गण",
+            "लघु",
+            "गुरु"
+          ],
+          "answer": "लघु"
+        },
+        {
+          "id": "q5",
+          "question": "Which term means “long syllable (2 mātrās)”?",
+          "options": [
+            "गुरु",
+            "लघु",
+            "गण"
+          ],
+          "answer": "गुरु"
+        },
+        {
+          "id": "q6",
+          "question": "Which metre is “अनुष्टुभ् (śloka)”?",
+          "options": [
+            "14 syllables per pāda.",
+            "11 syllables per pāda, with a specific pattern.",
+            "The most common metre, with 4 pādas of 8 syllables each."
+          ],
+          "answer": "The most common metre, with 4 pādas of 8 syllables each."
+        },
+        {
+          "id": "q7",
+          "question": "Which metre is “इन्द्रवज्रा”?",
+          "options": [
+            "The most common metre, with 4 pādas of 8 syllables each.",
+            "14 syllables per pāda.",
+            "11 syllables per pāda, with a specific pattern."
+          ],
+          "answer": "11 syllables per pāda, with a specific pattern."
+        },
+        {
+          "id": "q8",
+          "question": "Which metre is “वसन्ततिलका”?",
+          "options": [
+            "11 syllables per pāda, with a specific pattern.",
+            "14 syllables per pāda.",
+            "The most common metre, with 4 pādas of 8 syllables each."
+          ],
+          "answer": "14 syllables per pāda."
+        },
+        {
+          "id": "q9",
+          "question": "Which metre is described as “The most common metre, with 4 pādas of 8 syllables each.”?",
+          "options": [
+            "वसन्ततिलका",
+            "इन्द्रवज्रा",
+            "अनुष्टुभ् (śloka)"
+          ],
+          "answer": "अनुष्टुभ् (śloka)"
+        },
+        {
+          "id": "q10",
+          "question": "Which metre is described as “11 syllables per pāda, with a specific pattern.”?",
+          "options": [
+            "अनुष्टुभ् (śloka)",
+            "इन्द्रवज्रा",
+            "वसन्ततिलका"
+          ],
+          "answer": "इन्द्रवज्रा"
+        }
+      ],
       "prerequisites": [
         20,
         21

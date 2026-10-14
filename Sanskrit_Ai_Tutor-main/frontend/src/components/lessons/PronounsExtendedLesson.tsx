@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface PronounData {
   id: string;
@@ -240,6 +241,7 @@ export default function PronounsExtendedLesson({ onBack }: { onBack: () => void 
               <div className="devanagari" style={{ fontSize: '3.5rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '0.9rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 {quizQuestion.category} · {quizQuestion.number} · {quizQuestion.gender || 'no gender'}
               </div>
@@ -478,6 +480,7 @@ export default function PronounsExtendedLesson({ onBack }: { onBack: () => void 
                     <div className="devanagari" style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--primary)' }}>
                       {selectedPronoun.sanskrit}
                     </div>
+                    <AudioPronounceButton text={selectedPronoun.sanskrit} size={24} title={`Pronounce ${selectedPronoun.sanskrit}`} />
                     <div style={{ fontSize: '1.2rem', fontWeight: 700 }}>{selectedPronoun.transliteration}</div>
                     <div style={{ color: 'var(--text-dim)' }}>{selectedPronoun.englishMeaning}</div>
                   </div>

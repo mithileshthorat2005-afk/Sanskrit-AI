@@ -4150,6 +4150,294 @@
         "api-added"
       ],
       "created_at": "2026-10-13T12:54:32.731508"
+    },
+    {
+      "id": 260,
+      "sanskrit": "मम नाम मिथिलेशः अस्ति। अस्ति।",
+      "devanagari": "मम नाम मिथिलेशः अस्ति। अस्ति।",
+      "translation": "My Name Is Mithilesh is.",
+      "words": [
+        "मम नाम मिथिलेशः अस्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:41:40.463374"
+    },
+    {
+      "id": 261,
+      "sanskrit": "मम नाम मिथिलेशः अस्ति। गच्छति।",
+      "devanagari": "मम नाम मिथिलेशः अस्ति। गच्छति।",
+      "translation": "My Name Is Mithilesh goes.",
+      "words": [
+        "मम नाम मिथिलेशः अस्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:41:40.463400"
+    },
+    {
+      "id": 262,
+      "sanskrit": "मम नाम मिथिलेशः अस्ति। पठति।",
+      "devanagari": "मम नाम मिथिलेशः अस्ति। पठति।",
+      "translation": "My Name Is Mithilesh reads.",
+      "words": [
+        "मम नाम मिथिलेशः अस्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:41:40.463404"
+    },
+    {
+      "id": 263,
+      "sanskrit": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे अस्ति।",
+      "devanagari": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे अस्ति।",
+      "translation": "I Live In Savner is.",
+      "words": [
+        "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:50:29.066398"
+    },
+    {
+      "id": 264,
+      "sanskrit": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे गच्छति।",
+      "devanagari": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे गच्छति।",
+      "translation": "I Live In Savner goes.",
+      "words": [
+        "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:50:29.066420"
+    },
+    {
+      "id": 265,
+      "sanskrit": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे पठति।",
+      "devanagari": "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे पठति।",
+      "translation": "I Live In Savner reads.",
+      "words": [
+        "यज्ञवचसे राजस्तम्बायनाय यावन्ति वाव मे"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T14:50:29.066425"
+    },
+    {
+      "id": 266,
+      "sanskrit": "अहं प्रतिदिनम् मिथ्यामि। अस्ति।",
+      "devanagari": "अहं प्रतिदिनम् मिथ्यामि। अस्ति।",
+      "translation": "I Lie Daily is.",
+      "words": [
+        "अहं प्रतिदिनम् मिथ्यामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:09:24.118689"
+    },
+    {
+      "id": 267,
+      "sanskrit": "अहं प्रतिदिनम् मिथ्यामि। गच्छति।",
+      "devanagari": "अहं प्रतिदिनम् मिथ्यामि। गच्छति।",
+      "translation": "I Lie Daily goes.",
+      "words": [
+        "अहं प्रतिदिनम् मिथ्यामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:09:24.125766"
+    },
+    {
+      "id": 268,
+      "sanskrit": "अहं प्रतिदिनम् मिथ्यामि। पठति।",
+      "devanagari": "अहं प्रतिदिनम् मिथ्यामि। पठति।",
+      "translation": "I Lie Daily reads.",
+      "words": [
+        "अहं प्रतिदिनम् मिथ्यामि।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:09:24.125801"
+    },
+    {
+      "id": 269,
+      "sanskrit": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । अस्ति।",
+      "devanagari": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । अस्ति।",
+      "translation": "I Lie Monthly is.",
+      "words": [
+        "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:10:23.409499"
+    },
+    {
+      "id": 270,
+      "sanskrit": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । गच्छति।",
+      "devanagari": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । गच्छति।",
+      "translation": "I Lie Monthly goes.",
+      "words": [
+        "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:10:23.410199"
+    },
+    {
+      "id": 271,
+      "sanskrit": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । पठति।",
+      "devanagari": "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि । पठति।",
+      "translation": "I Lie Monthly reads.",
+      "words": [
+        "अहं प्रतिवर्षं मिथ्यावाक्यं वदामि ।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:10:23.410219"
+    },
+    {
+      "id": 272,
+      "sanskrit": "वायुः। अस्ति।",
+      "devanagari": "वायुः। अस्ति।",
+      "translation": "The Air: is.",
+      "words": [
+        "वायुः।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:29:42.668291"
+    },
+    {
+      "id": 273,
+      "sanskrit": "वायुः। गच्छति।",
+      "devanagari": "वायुः। गच्छति।",
+      "translation": "The Air: goes.",
+      "words": [
+        "वायुः।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:29:42.668371"
+    },
+    {
+      "id": 274,
+      "sanskrit": "वायुः। पठति।",
+      "devanagari": "वायुः। पठति।",
+      "translation": "The Air: reads.",
+      "words": [
+        "वायुः।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T15:29:42.668377"
+    },
+    {
+      "id": 275,
+      "sanskrit": "जादुः अस्ति।",
+      "devanagari": "जादुः अस्ति।",
+      "translation": "Magic is.",
+      "words": [
+        "जादुः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T17:56:15.949831"
+    },
+    {
+      "id": 276,
+      "sanskrit": "जादुः गच्छति।",
+      "devanagari": "जादुः गच्छति।",
+      "translation": "Magic goes.",
+      "words": [
+        "जादुः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T17:56:15.958291"
+    },
+    {
+      "id": 277,
+      "sanskrit": "जादुः पठति।",
+      "devanagari": "जादुः पठति।",
+      "translation": "Magic reads.",
+      "words": [
+        "जादुः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T17:56:15.958509"
     }
   ],
   "patterns": [

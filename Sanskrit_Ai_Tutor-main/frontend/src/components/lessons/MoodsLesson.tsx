@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Conjugation {
   person: string;
@@ -233,6 +234,7 @@ export default function MoodsLesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--text-main)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 Meaning: "{quizQuestion.english}" ({quizQuestion.person})
               </div>
@@ -372,6 +374,7 @@ export default function MoodsLesson({ onBack }: { onBack: () => void }) {
                           <td style={{ padding: '10px 8px', fontWeight: 600 }}>{c.person}</td>
                           <td className="devanagari" style={{ padding: '10px 8px', fontSize: '1.2rem', fontWeight: 700, color: 'var(--primary)' }}>
                             {c.sanskrit}
+                            <AudioPronounceButton text={c.sanskrit} size={16} title={`Pronounce ${c.sanskrit}`} />
                           </td>
                           <td style={{ padding: '10px 8px', fontStyle: 'italic' }}>{c.transliteration}</td>
                           <td style={{ padding: '10px 8px' }}>{c.english}</td>
@@ -391,6 +394,7 @@ export default function MoodsLesson({ onBack }: { onBack: () => void }) {
                       <div className="devanagari" style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--text-main)' }}>
                         {ex.sanskrit}
                       </div>
+                      <AudioPronounceButton text={ex.sanskrit} size={18} title={`Pronounce ${ex.sanskrit}`} />
                       <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginTop: '4px' }}>
                         {ex.transliteration}
                       </div>

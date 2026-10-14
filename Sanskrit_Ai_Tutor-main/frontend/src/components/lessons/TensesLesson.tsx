@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Sparkles, RotateCcw, Award, Clock, Calendar, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface Conjugation {
   person: string;
@@ -210,6 +211,7 @@ export default function TensesLesson({ onBack }: { onBack: () => void }) {
               <div className="devanagari" style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--text-main)', marginBottom: '8px' }}>
                 {quizQuestion.sanskrit}
               </div>
+              <AudioPronounceButton text={quizQuestion.sanskrit} size={22} title={`Pronounce ${quizQuestion.sanskrit}`} />
               <div style={{ fontSize: '1rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 Meaning: "{quizQuestion.english}" ({quizQuestion.person})
               </div>
@@ -327,6 +329,7 @@ export default function TensesLesson({ onBack }: { onBack: () => void }) {
                           <td style={{ padding: '10px 8px', fontWeight: 600 }}>{c.person}</td>
                           <td className="devanagari" style={{ padding: '10px 8px', fontSize: '1.2rem', fontWeight: 700, color: 'var(--primary)' }}>
                             {c.sanskrit}
+                            <AudioPronounceButton text={c.sanskrit} size={16} title={`Pronounce ${c.sanskrit}`} />
                           </td>
                           <td style={{ padding: '10px 8px', fontStyle: 'italic' }}>{c.transliteration}</td>
                           <td style={{ padding: '10px 8px' }}>{c.english}</td>
@@ -343,6 +346,7 @@ export default function TensesLesson({ onBack }: { onBack: () => void }) {
                   <div className="devanagari" style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>
                     {activeTense.example_sentence}
                   </div>
+                  <AudioPronounceButton text={activeTense.example_sentence} size={20} title={`Pronounce ${activeTense.example_sentence}`} />
                   <div style={{ fontSize: '1rem', color: 'var(--text-dim)', marginTop: '4px' }}>
                     {activeTense.translation}
                   </div>

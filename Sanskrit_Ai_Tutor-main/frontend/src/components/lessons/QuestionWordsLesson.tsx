@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface QuestionWord {
     id: string;
@@ -326,6 +327,7 @@ export default function QuestionWordsLesson({ onBack }: { onBack: () => void }) 
                                 <div className="devanagari" style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '4px' }}>
                                     {qw.sanskrit}
                                 </div>
+                                <AudioPronounceButton text={qw.sanskrit} size={22} title={`Pronounce ${qw.sanskrit}`} />
                                 <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '2px' }}>
                                     {qw.transliteration} — {qw.englishMeaning}
                                 </div>
@@ -342,6 +344,7 @@ export default function QuestionWordsLesson({ onBack }: { onBack: () => void }) 
                                     <div className="devanagari" style={{ color: 'var(--text-main)', fontWeight: 600 }}>
                                         {qw.exampleSanskrit}
                                     </div>
+                                    <AudioPronounceButton text={qw.exampleSanskrit} size={18} title={`Pronounce ${qw.exampleSanskrit}`} />
                                     <div style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>
                                         {qw.exampleEnglish}
                                     </div>

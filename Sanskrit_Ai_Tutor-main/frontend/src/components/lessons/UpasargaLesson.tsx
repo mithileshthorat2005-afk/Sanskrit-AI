@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface UpasargaData {
   id: string;
@@ -236,11 +237,13 @@ export default function UpasargaLesson({ onBack }: { onBack: () => void }) {
                 <div className="devanagari" style={{ fontSize: '4rem', fontWeight: 900, color: 'var(--primary)' }}>
                   {quizQuestion.prefix}
                 </div>
+                <AudioPronounceButton text={quizQuestion.prefix} size={26} title={`Pronounce ${quizQuestion.prefix}`} />
                 <span style={{ fontSize: '1.5rem', color: 'var(--text-light)' }}>+</span>
                 <div style={{ fontSize: '1.2rem', color: 'var(--text-dim)' }}>{quizQuestion.example_verb}</div>
               </div>
               <div style={{ fontSize: '1.2rem', color: 'var(--text-main)', textAlign: 'center', marginBottom: '24px' }}>
                 → <span className="devanagari" style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-main)' }}>{quizQuestion.example_with_prefix}</span>
+                <AudioPronounceButton text={quizQuestion.example_with_prefix} size={16} title={`Pronounce ${quizQuestion.example_with_prefix}`} />
               </div>
 
               <div className="grid grid-cols-2 gap-4" style={{ marginBottom: '24px' }}>
@@ -378,6 +381,7 @@ export default function UpasargaLesson({ onBack }: { onBack: () => void }) {
                     <div className="devanagari" style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--primary)' }}>
                       {selectedPrefix.prefix}
                     </div>
+                    <AudioPronounceButton text={selectedPrefix.prefix} size={24} title={`Pronounce ${selectedPrefix.prefix}`} />
                     <div style={{ fontSize: '1rem', fontWeight: 700 }}>{selectedPrefix.transliteration}</div>
                   </div>
                 </div>
@@ -420,6 +424,7 @@ export default function UpasargaLesson({ onBack }: { onBack: () => void }) {
                   <div className="devanagari" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
                     {selectedPrefix.example_sentence}
                   </div>
+                  <AudioPronounceButton text={selectedPrefix.example_sentence} size={20} title={`Pronounce ${selectedPrefix.example_sentence}`} />
                   <div style={{ fontSize: '1rem', color: 'var(--text-dim)', marginTop: '4px' }}>
                     {selectedPrefix.sentence_translation}
                   </div>

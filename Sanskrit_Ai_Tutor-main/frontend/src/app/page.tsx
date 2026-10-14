@@ -34,6 +34,25 @@ export default function Home() {
     localStorage.setItem('theme', newTheme);
   };
 
+  // Mirrors backend/modules/auth.py::password_policy_error so the user sees the
+  // problem while typing instead of after submitting. The server is still the
+  // authority — this only avoids a pointless round trip.
+  const PASSWORD_MIN_LENGTH = 8;
+  const passwordRules = [
+    { id: "len",   label: `At least ${PASSWORD_MIN_LENGTH} characters`,        required: true,  met: password.length >= PASSWORD_MIN_LENGTH },
+    { id: "lower", label: "A lowercase letter",                              required: true,  met: /[a-z]/.test(password) },
+    { id: "upper", label: "An uppercase letter",                             required: false, met: /[A-Z]/.test(password) },
+    { id: "digit", label: "A number",                                        required: false, met: /\d/.test(password) },
+    { id: "spec",  label: "A special character (e.g. ! ? - _)",              required: false, met: /[^A-Za-z0-9]/.test(password) },
+  ];
+  const passwordProblem = isLogin
+    ? null
+    : passwordRules
+        .filter((rule) => rule.required && !rule.met)
+        .map((rule) => rule.label.toLowerCase())
+        .join(" and ") || null;
+  const signupBlocked = !isLogin && (passwordProblem !== null || password !== confirmPassword);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -44,6 +63,11 @@ export default function Home() {
         await login(username, password);
         router.push("/dashboard");
       } else {
+        if (passwordProblem) {
+          throw new Error(
+            `Password too weak: add ${passwordProblem}. Adding an uppercase letter, a number or a special character is strongly recommended.`
+          );
+        }
         if (password !== confirmPassword) {
           throw new Error("Passwords do not match");
         }
@@ -326,6 +350,75 @@ export default function Home() {
 
               {!isLogin && (
                 <>
+                  {/* Password guidance, shown only while creating an account.
+                      The first two rules are compulsory and block submission;
+                      the rest are advice the user may ignore. */}
+                  <div
+                    style={{
+                      border: `1px solid ${password && passwordProblem ? "rgba(231, 76, 60, 0.45)" : "var(--border-soft)"}`,
+                      background:
+                        password && passwordProblem
+                          ? "rgba(231, 76, 60, 0.06)"
+                          : "rgba(127, 127, 127, 0.05)",
+                      borderRadius: "12px",
+                      padding: "12px 14px",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        marginBottom: "8px",
+                        color: "var(--text-main, var(--text-dim))",
+                      }}
+                    >
+                      Create a strong password
+                    </p>
+                    <ul
+                      style={{
+                        listStyle: "none",
+                        padding: 0,
+                        margin: 0,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "4px",
+                      }}
+                    >
+                      {passwordRules.map((rule) => (
+                        <li
+                          key={rule.id}
+                          style={{
+                            fontSize: "0.75rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "7px",
+                            color: rule.met
+                              ? "var(--accent)"
+                              : rule.required
+                                ? "#e74c3c"
+                                : "var(--text-dim)",
+                          }}
+                        >
+                          <span aria-hidden="true" style={{ width: "0.9em", display: "inline-block" }}>
+                            {rule.met ? "✓" : rule.required ? "✕" : "○"}
+                          </span>
+                          <span>
+                            {rule.label}
+                            {rule.required ? " — required" : " — optional"}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    {password && passwordProblem && (
+                      <p
+                        role="alert"
+                        style={{ fontSize: "0.75rem", color: "#e74c3c", margin: "8px 0 0", fontWeight: 600 }}
+                      >
+                        Password too weak: add {passwordProblem}.
+                      </p>
+                    )}
+                  </div>
+
                   <input 
                     suppressHydrationWarning
                     type="password" 
@@ -358,7 +451,7 @@ export default function Home() {
                 </motion.p>
               )}
 
-              <button suppressHydrationWarning type="submit" className="btn-primary" disabled={loading}>
+              <button suppressHydrationWarning type="submit" className="btn-primary" disabled={loading || signupBlocked}>
                 {loading ? "Please wait..." : isLogin ? "Go to Dashboard" : "Create My Account"}
               </button>
 

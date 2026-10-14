@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, GitMerge, BookOpen } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 export default function Samasa2Lesson({ onBack }: { onBack: () => void }) {
   const [data, setData] = useState<any[]>([]);
@@ -60,6 +61,7 @@ export default function Samasa2Lesson({ onBack }: { onBack: () => void }) {
                   <div className="devanagari" style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '8px' }}>
                     {ex.compound}
                   </div>
+                  <AudioPronounceButton text={ex.compound} size={20} title={`Pronounce ${ex.compound}`} />
                   {ex.type && <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: '4px' }}>Type: {ex.type}</div>}
                   {ex.components && <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>Components: {ex.components}</div>}
                   {ex.expansion && <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>Expansion: {ex.expansion}</div>}
@@ -68,6 +70,7 @@ export default function Samasa2Lesson({ onBack }: { onBack: () => void }) {
                   {ex.sentence && (
                     <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px dashed var(--border-soft)' }}>
                       <div className="devanagari" style={{ fontSize: '1.1rem' }}>{ex.sentence}</div>
+                      <AudioPronounceButton text={ex.sentence} size={18} title={`Pronounce ${ex.sentence}`} />
                       <div style={{ fontSize: '0.85rem', color: 'var(--text-light)' }}>{ex.translation}</div>
                     </div>
                   )}

@@ -235,6 +235,9 @@ export default function Lessons() {
   const { user, loading: authLoading } = useAuth();
   const [lessons, setLessons] = useState<any[]>([]);
   const [masteryMap, setMasteryMap] = useState<Record<number, number>>({});
+  // Attempt counts per lesson, so "never attempted" can be shown honestly
+  // instead of as a misleading 0% score.
+  const [masteryAttemptsMap, setMasteryAttemptsMap] = useState<Record<number, number>>({});
   const [masteryLoading, setMasteryLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -288,21 +291,39 @@ export default function Lessons() {
     fetchLessons();
   }, [router, user]);
 
+  const fetchMastery = useCallback(async () => {
+    if (!user?.username) return;
+    try {
+      const data = await api.user.getBKTMastery();
+      setMasteryMap(data.mastery);
+      setMasteryAttemptsMap(data.attempts ?? {});
+    } catch (err) {
+      console.error("Failed to fetch mastery", err);
+    } finally {
+      setMasteryLoading(false);
+    }
+  }, [user?.username]);
+
   useEffect(() => {
-    const fetchMastery = async () => {
-      if (user?.username) {
-        try {
-          const data = await api.user.getBKTMastery();
-          setMasteryMap(data.mastery);
-        } catch (err) {
-          console.error("Failed to fetch mastery", err);
-        } finally {
-          setMasteryLoading(false);
-        }
-      }
-    };
     fetchMastery();
-  }, [user]);
+  }, [fetchMastery]);
+
+  /**
+   * True only once a graded attempt has actually been recorded for a lesson.
+   * Used so a never-attempted lesson reads "Not attempted yet" rather than a
+   * bare "0% Mastery", which looks like a failed score.
+   */
+  const hasGradedAttempts = (lessonId: number) => (masteryAttemptsMap[lessonId] ?? 0) > 0;
+
+  /**
+   * Comma-separated list of the modules that currently ship with a graded
+   * quiz, so a module without one can point the learner somewhere that works
+   * instead of leaving mastery permanently at "Not attempted yet".
+   */
+  const quizLessonList = lessons
+    .filter((l) => Array.isArray(l.quiz) && l.quiz.length > 0)
+    .map((l) => `${l.id}. ${l.title}`)
+    .join(", ");
 
   const showToast = useCallback((message: string) => {
     setToast(message);
@@ -319,6 +340,9 @@ export default function Lessons() {
       setCompletedIds((prev) =>
         prev.includes(String(selectedLesson.id)) ? prev : [...prev, String(selectedLesson.id)]
       );
+      // Pull the fresh mastery numbers so the bars reflect the new attempt
+      // instead of the value fetched when the page first mounted.
+      void fetchMastery();
       showToast(`✨ Lesson complete! (${res.completed ?? completedIds.length + 1} done)`);
     } catch (err) {
       console.error(err);
@@ -342,6 +366,8 @@ export default function Lessons() {
         answers: quizAnswers,
       });
       setQuizResult(res);
+      // The server records one BKT observation per question; refresh the bars.
+      void fetchMastery();
       if (res.score_percent === 100) {
         setCompletedIds((prev) =>
           prev.includes(String(selectedLesson.id)) ? prev : [...prev, String(selectedLesson.id)]
@@ -540,6 +566,27 @@ export default function Lessons() {
                 >
                   {quizSubmitting ? "Submitting..." : "Submit Quiz"}
                 </button>
+              </div>
+            )}
+
+            {/* Honest state for modules that ship without graded questions.
+                Without this block the quiz panel silently disappears, "Mark as
+                Complete" still succeeds, and the mastery bar stays at
+                "Not attempted yet" with no explanation of why. */}
+            {(!selectedLesson.quiz || selectedLesson.quiz.length === 0) && (
+              <div style={{ padding: '32px', background: 'var(--bg-main)', borderRadius: '20px', marginBottom: '32px', border: '1px dashed var(--border-soft)' }}>
+                <h3 style={{ fontSize: '1.15rem', marginBottom: '10px' }}>No graded quiz in this module yet</h3>
+                <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', lineHeight: '1.7' }}>
+                  You can still mark this module as complete, which records your progress.
+                  <b style={{ color: 'var(--text-main)' }}> Skill mastery only moves when an answer is graded</b>,
+                  so this module&rsquo;s mastery stays at <i>Not attempted yet</i> until it has questions of its own.
+                </p>
+                {quizLessonList && (
+                  <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', lineHeight: '1.7', marginTop: '14px' }}>
+                    Modules that do have a graded quiz right now:{' '}
+                    <b style={{ color: 'var(--primary)' }}>{quizLessonList}</b>
+                  </p>
+                )}
               </div>
             )}
 
@@ -755,7 +802,7 @@ export default function Lessons() {
                             #{lesson.id}
                           </span>
                         </div>
-                        <h3 style={{ fontSize: '1.3rem', marginBottom: '8px', color: 'var(--text-main)' }}>
+                        <h3 style={{ fontSize: '1.3rem', marginBottom: '8px', color: 'var(--text-main)', lineHeight: 1.4 }}>
                           {lesson.title}
                         </h3>
                         <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', lineHeight: '1.5' }}>
@@ -768,7 +815,7 @@ export default function Lessons() {
                               <div style={{ height: '4px', background: 'var(--border-soft)', borderRadius: '4px', overflow: 'hidden' }}>
                                 <motion.div 
                                   initial={{ width: 0 }}
-                                  animate={{ width: `${masteryMap[lesson.id] * 100}%` }}
+                                  animate={{ width: `${(hasGradedAttempts(lesson.id) ? masteryMap[lesson.id] : 0) * 100}%` }}
                                   transition={{ duration: 0.6 }}
                                   style={{ 
                                     height: '100%', 
@@ -778,7 +825,9 @@ export default function Lessons() {
                                 />
                               </div>
                               <div style={{ fontSize: '0.65rem', color: 'var(--text-light)', marginTop: '2px' }}>
-                                {Math.round(masteryMap[lesson.id] * 100)}% Mastery
+                                {hasGradedAttempts(lesson.id)
+                                  ? `${Math.round(masteryMap[lesson.id] * 100)}% Mastery`
+                                  : 'Not attempted yet'}
                               </div>
                             </div>
                           )}
@@ -867,7 +916,7 @@ export default function Lessons() {
                             <div style={{ height: '4px', background: 'var(--border-soft)', borderRadius: '4px', overflow: 'hidden' }}>
                               <motion.div 
                                 initial={{ width: 0 }}
-                                animate={{ width: `${masteryMap[lesson.id] * 100}%` }}
+                                animate={{ width: `${(hasGradedAttempts(lesson.id) ? masteryMap[lesson.id] : 0) * 100}%` }}
                                 transition={{ duration: 0.6 }}
                                 style={{ 
                                   height: '100%', 
@@ -877,7 +926,9 @@ export default function Lessons() {
                               />
                             </div>
                             <div style={{ fontSize: '0.65rem', color: 'var(--text-light)', marginTop: '2px' }}>
-                              {Math.round(masteryMap[lesson.id] * 100)}% Mastery
+                              {hasGradedAttempts(lesson.id)
+                                ? `${Math.round(masteryMap[lesson.id] * 100)}% Mastery`
+                                : 'Not attempted yet'}
                             </div>
                           </div>
                         )}

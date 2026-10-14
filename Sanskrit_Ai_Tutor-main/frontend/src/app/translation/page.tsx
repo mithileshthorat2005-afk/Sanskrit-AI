@@ -17,9 +17,27 @@ import {
   BookMarked,
   Sparkles,
   Info,
-  Zap,
-  Volume2
+  Zap
 } from "lucide-react";
+
+/**
+ * Demo words shown under the input in the Sanskrit -> English direction only.
+ * These are common, unambiguous headwords; tapping one drops it straight into
+ * the input box so the Devanagari keyboard / translate button can be tried
+ * without thinking of something first.
+ */
+const DEMO_SANSKRIT_WORDS: { word: string; meaning: string }[] = [
+  { word: "अग्निः", meaning: "fire" },
+  { word: "जलम्", meaning: "water" },
+  { word: "वायुः", meaning: "wind" },
+  { word: "सूर्यः", meaning: "sun" },
+  { word: "चन्द्रः", meaning: "moon" },
+  { word: "वृक्षः", meaning: "tree" },
+  { word: "पुष्पम्", meaning: "flower" },
+  { word: "फलम्", meaning: "fruit" },
+  { word: "नदी", meaning: "river" },
+  { word: "पृथ्वी", meaning: "earth" },
+];
 
 export default function Translation() {
   const { user, loading: authLoading } = useAuth();
@@ -139,8 +157,14 @@ export default function Translation() {
                 <SanskritInput
                   value={inputText}
                   onChange={setInputText}
-                  placeholder={direction === 'en_to_sa' ? "Type English words..." : "Type in Roman (e.g., 'namaste') → instantly converts to Devanagari"}
+                  placeholder={direction === 'en_to_sa'
+                    ? "Type English words..."
+                    : "Type Sanskrit, or use the Devanagari keyboard below (e.g., 'रामः वनं गच्छति।')..."}
                   showLabel={false}
+                  // The Devanagari keyboard is only useful where the input is
+                  // Sanskrit, i.e. Sanskrit -> English. English -> Sanskrit
+                  // takes an English string, so the keyboard is hidden there.
+                  showKeyboardToggle={direction === 'sa_to_en'}
                   style={{
                     fontSize: '1.5rem',
                     lineHeight: '1.5',
@@ -162,10 +186,10 @@ export default function Translation() {
                   enabled={direction === 'sa_to_en' && inputText.length > 0}
                 />
                 
-                <div className="translator-bottom-bar">
-                  <div className="translator-hint">
-                    {direction === 'sa_to_en' && '✨ Devanagari keyboard active — click keys or type in Roman to input Devanagari'}
-                  </div>
+                {/* Bottom bar: the Devanagari-keyboard hint lives inside
+                    SanskritInput (it renders its own toggle + keyboard), so
+                    this bar only carries the action button, right-aligned. */}
+                <div className="translator-bottom-bar" style={{ justifyContent: 'flex-end' }}>
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -179,6 +203,72 @@ export default function Translation() {
                   </motion.button>
                 </div>
               </div>
+
+              {/* Demo words — rendered only for Sanskrit -> English, where
+                  the input is Devanagari and a keyboard is available. Tapping
+                  a word fills the input so it can be translated straight away. */}
+              {direction === 'sa_to_en' && (
+                <div style={{ marginTop: '24px', padding: '0 4px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                      letterSpacing: '1.5px',
+                      textTransform: 'uppercase',
+                      color: 'var(--text-light)',
+                      marginBottom: '14px',
+                    }}
+                  >
+                    <Sparkles size={14} />
+                    <span>Demo Sanskrit words</span>
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                    {DEMO_SANSKRIT_WORDS.map(({ word, meaning }) => {
+                      const isActive = inputText.trim() === word;
+                      return (
+                        <motion.button
+                          key={word}
+                          whileHover={{ scale: 1.04, y: -2 }}
+                          whileTap={{ scale: 0.96 }}
+                          onClick={() => {
+                            setInputText(word);
+                            setResults(null);
+                            setTranslateError(null);
+                          }}
+                          aria-pressed={isActive}
+                          title={`${word} — ${meaning}`}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            gap: '8px',
+                            padding: '10px 16px',
+                            borderRadius: '14px',
+                            cursor: 'pointer',
+                            border: isActive
+                              ? '2px solid var(--primary)'
+                              : '1px solid var(--border-soft)',
+                            background: isActive ? 'rgba(192, 90, 43, 0.08)' : 'var(--bg-main)',
+                            color: 'var(--text-main)',
+                          }}
+                        >
+                          <span
+                            className="devanagari"
+                            style={{ fontSize: '1.15rem', color: 'var(--primary)' }}
+                          >
+                            {word}
+                          </span>
+                          <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>
+                            {meaning}
+                          </span>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </motion.div>
 
             {/* Results Display */}
@@ -231,9 +321,6 @@ export default function Translation() {
                                   <div className="flex items-center gap-6 mb-6">
                                     <h2 className="devanagari" style={{ fontSize: '4.5rem', lineHeight: 1, color: 'var(--primary)' }}>{res.devanagari}</h2>
                                     <AudioPronounceButton text={res.devanagari || ''} size={24} title="Pronounce Sanskrit translation" />
-                                    <motion.button whileHover={{ scale: 1.2 }} style={{ background: 'none', border: 'none', color: 'var(--text-light)', cursor: 'pointer' }}>
-                                      <Volume2 size={24} />
-                                    </motion.button>
                                   </div>
                                   <p style={{ fontStyle: 'italic', color: 'var(--text-dim)', fontSize: '1.4rem', marginBottom: '32px', opacity: 0.7 }}>{res.sanskrit}</p>
                                   

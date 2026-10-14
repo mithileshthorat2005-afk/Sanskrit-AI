@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface TimeItem {
     id: string;
@@ -490,6 +491,7 @@ export default function TimeLesson({ onBack }: { onBack: () => void }) {
                                 <div className="devanagari" style={{ fontSize: '2.2rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '6px', lineHeight: 1.3 }}>
                                     {currentTime.sanskrit}
                                 </div>
+                                <AudioPronounceButton text={currentTime.sanskrit} size={24} title={`Pronounce ${currentTime.sanskrit}`} />
                                 <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '4px' }}>
                                     {currentTime.transliteration}
                                 </div>
@@ -570,6 +572,7 @@ export default function TimeLesson({ onBack }: { onBack: () => void }) {
                                             <div className="devanagari" style={{ fontSize: '0.95rem', fontWeight: 900, color: 'var(--primary)', marginBottom: '4px' }}>
                                                 {frac.sanskrit}
                                             </div>
+                                            <AudioPronounceButton text={frac.sanskrit} size={18} title={`Pronounce ${frac.sanskrit}`} />
                                             <div style={{ fontSize: '0.6rem', fontWeight: 600, color: 'var(--text-main)' }}>
                                                 {frac.englishMeaning}
                                             </div>

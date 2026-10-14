@@ -5,8 +5,11 @@ Pipeline:
   1. Dictionary lookup (highest priority)
      - Verb entries are enriched with Paninian morphology
   2. Paninian verb analyzer (Prakriya) — authoritative for verbs
-  3. Noun analyzer (declension rules) — for non-verbs
-  4. AI fallback (only when use_ai=True)
+  3. Local PARADIGM_TABLE reverse lookup (regular लट् active verbs)
+  4. Local passive (यक् / कर्मणि प्रयोग) reverse lookup — regular
+     लट् passives of a curated root set (see PASSIVE_ROOT_STEMS)
+  5. Noun analyzer (declension rules) — for non-verbs
+  6. AI fallback (only when use_ai=True)
 
 Correction:
   - Missing Purna Virama
@@ -22,11 +25,12 @@ Output contract:
 """
 
 import re
+import math
 import random
 import os
 import requests
 import json
-from typing import Dict, List, Any, Tuple
+from typing import Dict, List, Any, Tuple, Optional
 from dotenv import load_dotenv
 
 # Load environment
@@ -158,6 +162,54 @@ PARADIGM_TABLE = {
 }
 
 
+# ─────────────────────────────────────────────────────────────
+# Passive (यक्-pratyaya / कर्मणि प्रयोग) support
+#
+# A यक्-passive of root R is R + य + आत्मनेपद लट् suffix, e.g.
+# गम् → गम्य + ते → गम्यते. The key of PASSIVE_ROOT_STEMS is the
+# यक्-extended stem (root + य), written with its explicit virama,
+# so that stem + ending concatenates to the correct surface form.
+#
+# Only roots whose passive is a transparent root+य extension are
+# listed. Roots with irregular passive stems are deliberately
+# EXCLUDED because the generated form would be unattested:
+#   कृ → क्रियते (notकृयते), पा → पीयते (not पायते),
+#   भू → भव्यते (not भूयते), श्रु → श्रूयते (not श्रुयते)
+# Values are the SLP1 root keys of PARADIGM_TABLE.
+# ─────────────────────────────────────────────────────────────
+PASSIVE_ROOT_STEMS = {  # यक्-extended stem (root + य) → SLP1 root
+    'गम्य':  'gam',   # गम् — to go       → गम्यते
+    'पठ्य':  'paW',   # पठ् — to read     → पठ्यते
+    'खाद्य': 'KAd',   # खाद् — to eat     → खाद्यते
+    'अस्य':  'as',    # अस् — to throw/be → अस्यते
+    'लिख्य': 'liK',   # लिख् — to write   → लिख्यते
+    'क्रीड्य': 'krIq',# क्रीड् — to play  → क्रीड्यते
+    'चर्य':  'car',   # चर् — to walk     → चर्यते
+    'धाव्य': 'DAv',   # धाव् — to run     → धाव्यते
+    'स्वप्य': 'svap', # स्वप् — to sleep  → स्वप्यते
+    'दृश्य': 'dRz',   # दृश् — to see    → दृश्यते
+    'वद्य':  'vad',   # वद् — to speak   → वद्यते
+    'हस्य':  'has',   # हस् — to laugh   → हस्यते
+}
+
+# आत्मनेपद लट् suffixes keyed by (person, number), written in their
+# post-consonantal form so they concatenate directly after a यक् stem:
+#   गम्य + ते   → गम्यते    गम्य + न्ते  → गम्यन्ते
+#   गम्य + ेते  → गम्येते   गम्य + े    → गम्ये
+#   गम्य + ावहे → गम्यावहे  गम्य + ध्वे  → गम्यध्वे
+PASSIVE_LAT_ENDINGS = {
+    ('third',  'singular'): 'ते',
+    ('third',  'dual'):     'ेते',
+    ('third',  'plural'):   'न्ते',
+    ('second', 'singular'): 'से',
+    ('second', 'dual'):     'ेथे',
+    ('second', 'plural'):   'ध्वे',
+    ('first',  'singular'): 'े',
+    ('first',  'dual'):     'ावहे',
+    ('first',  'plural'):   'ामहे',
+}
+
+
 class SanskritNLP:
     def __init__(self):
         # ── Dictionary (curated) ────────────────────────────────
@@ -191,6 +243,19 @@ class SanskritNLP:
             "ते":      {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "third",  "meaning": "they"},
             "वयम्":    {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "first",  "meaning": "we"},
             "वयं":     {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "first",  "meaning": "we"},
+            # Dual/plural personal pronouns. Without explicit entries the noun
+            # rule matches their final -म् as accusative singular, which drops
+            # them out of the nominative-subject set and disables agreement
+            # checking entirely for sentences built on them.
+            "आवाम्":   {"pos": "pronoun", "case": "nominative", "number": "dual",    "person": "first",  "meaning": "we two"},
+            "युवाम्":  {"pos": "pronoun", "case": "nominative", "number": "dual",    "person": "second", "meaning": "you two"},
+            "यूयम्":   {"pos": "pronoun", "case": "nominative", "number": "plural",   "person": "second", "meaning": "you all"},
+            # Genitive possessives. Prakriya accepts SLP1 "mama" (मम) as a
+            # finite form of √mā and would otherwise classify मम as a VERB,
+            # making it the agreement partner for the real subject and
+            # producing a phantom mismatch on correct sentences.
+            "मम":     {"pos": "pronoun", "case": "genitive",    "number": "singular", "person": "first",  "meaning": "my"},
+            "तव":     {"pos": "pronoun", "case": "genitive",    "number": "singular", "person": "second", "meaning": "your"},
 
             # Verbs
             "गच्छति":  {"pos": "verb", "tense": "present", "person": "third", "number": "singular", "meaning": "goes"},
@@ -205,6 +270,38 @@ class SanskritNLP:
             "करोति":   {"pos": "verb", "tense": "present", "person": "third", "number": "singular", "meaning": "does"},
             "भवति":    {"pos": "verb", "tense": "present", "person": "third", "number": "singular", "meaning": "becomes"},
         }
+
+        # Reverse index of PARADIGM_TABLE: surface form -> (person, number, root_slp1).
+        # _classify_word consults it to recognise regular present-tense (lat) verb
+        # forms when the Paninian analyzer is unavailable (e.g. prakriya not
+        # installed). Exact matching against curated conjugations keeps this safe:
+        # indeclinables (इति, प्रति) and abstract nouns (शक्ति) that merely share a
+        # verb ending are not matched.
+        self._verb_paradigm_index: Dict[str, Tuple[str, str, str]] = {}
+        for _root, _persons in PARADIGM_TABLE.items():
+            for _person, _numbers in _persons.items():
+                for _number, _form in _numbers.items():
+                    # setdefault: first root wins when tables repeat a form
+                    # (e.g. the 'Bav' alias repeats the 'BU' paradigm).
+                    self._verb_paradigm_index.setdefault(_form, (_person, _number, _root))
+
+        # Reverse index + per-root paradigm for यक्-passive (कर्मणि प्रयोग) लट्
+        # forms, assembled from curated morphology (root+य+ending) — never
+        # guessed. _passive_index   → recognition in _classify_word (Layer 3b).
+        # _passive_paradigm        → voice-preserving correction.
+        # _passive_stem_by_root    → inverts PASSIVE_ROOT_STEMS for correction.
+        self._passive_index: Dict[str, Tuple[str, str, str]] = {}
+        self._passive_paradigm: Dict[str, Dict[str, Dict[str, str]]] = {}
+        self._passive_stem_by_root: Dict[str, str] = {}
+        for _stem, _root in PASSIVE_ROOT_STEMS.items():
+            self._passive_stem_by_root.setdefault(_root, _stem)
+            _para: Dict[str, Dict[str, str]] = {}
+            for (_p, _n), _ending in PASSIVE_LAT_ENDINGS.items():
+                _form = _stem + _ending
+                _para.setdefault(_p, {})[_n] = _form
+                # setdefault: first stem wins on any future collision
+                self._passive_index.setdefault(_form, (_p, _n, _root))
+            self._passive_paradigm[_root] = _para
 
         self.grammar_rules = [
             {"rule": "Subject-verb agreement", "pattern": r".*ः.*ति$",
@@ -264,14 +361,17 @@ class SanskritNLP:
         return [w for w in words if w.strip()]
 
     # ==============================================================
-    # Word classification — four-layer pipeline
+    # Word classification — layered pipeline
     #
-    # Priority:  Dictionary → Verb (Prakriya) → Noun (declension) → Unknown
+    # Priority:  Dictionary → Verb (Prakriya) → Active paradigm table
+    #            → Passive paradigm table → Noun (declension) → Unknown
     #
-    # NOTE: The verb layer runs BEFORE the noun layer. Prakriya's
+    # NOTE: The verb layers run BEFORE the noun layer. Prakriya's
     # validation gate rejects non-verbs, so words like रामः still fall
     # through to the noun analyzer. Meanwhile verb forms ending in "ः"
-    # (e.g. क्रीडामः, गच्छामः) are correctly recognized as verbs.
+    # (e.g. क्रीडामः, गच्छामः) are correctly recognized as verbs, and
+    # passives (गम्यते, पठ्यते) are recognized before the noun analyzer's
+    # bare "े" (locative) ending can steal them.
     # ==============================================================
     def _classify_word(self, word: str) -> Dict[str, Any]:
         clean = re.sub(r'[.,!?;।|]$', '', word).strip()
@@ -347,8 +447,68 @@ class SanskritNLP:
             except Exception:
                 pass
 
-        # ── Layer 3: Noun analyzer ──────────────────────────────
-        if self.noun_analyzer:
+        # ── Layer 3: Local PARADIGM_TABLE (regular लट् verbs) ─────
+        # The Paninian analyzer is authoritative but may be unavailable
+        # (prakriya not installed). Fall back to an exact reverse lookup of the
+        # curated PARADIGM_TABLE so regular present-tense forms are still
+        # recognised with their person and number. Exact matching — rather than
+        # a bare-suffix heuristic — cannot fire on indeclinables (इति, प्रति) or
+        # abstract nouns (शक्ति) that merely share a verb ending, and it runs
+        # before the noun analyzer, which otherwise mis-parses dual/plural verb
+        # endings (गच्छतः, पठामः, …) as noun declensions.
+        if clean in self._verb_paradigm_index:
+            person, number, root_slp1 = self._verb_paradigm_index[clean]
+            return {
+                'word': word,
+                'pos': 'verb',
+                'source': 'paradigm_table',
+                'meaning': '',
+                'analysis': {
+                    'root_slp1': root_slp1,
+                    'tense': 'present',
+                    'lakara': 'lat',
+                    'person': person,
+                    'number': number,
+                },
+            }
+
+        # ── Layer 3b: Passive (यक् / कर्मणि प्रयोग) लट् forms ─────
+        # Same exact-match safety model as Layer 3: only forms assembled
+        # from PASSIVE_ROOT_STEMS × PASSIVE_LAT_ENDINGS are recognised, so
+        # indeclinables/nouns that merely share an ending cannot match.
+        # This MUST run before the noun analyzer, whose bare "े" (locative)
+        # ending would otherwise steal passives: गम्यते → "locative of
+        # गम्यत" — a fake noun that makes the sentence look verbless and
+        # re-arms the "Sentence has no verb." false positive.
+        if clean in self._passive_index:
+            person, number, root_slp1 = self._passive_index[clean]
+            return {
+                'word': word,
+                'pos': 'verb',
+                'source': 'passive_table',
+                'meaning': '',
+                'analysis': {
+                    'root_slp1': root_slp1,
+                    'tense': 'present',
+                    'lakara': 'lat',
+                    'voice': 'passive',
+                    'person': person,
+                    'number': number,
+                },
+            }
+
+        # ── Layer 4: Noun analyzer ──────────────────────────────
+        # Defensive guard (NOT a verb classifier): a word carrying an
+        # unambiguous यक्-passive ending (यते/यन्ते/यसे/…) that no root in
+        # PASSIVE_ROOT_STEMS matched (e.g. क्रियते, पीयते) must not be
+        # accepted as a noun merely because its final matra matches a
+        # declension. Fall through to Unknown instead, which keeps the
+        # has_unknown guard from asserting "Sentence has no verb."
+        # Genuine locatives that happen to end in य+े (भये, क्रये) are NOT
+        # blocked, because bare "ये" is deliberately excluded below.
+        if re.search(r'(यते|यन्ते|यसे|येते|येथे|यध्वे|यावहे|यामहे)$', clean):
+            pass  # skip the noun analyzer; fall through to Unknown
+        elif self.noun_analyzer:
             try:
                 noun = self.noun_analyzer.analyze_best(clean)
                 if noun.get('pos') == 'noun' and noun.get('method') == 'declension_rule':
@@ -370,7 +530,7 @@ class SanskritNLP:
             except Exception:
                 pass
 
-        # ── Layer 4: Unknown ────────────────────────────────────
+        # ── Layer 5: Unknown ────────────────────────────────────
         return {
             'word': word,
             'pos': 'unknown',
@@ -380,14 +540,147 @@ class SanskritNLP:
         }
 
     # ==============================================================
+    # Unknown-word (uncertainty) handling
+    #
+    # "Unknown" means NO layer could verify the word: it is absent from the
+    # dictionary, neither verb analyser nor either paradigm table matched it,
+    # and the noun declension analyser found no match. It is deliberately not
+    # the same as "incorrect" — we must not invent a grammatical fault for a
+    # form we failed to parse, nor silently treat it as correct.
+    # ==============================================================
+    UNKNOWN_STATUS = "Uncertain \u2014 Unable to Verify"
+    # Points deducted per confirmed finding. Unchanged from the original
+    # scoring; reused as the unit for the uncertainty adjustment below.
+    CONFIRMED_ERROR_PENALTY = 15
+
+    def _collect_unknown_words(self, breakdown: List[Dict]) -> List[Dict]:
+        """Words the pipeline could not resolve, in sentence order.
+
+        A word counts as unknown only when every layer failed. Any other
+        `source` (dictionary, paninian, paradigm_table, passive_table,
+        noun_rule) means some analyser did validate it, so it is NOT unknown
+        even if another analyser would have rejected it.
+        """
+        return [
+            b for b in breakdown
+            if b.get('pos') == 'unknown' or b.get('source') == 'none'
+        ]
+
+    def _uncertainty_note(self, word: str) -> Tuple[str, str]:
+        """Honest reason + suggestion for a word we could not verify.
+
+        The wording reflects what the pipeline actually tried, and the
+        suggestion is chosen from the word's shape rather than being generic.
+        """
+        clean = re.sub(r'[.,!?;।|]$', '', word).strip()
+        if re.search(r'(यते|यन्ते|यसे|येते|येथे|यध्वे|यावहे|यामहे)$', clean):
+            reason = (
+                "The ending looks like a passive verb form, but no root in the "
+                "passive table produced it, and it was deliberately not passed "
+                "to the noun analyser because that would yield a false parse."
+            )
+            suggestion = (
+                "Check the verb root and the spelling. Supplying a fuller "
+                "sentence may let the form be identified."
+            )
+        elif len(clean) >= 9:
+            reason = (
+                "Not present in the dictionary, and not matched as a single "
+                "verb or noun form. Longer forms are often compounds (samāsa) "
+                "or the result of sound-joining (sandhi)."
+            )
+            suggestion = (
+                "Try splitting the word into its parts, or re-check the "
+                "spelling of each part."
+            )
+        else:
+            reason = (
+                "No analyser recognised it: it is not in the Sanskrit "
+                "dictionary, the verb analysers and paradigm tables did not "
+                "match it, and the noun declension analyser found no match."
+            )
+            suggestion = (
+                "Check the spelling and verify whether this is a valid Sanskrit "
+                "form. Adding more context may also help."
+            )
+        return reason, suggestion
+
+    def _score_with_uncertainty(
+        self,
+        issues: List[Any],
+        breakdown: List[Dict],
+        base_score: int = 100,
+        reported_score: Optional[int] = None,
+    ) -> Tuple[int, Dict[str, Any], List[Dict], bool]:
+        """Score a sentence, keeping confirmed errors and uncertainty apart.
+
+        Confirmed findings keep the pre-existing unit (CONFIRMED_ERROR_PENALTY
+        points each). Unknown words are charged on that same unit but weighted
+        by the share of the sentence they represent, so a single unknown word
+        in a long sentence costs less than one in a four-word sentence — the
+        adjustment is derived from the existing scoring design rather than
+        being an arbitrary fixed penalty.
+
+        Guarantees:
+          * uncertainty is never charged as a confirmed error;
+          * a sentence containing any unknown word can never score 100;
+          * a fully analysed, error-free sentence still scores 100.
+        """
+        unknown = self._collect_unknown_words(breakdown)
+        total = max(1, len(breakdown))
+        verified = len(breakdown) - len(unknown)
+
+        confirmed_penalty = len(issues) * self.CONFIRMED_ERROR_PENALTY
+        uncertainty_penalty = (
+            int(math.ceil(self.CONFIRMED_ERROR_PENALTY * len(unknown) / total))
+            if unknown else 0
+        )
+
+        if reported_score is not None:
+            # AI mode supplies its own score; uncertainty still caps it.
+            score = max(0, min(100, int(reported_score)) - uncertainty_penalty)
+        else:
+            score = max(0, base_score - confirmed_penalty - uncertainty_penalty)
+
+        if unknown:
+            score = min(score, 99)
+
+        entries: List[Dict] = []
+        for b in unknown:
+            reason, suggestion = self._uncertainty_note(b.get('word', ''))
+            entries.append({
+                'word': b.get('word', ''),
+                'status': self.UNKNOWN_STATUS,
+                'reason': reason,
+                'suggestion': suggestion,
+            })
+
+        info = {
+            'confirmed_errors': len(issues),
+            'confirmed_penalty': confirmed_penalty,
+            'unknown_words': len(unknown),
+            'uncertainty_penalty': uncertainty_penalty,
+            'verified_words': verified,
+            'verification_coverage': round(verified / total, 4),
+        }
+        return score, info, entries, bool(unknown)
+
+    # ==============================================================
     # Sentence-level helpers
     # ==============================================================
     @staticmethod
     def _normalize_agreement_value(value: Any, aliases: Dict[str, str]) -> str:
         if isinstance(value, (list, tuple)):
-            if len(value) != 1:
+            if len(value) == 0:
                 return ""
-            value = value[0]
+            # One value repeated (Prakriya emits one entry per matching dhātu)
+            # is not ambiguity — accept it. Distinct values stay undecidable.
+            if len(value) > 1 and all(item == value[0] for item in value):
+                value = value[0]
+            else:
+                if len(value) != 1:
+                    return ""
+                value = value[0]
         if value is None:
             return ""
         return aliases.get(str(value).strip().lower(), "")
@@ -404,6 +697,13 @@ class SanskritNLP:
         person and number.
 
         Resolution order:
+          0. Passive voice (voice == 'passive') — passive paradigm ONLY.
+             The active PARADIGM_TABLE (step 2) and the active suffix
+             stripping (step 3) would silently emit an ACTIVE form (e.g.
+             गच्छन्ति) for a passive verb, changing the sentence's voice.
+             We therefore resolve passives against the passive paradigm
+             and stop; if no passive form is known we return None rather
+             than fall through to an active generator.
           1. Prakriya VerbFormGenerator — general.
           2. Local PARADIGM_TABLE — fast lookup for ~15 common roots.
           3. Suffix-stripping fallback — last resort for regular लट् verbs.
@@ -415,6 +715,15 @@ class SanskritNLP:
             return None
         if number not in ('singular', 'dual', 'plural'):
             return None
+
+        # ── 0. Passive voice — never suggest an active-voice form ──
+        if str(analysis.get('voice', '')).lower() == 'passive':
+            root_slp1 = analysis.get('root_slp1') or ''
+            paradigm = self._passive_paradigm.get(root_slp1)
+            if not paradigm:
+                # Unknown passive root — no safe suggestion exists.
+                return None
+            return paradigm.get(person, {}).get(number)
 
         # ── 1. Try the Prakriya generator ────────────────────────
         if self.paninian and hasattr(self.paninian, 'generate_verb_form'):
@@ -549,8 +858,14 @@ class SanskritNLP:
             issues.append("Sentence must end with a Purna Virama (।)")
 
         # 2. Missing verb
+        # Only assert "no verb" when every word was resolved. If some word is
+        # still unknown (e.g. a verb outside the dictionary/paradigm coverage),
+        # there is no evidence that the sentence lacks a verb, so reporting one
+        # would fabricate an error on input we could not parse. (Sanskrit also
+        # permits verbless nominal sentences, so this remains a heuristic.)
         has_verb = any(b['pos'] == 'verb' for b in breakdown)
-        if breakdown and not has_verb:
+        has_unknown = any(b['pos'] == 'unknown' for b in breakdown)
+        if breakdown and not has_verb and not has_unknown:
             issues.append("Sentence has no verb.")
 
         # 3. Subject-verb agreement
@@ -717,7 +1032,19 @@ class SanskritNLP:
         sanskrit_words = [w for w in words if re.match(r'[\u0900-\u097F]+', w)]
 
         if len(sanskrit_words) < 1:
-            return {"error": "Please enter some text to analyze"}
+            # Distinguish "you sent nothing" from "you sent text that contains
+            # no Devanagari at all", so the message tells the user what to
+            # change instead of claiming they sent nothing.
+            if not text or not text.strip():
+                return {"error": "Please enter some text to analyze"}
+            return {
+                "error": (
+                    "No Devanagari characters were found in the input. The "
+                    "grammar checker analyses Sanskrit written in Devanagari "
+                    "script, e.g. \u0930\u093e\u092e\u0903 \u0935\u0928\u0902 "
+                    "\u0917\u091a\u094d\u091b\u0924\u093f\u0964"
+                )
+            }
 
         # Word-by-word classification
         breakdown = [self._classify_word(w) for w in sanskrit_words]
@@ -725,8 +1052,12 @@ class SanskritNLP:
         # Sentence-level checks
         issues, corrections = self._run_checks(text, breakdown)
 
-        # Score
-        score = max(0, 100 - len(issues) * 15)
+        # Score. Confirmed findings keep the original 15-point unit; words the
+        # pipeline could not verify add a separate, proportional adjustment so
+        # an unverified sentence can never be reported as fully correct.
+        score, score_info, unknown_words, partially_verified = (
+            self._score_with_uncertainty(issues, breakdown, base_score=100)
+        )
 
         # Keep grammar analysis independent of translation pipelines.
         translation = ""
@@ -736,6 +1067,13 @@ class SanskritNLP:
         correction_summary = (
             "Corrected sentence structure." if issues else "No errors found."
         )
+        # Never claim "no errors found" when part of the sentence was never
+        # analysed — that would present an unverified sentence as confirmed.
+        if partially_verified:
+            correction_summary = (
+                f"Partially verified \u2014 {len(unknown_words)} word"
+                f"{'s' if len(unknown_words) != 1 else ''} could not be analysed."
+            )
 
         # Source counts
         source_counts: Dict[str, int] = {}
@@ -753,6 +1091,10 @@ class SanskritNLP:
             "analysis_mode": "Grammar Check",
             "ai_verified": False,
             "source_counts": source_counts,
+            # Uncertainty contract, consumed by the Grammar Checker UI.
+            "unknown_words": unknown_words,
+            "partially_verified": partially_verified,
+            "score_breakdown": score_info,
         }
 
     # ==============================================================
@@ -763,6 +1105,17 @@ class SanskritNLP:
         try:
             prompt = f"""
             Task: You are an expert Sanskrit grammarian and Pāṇini scholar. Analyze: "{text}"
+
+            Rules:
+            - "score" is an INTEGER on a 0-100 scale, where 100 means the sentence is
+              fully grammatical and 0 means it is completely ungrammatical. Never use
+              a 0-1 scale, a percentage fraction, or a pass/fail marker.
+            - If the sentence is already grammatical, return an empty "issues" list,
+              set "score" to 100, and set "corrected_sentence" equal to the input.
+            - Do NOT rewrite a correctly formed passive construction into an active
+              one. Only suggest a change of voice when the original voice itself is
+              ungrammatical; when in doubt, preserve the original voice.
+            - Report only issues you are confident about.
 
             Output STRICT JSON:
             {{
@@ -783,7 +1136,11 @@ class SanskritNLP:
                 "model": self.ai_model,
                 "messages": [
                     {"role": "system",
-                     "content": "You are an expert Sanskrit grammarian. Output valid JSON."},
+                     "content": (
+                         "You are an expert Sanskrit grammarian. Output valid JSON only. "
+                         "The 'score' field is an integer on a 0-100 scale. Preserve a "
+                         "correctly formed passive construction in its original voice."
+                     )},
                     {"role": "user", "content": prompt},
                 ],
                 "response_format": {"type": "json_object"},
@@ -815,7 +1172,16 @@ class SanskritNLP:
             if not isinstance(issues, list) or not isinstance(breakdown, list):
                 raise ValueError("AI analysis issues and breakdown must be lists")
 
-            analysis_json.setdefault("score", max(0, 100 - len(issues) * 15))
+            # The prompt asks for an integer on the 0-100 scale, but the model can
+            # still emit a fraction, a string, or an out-of-range number. Normalise
+            # it here so the stored score always honours the documented contract
+            # instead of being passed through verbatim.
+            raw_score = analysis_json.get("score")
+            try:
+                score_value = int(round(float(raw_score)))
+            except (TypeError, ValueError):
+                score_value = max(0, 100 - len(issues) * 15)
+            analysis_json["score"] = max(0, min(100, score_value))
             analysis_json.setdefault(
                 "corrected_sentence",
                 self._build_correction(text, breakdown, issues, []),
@@ -834,6 +1200,27 @@ class SanskritNLP:
             analysis_json.setdefault("source_counts", source_counts)
             analysis_json["analysis_mode"] = "AI Scan"
             analysis_json["ai_verified"] = True
+
+            # The AI supplies its own score and its own findings, so confirmed
+            # errors are NOT re-charged here (that would double-count). The
+            # uncertainty contract still applies, and only to what the model
+            # itself flagged as unresolvable — nothing is invented.
+            ai_breakdown = [b for b in breakdown if isinstance(b, dict)]
+            ai_score, ai_info, ai_unknown, ai_partial = (
+                self._score_with_uncertainty(
+                    issues, ai_breakdown,
+                    reported_score=int(analysis_json["score"]),
+                )
+            )
+            analysis_json["score"] = ai_score
+            analysis_json["score_breakdown"] = ai_info
+            analysis_json["unknown_words"] = ai_unknown
+            analysis_json["partially_verified"] = ai_partial
+            if ai_partial:
+                analysis_json["correction_summary"] = (
+                    f"Partially verified \u2014 {len(ai_unknown)} word"
+                    f"{'s' if len(ai_unknown) != 1 else ''} could not be analysed."
+                )
             return analysis_json
 
         except Exception as e:

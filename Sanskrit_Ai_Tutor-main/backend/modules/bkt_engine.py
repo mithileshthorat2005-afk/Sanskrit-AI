@@ -212,6 +212,22 @@ class BKTEngine:
                 result[sid] = 0.0  # Not yet attempted, but we could return l0
         return result
 
+    def get_attempts_for_skills(self, username: str, skill_ids: List[int]) -> Dict[int, int]:
+        """Return graded-attempt counts for the same skills.
+
+        Kept separate from `get_mastery_for_skills` because mastery alone is
+        ambiguous: 0.0 is indistinguishable between "attempted and scored 0"
+        and "never attempted". Callers use the attempt count to render the
+        honest "not attempted yet" state instead of a misleading 0%.
+        """
+        data = self._load()
+        user_data = data.get(username, {})
+        skills = user_data.get("skills", {})
+        return {
+            sid: int(skills.get(str(sid), {}).get("attempts", 0))
+            for sid in skill_ids
+        }
+
     def get_recommendation(self, username: str, all_lessons: List[Dict]) -> Optional[Dict]:
         """
         Recommend the next best lesson based on BKT mastery and prerequisites.

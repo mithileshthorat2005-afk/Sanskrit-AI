@@ -552,9 +552,10 @@ class SQLiteRepository:
                 "SELECT COUNT(*) AS attempts, COALESCE(AVG(score_percent), 0) AS average_score "
                 "FROM quiz_attempts WHERE user_id = ?", (user_id,)
             ).fetchone()
-            grammar_count = connection.execute(
-                "SELECT COUNT(*) FROM grammar_attempts WHERE user_id = ?", (user_id,)
-            ).fetchone()[0]
+            grammar_stats = connection.execute(
+                "SELECT COUNT(*) AS attempts, COALESCE(AVG(score_percent), 0) AS average_score "
+                "FROM grammar_attempts WHERE user_id = ?", (user_id,)
+            ).fetchone()
             recent_rows = connection.execute(
                 """
                 SELECT activity_type, detail, score_percent, occurred_at
@@ -595,13 +596,135 @@ class SQLiteRepository:
                 "total_lessons": total_lessons,
                 "quiz_attempts": int(quiz_stats["attempts"]),
                 "quiz_average_score": round(float(quiz_stats["average_score"]), 2),
-                "grammar_activity_count": int(grammar_count),
+                # Average of THIS user's own grammar-check scores. Kept
+                # separate from quiz_average_score so the UI never presents a
+                # general quiz average as "grammar accuracy".
+                "grammar_activity_count": int(grammar_stats["attempts"]),
+                "grammar_average_score": round(float(grammar_stats["average_score"]), 2),
                 "current_streak": streak["current_streak"],
                 "longest_streak": streak["longest_streak"],
                 "active_learning_days": streak["active_days"],
             },
             "recommendation": self.get_next_lesson_recommendation(user_id, catalog),
             "recent_activity": recent_activity,
+        }
+
+    def award_xp(
+        self,
+        user_id: int,
+        amount: int,
+        reason: str,
+        source_type: str,
+        source_id: str,
+        idempotency_key: str,
+    ) -> Dict[str, Any]:
+        """Record one XP award for genuine learning evidence.
+
+        Idempotent on ``idempotency_key`` (the column carries a UNIQUE
+        constraint): replaying the same award — refreshing the page,
+        resubting a quiz, retrying a completion — is a no-op, so the balance
+        can never be inflated by repetition. Callers must therefore derive the
+        key from the underlying event (user + lesson/quiz + attempt), never
+        from a timestamp or a request counter.
+        """
+        if not isinstance(user_id, int) or user_id <= 0:
+            raise ValueError("user_id must be a positive integer")
+        if not idempotency_key or len(idempotency_key) > 200:
+            raise ValueError("idempotency_key is required")
+        award = int(amount)
+        if award <= 0:
+            raise ValueError("amount must be positive")
+        with self.connect() as connection:
+            cursor = connection.execute(
+                """
+                INSERT INTO xp_transactions
+                    (user_id, amount, reason, source_type, source_id,
+                     idempotency_key, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(idempotency_key) DO NOTHING
+                """,
+                (
+                    user_id,
+                    award,
+                    reason,
+                    source_type,
+                    str(source_id),
+                    idempotency_key,
+                    datetime.now(timezone.utc).isoformat(),
+                ),
+            )
+            created = cursor.rowcount == 1
+        return {"awarded": created, "amount": award if created else 0}
+
+    def get_xp_balance(self, user_id: int) -> int:
+        """Total XP earned by one user from persisted transactions."""
+        if not isinstance(user_id, int) or user_id <= 0:
+            raise ValueError("user_id must be a positive integer")
+        with self.connect() as connection:
+            row = connection.execute(
+                "SELECT COALESCE(SUM(amount), 0) FROM xp_transactions WHERE user_id = ?",
+                (user_id,),
+            ).fetchone()
+        return int(row[0])
+
+    def get_quiz_summary(self, user_id: int) -> Dict[str, Any]:
+        """Real, per-user quiz performance derived only from submitted rows.
+
+        Every figure is an aggregate of persisted ``quiz_attempts`` rows —
+        nothing is estimated, defaulted or carried over from another account.
+        An account with no submissions returns zeroed counts and ``None``
+        averages so the UI can render an honest "no attempts yet" state
+        instead of a fabricated 0%.
+        """
+        if not isinstance(user_id, int) or user_id <= 0:
+            raise ValueError("user_id must be a positive integer")
+        empty: Dict[str, Any] = {
+            "attempts": 0,
+            "average_score": None,
+            "best_score": None,
+            "last_score": None,
+            "last_submitted_at": None,
+            "lessons_attempted": 0,
+            "perfect_attempts": 0,
+            "questions_correct": 0,
+            "questions_answered": 0,
+        }
+        with self.connect() as connection:
+            row = connection.execute(
+                """
+                SELECT COUNT(*) AS attempts,
+                       AVG(score_percent) AS average_score,
+                       MAX(score_percent) AS best_score,
+                       COUNT(DISTINCT lesson_id) AS lessons_attempted,
+                       SUM(CASE WHEN score_percent >= 100 THEN 1 ELSE 0 END) AS perfect_attempts,
+                       COALESCE(SUM(correct_answers), 0) AS questions_correct,
+                       COALESCE(SUM(total_questions), 0) AS questions_answered
+                FROM quiz_attempts WHERE user_id = ?
+                """,
+                (user_id,),
+            ).fetchone()
+            last = connection.execute(
+                """
+                SELECT score_percent, submitted_at FROM quiz_attempts
+                WHERE user_id = ? ORDER BY submitted_at DESC LIMIT 1
+                """,
+                (user_id,),
+            ).fetchone()
+
+        if row is None or int(row["attempts"]) == 0:
+            return empty
+        average = row["average_score"]
+        best = row["best_score"]
+        return {
+            "attempts": int(row["attempts"]),
+            "average_score": round(float(average), 2) if average is not None else None,
+            "best_score": round(float(best), 2) if best is not None else None,
+            "last_score": round(float(last["score_percent"]), 2) if last else None,
+            "last_submitted_at": last["submitted_at"] if last else None,
+            "lessons_attempted": int(row["lessons_attempted"] or 0),
+            "perfect_attempts": int(row["perfect_attempts"] or 0),
+            "questions_correct": int(row["questions_correct"] or 0),
+            "questions_answered": int(row["questions_answered"] or 0),
         }
 
     def record_quiz_attempt(

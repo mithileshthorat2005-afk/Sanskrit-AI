@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, BookOpen, Music } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 export default function ChandasLesson({ onBack }: { onBack: () => void }) {
   const [data, setData] = useState<any[]>([]);
@@ -52,6 +53,7 @@ export default function ChandasLesson({ onBack }: { onBack: () => void }) {
                 {section.terms.map((t: any, i: number) => (
                   <div key={i} style={{ padding: '20px', background: 'var(--bg-main)', borderRadius: '16px', textAlign: 'center', border: '1px solid var(--border-soft)' }}>
                     <div className="devanagari" style={{ fontSize: '2rem', color: 'var(--primary)', fontWeight: 700, marginBottom: '8px' }}>{t.term}</div>
+                    <AudioPronounceButton text={t.term} size={22} title={`Pronounce ${t.term}`} />
                     <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem' }}>{t.meaning}</div>
                   </div>
                 ))}
@@ -68,6 +70,7 @@ export default function ChandasLesson({ onBack }: { onBack: () => void }) {
                     <p style={{ color: 'var(--text-dim)', marginBottom: '16px' }}>{ex.description}</p>
                     <div style={{ background: 'rgba(var(--primary-rgb), 0.05)', padding: '16px', borderRadius: '12px' }}>
                       <div className="devanagari" style={{ fontSize: '1.4rem', color: 'var(--text-main)', marginBottom: '8px' }}>{ex.example}</div>
+                      <AudioPronounceButton text={ex.example} size={20} title={`Pronounce ${ex.example}`} />
                       <div style={{ fontFamily: 'monospace', letterSpacing: '4px', color: 'var(--primary)', fontWeight: 600 }}>{ex.analysis}</div>
                     </div>
                   </div>

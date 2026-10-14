@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface PronounItem {
     id: string;
@@ -163,6 +164,7 @@ export default function PronounsLesson({ onBack }: { onBack: () => void }) {
                                 <h2 className="devanagari" style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--text-main)', marginBottom: '4px', lineHeight: 1 }}>
                                     {activeItem.sanskrit}
                                 </h2>
+                                <AudioPronounceButton text={activeItem.sanskrit} size={24} title={`Pronounce ${activeItem.sanskrit}`} />
                                 <div style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-light)', fontStyle: 'italic', marginBottom: '20px' }}>
                                     "{activeItem.transliteration}"
                                 </div>
@@ -183,6 +185,7 @@ export default function PronounsLesson({ onBack }: { onBack: () => void }) {
                                     <div className="devanagari" style={{ fontSize: '1.2rem', color: 'var(--text-main)', lineHeight: '1.4', marginBottom: '6px' }}>
                                         {activeItem.example.split(' (')[0]}
                                     </div>
+                                    <AudioPronounceButton text={activeItem.example.split(' (')[0]} size={18} title={`Pronounce ${activeItem.example.split(' (')[0]}`} />
                                     <div style={{ fontSize: '0.95rem', color: 'var(--text-dim)', fontWeight: 500 }}>
                                         {activeItem.example.split(' (')[1] ? `(${activeItem.example.split(' (')[1]}` : ''}
                                     </div>

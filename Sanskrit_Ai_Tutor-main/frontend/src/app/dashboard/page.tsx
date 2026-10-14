@@ -11,7 +11,6 @@ import {
   Trophy,
   Flame,
   Target,
-  BookOpen,
   History,
   Sparkles,
   Zap,
@@ -34,6 +33,7 @@ export default function Dashboard() {
   const { user, loading: authLoading } = useAuth();
   const [stats, setStats] = useState<any>(null);
   const [activities, setActivities] = useState<any[]>([]);
+  const [statsError, setStatsError] = useState<string | null>(null);
   const [recommendation, setRecommendation] = useState<any>(null);
   const [loadingRecommendation, setLoadingRecommendation] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -52,15 +52,26 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const [dashStats, recentActivities] = await Promise.all([
-          api.user.getDashboardStats().catch(() => null),
-          api.user.getActivities().catch(() => [])
+          api.user.getDashboardStats(),
+          api.user.getActivities()
         ]);
         if (isMounted) {
-          setStats(dashStats || { words_learned: 0, lessons_completed: 0, points: 450 });
+          setStats(dashStats);
           setActivities(Array.isArray(recentActivities) ? recentActivities : []);
+          setStatsError(null);
         }
       } catch (err) {
+        // Previously swallowed with .catch(() => null) and then back-filled
+        // with zeros, so a failed request was indistinguishable from real
+        // data. Now the failure is surfaced and nothing is invented.
         console.error("Failed to fetch dashboard data", err);
+        if (isMounted) {
+          setStatsError(
+            err instanceof Error
+              ? err.message
+              : "Could not load your dashboard data."
+          );
+        }
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -186,13 +197,34 @@ export default function Dashboard() {
           <DailyStreak />
         </div>
 
+        {/* Load failure — surfaced instead of silently back-filled with zeros */}
+        {statsError && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="zen-card"
+            style={{
+              padding: '18px 24px',
+              marginBottom: '20px',
+              border: '1px solid rgba(192, 90, 43, 0.35)',
+              color: 'var(--primary)',
+              fontSize: '0.9rem'
+            }}
+            role="alert"
+          >
+            <strong>Dashboard data unavailable:</strong> {statsError}
+          </motion.div>
+        )}
+
         {/* Stats Grid */}
         <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', marginBottom: '28px', gap: '16px' }}>
           {[
-            { label: "Vocabulary", value: stats?.words_learned || 0, icon: BookOpen, gradient: "linear-gradient(135deg, #3B82F6, #1D4ED8)" },
-            { label: "Lessons Done", value: stats?.lessons_completed || 0, icon: Target, gradient: "linear-gradient(135deg, #E85D04, #FF9100)" },
-            { label: "Level", value: user.level === 'beginner' ? '25%' : '60%', icon: Flame, gradient: "linear-gradient(135deg, #EF4444, #DC2626)" },
-            { label: "Merits & XP", value: stats?.points || 450, icon: Trophy, gradient: "linear-gradient(135deg, #F59E0B, #D97706)" }
+            // `null` → "Not available yet" empty state (never a fabricated 0).
+            // The former "Vocabulary" card was removed: the app has no
+            // per-user vocabulary store, so the metric could never be true.
+            { label: "Lessons Done", value: stats?.lessons_completed ?? null, icon: Target, gradient: "linear-gradient(135deg, #E85D04, #FF9100)" },
+            { label: "Level", value: user.level || '—', icon: Flame, gradient: "linear-gradient(135deg, #EF4444, #DC2626)" },
+            { label: "Merits & XP", value: stats?.points ?? null, icon: Trophy, gradient: "linear-gradient(135deg, #F59E0B, #D97706)" }
           ].map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -220,8 +252,18 @@ export default function Dashboard() {
                 <stat.icon size={22} />
               </motion.div>
               <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>
-                  {stat.value}
+                {/* null = "not tracked for this account". Rendered as an
+                    honest empty state rather than a fabricated 0. */}
+                <div
+                  title={stat.value === null ? "Not tracked yet for this account" : undefined}
+                  style={{
+                    fontSize: stat.value === null ? '0.85rem' : '1.5rem',
+                    fontWeight: 800,
+                    color: stat.value === null ? 'var(--text-dim)' : 'var(--text-main)',
+                    lineHeight: 1.2
+                  }}
+                >
+                  {stat.value === null ? 'Not available yet' : stat.value}
                 </div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600, marginTop: '2px' }}>
                   {stat.label}
@@ -326,6 +368,21 @@ export default function Dashboard() {
                     <span className="badge badge-primary">⏱️ {recommendation.duration || 25} mins</span>
                     <span className="badge badge-primary">🔱 {recommendation.level || 'Intermediate'}</span>
                   </div>
+
+                  {/* States the actual selection rule so the recommendation is
+                      auditable rather than looking arbitrary. Matches
+                      BKTEngine.get_recommendation: eligible = every
+                      prerequisite >= 0.7 mastery, then lowest mastery wins. */}
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', lineHeight: 1.65, marginBottom: '20px' }}>
+                    <strong style={{ color: 'var(--text-main)' }}>Why this module:</strong>{' '}
+                    it has the lowest mastery among the modules you are ready for — a module becomes eligible once
+                    every prerequisite reaches <b>70% mastery</b>, and the weakest eligible one is picked
+                    (if none qualify yet, the lowest-mastery module overall is suggested).{' '}
+                    {Array.isArray(recommendation.prerequisites) && recommendation.prerequisites.length > 0
+                      ? <>Prerequisites here: <b>lesson {recommendation.prerequisites.join(", ")}</b>. </>
+                      : <>This module has no prerequisites. </>}
+                    Modules are never locked — you can still open any lesson directly from the Lessons page.
+                  </div>
                 </div>
 
                 <motion.button
@@ -352,3 +409,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+

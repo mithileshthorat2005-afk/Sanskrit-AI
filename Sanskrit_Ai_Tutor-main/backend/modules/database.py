@@ -212,28 +212,15 @@ class MockDB:
             json.dump(analyses, f, indent=2)
     
     def get_recent_activities(self, username: str) -> List[Dict]:
-        """Get recent user activities"""
-        # Mock activities for prototype
-        return [
-            {
-                "action": "Completed lesson",
-                "details": "Sanskrit Alphabet",
-                "timestamp": "2 hours ago",
-                "score": "90%"
-            },
-            {
-                "action": "Grammar check",
-                "details": "रामः वनं गच्छति",
-                "timestamp": "1 day ago",
-                "score": "85%"
-            },
-            {
-                "action": "Started lesson",
-                "details": "Basic Greetings",
-                "timestamp": "2 days ago",
-                "score": "In progress"
-            }
-        ]
+        """Get recent user activities.
+
+        This previously returned three hardcoded prototype rows regardless of
+        the user, which the dashboard both displayed as real activity and
+        counted as "words learned". There is no legacy activity store to read,
+        so an empty list is returned; live activity comes from the SQLite
+        dashboard summary via /activities.
+        """
+        return []
     
     def get_all_users(self) -> List[Dict]:
         """Get all users (for admin)"""
@@ -277,6 +264,11 @@ class MockDB:
         """Get mastery for multiple skills."""
         engine = self.get_bkt_engine()
         return engine.get_mastery_for_skills(username, skill_ids)
+
+    def get_bkt_attempts_for_skills(self, username: str, skill_ids: List[int]) -> Dict[int, int]:
+        """Get graded-attempt counts for multiple skills (see bkt_engine)."""
+        engine = self.get_bkt_engine()
+        return engine.get_attempts_for_skills(username, skill_ids)
 
     def get_bkt_recommendation(self, username: str, lessons=None):
         """Get the recommended next lesson based on BKT.

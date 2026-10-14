@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, BookOpen, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 export default function Participles2Lesson({ onBack }: { onBack: () => void }) {
   const [data, setData] = useState<any[]>([]);
@@ -61,6 +62,7 @@ export default function Participles2Lesson({ onBack }: { onBack: () => void }) {
                 <div key={i} style={{ padding: '16px', background: 'var(--bg-main)', borderRadius: '16px', border: '1px solid var(--border-soft)' }}>
                   {ex.root && <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)', marginBottom: '8px' }}>Root: <strong className="devanagari text-lg">{ex.root}</strong></div>}
                   {ex.participle && <div className="devanagari" style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '4px' }}>{ex.participle}</div>}
+                  <AudioPronounceButton text={ex.participle} size={18} title={`Pronounce ${ex.participle}`} />
                   {ex.meaning && <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '12px' }}>{ex.meaning}</div>}
                   
                   {ex.sanskrit && <div className="devanagari" style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--primary)', marginBottom: '4px' }}>{ex.sanskrit}</div>}
@@ -69,6 +71,7 @@ export default function Participles2Lesson({ onBack }: { onBack: () => void }) {
                   {ex.sentence && (
                     <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px dashed var(--border-soft)' }}>
                       <div className="devanagari" style={{ fontSize: '1.1rem' }}>{ex.sentence}</div>
+                      <AudioPronounceButton text={ex.sentence} size={18} title={`Pronounce ${ex.sentence}`} />
                     </div>
                   )}
                   {ex.translation && <div style={{ fontSize: '0.85rem', color: 'var(--text-light)', marginTop: '4px' }}>{ex.translation}</div>}

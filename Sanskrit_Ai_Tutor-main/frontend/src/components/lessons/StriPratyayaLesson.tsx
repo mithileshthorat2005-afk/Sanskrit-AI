@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 export default function StriPratyayaLesson({ onBack }: { onBack: () => void }) {
   const [data, setData] = useState<any[]>([]);
@@ -70,6 +71,7 @@ export default function StriPratyayaLesson({ onBack }: { onBack: () => void }) {
           <div className="devanagari" style={{ fontSize: '3rem', color: 'var(--primary)', marginBottom: '24px' }}>
             {quizQuestion.masculine}
           </div>
+          <AudioPronounceButton text={quizQuestion.masculine} size={24} title={`Pronounce ${quizQuestion.masculine}`} />
           <p style={{ color: 'var(--text-light)', marginBottom: '24px' }}>Meaning: {quizQuestion.meaning}</p>
           <div className="grid grid-cols-2 gap-4">
             {quizQuestion.options.map((opt: string, i: number) => (
@@ -103,6 +105,7 @@ export default function StriPratyayaLesson({ onBack }: { onBack: () => void }) {
                       <span style={{ color: 'var(--border-soft)' }}>→</span>
                       <span style={{ color: 'var(--primary)', fontWeight: 700 }}>{ex.feminine}</span>
                     </div>
+                    <AudioPronounceButton text={ex.feminine} size={18} title={`Pronounce ${ex.feminine}`} />
                     <div style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>{ex.meaning}</div>
                   </div>
                 ))}

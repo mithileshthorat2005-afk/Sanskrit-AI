@@ -6,8 +6,6 @@ import { motion } from "framer-motion";
 import { 
   Users, 
   Settings, 
-  PlusCircle, 
-  Trash2, 
   ShieldAlert,
   Loader2
 } from "lucide-react";
@@ -53,9 +51,9 @@ export default function Admin() {
 
         <div className="grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', marginBottom: '40px' }}>
           {[
-            { label: "Active Learners", value: "1,240", icon: Users, color: "#3498db" },
-            { label: "Pending Modules", value: "4", icon: Settings, color: "var(--primary)" },
-            { label: "System Health", value: "Optimal", icon: ShieldAlert, color: "#27ae60" }
+            { label: "Active Learners", value: "—", icon: Users, color: "#3498db" },
+            { label: "Pending Modules", value: "—", icon: Settings, color: "var(--primary)" },
+            { label: "System Health", value: "—", icon: ShieldAlert, color: "#27ae60" }
           ].map((stat, i) => (
             <motion.div 
               key={stat.label}
@@ -92,22 +90,11 @@ export default function Admin() {
                   </tr>
                 </thead>
                 <tbody>
-                  {[
-                    { id: "aryaman_99", role: "Student", status: "Active" },
-                    { id: "ved_prakash", role: "Teacher", status: "Idle" },
-                    { id: "soma_dev", role: "Student", status: "Active" }
-                  ].map((learner, i) => (
-                    <tr key={learner.id} style={{ borderBottom: '1px solid var(--border-soft)' }}>
-                      <td style={{ padding: '16px', fontWeight: '600' }}>{learner.id}</td>
-                      <td style={{ padding: '16px', fontSize: '0.9rem' }}>{learner.role}</td>
-                      <td style={{ padding: '16px' }}>
-                        <span style={{ padding: '4px 10px', borderRadius: '20px', fontSize: '0.75rem', background: '#eafaf1', color: '#27ae60' }}>{learner.status}</span>
-                      </td>
-                      <td style={{ padding: '16px' }}>
-                        <button style={{ background: 'none', border: 'none', color: '#e74c3c', cursor: 'pointer' }}><Trash2 size={16} /></button>
-                      </td>
-                    </tr>
-                  ))}
+                  <tr>
+                    <td colSpan={4} style={{ padding: '24px', textAlign: 'center', color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+                      No user records to display — no admin reporting endpoint exists yet.
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -115,22 +102,29 @@ export default function Admin() {
 
           <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="zen-card" style={{ padding: '40px' }}>
             <h3 className="mb-8">Resource Injection</h3>
-            <div className="flex flex-col gap-6">
-               <div>
-                  <label style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block', marginBottom: '8px' }}>Module Title</label>
-                  <input type="text" placeholder="e.g. Advaita Philosophy" style={{ width: '100%' }} />
-               </div>
-               <div>
-                  <label style={{ fontSize: '0.85rem', color: 'var(--text-dim)', display: 'block', marginBottom: '8px' }}>Cognitive Level</label>
-                  <select style={{ width: '100%' }}>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                    <option>Advanced</option>
-                  </select>
-               </div>
-               <button className="btn-primary" style={{ width: '100%', marginTop: '10px' }}>
-                 <PlusCircle size={18} /> Manifest Resource
-               </button>
+            {/* Honest empty state. The previous version rendered a Module Title
+                input, a Cognitive Level select and a "Manifest Resource" button
+                with no state binding, no onClick handler and no backend
+                endpoint — it looked functional but did nothing when clicked. */}
+            <div
+              role="status"
+              style={{
+                padding: '24px',
+                borderRadius: '16px',
+                background: 'var(--bg-main)',
+                border: '1px dashed var(--border-soft)',
+                textAlign: 'center',
+                color: 'var(--text-dim)',
+                fontSize: '0.9rem',
+                lineHeight: '1.6',
+              }}
+            >
+              Content authoring is not available yet.
+              <br />
+              <span style={{ fontSize: '0.8rem' }}>
+                No resource-creation endpoint exists, so the form that used to sit here
+                was removed rather than left as a non-functional control.
+              </span>
             </div>
           </motion.div>
         </section>

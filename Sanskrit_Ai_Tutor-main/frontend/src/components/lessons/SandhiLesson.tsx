@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Sparkles, RotateCcw, Award, Zap, BookOpen, GitMerge } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '@/lib/api';
+import AudioPronounceButton from '@/components/AudioPronounceButton';
 
 interface SandhiRule {
   rule_name: string;
@@ -218,6 +219,7 @@ export default function SandhiLesson({ onBack }: { onBack: () => void }) {
                 <div className="devanagari" style={{ fontSize: '2.2rem', fontWeight: 700, color: 'var(--primary)' }}>
                   {quizQuestion.example_after}
                 </div>
+                <AudioPronounceButton text={quizQuestion.example_after} size={20} title={`Pronounce ${quizQuestion.example_after}`} />
               </div>
               <div style={{ fontSize: '0.95rem', color: 'var(--text-light)', marginBottom: '24px' }}>
                 Category: <strong>{quizQuestion.category}</strong>
@@ -350,11 +352,13 @@ export default function SandhiLesson({ onBack }: { onBack: () => void }) {
                           {rule.example_after}
                         </div>
                       </div>
+                      <AudioPronounceButton text={rule.example_after} size={20} title={`Pronounce ${rule.example_after}`} />
 
                       <div style={{ padding: '12px', background: 'rgba(var(--primary-rgb), 0.06)', borderRadius: '12px' }}>
                         <div className="devanagari" style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--text-main)' }}>
                           {rule.example_sentence}
                         </div>
+                        <AudioPronounceButton text={rule.example_sentence} size={18} title={`Pronounce ${rule.example_sentence}`} />
                         <div style={{ fontSize: '0.9rem', color: 'var(--text-dim)' }}>
                           {rule.translation}
                         </div>
