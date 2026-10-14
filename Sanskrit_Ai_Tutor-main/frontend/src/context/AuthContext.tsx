@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { api, setAuthToken } from "@/lib/api";
+import { api, setAuthToken, ApiError } from "@/lib/api";
 
 interface User {
   username: string;
@@ -29,13 +29,68 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const storedToken = localStorage.getItem("access_token");
     const storedUser = localStorage.getItem("user");
-    
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setAuthToken(storedToken);
-      setUser(JSON.parse(storedUser));
+
+    if (!storedToken || !storedUser) {
+      setLoading(false);
+      return;
     }
-    setLoading(false);
+
+    // A stored token is only a claim, not proof that it is still valid — it may
+    // have expired, or the session may have been revoked, since it was issued.
+    // Confirm it with the server before treating the visitor as signed in, so a
+    // dead token fails here instead of half-working until some unrelated
+    // request comes back 401.
+    //
+    // A transport failure (backend asleep, laptop offline) is NOT evidence that
+    // the token is bad, so the cached session is kept in that case rather than
+    // signing the learner out for an outage outside their control.
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const me = await api.auth.me();
+        if (cancelled) return;
+        const fresh: User = {
+          username: me.username,
+          role: me.role,
+          level: me.level,
+          completed: me.completed,
+        };
+        setToken(storedToken);
+        setAuthToken(storedToken);
+        setUser(fresh);
+        // Re-sync the cached copy: role/level/completed can change server-side
+        // while the browser still holds the values from the original login.
+        localStorage.setItem("user", JSON.stringify(fresh));
+      } catch (err) {
+        if (cancelled) return;
+        const status = (err as ApiError)?.status;
+        if (status === 401 || status === 403) {
+          // The server explicitly rejected the token. apiRequest has already
+          // cleared the stored keys on a 401, so just drop the session here.
+          setToken(null);
+          setAuthToken(null);
+          setUser(null);
+        } else {
+          // Could not reach the server — fall back to what we already had.
+          try {
+            setToken(storedToken);
+            setAuthToken(storedToken);
+            setUser(JSON.parse(storedUser));
+          } catch {
+            setToken(null);
+            setAuthToken(null);
+            setUser(null);
+          }
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const login = async (username: string, password: string) => {

@@ -33,21 +33,57 @@ from modules.translator import SanskritTranslator
 
 app = FastAPI(title="SanskritAI API")
 
-# CORS: strictly pin to the expected frontend origins. The previous
-# configuration reflected any http(s)://* origin while also allowing
-# credentials, which let an attacker-controlled page read authenticated
-# responses (classic CORS + credentials misconfiguration).
+# CORS: pin to an explicit origin allowlist. The original configuration
+# reflected any http(s)://* origin while also allowing credentials, which let
+# an attacker-controlled page read authenticated responses (classic CORS +
+# credentials misconfiguration).
+#
+# `ALLOWED_ORIGINS` extends the list without a code change. Vercel serves every
+# deployment and preview on its own generated URL
+# (`sanskrit-<hash>-<project>.vercel.app`), so a hardcoded list meant a valid
+# deployment failed the preflight with 400 and looked like a broken backend.
+#
+# Comma-separated, e.g. on Render:
+#   ALLOWED_ORIGINS=https://sanskrit-n8p71pdzv-mithileshthorat2005-afks-projects.vercel.app
+DEFAULT_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:8005",
+    "http://127.0.0.1:8005",
+    "https://sanskrit-ai-phi.vercel.app",
+    "https://sanskrit-ai-git-main-mithileshthorat2005-afks-projects.vercel.app",
+]
+
+
+def _build_allowed_origins() -> List[str]:
+    """Merge the built-in origins with the `ALLOWED_ORIGINS` env var.
+
+    Values are trimmed, trailing slashes removed, and de-duplicated while
+    keeping the built-ins first. A bare `*` is refused: with
+    `allow_credentials=True` a wildcard is precisely the misconfiguration this
+    allowlist exists to prevent (and Starlette rejects the combination anyway).
+    """
+    origins: List[str] = list(DEFAULT_ALLOWED_ORIGINS)
+    for origin in os.getenv("ALLOWED_ORIGINS", "").split(","):
+        origin = origin.strip().rstrip("/")
+        if not origin:
+            continue
+        if origin == "*":
+            print("CORS: ignoring '*' in ALLOWED_ORIGINS — a wildcard combined "
+                  "with credentials is refused.")
+            continue
+        if origin not in origins:
+            origins.append(origin)
+    return origins
+
+
+ALLOWED_ORIGINS = _build_allowed_origins()
+print(f"CORS: allowing {len(ALLOWED_ORIGINS)} origin(s): "
+      + ", ".join(ALLOWED_ORIGINS))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:8005",
-        "http://127.0.0.1:8005",
-        "https://sanskrit-ai-phi.vercel.app",
-        "https://sanskrit-ai-git-main-mithileshthorat2005-afks-projects.vercel.app",
-        "https://sanskrit-ai-git-main-mithileshthorat2005-afks-projects.vercel.app",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     # No `allow_origin_regex=r"https?://.*"` and no wildcard: an unexpected
     # origin receives no CORS headers, so the browser blocks cross-origin
     # reads even when credentials are present.

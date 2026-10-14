@@ -4,6 +4,24 @@ const API_BASE_URL = (
 
 let authToken: string | null = null;
 
+/**
+ * Error that carries the HTTP status.
+ *
+ * `apiRequest` used to throw a plain `Error` for every failure, which made an
+ * expired token indistinguishable from an unreachable backend. Callers that
+ * need to tell "the server rejected my credentials" apart from "the server is
+ * asleep" can now read `status`.
+ */
+export class ApiError extends Error {
+  status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+  }
+}
+
 export function setAuthToken(token: string | null) {
   authToken = token;
 }
@@ -47,7 +65,7 @@ export async function apiRequest(endpoint: string, options: RequestInit = {}) {
       }
     }
     const error = await response.json().catch(() => ({ detail: 'An error occurred' }));
-    throw new Error(error.detail || 'API request failed');
+    throw new ApiError(error.detail || 'API request failed', response.status);
   }
 
   return response.json();

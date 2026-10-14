@@ -230,6 +230,10 @@ const AlphabetFlashcards = () => {
   );
 };
 
+// Quiz options are always rendered as a 2x2 grid (A, B on the first row and
+// C, D aligned beneath them), so the letters are fixed rather than derived.
+const OPTION_LETTERS = ["A", "B", "C", "D"];
+
 // ─── Main Lessons Page ────────────────────────────────────
 export default function Lessons() {
   const { user, loading: authLoading } = useAuth();
@@ -247,6 +251,9 @@ export default function Lessons() {
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
   const [quizResult, setQuizResult] = useState<any>(null);
   const [quizSubmitting, setQuizSubmitting] = useState(false);
+  // The quiz stays collapsed behind a button until the learner asks for it,
+  // so opening a lesson shows the lesson first rather than 10 questions.
+  const [quizOpen, setQuizOpen] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeLevel, setActiveLevel] = useState<string>("all");
@@ -256,6 +263,7 @@ export default function Lessons() {
   useEffect(() => {
     setQuizAnswers({});
     setQuizResult(null);
+    setQuizOpen(false);
   }, [selectedLesson?.id]);
 
   useEffect(() => {
@@ -516,17 +524,59 @@ export default function Lessons() {
               )}
             </div>
 
-            {selectedLesson.quiz && selectedLesson.quiz.length > 0 && (
+            {selectedLesson.quiz && selectedLesson.quiz.length > 0 && !quizOpen && (
+              /* ── Collapsed launcher: opening a lesson shows the lesson, not
+                  ten questions. The quiz is one click away. ── */
               <div style={{ padding: '32px', background: 'var(--bg-main)', borderRadius: '20px', marginBottom: '32px', border: '1px solid var(--border-soft)' }}>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '8px' }}>Lesson Quiz</h3>
-                <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginBottom: '24px' }}>
+                <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginBottom: '20px', lineHeight: 1.6 }}>
+                  {selectedLesson.quiz.length} question{selectedLesson.quiz.length === 1 ? '' : 's'} ·
                   Score 100% to master this lesson. Attempts update your skill mastery.
                 </p>
-                <div className="flex flex-col gap-6">
-                  {selectedLesson.quiz.map((q: any) => (
+                <button className="btn-secondary" onClick={() => setQuizOpen(true)}>
+                  Start Quiz
+                </button>
+              </div>
+            )}
+
+            {selectedLesson.quiz && selectedLesson.quiz.length > 0 && quizOpen && (
+              <div style={{ padding: '32px', background: 'var(--bg-main)', borderRadius: '20px', marginBottom: '32px', border: '1px solid var(--border-soft)' }}>
+                <div className="flex items-start justify-between gap-3" style={{ flexWrap: 'wrap', marginBottom: '28px' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.3rem', marginBottom: '6px' }}>Lesson Quiz</h3>
+                    <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', margin: 0 }}>
+                      {selectedLesson.quiz.length} question{selectedLesson.quiz.length === 1 ? '' : 's'} ·
+                      Score 100% to master this lesson.
+                    </p>
+                  </div>
+                  <button
+                    className="btn-secondary"
+                    onClick={() => setQuizOpen(false)}
+                    style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                  >
+                    Hide Quiz
+                  </button>
+                </div>
+
+                {/* Every question stays on this one scrollable page, numbered in
+                    order. Nothing is hidden behind pagination. */}
+                <div className="flex flex-col" style={{ gap: '28px' }}>
+                  {selectedLesson.quiz.map((q: any, qi: number) => (
                     <div key={q.id}>
-                      <p style={{ fontWeight: 700, marginBottom: '12px' }}>{q.question}</p>
-                      <div className="flex flex-wrap gap-3">
+                      <p style={{ fontWeight: 700, marginBottom: '12px', lineHeight: 1.5 }}>
+                        <span style={{ color: 'var(--primary)' }}>{qi + 1}.</span>{' '}
+                        {q.question}
+                      </p>
+                      {/* A and B share the first row; C and D align directly
+                          beneath them. Two equal-width columns keep the options
+                          aligned instead of wrapping to ragged widths. */}
+                      <div
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                          gap: '12px'
+                        }}
+                      >
                         {(q.options || []).map((opt: string, oi: number) => {
                           const qid = String(q.id);
                           const isSelected = quizAnswers[qid] === oi;
@@ -535,16 +585,37 @@ export default function Lessons() {
                               key={oi}
                               onClick={() => setQuizAnswers((prev) => ({ ...prev, [qid]: oi }))}
                               style={{
-                                padding: '10px 20px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                padding: '12px 14px',
                                 borderRadius: '12px',
                                 border: isSelected ? '2px solid var(--primary)' : '1px solid var(--border-soft)',
                                 background: isSelected ? 'var(--primary)' : 'var(--bg-card)',
                                 color: isSelected ? '#fff' : 'var(--text-main)',
                                 fontWeight: 700,
                                 cursor: 'pointer',
+                                textAlign: 'left',
+                                width: '100%'
                               }}
                             >
-                              {opt}
+                              <span
+                                style={{
+                                  flexShrink: 0,
+                                  width: '24px',
+                                  height: '24px',
+                                  borderRadius: '7px',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  fontSize: '0.78rem',
+                                  background: isSelected ? 'rgba(255,255,255,0.22)' : 'var(--bg-main)',
+                                  color: isSelected ? '#fff' : 'var(--text-dim)'
+                                }}
+                              >
+                                {OPTION_LETTERS[oi] ?? oi + 1}
+                              </span>
+                              <span style={{ minWidth: 0, wordBreak: 'break-word' }}>{opt}</span>
                             </button>
                           );
                         })}
@@ -552,8 +623,9 @@ export default function Lessons() {
                     </div>
                   ))}
                 </div>
+
                 {quizResult && (
-                  <p style={{ marginTop: '20px', fontWeight: 700, color: quizResult.score_percent === 100 ? '#27ae60' : 'var(--primary)' }}>
+                  <p style={{ marginTop: '24px', fontWeight: 700, color: quizResult.score_percent === 100 ? '#27ae60' : 'var(--primary)' }}>
                     Scored {quizResult.score_percent}% ({quizResult.correct_answers}/{quizResult.total_questions} correct)
                     {quizResult.mastery ? ` — mastery ${Math.round(quizResult.mastery.mastery * 100)}%` : ''}
                   </p>

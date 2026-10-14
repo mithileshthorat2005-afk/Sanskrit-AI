@@ -496,18 +496,16 @@ export default function Grammar() {
                           )}
                         </div>
                       </div>
-                      <div className="flex items-center justify-around p-5" style={{ background: 'var(--bg-main)', borderRadius: '20px', border: '1px solid var(--border-soft)' }}>
+                      {/* Only confirmed grammatical errors are counted here.
+                          The former ADVISORIES box summed three things that are
+                          not errors — "a correction exists", "a recommendation
+                          exists", and "an error type had no skill mapping" —
+                          into one number shown next to the real error count,
+                          which read as extra mistakes the learner had made. */}
+                      <div className="flex items-center justify-center p-5" style={{ background: 'var(--bg-main)', borderRadius: '20px', border: '1px solid var(--border-soft)' }}>
                         <div style={{ textAlign: 'center' }}>
                           <div style={{ fontSize: '0.65rem', fontWeight: '800', color: 'var(--text-light)', letterSpacing: '1px' }}>CONFIRMED ERRORS</div>
                           <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#27ae60' }}>{analysis.issues.length}</div>
-                        </div>
-                        <div style={{ textAlign: 'center' }}>
-                          <div style={{ fontSize: '0.65rem', fontWeight: '800', color: 'var(--text-light)', letterSpacing: '1px' }}>ADVISORIES</div>
-                          <div style={{ fontSize: '1.8rem', fontWeight: '800', color: 'var(--text-light)' }}>
-                            {(analysis.corrected_sentence && analysis.corrected_sentence !== inputText ? 1 : 0) +
-                              (analysis.recommendation && analysis.recommendation.title ? 1 : 0) +
-                              (analysis.skipped_issues ? analysis.skipped_issues.length : 0)}
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -632,25 +630,12 @@ export default function Grammar() {
                       </table>
                     </div>
 
-                    {/* ── Advisory details (recommendation + unmapped notes) ── */}
-                    {((analysis.recommendation && analysis.recommendation.title) ||
-                      (analysis.skipped_issues && analysis.skipped_issues.length > 0)) && (
-                      <div className="mb-10">
-                        <div className="flex flex-col gap-3">
-                          {analysis.recommendation && analysis.recommendation.title && (
-                            <div className="p-4 rounded-xl" style={{ background: 'rgba(var(--primary-rgb), 0.04)', border: '1px solid var(--border-soft)', fontSize: '0.9rem', color: 'var(--text-dim)' }}>
-                              Recommended next step: <strong style={{ color: 'var(--text-main)' }}>{analysis.recommendation.title}</strong>
-                              {analysis.recommendation.description ? ` — ${analysis.recommendation.description}` : ''}
-                            </div>
-                          )}
-                          {(analysis.skipped_issues || []).map((s: any, i: number) => (
-                            <div key={i} className="p-4 rounded-xl" style={{ background: 'var(--bg-main)', border: '1px solid var(--border-soft)', fontSize: '0.9rem', color: 'var(--text-dim)' }}>
-                              Note: {s.reason || s.raw_error_type}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    {/* Advisory details were removed: this block listed a
+                        "recommended next step" and unmapped-error notes under
+                        the results. The learner asked for confirmed errors
+                        only, so advisories are no longer shown. The API still
+                        returns `recommendation` and `skipped_issues`; they are
+                        simply not rendered. */}
 
                     {/* ── Analysis meta (extra response fields) ── */}
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-light)' }}>
