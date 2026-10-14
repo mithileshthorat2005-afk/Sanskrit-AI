@@ -11,3 +11,5 @@ torch
 transformers==4.57.1
 peft==0.17.1
 sentencepiece
+prakriya==0.2.4
+indic-transliteration==2.3.75
