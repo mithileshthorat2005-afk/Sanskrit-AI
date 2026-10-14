@@ -45,6 +45,8 @@ app.add_middleware(
         "http://localhost:8005",
         "http://127.0.0.1:8005",
         "https://sanskrit-ai-phi.vercel.app",
+        "https://sanskrit-ai-git-main-mithileshthorat2005-afks-projects.vercel.app",
+        "https://sanskrit-ai-git-main-mithileshthorat2005-afks-projects.vercel.app",
     ],
     # No `allow_origin_regex=r"https?://.*"` and no wildcard: an unexpected
     # origin receives no CORS headers, so the browser blocks cross-origin
