@@ -1,0 +1,50 @@
+{
+  "dataset_name": "Sanskrit Generalization — Development Set",
+  "version": "1.0",
+  "role": "dev",
+  "tuning_status": "USED FOR DEVELOPMENT. Every case below was inspected while iterating on the engine, so results on it are development results, not evidence of generalization. The held-out evidence lives in generalization_heldout.json.",
+  "independence": [
+    "No sentence appears in grammar_test_dataset.json (51), sanskrit_grammar_benchmark_300.json (300), sanskrit_sentences.json or lessons.json.",
+    "Items marked unseen_lexical_item use tokens outside the 1515 development entries (42 curated vocabulary + 1237 lexicon + 144 active paradigm + 108 passive paradigm)."
+  ],
+  "cases": [
+    {"id": "DEV-01", "split": "B", "dimension": "unseen_vocabulary", "sentence": "सिंहो वनं गच्छति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-02", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "बालको फलं खादति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-03", "split": "B", "dimension": "unseen_vocabulary", "sentence": "मुनिः पश्यति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-04", "split": "B", "dimension": "unseen_vocabulary", "sentence": "गुरुः पुस्तकं पठति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-05", "split": "A", "dimension": "unseen_sentence", "sentence": "सीता जलं पिबति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-06", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "बालिका वदति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-07", "split": "B", "dimension": "unseen_vocabulary", "sentence": "रमा गीतं गायति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-08", "split": "B", "dimension": "known_root_unseen_inflection", "sentence": "अहं मुनिम् पश्यामि।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-09", "split": "A", "dimension": "unseen_sentence", "sentence": "वयं ग्रामं गच्छामः।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-10", "split": "A", "dimension": "unseen_sentence", "sentence": "त्वं वनं गच्छसि।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-11", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "रामः राजा।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-12", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "सीता सुन्दरी।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-13", "split": "C", "dimension": "active_passive", "sentence": "रामेण लिख्यते।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-14", "split": "B", "dimension": "known_root_unseen_inflection", "sentence": "सीता अगच्छत्।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-15", "split": "B", "dimension": "known_root_unseen_inflection", "sentence": "त्वं गमिष्यसि।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-16", "split": "B", "dimension": "unseen_vocabulary", "sentence": "अश्वौ गच्छतः।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-17", "split": "B", "dimension": "unseen_vocabulary", "sentence": "गुरवः पठन्ति।", "expected_valid": true, "error_type": "none"},
+    {"id": "DEV-18", "split": "C", "dimension": "ambiguous_analysis", "sentence": "कपी गच्छतः।", "expected_valid": true, "error_type": "none"},
+
+    {"id": "DEV-19", "split": "B", "dimension": "incorrect_inflection_unseen", "sentence": "सिंहाः वनं गच्छति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-20", "split": "B", "dimension": "incorrect_inflection_unseen", "sentence": "गुरवः बालकं पठति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-21", "split": "B", "dimension": "incorrect_inflection_unseen", "sentence": "रमा गीतं गायन्ति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-22", "split": "B", "dimension": "incorrect_inflection_unseen", "sentence": "मुनिः फलं खादन्ति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-23", "split": "B", "dimension": "incorrect_inflection_unseen", "sentence": "अश्वौ गच्छति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-24", "split": "D", "dimension": "subject_verb_agreement", "sentence": "त्वं वनं गच्छतः।", "expected_valid": false, "error_type": "person_agreement"},
+    {"id": "DEV-25", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "सिंहो वनं गच्छति", "expected_valid": false, "error_type": "punctuation"},
+    {"id": "DEV-26", "split": "C", "dimension": "active_passive", "sentence": "ते गम्यते।", "expected_valid": false, "error_type": "passive_agreement"},
+    {"id": "DEV-27", "split": "C", "dimension": "correct_resembling_incorrect", "sentence": "बालको फलं खादन्ति।", "expected_valid": false, "error_type": "subject_verb_number"},
+    {"id": "DEV-28", "split": "B", "dimension": "known_root_unseen_inflection", "sentence": "सीता अगच्छत्", "expected_valid": false, "error_type": "punctuation"},
+    {"id": "DEV-29", "split": "D", "dimension": "noun_case_number", "sentence": "अहं नायकः गच्छामि।", "expected_valid": false, "error_type": "vibhakti"},
+    {"id": "DEV-30", "split": "D", "dimension": "noun_case_number", "sentence": "अहं सिंहः गच्छामि।", "expected_valid": false, "error_type": "vibhakti"}
+  ],
+  "uncertainty_cases": [
+    {"id": "DEV-U2", "split": "U", "dimension": "genuinely_unknown_word", "sentence": "क्लान्ब्र जक्क्क।", "expected_unknown": true, "note": "no layer can resolve either token"}
+  ],
+  "accepted_nonsense_cases": [
+    {"id": "DEV-U1", "split": "U", "dimension": "genuinely_unknown_word", "sentence": "क्लान्ब्रः गच्छति।", "expected_unknown": false, "known_limitation": true, "note": "The nonsense stem carries a real nominative ending, so the declension layer SUCCEEDS and the word is never unknown. Structural check: क्लान्ब्रः matches ending 'ः'. This is a coverage/precision trade-off, deliberately kept — rejecting unattested stems would also reject genuine unseen vocabulary. Measured and reported as a limitation, not scored as uncertainty."},
+    {"id": "DEV-U3", "split": "U", "dimension": "genuinely_unknown_word", "sentence": "रामः ब्लर्फम् गच्छति।", "expected_unknown": false, "known_limitation": true, "note": "ब्लर्फम् matches the a-masc/accusative ending 'म्'. Same limitation as DEV-U1."}
+  ]
+}

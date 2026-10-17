@@ -9,6 +9,9 @@ a Bayesian Knowledge Tracing (BKT) mastery model.
 
 > Migrated from an earlier Streamlit prototype to this full-stack architecture.
 
+> **Local, uncommitted work:** every modification in this working tree is listed file by
+> file, with the reason for it, in [CHANGES.md](CHANGES.md).
+
 ---
 
 ## Table of Contents
@@ -58,8 +61,11 @@ a Bayesian Knowledge Tracing (BKT) mastery model.
     ├── main.py                App entry point + all HTTP routes
     ├── modules/               Core logic (see below)
     ├── data/                  Data files, SQLite DB, user accounts
-    ├── evaluate_grammar.py    300-case grammar benchmark
-    └── test_agreement.py      Subject-verb agreement regression suite
+    ├── evaluate_grammar.py      51-case grammar classification regression suite
+    ├── test_agreement.py        Subject–verb agreement regression suite
+    ├── evaluate_agreement_benchmark.py   300-case agreement benchmark
+    ├── evaluate_generalization.py        Held-out generalization report (splits A–D)
+    └── test_generalization.py   Rule-level assertions for the generalization fixes
 ```
 
 **Backend modules** (`backend/modules/`):
@@ -152,9 +158,24 @@ If the backend is not running, the site still loads but every request fails with
 | `APP_ENV` | Prod only | `development` | Set to `production` to enforce the secret requirement. |
 | `ALLOWED_ORIGINS` | No | built-in list | Comma-separated origins added to the CORS allowlist. |
 | `SQLITE_DB_PATH` | No | `backend/data/sanskrit_ai.sqlite3` | Location of the learning database. |
-| `XAI_API_KEY` | No | — | Enables AI grammar/translation. Without it, rule-based analysis is used. |
-| `BASE_URL` | No | `https://api.x.ai/v1` | AI provider endpoint. |
+| `OLLAMA_API_KEY` | No | — | **Preferred** AI key. Ollama Cloud keys have the shape `<32 hex>.<token>`. Enables AI grammar/translation. |
+| `XAI_API_KEY` | No | — | Fallback AI key. Accepts a Groq key (`gsk_…`) or an xAI key; only read when `OLLAMA_API_KEY` is unset. |
+| `AI_MODEL` | No | provider default | Overrides the model id — `gemma4:31b-cloud` (Ollama), `openai/gpt-oss-120b` (Groq), `grok-4-fast` (xAI). |
+| `BASE_URL` | No | `https://api.x.ai/v1` | Endpoint override for the xAI provider. |
 | `PORT` | No | `8005` | Server port. |
+
+**AI key routing** (`nlp_processor.py` and `translator.py` share the same order):
+
+```
+OLLAMA_API_KEY set, or key matches <32 hex>.   → Ollama Cloud   https://ollama.com/v1
+key starts with gsk_                            → Groq           https://api.groq.com/openai/v1
+anything else                                  → xAI (Grok)     https://api.x.ai/v1
+no key at all                                  → rule-based only, ai_verified: false
+```
+
+The Ollama key shape is unique to Ollama, so a key pasted into `XAI_API_KEY` still
+routes to Ollama. Without any key the grammar checker stays fully functional in
+rule-based mode and never claims an AI verification it did not perform.
 
 ### Frontend (`frontend/`)
 
@@ -222,6 +243,31 @@ Dictionary → Prakriya verb analyzer → Active paradigm table
   A sentence containing an unknown word can therefore never be reported as 100% correct,
   while a fully analysed, error-free sentence still scores 100.
 
+- **It generalizes beyond words it has seen.** The classifier no longer depends on the
+  surface spelling being the one stored in the lexicon:
+
+  - **Sandhi-resilient lookup.** A form ending in `ो` / `र्` is retried against the
+    dictionary entry ending in `ः`, so unseen `सिंहो` resolves to `सिंहः` and `व्याघ्रो`
+    to `व्याघ्रः` — morphologically, with no stem list — instead of falling through to
+    *Unknown*.
+  - **Anusvāra surface variants.** `ं` and `म्` are treated as the same surface for
+    lookup (`गच्छन्ति ↔ गच्छन्त्`, `कर्मन् ↔ कर्म`), tried in Layer 1 before any lower
+    layer can claim the word.
+  - **Attested stem + paradigm.** A candidate parse must be attested by an analysing
+    layer before it is believed — a stem the engine can itself produce is not counted
+    as independent evidence (self-confirmation guard).
+  - **Genuine ambiguity is reported as ambiguity.** When one stem is offered for two
+    numbers by the same source, the number is left blank rather than guessed.
+  - **Nominal sentences are legal.** Sanskrit sentences with no finite verb (`अहं
+    विद्यार्थी।`) no longer raise a *no verb* error.
+  - **Destination case generalises.** The rule derives the required accusative from the
+    verb's own paradigm instead of a hardcoded stem list, so it fires for verbs whose
+    stems are not special-cased.
+
+  These are covered by `test_generalization.py` (rule-level assertions) and measured on
+  the sealed splits in `evaluate_generalization.py` — see
+  [Testing & Verification](#testing--verification).
+
 ### Translation
 
 - Sanskrit ↔ English using a bundled dictionary and sentence database.
@@ -267,6 +313,8 @@ Mastery is modelled with **Bayesian Knowledge Tracing** per skill.
 | `backend/data/sanskrit*.json` | Yes | Grammar/vocabulary data files |
 | `backend/data/sanskrit_words.csv` | Yes | Translation dictionary |
 | `backend/data/sanskrit_grammar_benchmark_300.json` | Yes | 300-case benchmark dataset |
+| `backend/data/generalization_dev.json` | Not yet (new file) | 30 development cases + accepted-nonsense controls |
+| `backend/data/generalization_heldout.json` | Not yet (new file) | 38 held-out cases in splits A–D + uncertainty labels |
 
 The SQLite database is the authoritative store for learning data. Per-user
 `*_progress.json` files are legacy and still read for compatibility.
@@ -305,14 +353,40 @@ Run from the `backend/` directory with your Python interpreter.
 
 | Suite | What it covers |
 |---|---|
-| `python evaluate_grammar.py` | 300-case grammar classification benchmark |
+| `python evaluate_grammar.py` | 51-case grammar classification regression suite |
 | `python test_agreement.py` | Subject–verb agreement and voice-preserving corrections |
+| `python evaluate_agreement_benchmark.py` | 300-case subject–verb agreement benchmark |
+| `python evaluate_generalization.py` | Sealed held-out generalization report (splits A–D + uncertainty). `--baseline` replays the pre-change engine; `--validate-baseline` proves the shim reproduces the recorded baseline. |
+| `python test_generalization.py` | 63 rule-level assertions for each generalization fix — positive, negative, boundary and lexical cases |
 
-The grammar benchmark currently reports **0 failures and 0 processing exceptions**.
+**Last full run:** the assertion suites report **0 failures** — 51/51
+(`evaluate_grammar.py`), 300/300 (`evaluate_agreement_benchmark.py`), agreement 46/46,
+generalization rules 63/63, plus the layers, lexicon, AI, auth and quiz verification
+suites. `evaluate_generalization.py` reports **33/34** on held-out and therefore exits
+`1` by design while any case still fails. `npx tsc --noEmit` and `npx next build` both
+exit 0; `npx eslint` is unchanged from the pre-existing baseline.
+
+**Generalization, held-out split only** (34 determinate cases + 4 uncertainty cases),
+pre-change engine → current engine:
+
+| Metric | Baseline | Now |
+|---|---|---|
+| Accuracy | 82.35% | **97.06%** |
+| Precision / Recall / F1 | 75.00 / 85.71 / 80.00 | **93.33 / 100.00 / 96.55** |
+| False positives (FP rate) | 4 (20.00%) | **1 (5.00%)** |
+| False negatives (FN rate) | 2 (14.29%) | **0 (0.00%)** |
+| Correction exact-match | 11/13 | **13/13** |
+| Uncertainty precision | 44.4% | **80.0%** |
+
+The development split went 23/30 → 30/30 (FP 5 → 0, FN 2 → 0). Dev and held-out are
+separate files; nothing was tuned on held-out.
+
 Benchmark labels and expected outcomes must not be edited to improve metrics.
 
-Additional verification scripts (auth, quiz/mastery wiring, uncertainty handling) are
-run against the live server and clean up any throwaway accounts they create.
+Verification scripts for auth, quiz/mastery wiring and uncertainty handling run against
+the live server and are meant to remove the throwaway accounts they create. Two
+`zz_audit_*` accounts from earlier runs were left behind and have been kept — see
+[CHANGES.md](CHANGES.md).
 
 Quality gates used during development:
 
@@ -337,7 +411,9 @@ The backend deploys to **Render** and the frontend to **Vercel**.
 | `AUTH_TOKEN_SECRET` | 32 random bytes — **the app will not boot without it** |
 | `SQLITE_DB_PATH` | Your disk mount, e.g. `/var/data/sanskrit_ai.sqlite3` |
 | `ALLOWED_ORIGINS` | Comma-separated Vercel URLs |
-| `XAI_API_KEY` | Optional |
+| `OLLAMA_API_KEY` | Optional — Ollama Cloud, preferred provider |
+| `XAI_API_KEY` | Optional — Groq or xAI fallback |
+| `AI_MODEL` | Optional — model id override |
 
 Generate a secret:
 
@@ -389,18 +465,45 @@ Prefer testing on your **production domain** rather than a per-deployment URL.
 - CORS uses a strict allowlist with `allow_credentials=True`. There is deliberately no
   `allow_origin_regex` and no `*`.
 - Quiz answers are validated server-side against the backend's own question set.
+- **Odd One Out answers are graded from the server's own catalog.** The echoed
+  `correct_index` / `correct_word` from the browser is never trusted; the payload is
+  re-matched against `odd_one_out.QUESTIONS` and a payload that matches nothing is
+  rejected with 400.
+- Signup validates the username (3–50 chars, no leading/trailing or inner whitespace, no
+  control characters) and restricts `role` to `student` / `teacher` / `admin`.
+- A corrupt or hand-edited `users.json` record degrades to a normal 401 on login rather
+  than a 500, and never crashes protected endpoints.
 - XP awards are idempotent and cannot be farmed by repetition.
 
 ---
 
 ## Known Limitations
 
-- **AI mode requires a working `XAI_API_KEY`.** Without one (or if the provider
-  returns an error) the grammar checker silently degrades to rule-based analysis and
-  reports `ai_verified: false` — it never claims verification it did not perform.
+- **AI mode requires a configured key** (`OLLAMA_API_KEY`, or `XAI_API_KEY` holding a
+  Groq/xAI key). Without one — or if the provider rejects the call — the grammar checker
+  degrades to rule-based analysis and reports `ai_verified: false` together with the
+  provider's own error in `ai_error`; the UI shows *"AI check unavailable"*. It never
+  claims verification it did not perform. The AI pass is also **opt-in**: the Grammar
+  page toggle defaults to off, so `/grammar/check` receives `use_ai: false` unless the
+  learner turns it on.
+- **Avagraha (`ऽ`) is not tokenised.** `रामोऽस्ति वीरः।` raises **no** error — nothing
+  is wrongly reported — but `ऽस्ति` cannot be parsed, so it is listed as *Uncertain —
+  Unable to Verify* and the score is capped at 92. Since a case only counts as correct
+  at exactly 100, this is the **single remaining held-out failure** (H-C08, split C,
+  dimension `sandhi_avagraha`). The case is deliberately kept in the held-out set and
+  labelled in the data as an expected-unsupported construction rather than removed.
+  Fixing it means changing the `breakdown` / `word_count` response contract, which is an
+  architecture boundary rather than a rule gap.
+- **Nonsense input with a matching verb ending is accepted.** `क्लान्ब्रः गच्छति` and
+  `रामः ब्लर्फम् गच्छति` score 100 — the engine checks agreement and case, not whether
+  the words are real. Measured at 2/2 in the accepted-nonsense control set.
+- **The destination-case rule only fires on first person.** Other persons are not yet
+  checked.
 - **Token revocation is in-memory.** A server restart clears the revocation list, so
   previously logged-out tokens become valid again until they expire.
 - **No scheduler.** Streaks are computed from recorded activity days only.
 - **The `/admin` page shows honest empty states.** No admin API has been implemented.
+- **Testing has been done against the HTTP API and the production build only.** The
+  browser UI has not been exercised end-to-end in a real browser session.
 - Some words fall outside the analyzers' coverage and are reported as *Uncertain —
   Unable to Verify* rather than being guessed at. This is intentional.

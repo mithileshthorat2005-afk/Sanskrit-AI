@@ -1,0 +1,368 @@
+{
+  "dataset_name": "Sanskrit Grammar — Held-Out Generalization Set",
+  "version": "1.0",
+  "role": "held-out",
+  "tuning_status": "SEALED. Constructed after development stopped. The engine was NOT run against this file during development; it is measured once and its results are reported as-is. No label here was written or adjusted to fit an observed output.",
+  "independence": [
+    "No sentence appears in grammar_test_dataset.json (51), sanskrit_grammar_benchmark_300.json (300), sanskrit_sentences.json, lessons.json, or generalization_dev.json.",
+    "Splits follow the project spec: A = unseen sentence, B = unseen lexical item, C = unseen combination, D = held-out error category, U = uncertainty.",
+    "Items in split B were selected by querying the development resources first: every token they introduce is outside the 1515 development entries (42 curated vocabulary + 1237 lexicon + 144 active paradigm + 108 passive paradigm).",
+    "Uncertainty items were validated structurally — each nonsense token matches no declension ending in DECLENSION_ENDINGS and is absent from the development resources — so the expected outcome follows from the uncertainty contract rather than from any engine output."
+  ],
+  "cases": [
+    {
+      "id": "H-A01",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "सुतः वनं गच्छति।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A02",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "बालिका पुस्तकं पठति।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A03",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "त्वं पुस्तकं पठसि।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A04",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "वयं फलं खादामः।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A05",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "बालकः जलं पिबति।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A06",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "अहं पुस्तकं पठामि।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A07",
+      "split": "A",
+      "dimension": "unseen_sentence",
+      "sentence": "ते वनं गच्छन्ति।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-A08",
+      "split": "A",
+      "dimension": "unseen_combination",
+      "sentence": "सुतः वनं गच्छामि।",
+      "expected_valid": false,
+      "error_type": "person_agreement",
+      "expected_correction": "सुतः वनं गच्छति।"
+    },
+    {
+      "id": "H-A09",
+      "split": "A",
+      "dimension": "unseen_combination",
+      "sentence": "बालिका पुस्तकं पठन्ति।",
+      "expected_valid": false,
+      "error_type": "subject_verb_number",
+      "expected_correction": "बालिका पुस्तकं पठति।"
+    },
+    {
+      "id": "H-B01",
+      "split": "B",
+      "dimension": "unseen_vocabulary",
+      "sentence": "ऋषिः वचनं वदति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "ऋषिः",
+        "वचनं"
+      ]
+    },
+    {
+      "id": "H-B02",
+      "split": "B",
+      "dimension": "unseen_vocabulary",
+      "sentence": "मृगः वनं गच्छति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "मृगः"
+      ]
+    },
+    {
+      "id": "H-B03",
+      "split": "B",
+      "dimension": "unseen_vocabulary",
+      "sentence": "पुरुषः फलं खादति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "पुरुषः"
+      ]
+    },
+    {
+      "id": "H-B04",
+      "split": "B",
+      "dimension": "unseen_vocabulary",
+      "sentence": "हरिः पुस्तकं पठति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "हरिः"
+      ]
+    },
+    {
+      "id": "H-B05",
+      "split": "B",
+      "dimension": "known_root_unseen_inflection",
+      "sentence": "सीता बालिकां पश्यति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "बालिकां"
+      ]
+    },
+    {
+      "id": "H-B06",
+      "split": "B",
+      "dimension": "incorrect_inflection_unseen",
+      "sentence": "ऋषयः वचनं वदति।",
+      "expected_valid": false,
+      "error_type": "subject_verb_number",
+      "unseen_tokens": [
+        "ऋषयः"
+      ],
+      "expected_correction": "ऋषयः वचनं वदन्ति।"
+    },
+    {
+      "id": "H-B07",
+      "split": "B",
+      "dimension": "incorrect_inflection_unseen",
+      "sentence": "मृगौ वनं गच्छति।",
+      "expected_valid": false,
+      "error_type": "subject_verb_number",
+      "unseen_tokens": [
+        "मृगौ"
+      ],
+      "expected_correction": "मृगौ वनं गच्छतः।"
+    },
+    {
+      "id": "H-B08",
+      "split": "B",
+      "dimension": "incorrect_inflection_unseen",
+      "sentence": "पुरुषाः फलं खादति।",
+      "expected_valid": false,
+      "error_type": "subject_verb_number",
+      "unseen_tokens": [
+        "पुरुषाः"
+      ],
+      "expected_correction": "पुरुषाः फलं खादन्ति।"
+    },
+    {
+      "id": "H-B09",
+      "split": "B",
+      "dimension": "ambiguous_analysis",
+      "sentence": "हरी वनं गच्छति।",
+      "expected_valid": true,
+      "error_type": "none",
+      "unseen_tokens": [
+        "हरी"
+      ],
+      "note": "हरी is i-masc nominative dual AND ii-fem nominative singular. Neither reading may be asserted, so no agreement error may be invented."
+    },
+    {
+      "id": "H-B10",
+      "split": "B",
+      "dimension": "noun_case_number",
+      "sentence": "अहं पुरुषः गच्छामि।",
+      "expected_valid": false,
+      "error_type": "vibhakti",
+      "unseen_tokens": [
+        "पुरुषः"
+      ],
+      "expected_correction": "अहं पुरुषम् गच्छामि।",
+      "note": "Unseen destination — the accusative must be generated from the declension table, not recalled from a word list."
+    },
+    {
+      "id": "H-C01",
+      "split": "C",
+      "dimension": "unseen_combination",
+      "sentence": "रामेण पुस्तकं लिख्यते।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-C02",
+      "split": "C",
+      "dimension": "known_root_unseen_inflection",
+      "sentence": "सीता वनं अगच्छत्।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-C03",
+      "split": "C",
+      "dimension": "known_root_unseen_inflection",
+      "sentence": "वयं वनं गमिष्यामः।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-C04",
+      "split": "C",
+      "dimension": "active_passive",
+      "sentence": "बालकाः पठ्यन्ते।",
+      "expected_valid": true,
+      "error_type": "none"
+    },
+    {
+      "id": "H-C05",
+      "split": "C",
+      "dimension": "active_passive",
+      "sentence": "बालकाः पठ्यते।",
+      "expected_valid": false,
+      "error_type": "passive_agreement",
+      "expected_correction": "बालकाः पठ्यन्ते।"
+    },
+    {
+      "id": "H-C06",
+      "split": "C",
+      "dimension": "unseen_combination",
+      "sentence": "वयं फलं पठति।",
+      "expected_valid": false,
+      "error_type": "person_agreement",
+      "expected_correction": "वयं फलं पठामः।"
+    },
+    {
+      "id": "H-C07",
+      "split": "C",
+      "dimension": "correct_resembling_incorrect",
+      "sentence": "सुतः वनं गच्छति",
+      "expected_valid": false,
+      "error_type": "punctuation",
+      "expected_correction": "सुतः वनं गच्छति।"
+    },
+    {
+      "id": "H-C08",
+      "split": "C",
+      "dimension": "sandhi_avagraha",
+      "sentence": "रामोऽस्ति वीरः।",
+      "expected_valid": true,
+      "error_type": "none",
+      "note": "Standard sandhi with avagraha. Included deliberately: avagraha is not tokenised, so this is expected to be an UNSUPPORTED construction rather than a supported one. Reported as such, not removed."
+    },
+    {
+      "id": "H-D01",
+      "split": "D",
+      "dimension": "missing_verb",
+      "sentence": "रामम् वनम्।",
+      "expected_valid": false,
+      "error_type": "no_verb",
+      "note": "Held-out error category: verbless AND no nominative, so unlike रामः राजा। it is not a well-formed nominal sentence."
+    },
+    {
+      "id": "H-D02",
+      "split": "D",
+      "dimension": "punctuation",
+      "sentence": "ऋषिः वचनं वदति",
+      "expected_valid": false,
+      "error_type": "punctuation",
+      "expected_correction": "ऋषिः वचनं वदति।"
+    },
+    {
+      "id": "H-D03",
+      "split": "D",
+      "dimension": "person_verb_agreement",
+      "sentence": "आवाम् वनं गच्छति।",
+      "expected_valid": false,
+      "error_type": "person_agreement",
+      "expected_correction": "आवाम् वनं गच्छावः।",
+      "note": "आवाम् is 1st person dual (we two); युवाम् is 2nd dual. The verb must be 1st dual."
+    },
+    {
+      "id": "H-D04",
+      "split": "D",
+      "dimension": "noun_case_number",
+      "sentence": "बालकौ लिखति।",
+      "expected_valid": false,
+      "error_type": "subject_verb_number",
+      "expected_correction": "बालकौ लिखतः।"
+    },
+    {
+      "id": "H-D05",
+      "split": "D",
+      "dimension": "noun_case_number",
+      "sentence": "अहं शत्रुः गच्छामि।",
+      "expected_valid": false,
+      "error_type": "vibhakti",
+      "note": "Third lexical item for the generalised destination rule — शत्रु was never one of the two hardcoded stems.",
+      "expected_correction": "अहं शत्रुम् गच्छामि।"
+    },
+    {
+      "id": "H-D06",
+      "split": "D",
+      "dimension": "false_positive_guard",
+      "sentence": "अहं वनं गच्छामि।",
+      "expected_valid": true,
+      "error_type": "none",
+      "note": "Neuter object with first-person motion verb — must NOT be accused of a missing accusative."
+    },
+    {
+      "id": "H-D07",
+      "split": "D",
+      "dimension": "false_positive_guard",
+      "sentence": "अहं गृहं गच्छामि।",
+      "expected_valid": true,
+      "error_type": "none",
+      "note": "गृहम् is curated nominative but is a neuter म्-final homograph, so its case is undecidable — must NOT be flagged."
+    }
+  ],
+  "uncertainty_cases": [
+    {
+      "id": "H-U01",
+      "split": "U",
+      "dimension": "genuinely_unknown_word",
+      "sentence": "फ्लर्ग्व ग्लर्फङ्घ।",
+      "expected_unknown": true
+    },
+    {
+      "id": "H-U02",
+      "split": "U",
+      "dimension": "genuinely_unknown_word",
+      "sentence": "ब्लर्फङ्घ गच्छति।",
+      "expected_unknown": true
+    },
+    {
+      "id": "H-U03",
+      "split": "U",
+      "dimension": "genuinely_unknown_word",
+      "sentence": "रामः ग्लर्फङ्घ वनं गच्छति।",
+      "expected_unknown": true
+    },
+    {
+      "id": "H-U04",
+      "split": "U",
+      "dimension": "genuinely_unknown_word",
+      "sentence": "क्लान्ब्रग्लर्फ",
+      "expected_unknown": true
+    }
+  ]
+}

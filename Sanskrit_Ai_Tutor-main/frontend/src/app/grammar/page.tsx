@@ -644,6 +644,36 @@ export default function Grammar() {
                       {analysis.source_counts ? ` • sources: ${Object.entries(analysis.source_counts).map(([k, v]) => `${k} ${v}`).join(' • ')}` : ''}
                       {analysis.ai_verified ? ' • AI verified' : ''}
                     </div>
+
+                    {/* Why the AI pass did not run. Only rendered when the
+                        response carries `ai_error`, which the backend sets
+                        solely when an AI pass was attempted and rejected —
+                        rule-based mode never produces one. Without this the
+                        failure was invisible: the meta line above showed
+                        nothing when `ai_verified` was false, leaving the
+                        learner to assume the AI had checked the sentence. */}
+                    {!analysis.ai_verified && analysis.ai_error ? (
+                      <div
+                        role="status"
+                        className="flex items-start gap-3 p-4 rounded-xl"
+                        style={{
+                          marginTop: '14px',
+                          border: '1.5px solid rgba(245, 158, 11, 0.35)',
+                          background: 'rgba(245, 158, 11, 0.06)',
+                          color: 'var(--secondary)',
+                          fontSize: '0.82rem',
+                          overflowWrap: 'break-word',
+                        }}
+                      >
+                        <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '1px' }} />
+                        <div>
+                          <strong>AI check unavailable:</strong> {analysis.ai_error}
+                          <div style={{ marginTop: '4px', color: 'var(--text-dim)', fontSize: '0.78rem' }}>
+                            The analysis above comes from the rule-based engine, not the AI provider.
+                          </div>
+                        </div>
+                      </div>
+                    ) : null}
                   </motion.div>
                 )}
               </AnimatePresence>

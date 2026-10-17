@@ -880,7 +880,12 @@ def odd_answer(req: OddAnswerRequest):
                 f"(received {req.user_choice})."
             ),
         )
-    return check_answer(data, req.user_choice)
+    try:
+        # check_answer re-resolves the payload against the server's own catalog
+        # so a client-supplied correct_index can never drive the grade.
+        return check_answer(data, req.user_choice)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
 
 # ─── BKT / Adaptive Learning Endpoints ──────────────────
 

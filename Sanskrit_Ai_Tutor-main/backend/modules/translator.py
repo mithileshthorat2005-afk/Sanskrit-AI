@@ -58,6 +58,11 @@ load_dotenv(dotenv_path=env_path)
 
 class SanskritTranslator:
 
+    # Ollama Cloud keys are `<32 hex>.<token>` — a shape no other supported
+    # provider uses, so a key pasted into the wrong variable still routes
+    # correctly. Kept in sync with SanskritNLP.OLLAMA_KEY_SHAPE.
+    _OLLAMA_KEY_SHAPE = re.compile(r'^[0-9a-f]{32}\.')
+
     def __init__(
         self,
         csv_path="data/sanskrit_words.csv",
@@ -96,20 +101,34 @@ class SanskritTranslator:
         self.max_api_calls = 100
 
         # AI configuration.
-        self.api_key = os.getenv("XAI_API_KEY")
+        #
+        # Routing mirrors SanskritNLP exactly (see modules/nlp_processor.py) so
+        # both AI features come up on whatever provider is actually configured,
+        # instead of the translator silently using a different — and, until now,
+        # retired — one.
+        ollama_key = (os.getenv("OLLAMA_API_KEY") or "").strip()
+        legacy_key = (os.getenv("XAI_API_KEY") or "").strip()
+        self.api_key = ollama_key or legacy_key
         self.base_url = os.getenv("BASE_URL")
         self.ai_provider = "Local"
         self.ai_model = "None"
 
         if self.api_key and isinstance(self.api_key, str):
-            if self.api_key.startswith("gsk_"):
+            if ollama_key or self._OLLAMA_KEY_SHAPE.match(self.api_key):
+                self.ai_provider = "Ollama Cloud"
+                self.base_url = "https://ollama.com/v1"
+                self.ai_model = os.getenv("AI_MODEL") or "gemma4:31b-cloud"
+            elif self.api_key.startswith("gsk_"):
                 self.ai_provider = "Groq"
                 self.base_url = "https://api.groq.com/openai/v1"
                 self.ai_model = "llama-3.3-70b-versatile"
             else:
                 self.ai_provider = "Grok"
                 self.base_url = self.base_url or "https://api.x.ai/v1"
-                self.ai_model = "grok-beta"
+                # xAI retired `grok-beta`, so hardcoding it meant even a VALID
+                # key came back 400/404 and translation fell back to the local
+                # database with no visible reason. Override with AI_MODEL.
+                self.ai_model = os.getenv("AI_MODEL") or "grok-4-fast"
 
             print(
                 f"✅ SanskritTranslator: AI Engine initialized "
@@ -662,7 +681,7 @@ class SanskritTranslator:
         text,
         direction="en_to_sa",
     ):
-        """Translate using the configured Grok/Groq AI provider."""
+        """Translate using the configured Ollama/Groq/xAI provider."""
 
         if not self.api_key:
             print("⚠️ No API key for AI translation")

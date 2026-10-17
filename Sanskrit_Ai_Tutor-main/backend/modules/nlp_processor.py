@@ -28,6 +28,7 @@ import re
 import math
 import random
 import os
+import csv
 import requests
 import json
 from typing import Dict, List, Any, Tuple, Optional
@@ -211,6 +212,17 @@ PASSIVE_LAT_ENDINGS = {
 
 
 class SanskritNLP:
+    # Ollama Cloud issues keys shaped "<32 hex chars>.<token>" — a shape no
+    # other provider uses. Matching on it lets a key pasted into the wrong
+    # variable still reach the right endpoint, instead of being handed to
+    # xAI and rejected with a misleading "Incorrect API key provided".
+    OLLAMA_KEY_SHAPE = re.compile(r'^[0-9a-f]{32}\.')
+
+    # Ollama Cloud's free plan serves only a few models; calling any other
+    # one answers HTTP 402 "not included in your free usage".
+    OLLAMA_FREE_MODEL = "gemma4:31b-cloud"
+    OLLAMA_BASE_URL = "https://ollama.com/v1"
+
     def __init__(self):
         # ── Dictionary (curated) ────────────────────────────────
         self.vocabulary = {
@@ -328,24 +340,277 @@ class SanskritNLP:
                 print(f"SanskritNLP: Noun init failed: {e}")
 
         # ── AI config ───────────────────────────────────────────
-        self.api_key = os.getenv("XAI_API_KEY")
+        # Provider is chosen from which variable is set, then from key
+        # shape. Ollama Cloud goes first because its key shape is unique,
+        # so a key pasted into the wrong variable still routes correctly.
+        # XAI_API_KEY stays supported for Groq (gsk_) and xAI keys, which
+        # is what the deployed Render instance already configures.
+        ollama_key = (os.getenv("OLLAMA_API_KEY") or "").strip()
+        legacy_key = (os.getenv("XAI_API_KEY") or "").strip()
+
+        self.api_key = ollama_key or legacy_key
         self.base_url = os.getenv("BASE_URL")
         self.ai_provider: str = "Local"
         self.ai_model: str = "None"
+        # Why the most recent AI call failed, in the provider's own words.
+        # Carried onto the degraded response so "no key", "bad key", "retired
+        # model" and "provider down" are distinguishable instead of every
+        # failure looking like a generic silent fallback.
+        self.last_ai_error: str = ""
+        # Model id discovered from GET /models after a model-related rejection.
+        # None = not tried yet; "" = tried and found nothing usable.
+        self._discovered_model: Optional[str] = None
 
-        if self.api_key and isinstance(self.api_key, str):
-            if self.api_key.startswith("gsk_"):
+        if self.api_key:
+            if ollama_key or self.OLLAMA_KEY_SHAPE.match(self.api_key):
+                self.ai_provider = "Ollama Cloud"
+                self.base_url = self.OLLAMA_BASE_URL
+                self.ai_model = os.getenv("AI_MODEL") or self.OLLAMA_FREE_MODEL
+                print("SanskritNLP: Ollama Cloud API key detected (fallback only)")
+            elif self.api_key.startswith("gsk_"):
                 self.ai_provider = "Groq"
                 self.base_url = "https://api.groq.com/openai/v1"
-                self.ai_model = "openai/gpt-oss-120b"
+                self.ai_model = os.getenv("AI_MODEL") or "openai/gpt-oss-120b"
                 print("SanskritNLP: Groq API key detected (fallback only)")
             else:
                 self.ai_provider = "Grok"
                 self.base_url = self.base_url or "https://api.x.ai/v1"
-                self.ai_model = "grok-beta"
+                # xAI retired `grok-beta`, so hardcoding a dead model name meant
+                # even a VALID key would come back 400/404. Override with
+                # AI_MODEL; otherwise use a current default and let
+                # _resolve_model() confirm it against GET /models on first use.
+                self.ai_model = os.getenv("AI_MODEL") or "grok-4-fast"
                 print(f"SanskritNLP: {self.ai_provider} API key detected (fallback only)")
         else:
             print("SanskritNLP: No AI fallback key found")
+
+        # ── On-disk lexicon ─────────────────────────────────────
+        # `self.vocabulary` above is a hand-curated literal. The project
+        # also ships ~1,370 words in data/*.csv. Those load into a
+        # SEPARATE structure consulted only where the analysers come up
+        # empty, so they can never take a word away from a layer that
+        # already parsed it (see _classify_word).
+        self._lexicon: Dict[str, Dict[str, str]] = {}
+        self._load_lexicon()
+
+        # ── Declension attestation index ───────────────────────
+        # For every headword in the dictionaries above, record which
+        # (stem, paradigm) pairs it proves. Used by Layer 4 to pick between
+        # competing declension readings of the same token, e.g.
+        #   विद्यालयः → a-masc/विद्यालय  (attested by विद्यालयम्)
+        #             → i-masc/विद्याल    (attested by nothing)
+        # Longest-match alone chose the second, mis-parsing a singular as a
+        # plural. A token's own entry is excluded from vouching for itself,
+        # or विद्यालयः would attest its own wrong parse.
+        self._stem_attestation: Dict[Tuple[str, str], set] = {}
+        self._build_stem_attestation()
+
+    # ==============================================================
+    # On-disk lexicon (data/*.csv)
+    # ==============================================================
+    # Two dictionaries ship with the project and are already used by
+    # SanskritTranslator for translation:
+    #
+    #   data/sanskrit_translation_db.csv   1,267 rows
+    #   data/sanskrit_words.csv              105 rows
+    #
+    # Layer 1 (`self.vocabulary`) never consulted them, with two results:
+    #
+    #   * layers 3/3b/4 return a real parse but no English gloss, so
+    #     known words surfaced as "unknown (not in dictionary)";
+    #   * a word absent from the curated literal but present in these
+    #     files reached Layer 5 and was called unknown. That is the one
+    #     thing the uncertainty contract forbids: an unknown word has to
+    #     mean EVERY layer failed — and the dictionary is a layer.
+    #
+    # So the lexicon is a FALLBACK. It never preempts an analyser: it
+    # only supplies a missing gloss, or rescues a word all five layers
+    # missed. Curated entries always win.
+    # ==============================================================
+    DEVANAGARI_ONLY = re.compile(r'^[ऀ-ॿ]+$')
+
+    # (filename, part-of-speech column, gloss columns in priority order).
+    # Both files carry a clean `english` column, which is what gets used.
+    # `meaning` is only a fallback and is filtered by LEXICON_JUNK_GLOSS.
+    LEXICON_SOURCES = (
+        ("sanskrit_translation_db.csv", "pos", ("english",)),
+        ("sanskrit_words.csv", "word_type", ("english", "meaning")),
+    )
+
+    # The import script that wrote sanskrit_words.csv left placeholders
+    # such as "Translation of agnih" in 49 of its 105 rows. Those are not
+    # glosses, and showing one to a learner would be worse than showing
+    # nothing at all.
+    LEXICON_JUNK_GLOSS = re.compile(r'(?i)^translation of\b')
+
+    # Parts of speech the pipeline understands. The CSVs also contain
+    # stray values ("easy", "farmer", "invalid input", "not applicable")
+    # which are data entry mistakes, not POS, and must never be reported
+    # as a part of speech.
+    LEXICON_POS = frozenset({
+        'noun', 'verb', 'adjective', 'adverb', 'pronoun', 'auxiliary',
+        'conjunction', 'interjection', 'numeral', 'particle',
+        'preposition', 'direction', 'phrase', 'sentence',
+    })
+
+    def _load_lexicon(self) -> None:
+        """Read the shipped CSV dictionaries into `self._lexicon`."""
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        for filename, pos_col, gloss_cols in self.LEXICON_SOURCES:
+            path = os.path.join(base_dir, "data", filename)
+            if not os.path.exists(path):
+                print(f"SanskritNLP: lexicon {filename} not found — skipped")
+                continue
+            try:
+                with open(path, encoding="utf-8-sig", newline="") as fh:
+                    for row in csv.DictReader(fh):
+                        word = (row.get("devanagari") or "").strip()
+                        # Single, purely-Devanagari tokens only. Rows the
+                        # translator concatenates may be transliterations or
+                        # multi-word phrases, which are not word entries.
+                        if not word or not self.DEVANAGARI_ONLY.match(word):
+                            continue
+                        # Hand-tuned curated entries keep precedence.
+                        if word in self.vocabulary or word in self._lexicon:
+                            continue
+                        gloss = self._pick_gloss(row, gloss_cols)
+                        pos = (row.get(pos_col) or "").strip().lower()
+                        if pos == "proper noun":
+                            pos = "noun"
+                        self._lexicon[word] = {
+                            "pos": pos if pos in self.LEXICON_POS else "",
+                            "meaning": gloss,
+                        }
+            except (OSError, csv.Error) as exc:
+                print(f"SanskritNLP: lexicon {filename} unreadable — skipped ({exc})")
+
+        print(f"SanskritNLP: lexicon loaded {len(self._lexicon)} words from disk")
+
+    def _pick_gloss(self, row: Dict[str, str], gloss_cols: Tuple[str, ...]) -> str:
+        """First usable English gloss among `gloss_cols`, or ''.
+
+        A candidate is rejected when it is blank, is an import-script
+        placeholder ("Translation of agnih"), or is itself Devanagari —
+        a gloss is only a gloss if it is in the learner's language.
+        """
+        for col in gloss_cols:
+            candidate = (row.get(col) or "").strip()
+            if not candidate:
+                continue
+            if self.LEXICON_JUNK_GLOSS.search(candidate):
+                continue
+            if self.DEVANAGARI_ONLY.match(candidate):
+                continue
+            return candidate
+        return ""
+
+    def _lexicon_lookup(self, word: str) -> Optional[Dict[str, str]]:
+        """Lexicon entry for `word`, honouring the ं/म् alternation Layer 1
+        uses (विद्यालयं ↔ विद्यालयम्)."""
+        entry = self._lexicon.get(word)
+        if entry is not None:
+            return entry
+        alt = word
+        if word.endswith('ं'):
+            alt = word[:-1] + 'म्'
+        elif word.endswith('म्'):
+            alt = word[:-1] + 'ं'
+        return self._lexicon.get(alt)
+
+    def _lexicon_meaning(self, word: str) -> str:
+        """English gloss for `word`, or '' when the lexicon lacks it."""
+        entry = self._lexicon_lookup(word)
+        return entry.get("meaning", "") if entry else ""
+
+    def _build_stem_attestation(self) -> None:
+        """Index which (stem, paradigm) pairs the shipped dictionaries prove.
+
+        Stripping a declension ending off a headword is evidence that the
+        stem really exists in that paradigm: विद्यालयम् proves
+        (विद्यालय, a_masc). This is used only to CHOOSE between competing
+        readings of a token — never to accept or reject one — so unseen but
+        genuine vocabulary still parses normally.
+        """
+        if not self.noun_analyzer:
+            return
+        for headword in list(self.vocabulary) + list(self._lexicon):
+            if not self.DEVANAGARI_ONLY.match(headword):
+                continue
+            for ending, _gender, _case, _number, pattern in self.noun_analyzer.endings:
+                if len(headword) <= len(ending) or not headword.endswith(ending):
+                    continue
+                stem = headword[:-len(ending)]
+                if len(stem) < 2:
+                    continue
+                self._stem_attestation.setdefault((stem, pattern), set()).add(headword)
+        print(f"SanskritNLP: attested {len(self._stem_attestation)} "
+              f"(stem, paradigm) pairs from disk")
+
+    def _attested_candidates(self, word: str,
+                             candidates: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Competing readings of `word` that some OTHER headword vouches for.
+
+        An empty list means the dictionaries have no opinion, and the caller
+        must fall back to its existing behaviour rather than guess.
+        """
+        return [
+            c for c in candidates
+            if self._stem_attestation.get((c.get('stem', ''), c.get('pattern', '')),
+                                          set()) - {word}
+        ]
+
+    def _disambiguate(self, word: str, readings: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Choose between the competing declension readings of one token.
+
+        One surface ending can belong to several paradigms, and picking
+        blindly is what produced two different bugs:
+
+          * विद्यालयः matched the longer 'यः' ending and came out an i-masc
+            nominative PLURAL of a stem विद्याल that exists nowhere. The
+            dictionaries prove the a-masc reading instead (विद्यालयम् strips
+            to विद्यालय), so attestation decides it.
+          * सुन्दरी matched 'ी' and came out an i-masc nominative DUAL, so a
+            correct sentence was told its subject disagreed with the verb.
+
+        So:
+          1. prefer readings some OTHER headword vouches for;
+          2. when the dictionaries have no opinion, keep today's rule — the
+             longest matching ending wins, unchanged;
+          3. either way, a NUMBER that another plausible reading of the same
+             token contradicts is simply not established. ी is an ī-stem
+             nominative singular AND an i-masc nominative dual, so claiming
+             'dual' for सुन्दरी would invent an agreement error. Report the
+             feature as undecidable and let agreement stay silent.
+        """
+        attested = self._attested_candidates(word, readings)
+        pool = attested or readings[:1]
+        best = dict(pool[0])
+        best.pop('word', None)          # the breakdown item already carries it
+
+        # Contest the NUMBER only among readings of the SAME stem. Same stem
+        # with the same case but a different number is a true homograph —
+        # one word with two readings — so nobody can honestly assert either:
+        #   सुन्दरी → (सुन्दर, ii-fem, nom, SINGULAR)  or
+        #              (सुन्दर, a-neut, nom, DUAL)
+        # A different STEM instead means a segmentation choice, and ending
+        # length already settles that (सिंहाः = सिंह+ाः plural, not सिंहा+ः
+        # singular; गुरवः = गुर+वः plural, not गुरव+ः singular). Blanking
+        # the number there would just silence agreement on ordinary
+        # plural subjects.
+        contested_number = any(
+            r.get('stem') == best.get('stem')
+            and r.get('case') == best.get('case')
+            and r.get('number') != best.get('number')
+            for r in readings
+        )
+        if contested_number:
+            best['number'] = ''
+            best['number_ambiguous'] = True
+            best['alternatives'] = [
+                {k: r.get(k, '') for k in ('stem', 'gender', 'case', 'number', 'pattern')}
+                for r in readings[:5]
+            ]
+        return best
 
     # ==============================================================
     # Tokenization
@@ -373,57 +638,115 @@ class SanskritNLP:
     # passives (गम्यते, पठ्यते) are recognized before the noun analyzer's
     # bare "े" (locative) ending can steal them.
     # ==============================================================
+    # ── Surface-form variants ──────────────────────────────────
+    # Sanskrit spells the same word more than one way, and every layer
+    # below matches literal endings, so a token has to be tried in each of
+    # its spellings before it can honestly be called unresolvable.
+    #
+    #   anusvāra   बालकं  ↔  बालकम्   one accusative, two spellings. The
+    #              table only ever held the explicit-virāma form, so the
+    #              far commoner anusvāra spelling came out "unknown".
+    #   visarga    बालको  ←  बालकः     ः → ओ before a voiced consonant
+    #              मुनिर्  ←  मुनिः     ः → र् after इ/उ/ऋ
+    #
+    # Sandhi reversal is never speculative: it sits behind the token's own
+    # spelling (Layer 1 never sees it unless the direct spelling already
+    # failed), and the reversed base then has to survive the same real
+    # layers — a dictionary hit or a declension parse — so a nonsense string
+    # cannot be talked into a parse.
+    def _surface_variants(self, clean: str) -> List[str]:
+        variants = [clean]
+        if clean.endswith('ं'):
+            variants.append(clean[:-1] + 'म्')
+        elif clean.endswith('म्'):
+            variants.append(clean[:-1] + 'ं')
+        for suffix, base in (('ो', 'ः'), ('र्', 'ः')):
+            if clean.endswith(suffix) and len(clean) > len(suffix) + 1:
+                variants.append(clean[:-len(suffix)] + base)
+        return variants
+
     def _classify_word(self, word: str) -> Dict[str, Any]:
         clean = re.sub(r'[.,!?;।|]$', '', word).strip()
+        variants = self._surface_variants(clean)
 
-        # ── Layer 1: Dictionary ─────────────────────────────────
-        entry = None
-        if clean in self.vocabulary:
-            entry = self.vocabulary[clean]
-        else:
-            alt = clean
-            if clean.endswith('ं'):
-                alt = clean[:-1] + 'म्'
-            elif clean.endswith('म्'):
-                alt = clean[:-1] + 'ं'
-            if alt in self.vocabulary:
-                entry = self.vocabulary[alt]
+        # ── Layer 1: Dictionary — first claim on EVERY spelling ──
+        # Layer priority has to outrank spelling priority. If the analysers
+        # below were allowed to try the anusvāra spelling first, त्वं would
+        # parse as a bare a-stem accusative and drop the person/number the
+        # pronoun entry त्वम् carries — silencing agreement on the sentence.
+        for surface in variants:
+            entry = self.vocabulary.get(surface)
+            if entry:
+                return self._dictionary_result(word, clean, surface, entry)
 
-        if entry:
-            analysis = dict(entry)
+        # ── Layers 2-5: analysers, one spelling at a time ────────
+        for surface in variants:
+            result = self._classify_analysers(word, clean, surface)
+            if result is not None:
+                return result
 
-            if entry.get('pos') == 'verb' and self.paninian:
-                try:
-                    verb = self.paninian.analyze_verb(clean)
-                    if verb.get('is_verb'):
-                        analysis.update({
-                            'root': verb.get('root', ''),
-                            'root_slp1': verb.get('root_slp1', ''),
-                            'lakara': verb.get('tense', ''),
-                            'purusha': verb.get('person', ''),
-                            'vacana': verb.get('number', ''),
-                            'gana': verb.get('class', ''),
-                            'pada': verb.get('pada', ''),
-                            'suffix': verb.get('suffix', ''),
-                            'rules_applied': verb.get('rules_applied', []),
-                        })
-                except Exception:
-                    pass
+        return {
+            'word': word,
+            'pos': 'unknown',
+            'source': 'none',
+            'meaning': 'unknown',
+            'analysis': {'note': 'Not resolved by any layer'},
+        }
 
-            return {
-                'word': word,
-                'pos': entry.get('pos', 'unknown'),
-                'source': 'dictionary',
-                'meaning': entry.get('meaning', ''),
-                'analysis': analysis,
-            }
+    def _dictionary_result(self, word: str, clean: str, surface: str,
+                           entry: Dict[str, Any]) -> Dict[str, Any]:
+        """Layer 1's answer: a hand-curated vocabulary hit.
 
+        The stored entry is copied, never mutated, so the class-level
+        vocabulary literal stays pristine across requests.
+        """
+        analysis = dict(entry)
+
+        if entry.get('pos') == 'verb' and self.paninian:
+            try:
+                verb = self.paninian.analyze_verb(surface)
+                if verb.get('is_verb'):
+                    analysis.update({
+                        'root': verb.get('root', ''),
+                        'root_slp1': verb.get('root_slp1', ''),
+                        'lakara': verb.get('tense', ''),
+                        'purusha': verb.get('person', ''),
+                        'vacana': verb.get('number', ''),
+                        'gana': verb.get('class', ''),
+                        'pada': verb.get('pada', ''),
+                        'suffix': verb.get('suffix', ''),
+                        'rules_applied': verb.get('rules_applied', []),
+                    })
+            except Exception:
+                pass
+
+        if surface != clean:
+            analysis['resolved_from'] = surface
+
+        return {
+            'word': word,
+            'pos': entry.get('pos', 'unknown'),
+            'source': 'dictionary',
+            'meaning': entry.get('meaning', ''),
+            'analysis': analysis,
+        }
+
+    def _classify_analysers(self, word: str, clean: str,
+                            surface: str) -> Optional[Dict[str, Any]]:
+        """Run layers 2-5 against ONE spelling of `clean`.
+
+        Layer 1 has already had first claim on every spelling (see
+        `_classify_word`). `surface` is the spelling being tested, `clean`
+        is the token as written, and `word` (with any trailing punctuation)
+        is what gets reported. Returns None when nothing recognised this
+        spelling, so the driver can try the next one.
+        """
         # ── Layer 2: Paninian verb analyzer ─────────────────────
         # Moved BEFORE the noun analyzer. Prakriya's validation gate
         # ensures only genuine verb forms are accepted.
         if self.paninian:
             try:
-                verb = self.paninian.analyze_verb(clean)
+                verb = self.paninian.analyze_verb(surface)
                 if verb.get('is_verb'):
                     return {
                         'word': word,
@@ -456,13 +779,15 @@ class SanskritNLP:
         # abstract nouns (शक्ति) that merely share a verb ending, and it runs
         # before the noun analyzer, which otherwise mis-parses dual/plural verb
         # endings (गच्छतः, पठामः, …) as noun declensions.
-        if clean in self._verb_paradigm_index:
-            person, number, root_slp1 = self._verb_paradigm_index[clean]
+        if surface in self._verb_paradigm_index:
+            person, number, root_slp1 = self._verb_paradigm_index[surface]
             return {
                 'word': word,
                 'pos': 'verb',
                 'source': 'paradigm_table',
-                'meaning': '',
+                # Gloss comes from the lexicon: this layer parses
+                # person/number but has no English meaning of its own.
+                'meaning': self._lexicon_meaning(surface),
                 'analysis': {
                     'root_slp1': root_slp1,
                     'tense': 'present',
@@ -480,13 +805,14 @@ class SanskritNLP:
         # ending would otherwise steal passives: गम्यते → "locative of
         # गम्यत" — a fake noun that makes the sentence look verbless and
         # re-arms the "Sentence has no verb." false positive.
-        if clean in self._passive_index:
-            person, number, root_slp1 = self._passive_index[clean]
+        if surface in self._passive_index:
+            person, number, root_slp1 = self._passive_index[surface]
             return {
                 'word': word,
                 'pos': 'verb',
                 'source': 'passive_table',
-                'meaning': '',
+                # Gloss comes from the lexicon (see Layer 3).
+                'meaning': self._lexicon_meaning(surface),
                 'analysis': {
                     'root_slp1': root_slp1,
                     'tense': 'present',
@@ -506,38 +832,74 @@ class SanskritNLP:
         # has_unknown guard from asserting "Sentence has no verb."
         # Genuine locatives that happen to end in य+े (भये, क्रये) are NOT
         # blocked, because bare "ये" is deliberately excluded below.
-        if re.search(r'(यते|यन्ते|यसे|येते|येथे|यध्वे|यावहे|यामहे)$', clean):
-            pass  # skip the noun analyzer; fall through to Unknown
-        elif self.noun_analyzer:
+        if not re.search(r'(यते|यन्ते|यसे|येते|येथे|यध्वे|यावहे|यामहे)$', surface) \
+                and self.noun_analyzer:
             try:
-                noun = self.noun_analyzer.analyze_best(clean)
-                if noun.get('pos') == 'noun' and noun.get('method') == 'declension_rule':
-                    stem = noun.get('stem', '')
+                # Every reading, not just the best: choosing between them is
+                # what the attestation index below is for.
+                readings = [
+                    r for r in self.noun_analyzer.analyze(surface)
+                    if r.get('method') == 'declension_rule'
+                ]
+                if readings:
+                    reading = self._disambiguate(surface, readings)
+                    stem = reading.get('stem', '')
                     if len(stem) >= 2:
+                        if surface != clean:
+                            reading.setdefault('resolved_from', surface)
                         return {
                             'word': word,
                             'pos': 'noun',
                             'source': 'noun_rule',
-                            'meaning': 'unknown (not in dictionary)',
-                            'analysis': {
-                                'stem': stem,
-                                'gender': noun.get('gender', ''),
-                                'case': noun.get('case', ''),
-                                'number': noun.get('number', ''),
-                                'pattern': noun.get('pattern', ''),
-                            },
+                            # The rule layers parse morphology but carry no
+                            # gloss of their own. Ask the lexicon before
+                            # claiming the word is not in the dictionary —
+                            # for most nouns on disk, it very much is.
+                            'meaning': (
+                                self._lexicon_meaning(surface)
+                                or 'unknown (not in dictionary)'
+                            ),
+                            'analysis': reading,
                         }
             except Exception:
                 pass
 
-        # ── Layer 5: Unknown ────────────────────────────────────
-        return {
-            'word': word,
-            'pos': 'unknown',
-            'source': 'none',
-            'meaning': 'unknown',
-            'analysis': {'note': 'Not resolved by any layer'},
-        }
+        # ── Layer 5: full on-disk lexicon, then Unknown ─────────
+        # Every analyser above failed to PARSE this token. That still does
+        # not make it an unknown word: if a dictionary on disk contains it,
+        # we do know what it is, and reporting `source: none` would tell the
+        # user we cannot verify a word the project already holds — exactly
+        # what the uncertainty contract forbids ("unknown = every layer
+        # failed"). The dictionary counts as a layer, so it gets the final
+        # say before Unknown.
+        lexicon = self._lexicon_lookup(surface)
+        if lexicon:
+            pos = lexicon.get('pos', '')
+            # The three verb layers ALL declined this token, so a dictionary
+            # headword marked `verb` must not be promoted to `pos: verb`
+            # here: agreement checking takes the FIRST verb in the sentence
+            # and reads person/number from it. An unparsed token in that
+            # slot would silently suppress the check on the sentence's real
+            # verb, so an unparseable "verb" stays unknown instead.
+            if pos == 'verb':
+                pos = 'unknown'
+            return {
+                'word': word,
+                'pos': pos or 'unknown',
+                'source': 'dictionary',
+                'meaning': lexicon.get('meaning', ''),
+                # Deliberately no `meaning` inside `analysis`: the
+                # motion-verb heuristic reads analysis['meaning'] and must
+                # not take a lexicon gloss for evidence of motion.
+                'analysis': {
+                    'note': 'Resolved from the on-disk dictionary; '
+                            'no morphological parse available',
+                },
+            }
+
+        # Nothing recognised this spelling. Do not return Unknown yet — the
+        # driver still has other spellings of the same token to try.
+        return None
 
     # ==============================================================
     # Unknown-word (uncertainty) handling
@@ -816,18 +1178,126 @@ class SanskritNLP:
                 result.append(tok)
         return ' '.join(result)
 
-    def _fix_destination_accusative(self, sentence: str) -> str:
+    def _destination_errors(self, breakdown: List[Dict]) -> List[Dict]:
+        """Non-pronoun nominative nominals that a motion verb must govern.
+
+        The check used to know exactly two words — विद्यालय and ग्राम — so the
+        identical error with any other stem went unreported. What the rule
+        actually says is linguistic, not lexical: a motion verb in the first
+        person takes its goal in द्वितीया, so a nominal standing in the
+        nominative cannot be that goal.
+
+        Guards, each needed to keep this off correct sentences:
+          * motion verb only (root gam, or glossed "go");
+          * first person only, exactly as before — and a first-person nominal
+            is always a pronoun (अहं, वयम्, …), which the `pos != 'noun'`
+            test below skips, so the subject never flags itself;
+          * neuter and म्-final tokens are skipped: a neuter a-stem spells
+            its nominative and accusative the same way (गृहम्, वनम् — the
+            curated entries even disagree about which one those are), so
+            there the two cases genuinely cannot be told apart;
+          * nominative only — anything already accusative or otherwise
+            marked is left alone.
+
+        The flagged list feeds BOTH the issue text and the correction, so the
+        two can never disagree about what was wrong.
         """
-        Replace only the exact nominative/bare form of विद्यालय or ग्रामः
-        with the accusative. Never touches विद्यालयम्, विद्यालयं, or any
-        word that merely contains the stem as a substring.
+        has_motion = False
+        for b in breakdown:
+            if b['pos'] != 'verb':
+                continue
+            a = b.get('analysis') or {}
+            if str(a.get('root_slp1', '')).lower().startswith('gam'):
+                has_motion = True
+                break
+            if 'go' in str(a.get('meaning', '')).lower():
+                has_motion = True
+                break
+        if not has_motion:
+            return []
+
+        if not any(
+            b['pos'] in ('noun', 'pronoun')
+            and str((b.get('analysis') or {}).get('person', '')).lower() == 'first'
+            for b in breakdown
+        ):
+            return []
+
+        # The agreement subject is the first nominative, and a pronoun is
+        # never a goal: neither may be accused of a missing द्वितीया.
+        first_subject = next(
+            (b for b in breakdown
+             if b['pos'] in ('noun', 'pronoun')
+             and str((b.get('analysis') or {}).get('case', '')).lower() == 'nominative'),
+            None,
+        )
+
+        flagged = []
+        for b in breakdown:
+            if b['pos'] != 'noun':
+                continue
+            if first_subject is not None and b is first_subject:
+                continue
+            a = b.get('analysis') or {}
+            if str(a.get('case', '')).lower() != 'nominative':
+                continue
+            gender = str(a.get('gender', '')).lower()
+            surface = re.sub(r'[।॥.,!?;|]+$', '', str(b.get('word', '')))
+            if gender == 'neuter':
+                continue
+            # A curated entry carries no `stem` at all, and a gender it does
+            # not record on a म्-final token leaves the nominative/accusative
+            # homograph undecidable — so only a bare म्/ं spelling, where we
+            # genuinely cannot tell द्वितीया from कर्ता, is left alone.
+            if not gender and surface.endswith(('म्', 'ं')):
+                continue
+            stem = str(a.get('stem', ''))
+            # The stem-length guard only ever meant to reject a degenerate
+            # declension parse (over-stripping). Dictionary hits have no stem
+            # to test, and their gender/case are curated — those must pass.
+            if stem and len(stem) < 2:
+                continue
+            flagged.append(b)
+        return flagged
+
+    def _destination_accusative(self, flagged: Dict) -> Optional[str]:
+        """Accusative of `flagged`, generated from the declension table.
+
+        None rather than a guess when the paradigm carries no such cell or
+        the reading left the number undecidable — the issue can still be
+        reported; the rewrite simply is not offered.
         """
-        accusative_map = {
-            'विद्यालय':  'विद्यालयं',
-            'विद्यालयः': 'विद्यालयं',
-            'ग्राम':    'ग्रामम्',
-            'ग्रामः':   'ग्रामम्',
-        }
+        if not self.noun_analyzer:
+            return None
+        a = flagged.get('analysis') or {}
+        number = str(a.get('number', '')).strip()
+        if not number:
+            return None
+        return self.noun_analyzer.accusative_form(
+            str(a.get('stem', '')),
+            str(a.get('pattern', '')),
+            number,
+        )
+
+    def _fix_destination_accusative(self, sentence: str,
+                                    flagged: List[Dict]) -> str:
+        """Rewrite each flagged destination into its accusative.
+
+        The replacement is generated from stem + paradigm + number by
+        `_destination_accusative`, not read off a table of individual words,
+        so any noun the rule fires on is handled (नायकः → नायकम्,
+        सिंहः → सिंहम्) rather than only the two stems that used to be
+        hardcoded here. Only whole tokens are ever replaced, so a word that
+        merely contains the stem as a substring is untouched.
+        """
+        accusative_map: Dict[str, str] = {}
+        for b in flagged:
+            old = re.sub(r'[।॥.,!?;|]+$', '', str(b.get('word', ''))).strip()
+            new = self._destination_accusative(b)
+            if old and new and old != new:
+                accusative_map[old] = new
+        if not accusative_map:
+            return sentence
         tokens = sentence.split()
         fixed = []
         for tok in tokens:
@@ -858,14 +1328,23 @@ class SanskritNLP:
             issues.append("Sentence must end with a Purna Virama (।)")
 
         # 2. Missing verb
-        # Only assert "no verb" when every word was resolved. If some word is
-        # still unknown (e.g. a verb outside the dictionary/paradigm coverage),
-        # there is no evidence that the sentence lacks a verb, so reporting one
-        # would fabricate an error on input we could not parse. (Sanskrit also
-        # permits verbless nominal sentences, so this remains a heuristic.)
+        # Only assert "no verb" when every word was resolved AND the sentence
+        # has no nominative to serve as the other half of a nominal sentence.
+        # If some word is still unknown (e.g. a verb outside the
+        # dictionary/paradigm coverage), there is no evidence that the sentence
+        # lacks a verb, so reporting one would fabricate an error on input we
+        # could not parse. And Sanskrit freely builds sentences with no verb at
+        # all — रामः राजा।, सीता सुन्दरी। — where the noun in the nominative
+        # IS the predicate, so "no verb" is only a defect when there is no
+        # nominative either.
         has_verb = any(b['pos'] == 'verb' for b in breakdown)
         has_unknown = any(b['pos'] == 'unknown' for b in breakdown)
-        if breakdown and not has_verb and not has_unknown:
+        has_nominative = any(
+            b['pos'] in ('noun', 'pronoun')
+            and str(b['analysis'].get('case', '')).lower() == 'nominative'
+            for b in breakdown
+        )
+        if breakdown and not has_verb and not has_unknown and not has_nominative:
             issues.append("Sentence has no verb.")
 
         # 3. Subject-verb agreement
@@ -944,37 +1423,12 @@ class SanskritNLP:
                     })
 
         # 4. Destination → accusative
-        has_motion = False
-        for b in breakdown:
-            if b['pos'] != 'verb':
-                continue
-            a = b['analysis']
-            if str(a.get('root_slp1', '')).lower().startswith('gam'):
-                has_motion = True
-                break
-            if 'go' in str(a.get('meaning', '')).lower():
-                has_motion = True
-                break
-
-        has_first_person = any(
-            b['word'] in ('अहं', 'अहम्')
-            or b.get('analysis', {}).get('stem') == 'अहम्'
-            for b in breakdown
-        )
-
-        if has_first_person and has_motion:
-            for b in breakdown:
-                stem = b.get('analysis', {}).get('stem', '')
-                w_text = b.get('word', '')
-                if stem in ('विद्यालय', 'ग्राम') or w_text.startswith(('विद्यालय', 'ग्राम')):
-                    if w_text in ('विद्यालयम्', 'विद्यालयं', 'ग्रामम्', 'ग्रामं'):
-                        continue
-                    case = str(b['analysis'].get('case', '')).lower()
-                    if case and case != 'accusative':
-                        issues.append(
-                            f"Destination '{w_text}' should be in Accusative Case (Dvitiya Vibhakti)."
-                        )
-                        break
+        flagged_destination = self._destination_errors(breakdown)
+        for b in flagged_destination:
+            issues.append(
+                f"Destination '{b.get('word', '')}' should be in Accusative "
+                f"Case (Dvitiya Vibhakti)."
+            )
 
         return issues, corrections
 
@@ -1001,9 +1455,14 @@ class SanskritNLP:
                 continue
             corrected = self._replace_token(corrected, old, new)
 
-        # 2. Destination accusative fix (whole-token replacement)
-        if any('Dvitiya' in i or 'Accusative' in i for i in issues):
-            corrected = self._fix_destination_accusative(corrected)
+        # 2. Destination accusative fix (whole-token replacement).
+        # The same list that produced the issue produces the rewrite, so a
+        # token is never rewritten for a fault that was not reported (or
+        # vice versa).
+        flagged_destination = self._destination_errors(breakdown)
+        if flagged_destination:
+            corrected = self._fix_destination_accusative(corrected,
+                                                         flagged_destination)
 
         # 3. Punctuation
         corrected = corrected.strip()
@@ -1021,10 +1480,19 @@ class SanskritNLP:
     # Main entry point
     # ==============================================================
     def analyze_text(self, text: str, mode: str = "Basic",
-                     use_ai: bool = False) -> Dict[str, Any]:
+                     use_ai: bool = True) -> Dict[str, Any]:
 
         # Explicit AI mode → straight to AI
-        if use_ai and self.api_key:
+        if use_ai:
+            if not self.api_key:
+                # This used to fall through silently, so pressing "AI Scan" with
+                # no credential returned a rule-based analysis that looked like
+                # a successful AI run. Say so instead.
+                return self._degrade(
+                    text,
+                    "No AI key configured (set XAI_API_KEY in backend/.env).",
+                    "no key",
+                )
             return self.analyze_with_grok(text)
 
         normalized = text.replace('|', '।').replace('.', '।')
@@ -1100,6 +1568,109 @@ class SanskritNLP:
     # ==============================================================
     # AI fallback
     # ==============================================================
+    def _provider_error(self, response) -> str:
+        """Render a provider failure body as a short, printable reason.
+
+        The old code logged only `response.status_code`, which threw away the
+        body — the only part that says WHY a call failed (bad key, retired
+        model, quota exceeded). A bare `400` looks identical in every one of
+        those cases, which is why this stayed undiagnosable: the payload and
+        the model name were both blamed when the credential was the problem.
+        """
+        try:
+            payload = response.json()
+        except Exception:
+            payload = None
+
+        if isinstance(payload, dict):
+            err = payload.get("error")
+            if isinstance(err, dict):
+                message = str(err.get("message") or "").strip()
+                code = str(err.get("code") or "").strip()
+                if message and code:
+                    return f"{message} [{code}]"
+                if message:
+                    return message
+                if code:
+                    return code
+            elif isinstance(err, str) and err.strip():
+                return err.strip()
+            for key in ("message", "detail", "code"):
+                value = payload.get(key)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+
+        return (getattr(response, "text", "") or "").strip()[:300] or "no error body"
+
+    @staticmethod
+    def _looks_like_model_error(response) -> bool:
+        """Distinguish 'you asked for a model we don't serve' from auth/quota.
+
+        Deliberately narrow: an invalid credential returns 400 with
+        "Incorrect API key provided", and retrying with a different model after
+        that would only add a pointless second request on top of the real
+        failure.
+        """
+        if getattr(response, "status_code", 0) == 404:
+            return True
+        body = (getattr(response, "text", "") or "").lower()
+        return any(
+            marker in body
+            for marker in (
+                "model not found", "does not exist", "unknown model",
+                "invalid model", "no such model", "model_decommissioned",
+                "decommissioned model", "is not supported",
+            )
+        )
+
+    def _discover_model(self) -> str:
+        """Ask GET /models for an id this credential can actually call."""
+        if self._discovered_model is not None:
+            return self._discovered_model
+        self._discovered_model = ""
+        try:
+            response = requests.get(
+                f"{self.base_url}/models",
+                headers={"Authorization": f"Bearer {self.api_key}"},
+                timeout=20,
+            )
+            if response.status_code != 200:
+                return ""
+            data = response.json()
+            ids = [
+                str(m.get("id"))
+                for m in (data.get("data") or [])
+                if isinstance(m, dict) and m.get("id")
+            ]
+            if self.ai_model in ids:
+                self._discovered_model = self.ai_model
+                return self.ai_model
+            preferred = [
+                mid for mid in ids
+                if any(t in mid.lower() for t in ("grok-4", "grok-3", "gpt-oss", "llama"))
+            ]
+            chosen = (preferred or ids or [""])[0]
+            self._discovered_model = chosen
+            return chosen
+        except Exception as exc:
+            print(f"SanskritNLP: model discovery failed: {exc}")
+            return ""
+
+    def _degrade(self, text: str, reason: str, label: str) -> Dict[str, Any]:
+        """Fall back to rule-based analysis AND carry the reason across.
+
+        `ai_error` is intentionally not `error`: main.py treats a top-level
+        `error` as a rejected request and returns HTTP 400, whereas a provider
+        outage should still return a usable rule-based analysis.
+        """
+        self.last_ai_error = reason
+        print(f"SanskritNLP: AI unavailable ({label}) -> {reason}")
+        result = self.analyze_text(text, mode="Local Fallback", use_ai=False)
+        if isinstance(result, dict):
+            result["ai_verified"] = False
+            result["ai_error"] = reason
+        return result
+
     def analyze_with_grok(self, text: str) -> Dict[str, Any]:
         print(f"SanskritNLP: AI grammar analysis using {self.ai_provider}")
         try:
@@ -1146,13 +1717,27 @@ class SanskritNLP:
                 "response_format": {"type": "json_object"},
                 "temperature": 0.1,
             }
+            url = f"{self.base_url}/chat/completions"
             response = requests.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers, json=payload, timeout=30,
+                url, headers=headers, json=payload, timeout=30,
             )
+
+            # Model-name drift is a different failure from a bad credential, so
+            # it is the only case worth a second attempt: resolve an id this key
+            # is actually served and retry once.
+            if response.status_code != 200 and self._looks_like_model_error(response):
+                discovered = self._discover_model()
+                if discovered and discovered != payload["model"]:
+                    print(
+                        f"SanskritNLP: {payload['model']!r} not served; "
+                        f"retrying with {discovered!r}"
+                    )
+                    payload["model"] = discovered
+                    response = requests.post(url, headers=headers, json=payload, timeout=30)
+
             if response.status_code != 200:
-                print(f"{self.ai_provider} API ERROR: {response.status_code}")
-                return self.analyze_text(text, mode="Local Fallback", use_ai=False)
+                reason = f"HTTP {response.status_code}: {self._provider_error(response)}"
+                return self._degrade(text, reason, self.ai_provider)
 
             result = response.json()
             analysis_text = result['choices'][0]['message']['content']
@@ -1224,8 +1809,10 @@ class SanskritNLP:
             return analysis_json
 
         except Exception as e:
-            print(f"AI Error: {e}")
-            return self.analyze_text(text, mode="AI Fallback", use_ai=False)
+            # Network failure, malformed model output, JSON parse error — all
+            # degrade the same way, but the reason is still carried out so the
+            # caller can show it rather than a bare "rule-based" label.
+            return self._degrade(text, f"{type(e).__name__}: {e}", "exception")
 
     # ==============================================================
     # Translation

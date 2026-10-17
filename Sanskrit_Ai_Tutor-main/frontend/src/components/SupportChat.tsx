@@ -119,8 +119,15 @@ export default function SupportChat({ autoOpen = false, isOpen: propIsOpen, onOp
         }),
       });
 
-      // Add assistant message response
-      setMessages(prev => [...prev, { role: "assistant", content: response.response, timestamp: Date.now() }]);
+      // The server answers an unsupported question with an EMPTY `response`
+      // and a populated `error`, still as HTTP 200 (see SupportChatResponse
+      // in backend/main.py). Reading only `response` rendered a blank chat
+      // bubble with no explanation, so fall back to `error`.
+      const reply =
+        (response.response || "").trim() ||
+        response.error ||
+        "Sorry, I couldn't answer that. Try one of the suggested questions.";
+      setMessages(prev => [...prev, { role: "assistant", content: reply, timestamp: Date.now() }]);
     } catch (err: any) {
       console.error("Support chat error:", err);
       setMessages(prev => [...prev, { role: "assistant", content: "Sorry, I'm having trouble connecting to the AI service. Please try again later.", timestamp: Date.now() }]);

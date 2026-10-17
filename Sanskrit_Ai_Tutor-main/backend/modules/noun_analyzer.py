@@ -1,9 +1,22 @@
 ﻿"""
 Rule-based Sanskrit Noun Declension Analyzer
 Detects gender, case, number from word endings — no dictionary needed
+
+Matching notes
+-------------
+* Every token is tried against the table as written AND against its
+  anusvāra spelling. Sanskrit writes the a-stem accusative/nominative
+  ending both ways — बालकम् and बालकं are the same word — but the table
+  only ever contained the explicit-virāma form, so the far more common
+  anusvāra spelling fell through every layer and came out "unknown".
+* `analyze()` deliberately returns ALL readings rather than one. A single
+  surface ending can belong to several paradigms (ी is an ī-stem
+  nominative singular AND an i-stem nominative dual), so the caller needs
+  the competing readings to tell a decided parse from an ambiguous one.
 """
 
-from typing import Dict, List, Any
+import re
+from typing import Dict, List, Any, Optional
 
 
 # (ending, gender, case, number, pattern_name)
@@ -145,6 +158,32 @@ class NounAnalyzer:
         # Sort by ending length (longest first) so we match most specific endings first
         self.endings = sorted(DECLENSION_ENDINGS, key=lambda x: -len(x[0]))
 
+        # Reverse index: pattern -> {number -> accusative ending}.
+        # Lets a caller turn a parsed stem back into its accusative form
+        # (सिंह + masculine singular -> सिंहम्) without hardcoding a table of
+        # individual words, which is what the destination-accusative
+        # correction used to do.
+        self.accusative_endings: Dict[str, Dict[str, str]] = {}
+        for _ending, _gender, _case, _number, _pattern in DECLENSION_ENDINGS:
+            if _case == "accusative":
+                self.accusative_endings.setdefault(_pattern, {}).setdefault(
+                    _number, _ending
+                )
+
+    @staticmethod
+    def _surface_variants(word: str) -> List[str]:
+        """Spelling variants of `word` that stand for the same ending.
+
+        The anusvāra form (बालकं) and the explicit-virāma form (बालकम्) are
+        the same accusative; matching only one of them made every unseen
+        anusvāra spelling unresolvable. The original spelling is always
+        first so an exact match still wins.
+        """
+        variants = [word]
+        if word.endswith("ं"):
+            variants.append(word[:-1] + "म्")
+        return variants
+
     def analyze(self, word: str) -> List[Dict[str, Any]]:
         """Return ALL possible morphological interpretations."""
         if not word:
@@ -157,28 +196,34 @@ class NounAnalyzer:
         analyses = []
         seen = set()
 
-        for ending, gender, case, number, pattern in self.endings:
-            if not word.endswith(ending):
-                continue
-            stem = word[:-len(ending)]
-            if len(stem) < 2:  # avoid over-stripping
-                continue
+        for surface in self._surface_variants(word):
+            for ending, gender, case, number, pattern in self.endings:
+                if not surface.endswith(ending):
+                    continue
+                stem = surface[:-len(ending)]
+                if len(stem) < 2:  # avoid over-stripping
+                    continue
 
-            key = (stem, gender, case, number, pattern)
-            if key in seen:
-                continue
-            seen.add(key)
+                key = (stem, gender, case, number, pattern)
+                if key in seen:
+                    continue
+                seen.add(key)
 
-            analyses.append({
-                'word': word,
-                'stem': stem,
-                'gender': gender,
-                'case': case,
-                'number': number,
-                'pattern': pattern,
-                'method': 'declension_rule',
-                'confidence': round(0.5 + 0.05 * len(ending), 2),
-            })
+                analysis = {
+                    'word': word,
+                    'stem': stem,
+                    'gender': gender,
+                    'case': case,
+                    'number': number,
+                    'pattern': pattern,
+                    'method': 'declension_rule',
+                    'confidence': round(0.5 + 0.05 * len(ending), 2),
+                }
+                # Record when the match was made on the anusvāra spelling so
+                # the caller can report which surface form was actually parsed.
+                if surface != word:
+                    analysis['matched_surface'] = surface
+                analyses.append(analysis)
 
         if not analyses:
             analyses.append({
@@ -194,6 +239,20 @@ class NounAnalyzer:
             })
 
         return analyses
+
+    def accusative_form(self, stem: str, pattern: str, number: str) -> Optional[str]:
+        """Regenerate the accusative of `stem` for the given paradigm/number.
+
+        Returns None when the paradigm table does not carry that cell
+        (e.g. a-stem accusative dual is not in DECLENSION_ENDINGS), so the
+        caller must handle a missing answer rather than invent one.
+        """
+        if not stem or not pattern or not number:
+            return None
+        ending = self.accusative_endings.get(pattern, {}).get(number)
+        if ending is None:
+            return None
+        return stem + ending
 
     def analyze_best(self, word: str) -> Dict[str, Any]:
         """Return the single most likely analysis."""

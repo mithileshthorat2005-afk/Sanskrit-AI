@@ -4438,6 +4438,342 @@
         "api-added"
       ],
       "created_at": "2026-10-14T17:56:15.958509"
+    },
+    {
+      "id": 278,
+      "sanskrit": "रामः अस्ति।",
+      "devanagari": "रामः अस्ति।",
+      "translation": "Ramah In Comp. For Ramah. is.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:50.492663"
+    },
+    {
+      "id": 279,
+      "sanskrit": "रामः गच्छति।",
+      "devanagari": "रामः गच्छति।",
+      "translation": "Ramah In Comp. For Ramah. goes.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:50.492688"
+    },
+    {
+      "id": 280,
+      "sanskrit": "रामः पठति।",
+      "devanagari": "रामः पठति।",
+      "translation": "Ramah In Comp. For Ramah. reads.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:50.492691"
+    },
+    {
+      "id": 281,
+      "sanskrit": "रामः अस्ति।",
+      "devanagari": "रामः अस्ति।",
+      "translation": "Rama is.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:55.040155"
+    },
+    {
+      "id": 282,
+      "sanskrit": "रामः गच्छति।",
+      "devanagari": "रामः गच्छति।",
+      "translation": "Rama goes.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:55.040161"
+    },
+    {
+      "id": 283,
+      "sanskrit": "रामः पठति।",
+      "devanagari": "रामः पठति।",
+      "translation": "Rama reads.",
+      "words": [
+        "रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:20:55.040163"
+    },
+    {
+      "id": 284,
+      "sanskrit": "रामः-रामः अस्ति।",
+      "devanagari": "रामः-रामः अस्ति।",
+      "translation": "रामः is.",
+      "words": [
+        "रामः-रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:21:02.440343"
+    },
+    {
+      "id": 285,
+      "sanskrit": "रामः-रामः गच्छति।",
+      "devanagari": "रामः-रामः गच्छति।",
+      "translation": "रामः goes.",
+      "words": [
+        "रामः-रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:21:02.440353"
+    },
+    {
+      "id": 286,
+      "sanskrit": "रामः-रामः पठति।",
+      "devanagari": "रामः-रामः पठति।",
+      "translation": "रामः reads.",
+      "words": [
+        "रामः-रामः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-14T23:21:02.440355"
+    },
+    {
+      "id": 287,
+      "sanskrit": "ज्ञायते अस्ति।",
+      "devanagari": "ज्ञायते अस्ति।",
+      "translation": "Know is.",
+      "words": [
+        "ज्ञायते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:24:24.200092"
+    },
+    {
+      "id": 288,
+      "sanskrit": "ज्ञायते गच्छति।",
+      "devanagari": "ज्ञायते गच्छति।",
+      "translation": "Know goes.",
+      "words": [
+        "ज्ञायते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:24:24.200130"
+    },
+    {
+      "id": 289,
+      "sanskrit": "ज्ञायते पठति।",
+      "devanagari": "ज्ञायते पठति।",
+      "translation": "Know reads.",
+      "words": [
+        "ज्ञायते"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:24:24.200138"
+    },
+    {
+      "id": 290,
+      "sanskrit": "वर्तमानः अस्ति।",
+      "devanagari": "वर्तमानः अस्ति।",
+      "translation": "Current is.",
+      "words": [
+        "वर्तमानः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:26:23.021801"
+    },
+    {
+      "id": 291,
+      "sanskrit": "वर्तमानः गच्छति।",
+      "devanagari": "वर्तमानः गच्छति।",
+      "translation": "Current goes.",
+      "words": [
+        "वर्तमानः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:26:23.021913"
+    },
+    {
+      "id": 292,
+      "sanskrit": "वर्तमानः पठति।",
+      "devanagari": "वर्तमानः पठति।",
+      "translation": "Current reads.",
+      "words": [
+        "वर्तमानः"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T19:26:23.021922"
+    },
+    {
+      "id": 293,
+      "sanskrit": "अधुना जीविष्यति अस्ति।",
+      "devanagari": "अधुना जीविष्यति अस्ति।",
+      "translation": "Live In Today is.",
+      "words": [
+        "अधुना जीविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:20:28.193367"
+    },
+    {
+      "id": 294,
+      "sanskrit": "अधुना जीविष्यति गच्छति।",
+      "devanagari": "अधुना जीविष्यति गच्छति।",
+      "translation": "Live In Today goes.",
+      "words": [
+        "अधुना जीविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:20:28.193477"
+    },
+    {
+      "id": 295,
+      "sanskrit": "अधुना जीविष्यति पठति।",
+      "devanagari": "अधुना जीविष्यति पठति।",
+      "translation": "Live In Today reads.",
+      "words": [
+        "अधुना जीविष्यति"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:20:28.193490"
+    },
+    {
+      "id": 296,
+      "sanskrit": "अधुना वसन्ति। अस्ति।",
+      "devanagari": "अधुना वसन्ति। अस्ति।",
+      "translation": "Live In Now is.",
+      "words": [
+        "अधुना वसन्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:21:15.016735"
+    },
+    {
+      "id": 297,
+      "sanskrit": "अधुना वसन्ति। गच्छति।",
+      "devanagari": "अधुना वसन्ति। गच्छति।",
+      "translation": "Live In Now goes.",
+      "words": [
+        "अधुना वसन्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:21:15.018332"
+    },
+    {
+      "id": 298,
+      "sanskrit": "अधुना वसन्ति। पठति।",
+      "devanagari": "अधुना वसन्ति। पठति।",
+      "translation": "Live In Now reads.",
+      "words": [
+        "अधुना वसन्ति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-16T20:21:15.018354"
     }
   ],
   "patterns": [

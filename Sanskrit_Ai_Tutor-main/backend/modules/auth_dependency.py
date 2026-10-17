@@ -53,8 +53,13 @@ async def get_current_user(
         )
     
     # Get user details from authenticator
-    if _authenticator and username in _authenticator.users:
+    if _authenticator and isinstance(_authenticator.users, dict) and username in _authenticator.users:
         user_data = _authenticator.users[username]
+        # A hand-edited `users.json` record that is a string/list/number used to
+        # raise AttributeError here, turning EVERY protected endpoint into a 500.
+        # The token already proved identity, so fall back to defaults instead.
+        if not isinstance(user_data, dict):
+            user_data = {}
         return {
             "username": username,
             "role": user_data.get("role", "student"),
@@ -100,8 +105,10 @@ async def get_optional_user(
         return None
     
     # Same logic as get_current_user but returns None instead of raising
-    if _authenticator and username in _authenticator.users:
+    if _authenticator and isinstance(_authenticator.users, dict) and username in _authenticator.users:
         user_data = _authenticator.users[username]
+        if not isinstance(user_data, dict):
+            user_data = {}
         return {
             "username": username,
             "role": user_data.get("role", "student"),
@@ -130,8 +137,16 @@ def get_current_user_id(user: Dict[str, Any] = Depends(get_current_user)) -> int
         }
         # We need to get the user data from authenticator or use defaults
         from modules.auth_dependency import _authenticator
-        if _authenticator and user["username"] in _authenticator.users:
-            user_data = _authenticator.users[user["username"]]
+        if (
+            _authenticator
+            and isinstance(_authenticator.users, dict)
+            and user["username"] in _authenticator.users
+        ):
+            stored = _authenticator.users[user["username"]]
+            # Non-dict record must not clobber the defaults built above —
+            # `stored.get(...)` would raise AttributeError -> HTTP 500.
+            if isinstance(stored, dict):
+                user_data = stored
         user_id = _learning_db.ensure_user(
             user["username"],
             role=user_data.get("role", "student"),

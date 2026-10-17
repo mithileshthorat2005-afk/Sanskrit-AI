@@ -89,12 +89,17 @@ def process_turn(current_position: int, asked_word: str, user_answer: str) -> Di
 
         # Check win
         if final_pos >= WIN_THRESHOLD:
+            # Pick ONCE: calling pick_random_word() twice here returned the
+            # `sanskrit` from one word and the `hint` from a different one, so
+            # the closing word's transliteration and its hint described two
+            # unrelated words.
+            win_word = pick_random_word()
             return {
                 "message": f"Correct! 🏆 VICTORY! You reached position {final_pos} and won the game!",
                 "position": 1,
                 "event": "win",
                 "correct_answer": correct_answer,
-                "next_word": {"sanskrit": pick_random_word()["sanskrit"], "hint": pick_random_word()["hint"]},
+                "next_word": {"sanskrit": win_word["sanskrit"], "hint": win_word["hint"]},
                 "game_over": True,
             }
 

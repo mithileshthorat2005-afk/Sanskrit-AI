@@ -63,6 +63,58 @@ def password_policy_error(password):
     return None
 
 
+# ── Username policy ──────────────────────────────────────────────────────────
+# `users.json` is a flat JSON object keyed by username, so an unusable key is a
+# real hazard, not a cosmetic one: an empty or whitespace-only name cannot be
+# typed back reliably to log in, a control character (e.g. a newline) corrupts
+# the way the file renders and any log line that echoes it, and an unbounded
+# name inflates every subsequent save. The signup form performs NO client-side
+# username validation, so this is the only place it is enforced.
+USERNAME_MIN_LENGTH = 3
+USERNAME_MAX_LENGTH = 50
+
+# The roles the application actually distinguishes. `role` arrives straight from
+# the request body, so without this allowlist any caller could store an arbitrary
+# value ("superadmin", a 4 KB string, an object) that nothing else expects.
+VALID_ROLES = ("student", "teacher", "admin")
+
+
+def username_policy_error(username):
+    """Return a human-readable reason `username` is unacceptable, else None.
+
+    Validation runs against the raw value rather than a silently stripped copy:
+    accepting "  new  " and storing "new" would create an account the person
+    cannot then log back into with the same keystrokes, so padding is rejected
+    with an explicit message instead.
+    """
+    if not isinstance(username, str) or not username:
+        return "Username cannot be empty."
+    if username != username.strip():
+        return "Username cannot start or end with whitespace."
+    if len(username) < USERNAME_MIN_LENGTH:
+        return (
+            f"Username must be at least {USERNAME_MIN_LENGTH} characters "
+            f"(currently {len(username)})."
+        )
+    if len(username) > USERNAME_MAX_LENGTH:
+        return (
+            f"Username must be at most {USERNAME_MAX_LENGTH} characters "
+            f"(currently {len(username)})."
+        )
+    if any(ch.isspace() for ch in username):
+        return "Username cannot contain spaces or other whitespace inside it."
+    if any(ord(ch) < 32 or ord(ch) == 127 for ch in username):
+        return "Username cannot contain control characters."
+    return None
+
+
+def role_policy_error(role):
+    """Return a human-readable reason `role` is not a supported role, else None."""
+    if not isinstance(role, str) or role not in VALID_ROLES:
+        return f"Role must be one of: {', '.join(VALID_ROLES)}."
+    return None
+
+
 def password_strength(password):
     """Coarse strength label used by the signup UI hint (weak / fair / strong)."""
     if not isinstance(password, str) or not password:
@@ -267,23 +319,37 @@ class Authenticator:
         """Authenticate a user"""
         # Pick up accounts created by another process since we last read the file.
         self.reload_users_if_changed()
-        if username in self.users:
-            stored = self.users[username]['password']
-            if self.verify_password(stored, password):
-                # Auto-upgrade legacy hashes
-                if stored.startswith(LEGACY_PASSWORD_PREFIX):
-                    self.migrate_legacy_password(username, password)
-                
-                token = create_access_token(username)
-                return {
-                    'username': username,
-                    'role': self.users[username].get('role', 'student'),
-                    'level': self.users[username].get('level', 'beginner'),
-                    'completed': self.users[username].get('completed', 0),
-                    'access_token': token,
-                    'token_type': 'bearer'
-                }
-        return None
+        # A corrupt store (JSON that parsed to a list/string) used to make every
+        # login raise AttributeError -> HTTP 500. Treat it as "no such user".
+        if not isinstance(self.users, dict):
+            return None
+
+        record = self.users.get(username)
+        if not isinstance(record, dict):
+            return None
+
+        # `.get` rather than `record['password']`: a hand-edited or partially
+        # migrated record with no password key used to raise KeyError and
+        # surface as HTTP 500 for what is simply a failed login. An empty stored
+        # value fails verification in verify_password(), so this falls through
+        # to None and the endpoint reports 401 like any other bad credential.
+        stored = record.get('password', '')
+        if not self.verify_password(stored, password):
+            return None
+
+        # Auto-upgrade legacy hashes
+        if isinstance(stored, str) and stored.startswith(LEGACY_PASSWORD_PREFIX):
+            self.migrate_legacy_password(username, password)
+
+        token = create_access_token(username)
+        return {
+            'username': username,
+            'role': record.get('role', 'student'),
+            'level': record.get('level', 'beginner'),
+            'completed': record.get('completed', 0),
+            'access_token': token,
+            'token_type': 'bearer'
+        }
 
     def signup(self, username, password, role="student"):
         """Create a new user account
@@ -294,6 +360,20 @@ class Authenticator:
         """
         # See accounts another process created before deciding this name is free.
         self.reload_users_if_changed()
+        if not isinstance(self.users, dict):
+            self.users = {}
+
+        # Username and role arrive straight from the request body with no client
+        # validation, so both are checked here. They raise ValueError, which the
+        # /auth/signup endpoint already maps to HTTP 400 with this exact message.
+        problem = username_policy_error(username)
+        if problem:
+            raise ValueError(problem)
+
+        problem = role_policy_error(role)
+        if problem:
+            raise ValueError(problem)
+
         if username in self.users:
             return None
 
