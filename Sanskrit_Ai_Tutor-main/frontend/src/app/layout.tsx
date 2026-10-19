@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
+import ProficiencyOnboarding from "@/components/ProficiencyOnboarding";
 
 export const metadata: Metadata = {
   title: "SanskritaAI | Divine Language Architecture",
@@ -33,7 +34,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          {children}
+          {/* Renders nothing until the server confirms an authenticated,
+              not-yet-onboarded learner, so it never appears on the login page
+              and never reappears after the one-time answer. */}
+          <ProficiencyOnboarding />
+        </AuthProvider>
       </body>
     </html>
   );

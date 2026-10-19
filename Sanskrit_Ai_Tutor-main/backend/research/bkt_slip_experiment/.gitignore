@@ -1,0 +1,9 @@
+# Generated artifacts - reproducible from config.json + a fixed seed.
+# Kept out of version control so a dataset can never be mistaken for a result
+# and so the repository is not burdened with ~10 MB per generated population.
+datasets/
+results/
+results_quick/
+figures/
+__pycache__/
+*.pyc

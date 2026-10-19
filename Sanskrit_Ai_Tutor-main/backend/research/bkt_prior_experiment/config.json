@@ -1,0 +1,119 @@
+{
+  "experiment_name": "bkt_l0_prior_optimization",
+  "version": 1,
+  "description": "Synthetic-data study of BKT initial mastery priors P(L0) for the Sanskrit AI Tutor. Read-only with respect to production: no production constant, schema, endpoint or UI is modified by this experiment.",
+
+  "seed": 42,
+
+  "population": {
+    "groups": ["beginner", "intermediate", "advanced"],
+    "students_per_group": 1000,
+    "lessons_per_student": 6,
+    "questions_per_lesson": 10,
+    "own_tier_sampling_weight": 3.0,
+    "lesson_sampling": "distinct lessons drawn from the full 25-lesson catalog, own-tier lessons upweighted by own_tier_sampling_weight"
+  },
+
+  "split": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2,
+    "stratified_by_group": true,
+    "unit": "student_id"
+  },
+
+  "candidate_grid": {
+    "start": 0.01,
+    "stop": 0.99,
+    "step": 0.01,
+    "include_production_values": true,
+    "note": "Every production INITIAL_MASTERY value is an exact multiple of 0.01, so the grid already contains them; the flag is asserted at runtime rather than assumed."
+  },
+
+  "metrics": {
+    "primary": "log_loss",
+    "secondary": ["brier", "accuracy", "ece"],
+    "accuracy_threshold": 0.5,
+    "ece_bins": 10,
+    "probability_clip": 1e-15
+  },
+
+  "mastery_threshold": {
+    "value": 0.7,
+    "observed_in": [
+      "backend/main.py get_persisted_dashboard -> mastered_skills (mastery >= 0.7)",
+      "backend/modules/bkt_engine.py get_user_summary -> mastered (>= 0.7)",
+      "backend/modules/bkt_engine.py get_recommendation -> prerequisite gate (>= 0.7)",
+      "frontend/src/app/lessons/page.tsx mastery bar accent (>= 0.7)",
+      "frontend/src/app/dashboard/page.tsx copy: '70% mastery'"
+    ],
+    "note": "A single consistent 0.7 threshold. Two different attempts-conditions apply to it (see REPORT.md section 8)."
+  },
+
+  "bootstrap": {
+    "n_resamples": 500,
+    "test_ci_resamples": 1000,
+    "confidence": 0.95,
+    "rule": "within_1_se_of_min",
+    "seed": 1234,
+    "resample_unit": "student_id"
+  },
+
+  "dgp": {
+    "comment": "HIDDEN DATA-GENERATING PARAMETERS. These are experimental assumptions, NOT measured properties of Sanskrit learners.",
+    "mean_modes": {
+      "production": "mu[group][tier] = production INITIAL_MASTERY[group][tier] exactly (assumes production seeds are unbiased population means)",
+      "group_mean_only": "mu[group][tier] = mean over tiers of INITIAL_MASTERY[group] (removes the tier effect)",
+      "shifted_up": "mu = min(0.95, production + 0.10)",
+      "shifted_down": "mu = max(0.05, production - 0.10)",
+      "group_overlap": "mu[group][tier] = mean over groups of INITIAL_MASTERY[group][tier] (removes the group effect, keeps tiers)"
+    },
+    "distribution": "Beta, method-of-moments from (mu, within_group_sd), clipped to [0.001, 0.999]",
+    "within_group_sd": 0.15,
+    "t": 0.15,
+    "g": 0.25,
+    "s": 0.10,
+    "learning_depends_on_correctness": false,
+    "observation_model": "p(correct) = theta*(1-s) + (1-theta)*g ; y ~ Bernoulli(p) ; theta <- theta + (1-theta)*t after the attempt"
+  },
+
+  "scenarios": [
+    {"id": "primary",           "label": "Primary: DGP aligned with production, production t/g/s", "mean_mode": "production"},
+    {"id": "dgp_no_tier",       "label": "No tier effect in true mastery",                        "mean_mode": "group_mean_only"},
+    {"id": "shifted_up",        "label": "True mastery 0.10 higher than production seeds",        "mean_mode": "shifted_up"},
+    {"id": "shifted_down",      "label": "True mastery 0.10 lower than production seeds",         "mean_mode": "shifted_down"},
+    {"id": "group_overlap",     "label": "Group distributions overlap (no group effect)",         "mean_mode": "group_overlap"},
+    {"id": "wide_spread",       "label": "Wider within-group variation",                          "within_group_sd": 0.30},
+    {"id": "low_learning",      "label": "Lower true learning rate (DGP t=0.05)",                 "dgp_t": 0.05},
+    {"id": "high_learning",     "label": "Higher true learning rate (DGP t=0.35)",                "dgp_t": 0.35},
+    {"id": "low_guess_slip",    "label": "Lower true guessing/slipping (g=0.10, s=0.04)",          "dgp_g": 0.10, "dgp_s": 0.04},
+    {"id": "high_guess_slip",   "label": "Higher true guessing/slipping (g=0.45, s=0.20)",         "dgp_g": 0.45, "dgp_s": 0.20},
+    {"id": "short_sequences",   "label": "Fewer lessons and questions per learner",               "lessons_per_student": 3, "questions_per_lesson": 5},
+    {"id": "seed_7",            "label": "Primary with a different random seed",                  "seed": 7},
+    {"id": "seed_99",           "label": "Primary with a third random seed",                      "seed": 99}
+  ],
+
+  "strategies": {
+    "production": "one production INITIAL_MASTERY value per (group, tier)",
+    "common": "a single prior shared by every group and every tier",
+    "group_specific": "one prior per proficiency group",
+    "group_x_tier": "one prior per (group, tier) - structural match to production, reported as an extra comparison",
+    "oracle_reference": "the hidden data-generating mean; simulation-only reference, unavailable in a real deployment"
+  },
+
+  "practical_checkpoints": [1, 3, 5, 10],
+
+  "paths": {
+    "observations": "data/observations.csv",
+    "ground_truth": "data/ground_truth.csv",
+    "manifest": "data/manifest.json",
+    "results": "results",
+    "figures": "figures",
+    "sensitivity_observations_dir": "data/scenarios"
+  },
+
+  "runtime": {
+    "run_sensitivity": true,
+    "max_students_sensitivity": null
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "experiment": "bkt_l0_prior_optimization",
+  "grid_size": 99,
+  "mastery_threshold": 0.7,
+  "production_config": {
+    "CATALOG_LEVEL_TO_TIER": {
+      "advanced": "advanced",
+      "beginner": "easy",
+      "intermediate": "intermediate"
+    },
+    "DEFAULT_PARAMS": {
+      "g": 0.25,
+      "l0": {
+        "advanced": 0.05,
+        "beginner": 0.25,
+        "intermediate": 0.1
+      },
+      "s": 0.1,
+      "t": 0.15
+    },
+    "INITIAL_MASTERY": {
+      "advanced": {
+        "advanced": 0.3,
+        "easy": 0.8,
+        "intermediate": 0.6
+      },
+      "beginner": {
+        "advanced": 0.01,
+        "easy": 0.2,
+        "intermediate": 0.05
+      },
+      "intermediate": {
+        "advanced": 0.08,
+        "easy": 0.55,
+        "intermediate": 0.3
+      }
+    },
+    "MASTERY_THRESHOLD": 0.7
+  },
+  "scenarios": [
+    {
+      "elapsed_seconds": 8.98,
+      "group_x_tier": {
+        "advanced/advanced": 0.21,
+        "advanced/easy": 0.86,
+        "advanced/intermediate": 0.62,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.09,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.04,
+        "intermediate/easy": 0.59,
+        "intermediate/intermediate": 0.14
+      },
+      "scenario": "primary",
+      "selected_common": 0.26,
+      "selected_group": {
+        "advanced": 0.52,
+        "beginner": 0.05,
+        "intermediate": 0.23
+      }
+    },
+    {
+      "elapsed_seconds": 8.72,
+      "group_x_tier": {
+        "advanced/advanced": 0.6,
+        "advanced/easy": 0.52,
+        "advanced/intermediate": 0.48,
+        "beginner/advanced": 0.03,
+        "beginner/easy": 0.03,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.3,
+        "intermediate/easy": 0.24,
+        "intermediate/intermediate": 0.15
+      },
+      "scenario": "dgp_no_tier",
+      "selected_common": 0.23,
+      "selected_group": {
+        "advanced": 0.54,
+        "beginner": 0.02,
+        "intermediate": 0.19
+      }
+    },
+    {
+      "elapsed_seconds": 7.79,
+      "group_x_tier": {
+        "advanced/advanced": 0.3,
+        "advanced/easy": 0.93,
+        "advanced/intermediate": 0.66,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.18,
+        "beginner/intermediate": 0.03,
+        "intermediate/advanced": 0.07,
+        "intermediate/easy": 0.67,
+        "intermediate/intermediate": 0.26
+      },
+      "scenario": "shifted_up",
+      "selected_common": 0.35,
+      "selected_group": {
+        "advanced": 0.61,
+        "beginner": 0.12,
+        "intermediate": 0.32
+      }
+    },
+    {
+      "elapsed_seconds": 8.79,
+      "group_x_tier": {
+        "advanced/advanced": 0.08,
+        "advanced/easy": 0.78,
+        "advanced/intermediate": 0.49,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.01,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.03,
+        "intermediate/easy": 0.33,
+        "intermediate/intermediate": 0.06
+      },
+      "scenario": "shifted_down",
+      "selected_common": 0.16,
+      "selected_group": {
+        "advanced": 0.41,
+        "beginner": 0.01,
+        "intermediate": 0.11
+      }
+    },
+    {
+      "elapsed_seconds": 6.68,
+      "group_x_tier": {
+        "advanced/advanced": 0.02,
+        "advanced/easy": 0.42,
+        "advanced/intermediate": 0.19,
+        "beginner/advanced": 0.02,
+        "beginner/easy": 0.43,
+        "beginner/intermediate": 0.16,
+        "intermediate/advanced": 0.02,
+        "intermediate/easy": 0.5,
+        "intermediate/intermediate": 0.19
+      },
+      "scenario": "group_overlap",
+      "selected_common": 0.24,
+      "selected_group": {
+        "advanced": 0.18,
+        "beginner": 0.31,
+        "intermediate": 0.24
+      }
+    },
+    {
+      "elapsed_seconds": 9.99,
+      "group_x_tier": {
+        "advanced/advanced": 0.22,
+        "advanced/easy": 0.84,
+        "advanced/intermediate": 0.63,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.15,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.05,
+        "intermediate/easy": 0.51,
+        "intermediate/intermediate": 0.2
+      },
+      "scenario": "wide_spread",
+      "selected_common": 0.29,
+      "selected_group": {
+        "advanced": 0.53,
+        "beginner": 0.09,
+        "intermediate": 0.26
+      }
+    },
+    {
+      "elapsed_seconds": 9.04,
+      "group_x_tier": {
+        "advanced/advanced": 0.08,
+        "advanced/easy": 0.79,
+        "advanced/intermediate": 0.48,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.01,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.01,
+        "intermediate/easy": 0.43,
+        "intermediate/intermediate": 0.03
+      },
+      "scenario": "low_learning",
+      "selected_common": 0.15,
+      "selected_group": {
+        "advanced": 0.4,
+        "beginner": 0.01,
+        "intermediate": 0.1
+      }
+    },
+    {
+      "elapsed_seconds": 8.68,
+      "group_x_tier": {
+        "advanced/advanced": 0.4,
+        "advanced/easy": 0.94,
+        "advanced/intermediate": 0.75,
+        "beginner/advanced": 0.13,
+        "beginner/easy": 0.26,
+        "beginner/intermediate": 0.09,
+        "intermediate/advanced": 0.15,
+        "intermediate/easy": 0.74,
+        "intermediate/intermediate": 0.32
+      },
+      "scenario": "high_learning",
+      "selected_common": 0.43,
+      "selected_group": {
+        "advanced": 0.68,
+        "beginner": 0.21,
+        "intermediate": 0.4
+      }
+    },
+    {
+      "elapsed_seconds": 9.15,
+      "group_x_tier": {
+        "advanced/advanced": 0.14,
+        "advanced/easy": 0.91,
+        "advanced/intermediate": 0.61,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.01,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.01,
+        "intermediate/easy": 0.55,
+        "intermediate/intermediate": 0.08
+      },
+      "scenario": "low_guess_slip",
+      "selected_common": 0.21,
+      "selected_group": {
+        "advanced": 0.5,
+        "beginner": 0.01,
+        "intermediate": 0.16
+      }
+    },
+    {
+      "elapsed_seconds": 8.76,
+      "group_x_tier": {
+        "advanced/advanced": 0.3,
+        "advanced/easy": 0.71,
+        "advanced/intermediate": 0.58,
+        "beginner/advanced": 0.1,
+        "beginner/easy": 0.23,
+        "beginner/intermediate": 0.11,
+        "intermediate/advanced": 0.16,
+        "intermediate/easy": 0.59,
+        "intermediate/intermediate": 0.29
+      },
+      "scenario": "high_guess_slip",
+      "selected_common": 0.34,
+      "selected_group": {
+        "advanced": 0.5,
+        "beginner": 0.19,
+        "intermediate": 0.34
+      }
+    },
+    {
+      "elapsed_seconds": 3.1,
+      "group_x_tier": {
+        "advanced/advanced": 0.13,
+        "advanced/easy": 0.92,
+        "advanced/intermediate": 0.65,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.11,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.02,
+        "intermediate/easy": 0.54,
+        "intermediate/intermediate": 0.14
+      },
+      "scenario": "short_sequences",
+      "selected_common": 0.25,
+      "selected_group": {
+        "advanced": 0.5,
+        "beginner": 0.07,
+        "intermediate": 0.2
+      }
+    },
+    {
+      "elapsed_seconds": 8.59,
+      "group_x_tier": {
+        "advanced/advanced": 0.18,
+        "advanced/easy": 0.89,
+        "advanced/intermediate": 0.59,
+        "beginner/advanced": 0.02,
+        "beginner/easy": 0.1,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.01,
+        "intermediate/easy": 0.51,
+        "intermediate/intermediate": 0.16
+      },
+      "scenario": "seed_7",
+      "selected_common": 0.27,
+      "selected_group": {
+        "advanced": 0.53,
+        "beginner": 0.07,
+        "intermediate": 0.22
+      }
+    },
+    {
+      "elapsed_seconds": 8.11,
+      "group_x_tier": {
+        "advanced/advanced": 0.17,
+        "advanced/easy": 0.89,
+        "advanced/intermediate": 0.55,
+        "beginner/advanced": 0.01,
+        "beginner/easy": 0.07,
+        "beginner/intermediate": 0.01,
+        "intermediate/advanced": 0.02,
+        "intermediate/easy": 0.54,
+        "intermediate/intermediate": 0.15
+      },
+      "scenario": "seed_99",
+      "selected_common": 0.24,
+      "selected_group": {
+        "advanced": 0.49,
+        "beginner": 0.03,
+        "intermediate": 0.22
+      }
+    }
+  ]
+}

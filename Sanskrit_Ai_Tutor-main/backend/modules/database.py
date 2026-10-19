@@ -260,6 +260,18 @@ class MockDB:
         engine = self.get_bkt_engine()
         return engine.record_attempt(username, skill_id, is_correct, difficulty)
 
+    def seed_bkt_mastery(self, username: str, mastery_by_skill: Dict[str, float]) -> int:
+        """Seed starting mastery in the legacy JSON store (insert-if-absent).
+
+        The SQLite `skill_mastery` table and this JSON file are the two halves
+        of the existing persistence design: SQLite backs /dashboard, this file
+        backs /bkt/mastery. Every BKT update writes both, so onboarding has to
+        seed both too or the two read paths would disagree from the first
+        attempt onwards.
+        """
+        engine = self.get_bkt_engine()
+        return engine.seed_mastery(username, mastery_by_skill)
+
     def get_bkt_mastery_for_skills(self, username: str, skill_ids: List[int]) -> Dict[int, float]:
         """Get mastery for multiple skills."""
         engine = self.get_bkt_engine()

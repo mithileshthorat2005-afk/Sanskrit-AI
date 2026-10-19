@@ -1,0 +1,7 @@
+# Generated experiment artifacts. Regenerate with the commands in README.md.
+# The synthetic dataset is ~10 MB and fully reproducible from config.json + seed,
+# so it is excluded rather than committed.
+data/*.csv
+data/scenarios/
+__pycache__/
+*.pyc

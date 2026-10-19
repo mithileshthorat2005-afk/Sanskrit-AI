@@ -1,0 +1,188 @@
+{
+  "experiment_name": "bkt_slip_probability",
+  "version": 1,
+  "description": "Rigorous synthetic-data study of the BKT slip probability P(S) for the Sanskrit AI Tutor. Pure research: no production constant, schema, endpoint, learner record or UI is modified by this experiment.",
+
+  "seed": 42,
+
+  "population": {
+    "groups": ["beginner", "intermediate", "advanced"],
+    "students_per_group": 1000,
+    "lessons_per_student": 6,
+    "questions_per_lesson": 10,
+    "own_tier_sampling_weight": 3.0,
+    "lesson_sampling": "distinct lessons drawn from the real 25-lesson catalog; the learner's own tier is upweighted"
+  },
+
+  "split": {
+    "train": 0.6,
+    "validation": 0.2,
+    "test": 0.2,
+    "stratified_by_group": true,
+    "unit": "student_id",
+    "note": "Split by STUDENT identity so a learner's response history can never straddle partitions."
+  },
+
+  "slip_grid": {
+    "start": 0.01,
+    "stop": 0.50,
+    "step": 0.01,
+    "include_production": true,
+    "note": "0.01..0.50 inclusive. P(S)=0.10 is the production value and lies on this grid; it is asserted at runtime rather than assumed."
+  },
+
+  "metrics": {
+    "primary": "log_loss",
+    "secondary": ["brier", "ece"],
+    "accuracy_threshold": 0.5,
+    "ece_bins": 10,
+    "probability_clip": 1e-15,
+    "note": "Prediction metrics measure answer-prediction quality, NOT whether the true mastery state was identified. Mastery metrics are reported separately (see mastery_estimation)."
+  },
+
+  "mastery_estimation": {
+    "threshold": 0.7,
+    "threshold_source": [
+      "backend/main.py get_persisted_dashboard -> mastered_skills (mastery >= 0.7)",
+      "backend/modules/bkt_engine.py get_user_summary -> mastered (>= 0.7)",
+      "backend/modules/bkt_engine.py get_recommendation -> prerequisite gate (>= 0.7)"
+    ],
+    "denominators": ["all_pairs", "flagged_only", "truth_mastered_only"],
+    "note": "False-mastery / false-unmastered rates are reported with explicit denominators. Hidden mastery labels exist ONLY because the data is synthetic; they are not measurable on real students."
+  },
+
+  "bootstrap": {
+    "n_resamples": 400,
+    "test_ci_resamples": 1000,
+    "confidence": 0.95,
+    "rule": "within_1_se_of_min",
+    "seed": 1234,
+    "resample_unit": "student_id",
+    "note": "Resampling whole students preserves within-sequence answer correlation."
+  },
+
+  "seeds": [42, 7, 99],
+
+  "dgp": {
+    "comment": "HIDDEN data-generating parameters - experimental assumptions, NOT measured properties of Sanskrit learners.",
+    "t": 0.15,
+    "g": 0.25,
+    "s": 0.10,
+    "within_group_sd": 0.15,
+    "logit_shift": 0.0,
+    "transition_mode": "deterministic",
+    "transition_mode_note": "'deterministic' grows hidden mastery regardless of the answer, so it is structurally misspecified for BKT (slip absorbs the mismatch). 'bkt_binary' is the canonical BKT HMM, under which the fitted model is exactly correct.",
+    "mean_mode": "production",
+    "learning_depends_on_correctness": false,
+    "observation_model": "deterministic: p(correct)=theta*(1-s)+(1-theta)*g ; theta<-theta+(1-theta)*t | bkt_binary: Z~Bernoulli(l0) ; y|Z : P(correct|Z=1)=1-s, P(correct|Z=0)=g ; Z<-Z OR Bernoulli(t)",
+    "note": "The production parameterisation (t=0.15, g=0.25, s=0.10, l0=INITIAL_MASTERY) is the default DGP because it is the natural null hypothesis for 'is the production slip plausible?'."
+  },
+
+  "hypotheses": {
+    "H1": "Prediction and mastery-estimation metrics change measurably as P(S) changes.",
+    "H2": "The configured production P(S) may or may not be near-optimal under the synthetic DGP.",
+    "H3": "When data are generated with a known slip and other parameters are correctly specified, fitting recovers that slip or a justified near-optimal interval.",
+    "H4": "Incorrect assumptions about P(G), P(L0) or P(T) shift the estimated slip value.",
+    "H5": "Multiple slip values may be statistically indistinguishable - the data may not identify a unique optimum.",
+    "note": "Pre-registered before results were inspected. Findings are reported even when they contradict these expectations."
+  },
+
+  "experiment_a": {
+    "label": "One-parameter slip sweep (production DGP)",
+    "dgp_s": 0.10,
+    "dgp_g": 0.25,
+    "dgp_t": 0.15,
+    "held_fixed": ["g", "t", "l0"],
+    "fitted": ["s"],
+    "seeds": [42, 7, 99],
+    "variants": [
+      {"id": "bkt_hmm_correct", "within_group_sd": 0.01, "transition_mode": "bkt_binary",
+       "interpretation": "THE FAIR TEST: the canonical BKT HMM with a near-point prior, so the fitted model is exactly the generating model. Slip should be recoverable here if it is recoverable anywhere."},
+      {"id": "deterministic_point", "within_group_sd": 0.01, "transition_mode": "deterministic",
+       "interpretation": "Point prior but deterministic (answer-independent) learning. Isolates the structural misspecification of the deterministic transition on its own."},
+      {"id": "deterministic_spread", "within_group_sd": 0.15, "transition_mode": "deterministic",
+       "interpretation": "The sibling prior experiment's DGP: Beta-distributed initial mastery AND answer-independent learning. This is the realistic-but-structurally-misspecified case."}
+    ]
+  },
+
+  "experiment_b": {
+    "label": "Recovery of known generating slip values",
+    "generating_slips": [0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.40],
+    "dgp_g": 0.25,
+    "dgp_t": 0.15,
+    "correctly_specified": true,
+    "seeds": [42, 7, 99],
+    "variants": [
+      {"id": "bkt_hmm_correct", "within_group_sd": 0.01, "transition_mode": "bkt_binary",
+       "interpretation": "All other parameters genuinely correct and the model exactly specified - the ONLY condition under which H3 (recovery) is a fair test."},
+      {"id": "deterministic_point", "within_group_sd": 0.01, "transition_mode": "deterministic",
+       "interpretation": "Correct point prior but answer-independent learning, exposing how much slip bias the transition mismatch alone creates."},
+      {"id": "deterministic_spread", "within_group_sd": 0.15, "transition_mode": "deterministic",
+       "interpretation": "Adds Beta-distributed initial mastery on top, showing how much extra bias unmodelled heterogeneity contributes."}
+    ],
+    "note": "Includes low, medium, high and boundary-ish values to expose identifiability limits."
+  },
+
+  "experiment_c": {
+    "label": "Parameter-confounding analysis",
+    "seeds": [42],
+    "transition_mode": "bkt_binary",
+    "within_group_sd": 0.01,
+    "sd_note": "Experiment C uses the canonical BKT HMM with a near-deterministic spread so that confounding between g, l0 and s is measured cleanly, without structural misspecification or heterogeneity also pushing the slip estimate.",
+    "partner_grids": {
+      "g": [0.10, 0.175, 0.25, 0.325, 0.40],
+      "logit_shift": [-1.0, -0.5, 0.0, 0.5, 1.0],
+      "t": [0.05, 0.10, 0.15, 0.20, 0.30]
+    },
+    "conditions": [
+      {"id": "correct_specified",   "label": "1. All parameters correct except slip",
+       "fit_g": null, "fit_logit_shift": null, "fit_t": null, "assume_g": 0.25, "assume_t": 0.15, "assume_logit_shift": 0.0},
+      {"id": "guess_misspecified",  "label": "2. Guess probability misspecified (assumed g=0.40, true 0.25)",
+       "fit_g": null, "fit_logit_shift": null, "fit_t": null, "assume_g": 0.40, "assume_t": 0.15, "assume_logit_shift": 0.0},
+      {"id": "l0_misspecified",     "label": "3. Initial mastery misspecified (pessimistic prior)",
+       "fit_g": null, "fit_logit_shift": null, "fit_t": null, "assume_g": 0.25, "assume_t": 0.15, "assume_logit_shift": -1.0},
+      {"id": "t_misspecified",      "label": "4. Learning probability misspecified (assumed t=0.05, true 0.15)",
+       "fit_g": null, "fit_logit_shift": null, "fit_t": null, "assume_g": 0.25, "assume_t": 0.05, "assume_logit_shift": 0.0},
+      {"id": "g_and_s_joint",       "label": "5. Guess and slip jointly fitted",
+       "fit_g": true, "fit_logit_shift": null, "fit_t": null, "assume_g": null, "assume_t": 0.15, "assume_logit_shift": 0.0},
+      {"id": "l0_and_s_joint",      "label": "6. Initial mastery and slip jointly fitted",
+       "fit_g": null, "fit_logit_shift": true, "fit_t": null, "assume_g": 0.25, "assume_t": 0.15, "assume_logit_shift": null},
+      {"id": "g_l0_s_joint_t_fixed","label": "7. Guess, initial mastery and slip jointly fitted (t fixed)",
+       "fit_g": true, "fit_logit_shift": true, "fit_t": null, "assume_g": null, "assume_t": 0.15, "assume_logit_shift": null},
+      {"id": "combined_misspec",    "label": "8. Combined misspecification (g, t and l0 all wrong)",
+       "fit_g": null, "fit_logit_shift": null, "fit_t": null, "assume_g": 0.40, "assume_t": 0.05, "assume_logit_shift": -1.0}
+    ],
+    "dgp": {"s": 0.10, "g": 0.25, "t": 0.15, "logit_shift": 0.0}
+  },
+
+  "experiment_d": {
+    "label": "Heterogeneous learners and skills",
+    "seeds": [42, 7, 99],
+    "transition_mode": "bkt_binary",
+    "transition_note": "The canonical BKT HMM is used so that any fitted-slip shift reflects genuine heterogeneity across cells, not the deterministic-transition bias isolated in Experiment B.",
+    "conditions": [
+      {"id": "slip_by_tier", "label": "Slip varies by difficulty tier (easy 0.05 / intermediate 0.10 / advanced 0.15)",
+       "slip_mode": "by_tier", "slip_values": {"easy": 0.05, "intermediate": 0.10, "advanced": 0.15}},
+      {"id": "slip_by_group", "label": "Slip varies by learner proficiency (beg 0.15 / int 0.10 / adv 0.05)",
+       "slip_mode": "by_group", "slip_values": {"beginner": 0.15, "intermediate": 0.10, "advanced": 0.05}},
+      {"id": "wide_spread", "label": "Wider within-group mastery spread (sd 0.30)",
+       "slip_mode": "constant", "slip_values": {"constant": 0.10}, "within_group_sd": 0.30},
+      {"id": "narrow_spread", "label": "Narrow within-group mastery spread (sd 0.05)",
+       "slip_mode": "constant", "slip_values": {"constant": 0.10}, "within_group_sd": 0.05}
+    ],
+    "note": "The single fitted slip is judged against per-tier / per-group truth. Synthetic group differences are NOT evidence that real learners behave this way."
+  },
+
+  "practical_checkpoints": [1, 3, 5, 10],
+
+  "paths": {
+    "datasets": "datasets",
+    "results": "results",
+    "figures": "figures"
+  },
+
+  "runtime": {
+    "quick_students_per_group": 150,
+    "quick_seeds": [42]
+  }
+}

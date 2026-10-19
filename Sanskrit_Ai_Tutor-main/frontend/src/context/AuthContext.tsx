@@ -15,6 +15,8 @@ interface AuthContextType {
   token: string | null;
   login: (username: string, password: string) => Promise<void>;
   signup: (username: string, password: string, role: string) => Promise<void>;
+  /** Re-read /auth/me and replace the cached profile (e.g. after onboarding). */
+  refreshUser: () => Promise<void>;
   logout: () => void;
   loading: boolean;
 }
@@ -118,6 +120,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await login(username, password);
   };
 
+  const refreshUser = async () => {
+    // Re-read the profile from the server instead of trusting whatever was
+    // cached at login. Used after onboarding so the UI never keeps showing the
+    // profile from before the learner answered.
+    const me = await api.auth.me();
+    const fresh: User = {
+      username: me.username,
+      role: me.role,
+      level: me.level,
+      completed: me.completed,
+    };
+    setUser(fresh);
+    localStorage.setItem("user", JSON.stringify(fresh));
+  };
+
   const logout = async () => {
     try {
       await api.auth.logout();
@@ -132,7 +149,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, signup, logout, loading }}>
+    <AuthContext.Provider value={{ user, token, login, signup, refreshUser, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

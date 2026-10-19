@@ -6,7 +6,7 @@ Tracks student mastery per skill/lesson using a Hidden Markov Model.
 import math
 import json
 import os
-from typing import Dict, Optional, List, Tuple
+from typing import Any, Dict, Optional, List, Tuple
 
 # ─── Default BKT Parameters ────────────────────────────────
 DEFAULT_PARAMS = {
@@ -23,6 +23,78 @@ DEFAULT_PARAMS = {
     # p(S) - Probability of slipping (knowing but answering wrong)
     "s": 0.10,
 }
+
+# ─── Proficiency onboarding seed values ───────────────────
+# PROVISIONAL HEURISTIC INITIALIZATIONS, not scientifically validated mastery
+# probabilities. They only decide where a brand-new learner starts; every later
+# value comes from the ordinary BKT update below, whose t/g/s parameters and
+# formula are unchanged by this table.
+#
+# The project stores ONE mastery state per skill (see the `skill_mastery` table
+# keyed by (user_id, skill_id), and `skill_id` is a lesson id). It does not — and
+# architecturally cannot without changing that model — store one state per
+# difficulty. The selected proficiency therefore has to be projected onto the
+# skills that exist, and the only difficulty signal a skill carries is its
+# lesson's tier. Every skill in that tier is seeded with the matching value.
+#
+# Keys are the three internal proficiency values; the middle keys are the three
+# difficulty tiers produced by `difficulty_band()`.
+INITIAL_MASTERY = {
+    "beginner": {
+        "easy": 0.20,
+        "intermediate": 0.05,
+        "advanced": 0.01,
+    },
+    "intermediate": {
+        "easy": 0.55,
+        "intermediate": 0.30,
+        "advanced": 0.08,
+    },
+    "advanced": {
+        "easy": 0.80,
+        "intermediate": 0.60,
+        "advanced": 0.30,
+    },
+}
+
+# The lesson catalog labels its three tiers `beginner` / `intermediate` /
+# `advanced` (lessons.json `level`), while INITIAL_MASTERY keys its columns
+# `easy` / `intermediate` / `advanced`. Same three bands, two vocabularies —
+# and the third name differs precisely because "beginner" already means a
+# *learner* level elsewhere in the app (users.level, the l0 table). This map is
+# the explicit bridge, so choosing a lesson's starting value never has to guess
+# which vocabulary it is looking at.
+CATALOG_LEVEL_TO_TIER = {
+    "beginner": "easy",
+    "intermediate": "intermediate",
+    "advanced": "advanced",
+}
+
+# Difficulty (1-10) -> one of the three tiers used by INITIAL_MASTERY.
+# This is the SAME cut-off (<=4, <=7, else) get_skill_params has always applied
+# when it picks the starting l0 for a skill, so a seeded value and the first
+# BKT parameter set always describe the same tier. It is only the *fallback*
+# for a lesson that carries no declared `level`; see CATALOG_LEVEL_TO_TIER.
+DIFFICULTY_TIERS = ("easy", "intermediate", "advanced")
+
+
+def difficulty_band(difficulty: int) -> str:
+    """Map a 1-10 lesson difficulty to 'easy' | 'intermediate' | 'advanced'."""
+    try:
+        value = int(difficulty)
+    except (TypeError, ValueError):
+        value = 3
+    if value <= 4:
+        return "easy"
+    if value <= 7:
+        return "intermediate"
+    return "advanced"
+
+
+def clamp_probability(value: Any) -> float:
+    """Force a mastery probability into the valid [0.0, 1.0] range."""
+    return max(0.0, min(1.0, float(value)))
+
 
 class BKTEngine:
     def __init__(self, data_file: str = "data/bkt_progress.json"):
@@ -156,8 +228,15 @@ class BKTEngine:
         skills = user_data.get("skills", {})
         skill_key = str(skill_id)
 
-        # Get current data or initialize
-        if skill_key not in skills:
+        # Get current data or initialize. `fresh` distinguishes "no record at
+        # all" from "a record that carries a starting value but has no graded
+        # attempt yet". The second case now happens: proficiency onboarding
+        # seeds mastery before the learner answers anything, and that value has
+        # to survive instead of being replaced by l0 on the first answer.
+        # (Previously `attempts == 0` stood in for "no record", so any seeded
+        # value — including one imported from the legacy JSON — was discarded.)
+        fresh = skill_key not in skills
+        if fresh:
             skills[skill_key] = {
                 "mastery": 0.0,
                 "attempts": 0,
@@ -167,8 +246,8 @@ class BKTEngine:
         current = skills[skill_key]
         current_mastery = current["mastery"]
 
-        # If this is the first attempt, initialize mastery with l0
-        if current["attempts"] == 0:
+        # A genuinely unseen skill starts at the difficulty-derived l0
+        if fresh:
             params = self.get_skill_params(skill_id, difficulty)
             current_mastery = params["l0"]
             current["mastery"] = current_mastery
@@ -197,6 +276,43 @@ class BKTEngine:
             "attempts": current["attempts"],
             "correct": current["correct"],
         }
+
+    def seed_mastery(self, username: str, mastery_by_skill: Dict[str, float]) -> int:
+        """Seed starting mastery for skills the learner has no record for yet.
+
+        Returns the number of skills actually seeded.
+
+        INSERT-if-absent only: a skill that already has a record keeps its
+        stored mastery, attempt count and correctness count untouched, so
+        repeating the call (a retried request, a double click, a page reload)
+        can neither overwrite saved progress nor seed the same skill twice.
+        """
+        if not isinstance(mastery_by_skill, dict) or not mastery_by_skill:
+            return 0
+
+        data = self._load()
+        user_data = data.get(username, {})
+        skills = user_data.get("skills", {})
+        if not isinstance(skills, dict):
+            skills = {}
+
+        seeded = 0
+        for skill_key, mastery in mastery_by_skill.items():
+            key = str(skill_key)
+            if key in skills:
+                continue
+            skills[key] = {
+                "mastery": clamp_probability(mastery),
+                "attempts": 0,
+                "correct": 0,
+            }
+            seeded += 1
+
+        if seeded:
+            user_data["skills"] = skills
+            data[username] = user_data
+            self._save(data)
+        return seeded
 
     def get_mastery_for_skills(self, username: str, skill_ids: List[int]) -> Dict[int, float]:
         """Get mastery probabilities for multiple skills."""

@@ -4774,6 +4774,54 @@
         "api-added"
       ],
       "created_at": "2026-10-16T20:21:15.018354"
+    },
+    {
+      "id": 299,
+      "sanskrit": "चैतन्यः मनकपुरे वसति। अस्ति।",
+      "devanagari": "चैतन्यः मनकपुरे वसति। अस्ति।",
+      "translation": "Chaitanya Lives In Mankapur is.",
+      "words": [
+        "चैतन्यः मनकपुरे वसति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-19T11:19:14.306491"
+    },
+    {
+      "id": 300,
+      "sanskrit": "चैतन्यः मनकपुरे वसति। गच्छति।",
+      "devanagari": "चैतन्यः मनकपुरे वसति। गच्छति।",
+      "translation": "Chaitanya Lives In Mankapur goes.",
+      "words": [
+        "चैतन्यः मनकपुरे वसति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-19T11:19:14.306543"
+    },
+    {
+      "id": 301,
+      "sanskrit": "चैतन्यः मनकपुरे वसति। पठति।",
+      "devanagari": "चैतन्यः मनकपुरे वसति। पठति।",
+      "translation": "Chaitanya Lives In Mankapur reads.",
+      "words": [
+        "चैतन्यः मनकपुरे वसति।"
+      ],
+      "pattern": "Subject Verb",
+      "difficulty": "beginner",
+      "tags": [
+        "auto-generated",
+        "api-added"
+      ],
+      "created_at": "2026-10-19T11:19:14.306551"
     }
   ],
   "patterns": [

@@ -72,6 +72,11 @@
         "mastery": 0.17142149228373213,
         "attempts": 2,
         "correct": 0
+      },
+      "12": {
+        "mastery": 0.1624087591240876,
+        "attempts": 1,
+        "correct": 0
       }
     }
   },
@@ -109,6 +114,149 @@
         "mastery": 0.5338709677419355,
         "attempts": 2,
         "correct": 1
+      }
+    }
+  },
+  "user1": {
+    "skills": {
+      "1": {
+        "mastery": 0.17363763581314795,
+        "attempts": 14,
+        "correct": 6
+      },
+      "19": {
+        "mastery": 0.1624087591240876,
+        "attempts": 1,
+        "correct": 0
+      }
+    }
+  },
+  "use": {
+    "skills": {
+      "1": {
+        "mastery": 0.8398387195401146,
+        "attempts": 7,
+        "correct": 4
+      },
+      "2": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "3": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "4": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "5": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "6": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "7": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "8": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "9": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "10": {
+        "mastery": 0.8,
+        "attempts": 0,
+        "correct": 0
+      },
+      "11": {
+        "mastery": 0.9388968639935876,
+        "attempts": 10,
+        "correct": 6
+      },
+      "12": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "13": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "14": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "15": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "16": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "17": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "18": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "19": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "20": {
+        "mastery": 0.6,
+        "attempts": 0,
+        "correct": 0
+      },
+      "21": {
+        "mastery": 0.3,
+        "attempts": 0,
+        "correct": 0
+      },
+      "22": {
+        "mastery": 0.3,
+        "attempts": 0,
+        "correct": 0
+      },
+      "23": {
+        "mastery": 0.3,
+        "attempts": 0,
+        "correct": 0
+      },
+      "24": {
+        "mastery": 0.3,
+        "attempts": 0,
+        "correct": 0
+      },
+      "25": {
+        "mastery": 0.3,
+        "attempts": 0,
+        "correct": 0
       }
     }
   }

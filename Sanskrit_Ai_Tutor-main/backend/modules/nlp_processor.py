@@ -1323,6 +1323,20 @@ class SanskritNLP:
         issues: List[str] = []
         corrections: List[Dict[str, Any]] = []
 
+        # 0. Stray mid-sentence comma. Sanskrit prose is punctuated with the
+        # danda (।), not commas, and the rest of the pipeline ignored a comma
+        # entirely — so inserting one mid-sentence still scored as "correct".
+        # Flag any comma (Devanagari , or Latin ,) that is not immediately
+        # followed by the closing danda/pipe/period.
+        for m in re.finditer(r'[,,]', text):
+            if not re.match(r'\s*[।|.]', text[m.end():]):
+                issues.append(
+                    "Unnecessary comma mid-sentence — remove it "
+                    "(Sanskrit uses the danda । to punctuate)."
+                )
+                corrections.append({'type': 'remove_comma', 'old': m.group()})
+                break
+
         # 1. Punctuation
         if not text.strip().endswith(('।', '|', '.')):
             issues.append("Sentence must end with a Purna Virama (।)")
@@ -1465,6 +1479,15 @@ class SanskritNLP:
                                                          flagged_destination)
 
         # 3. Punctuation
+        # 3b. Strip stray mid-sentence commas flagged above.
+        if any(c.get('type') == 'remove_comma' for c in corrections):
+            corrected = re.sub(
+                r'\s*,(?=\s*[^\s।|.])|,(?=[^\s।|.\d])',
+                '',
+                corrected,
+            )
+            corrected = re.sub(r'\s*,\s*$', '', corrected)
+            corrected = re.sub(r'\s{2,}', ' ', corrected)
         corrected = corrected.strip()
         if corrected.endswith('.'):
             corrected = corrected[:-1] + "।"
@@ -1480,7 +1503,7 @@ class SanskritNLP:
     # Main entry point
     # ==============================================================
     def analyze_text(self, text: str, mode: str = "Basic",
-                     use_ai: bool = True) -> Dict[str, Any]:
+                     use_ai: bool = False) -> Dict[str, Any]:
 
         # Explicit AI mode → straight to AI
         if use_ai:

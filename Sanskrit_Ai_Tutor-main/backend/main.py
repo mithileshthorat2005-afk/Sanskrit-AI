@@ -28,6 +28,12 @@ from modules.snake_ladder import start_new_game, process_turn, MIN_POSITION, WIN
 from modules.odd_one_out import get_random_question, check_answer
 from modules.skill_mapper import SkillMapper
 from modules.sqlite_repository import SQLiteRepository
+from modules.bkt_engine import (
+    INITIAL_MASTERY,
+    CATALOG_LEVEL_TO_TIER,
+    difficulty_band,
+    clamp_probability,
+)
 from modules.auth_dependency import init_auth_dependencies, get_current_user, get_current_user_id, get_optional_user
 from modules.translator import SanskritTranslator
 
@@ -117,7 +123,7 @@ from modules.auth_dependency import init_auth_dependencies
 init_auth_dependencies(auth, learning_db)
 
 
-def _ensure_learning_user(username: str) -> int:
+def _ensure_learning_user(username: str, onboarding_completed: int = 1) -> int:
     """Create a learning-only profile; authentication data stays in users.json."""
     profile = getattr(auth, "users", {}).get(username, {})
     if not isinstance(profile, dict):
@@ -127,6 +133,7 @@ def _ensure_learning_user(username: str) -> int:
         role=str(profile.get("role", "student")),
         level=str(profile.get("level", "beginner")),
         created_at=profile.get("created_at"),
+        onboarding_completed=onboarding_completed,
     )
 
 
@@ -222,6 +229,11 @@ def signup(req: SignupRequest):
         raise HTTPException(status_code=400, detail=str(exc))
     if not user:
         raise HTTPException(status_code=400, detail="Username already exists")
+    # A genuinely new account is the only one left with onboarding outstanding.
+    # Every other caller of _ensure_learning_user takes the default
+    # "already onboarded", which is what confines the proficiency popup to
+    # signups instead of appearing for existing learners.
+    _ensure_learning_user(req.username, onboarding_completed=0)
     return user
 
 @app.post("/auth/logout")
@@ -968,6 +980,116 @@ def get_bkt_mastery(user: Dict = Depends(get_current_user)):
         "mastery": {str(k): v for k, v in mastery_map.items()},
         "attempts": {str(k): v for k, v in attempts_map.items()},
         "total_lessons": len(lessons),
+    }
+
+
+# ─── Proficiency Onboarding ─────────────────────────────────
+
+class ProficiencyRequest(BaseModel):
+    proficiency: str
+
+
+def _initial_mastery_plan(proficiency: str) -> Dict[str, float]:
+    """Project the chosen proficiency onto every skill in the lesson catalog.
+
+    MODELING NOTE. Mastery in this project is stored per SKILL — the
+    `skill_mastery` table is keyed by (user_id, skill_id) and skill_id is a
+    lesson id, so there is exactly one mastery state per lesson for each
+    learner. It is not, and without changing that model cannot be, one state per
+    difficulty. The three proficiency values therefore cannot be written as
+    three rows; they have to be projected onto the skills that exist. Each
+    lesson's difficulty tier picks which of the three values it starts from, so
+    a learner who says "Intermediate" begins at 0.55 on easy-tier skills, 0.30 on
+    intermediate-tier ones and 0.08 on advanced-tier ones.
+    """
+    tier_values = INITIAL_MASTERY[proficiency]
+    plan: Dict[str, float] = {}
+    for lesson in learning_engine.lessons:
+        lesson_id = lesson.get("id")
+        if lesson_id is None:
+            continue
+        # The catalog's own `level` is preferred and difficulty is only used to
+        # derive one, mirroring the existing convention in
+        # SQLiteRepository.get_next_lesson_recommendation. All 25 catalog
+        # lessons carry `level`, so the fallback is a safety net only. The
+        # explicit CATALOG_LEVEL_TO_TIER map is what translates the catalog's
+        # `beginner` label into the `easy` column of INITIAL_MASTERY.
+        declared = str(lesson.get("level") or "").strip().lower()
+        tier = CATALOG_LEVEL_TO_TIER.get(declared) or difficulty_band(
+            lesson.get("difficulty", 3)
+        )
+        plan[str(lesson_id)] = clamp_probability(tier_values[tier])
+    return plan
+
+
+@app.get("/proficiency")
+def get_proficiency(user: Dict = Depends(get_current_user)):
+    """Report whether the signed-in learner still owes a proficiency answer.
+
+    The answer is read from SQLite on every call, so a refresh, a new tab or a
+    fresh login can never re-trigger onboarding for someone who has answered.
+    """
+    user_id = _ensure_learning_user(user["username"])
+    return learning_db.get_onboarding_state(user_id)
+
+
+@app.post("/proficiency")
+def set_proficiency(req: ProficiencyRequest, user: Dict = Depends(get_current_user)):
+    """Store the learner's proficiency and seed their starting mastery.
+
+    The learner is taken from the verified token, never from the request body,
+    so one account cannot initialise or modify another's mastery. A repeated
+    call is a no-op that reports `already_completed` and never re-seeds, so a
+    double click, a retry after a timeout or a re-login cannot reset mastery.
+
+    The completion state is read FIRST so an account that has already answered
+    is returned without a single write. That matters because the two halves of
+    the persistence design are not one store: writing the legacy JSON before
+    consulting SQLite would let an existing learner's legacy store be seeded
+    with proficiency values they never chose.
+
+    The legacy JSON store is then seeded and the SQLite marker written second.
+    The JSON seed is insert-if-absent, so if the second step fails nothing is
+    marked complete and a retry converges; the reverse order would leave the
+    account onboarded with one of the two stores unseeded and no retry path.
+    """
+    value = str(req.proficiency or "").strip().lower()
+    if value not in INITIAL_MASTERY:
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "proficiency must be one of: "
+                f"{', '.join(learning_db.VALID_PROFICIENCY)}"
+            ),
+        )
+
+    username = user["username"]
+    user_id = _ensure_learning_user(username)
+
+    if learning_db.get_onboarding_state(user_id)["onboarding_completed"]:
+        return {
+            "completed": False,
+            "already_completed": True,
+            "seeded_skills": [],
+            "proficiency": value,
+            "skills_seeded": 0,
+            "initial_mastery": None,
+        }
+
+    plan = _initial_mastery_plan(value)
+    try:
+        db.seed_bkt_mastery(username, plan)
+        result = learning_db.complete_onboarding(user_id, value, plan)
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+
+    return {
+        **result,
+        "proficiency": value,
+        "skills_seeded": len(result["seeded_skills"]),
+        "initial_mastery": (
+            INITIAL_MASTERY[value] if result["completed"] else None
+        ),
     }
 
 

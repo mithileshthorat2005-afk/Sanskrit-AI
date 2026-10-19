@@ -126,6 +126,31 @@ class SQLiteRepository:
     def initialize(self) -> None:
         with self.connect() as connection:
             connection.executescript(SCHEMA)
+            self._ensure_onboarding_columns(connection)
+
+    def _ensure_onboarding_columns(self, connection: sqlite3.Connection) -> None:
+        """Add the proficiency-onboarding columns to an existing `users` table.
+
+        The schema above is `CREATE TABLE IF NOT EXISTS`, so it cannot widen a
+        table that already exists. This guarded ALTER is the project's additive
+        migration path: `PRAGMA table_info` decides whether the columns are
+        needed, which makes running it on every startup safe.
+
+        `onboarding_completed` defaults to 1 on purpose. Every account that
+        already exists is given that default the moment the column is added, so
+        no pre-existing learner can be interrupted by the onboarding popup, and
+        an account this code does not recognise also defaults to "already done"
+        rather than to a prompt. Only a signup that explicitly inserts 0 asks a
+        question.
+        """
+        columns = {row[1] for row in connection.execute("PRAGMA table_info(users)")}
+        if "proficiency" not in columns:
+            connection.execute("ALTER TABLE users ADD COLUMN proficiency TEXT")
+        if "onboarding_completed" not in columns:
+            connection.execute(
+                "ALTER TABLE users ADD COLUMN onboarding_completed "
+                "INTEGER NOT NULL DEFAULT 1"
+            )
 
     def migrate_users(self, users: Dict[str, Dict[str, Any]]) -> int:
         """Copy users into SQLite without changing the source JSON data.
@@ -166,22 +191,125 @@ class SQLiteRepository:
         role: str = "student",
         level: str = "beginner",
         created_at: Optional[str] = None,
+        proficiency: Optional[str] = None,
+        onboarding_completed: int = 1,
     ) -> int:
-        """Ensure a learning profile exists without storing authentication data."""
+        """Ensure a learning profile exists without storing authentication data.
+
+        `onboarding_completed` defaults to 1 so that any account created
+        outside the signup endpoint (a legacy profile reached for the first
+        time, a migrated row) is treated as already onboarded. Only
+        /auth/signup passes 0, which is what makes the proficiency popup
+        strictly new-user-only.
+        """
         if not isinstance(username, str) or not username.strip():
             raise ValueError("username must be a non-empty string")
         timestamp = created_at or datetime.now(timezone.utc).isoformat()
         with self.connect() as connection:
             connection.execute(
-                """INSERT INTO users (username, role, level, created_at)
-                   VALUES (?, ?, ?, ?)
+                """INSERT INTO users
+                       (username, role, level, created_at, proficiency, onboarding_completed)
+                   VALUES (?, ?, ?, ?, ?, ?)
                    ON CONFLICT(username) DO NOTHING""",
-                (username.strip(), role, level, timestamp),
+                (
+                    username.strip(),
+                    role,
+                    level,
+                    timestamp,
+                    proficiency,
+                    0 if int(onboarding_completed) == 0 else 1,
+                ),
             )
             row = connection.execute(
                 "SELECT id FROM users WHERE username = ?", (username.strip(),)
             ).fetchone()
         return int(row["id"])
+
+    # The three proficiency choices a learner can make. `beginner` is the
+    # internal value for "New to Sanskrit" and matches the vocabulary the
+    # project already uses for levels.
+    VALID_PROFICIENCY = ("beginner", "intermediate", "advanced")
+
+    def get_onboarding_state(self, user_id: int) -> Dict[str, Any]:
+        """Read whether this learner still owes a proficiency answer.
+
+        A profile that cannot be found reports `onboarding_completed: True` —
+        an unknown account is never interrupted with a prompt.
+        """
+        if not isinstance(user_id, int) or user_id <= 0:
+            raise ValueError("user_id must be a positive integer")
+        with self.connect() as connection:
+            row = connection.execute(
+                "SELECT proficiency, onboarding_completed FROM users WHERE id = ?",
+                (user_id,),
+            ).fetchone()
+        if row is None:
+            return {"onboarding_completed": True, "proficiency": None}
+        stored = row["proficiency"]
+        return {
+            "onboarding_completed": bool(row["onboarding_completed"]),
+            "proficiency": stored if stored in self.VALID_PROFICIENCY else None,
+        }
+
+    def complete_onboarding(
+        self,
+        user_id: int,
+        proficiency: str,
+        initial_mastery: Optional[Dict[str, float]] = None,
+    ) -> Dict[str, Any]:
+        """Store the proficiency choice and seed starting mastery — atomically.
+
+        Both steps run inside ONE transaction, so a failure halfway cannot leave
+        an account marked onboarded with no mastery, or seeded with no marker:
+        the transaction rolls back and the learner simply sees the error and can
+        try again.
+
+        Idempotent in both directions. The UPDATE is guarded by
+        `onboarding_completed = 0` and every mastery insert is
+        `ON CONFLICT(user_id, skill_id) DO NOTHING`, so a retried or concurrent
+        request reports `already_completed` and leaves the stored mastery —
+        including any later, evidence-based updates — untouched.
+        """
+        if not isinstance(user_id, int) or user_id <= 0:
+            raise ValueError("user_id must be a positive integer")
+        if proficiency not in self.VALID_PROFICIENCY:
+            raise ValueError(
+                f"proficiency must be one of: {', '.join(self.VALID_PROFICIENCY)}"
+            )
+        if initial_mastery is not None and not isinstance(initial_mastery, dict):
+            raise ValueError("initial_mastery must map skill_id -> probability")
+
+        timestamp = datetime.now(timezone.utc).isoformat()
+        seeded: List[str] = []
+        with self.connect() as connection:
+            cursor = connection.execute(
+                """UPDATE users
+                   SET proficiency = ?, onboarding_completed = 1
+                   WHERE id = ? AND onboarding_completed = 0""",
+                (proficiency, user_id),
+            )
+            if cursor.rowcount != 1:
+                exists = connection.execute(
+                    "SELECT 1 FROM users WHERE id = ?", (user_id,)
+                ).fetchone()
+                if exists is None:
+                    raise ValueError(f"No learning profile for user_id {user_id}")
+                return {"completed": False, "already_completed": True, "seeded_skills": []}
+
+            for skill_key, mastery in (initial_mastery or {}).items():
+                # Clamped into [0.0, 1.0] at the boundary rather than trusted.
+                probability = max(0.0, min(1.0, float(mastery)))
+                inserted = connection.execute(
+                    """INSERT INTO skill_mastery
+                           (user_id, skill_id, mastery, attempts, correct, updated_at)
+                       VALUES (?, ?, ?, 0, 0, ?)
+                       ON CONFLICT(user_id, skill_id) DO NOTHING""",
+                    (user_id, str(skill_key), probability, timestamp),
+                )
+                if inserted.rowcount == 1:
+                    seeded.append(str(skill_key))
+
+        return {"completed": True, "already_completed": False, "seeded_skills": seeded}
 
     def import_skill_mastery(
         self,
@@ -239,7 +367,12 @@ class SQLiteRepository:
             current_mastery = float(row["mastery"]) if row else 0.0
             attempts = int(row["attempts"]) if row else 0
             correct = int(row["correct"]) if row else 0
-            if attempts == 0:
+            # `row is None`, not `attempts == 0`: a record that already carries a
+            # mastery value with no graded attempt yet exists now — proficiency
+            # onboarding seeds exactly that shape, and so does the legacy JSON
+            # import. Those values must be the starting point of the first BKT
+            # update rather than being thrown away in favour of l0.
+            if row is None:
                 current_mastery = params["l0"]
             new_mastery = calculator.update_mastery(current_mastery, is_correct, params)
             attempts += 1

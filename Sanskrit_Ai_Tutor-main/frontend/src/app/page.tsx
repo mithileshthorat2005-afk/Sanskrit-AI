@@ -12,7 +12,12 @@ export default function Home() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("student");
+  // The Student / Educator picker that used to sit under the password fields is
+  // gone. Signup now always uses the server's existing default role, so the
+  // backend's role allowlist and every authorization check stay exactly as they
+  // were and no ordinary account can be created with an elevated role from this
+  // form.
+  const SIGNUP_ROLE = "student";
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState('light');
@@ -71,7 +76,7 @@ export default function Home() {
         if (password !== confirmPassword) {
           throw new Error("Passwords do not match");
         }
-        await signup(username, password, role);
+        await signup(username, password, SIGNUP_ROLE);
         setIsLogin(true);
         setError("Account created! Please login.");
       }
@@ -427,10 +432,6 @@ export default function Home() {
                     placeholder="Confirm Password"
                     required
                   />
-                  <select value={role} onChange={(e) => setRole(e.target.value)}>
-                    <option value="student">Learning Path: Student</option>
-                    <option value="teacher">Learning Path: Educator</option>
-                  </select>
                 </>
               )}
 

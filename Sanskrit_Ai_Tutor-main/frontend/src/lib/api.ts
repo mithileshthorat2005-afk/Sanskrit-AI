@@ -147,6 +147,12 @@ export const api = {
       }),
     submitQuiz: (data: { lesson_id: string; answers: Record<string, number>; quiz_id?: string }) =>
       apiRequest('/progress/quiz', { method: 'POST', body: JSON.stringify(data) }),
+    getProficiency: () => apiRequest('/proficiency'),
+    saveProficiency: (proficiency: string) =>
+      apiRequest('/proficiency', {
+        method: 'POST',
+        body: JSON.stringify({ proficiency }),
+      }),
   },
   tools: {
     translate: (data: { text: string; direction: string; use_api?: boolean }) => 
